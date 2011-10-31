@@ -4,9 +4,9 @@
 
 To run the Play framework, you need a [[JDK 6 or later| http://www.oracle.com/technetwork/java/javase/downloads/index.html]]. If you wish to build Play from source, you will need the [[Git source control client | http://git-scm.com/]] to fetch the source code.
 
-> If you are using MacOS, Java is just built-in. If you are using Linux, make sure to use either the Sun-JDK or OpenJDK (and not gcj which is the default Java command on many Linux distros). If you are using Windows, just download and install the latest JDK package.
+> If you are using MacOS, Java is just built-in. If you are using Linux, make sure to use either the Sun JDK or OpenJDK (and not gcj which is the default Java command on many Linux distros). If you are using Windows, just download and install the latest JDK package.
 
-Be sure to have **java** and **javac** in the current path (enter `java -version` and `javac -version` to check). 
+Be sure to have **java** and **javac** in the current path (you can check by typing `java -version` and `javac -version` at the shell prompt). 
 
 ## Download the binary package
 
