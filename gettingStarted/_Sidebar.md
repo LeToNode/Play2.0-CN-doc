@@ -1,6 +1,6 @@
 - [[Home]]
 
-[[line.gif]]
+[[line.png]]
 
 - [[Play 2.0 beta walkthrough | Walkthrough]]
 - [[Installing Play 2.0 beta | Installing]]
