@@ -43,4 +43,6 @@ $ ./build
 
 Once in the sbt console, run `build-repository` to compile and build everything. It will also create the local ivy repository containing every needed dependencies.
 
-If you want to make change to the code you can use `compile` and `publish-local` to rebuild the framework.
+> Note that you don't need to install your own sbt version. Play 2.0 embed its own version of sbt (currently using sbt 0.11.0).
+
+If you want to make changes to the code you can use `compile` and `publish-local` to rebuild the framework.
