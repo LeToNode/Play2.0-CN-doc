@@ -34,6 +34,7 @@ Then enter into `Play20/framework` and launch the `build` script to enter teh sb
 $ cd Play20/framework
 $ ./build
 ```
+
 Once in the sbt console, run `build-repository` to compile and build everything. It will also create the local ivy repository containing every needed dependencies.
 
-If you want to make change to the code you can use `compile` to recompile and `publish-local` to repackage only the play related jars.
+If you want to make change to the code you can use `compile` and `publish-local` to rebuild the framework.
