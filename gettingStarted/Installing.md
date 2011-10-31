@@ -10,10 +10,30 @@ Be sure to have **java** and **javac** in the current path (enter `java -version
 
 ## Download the binary package
 
-Download the [[Play 2.0 beta binary package | #]] and extract the archive. For convenience, you should add the framework installation directory to your system PATH. If you’re on UNIX, make sure that the play script is runnable (otherwise simply do a `chmod +x play`). That’s all.
+Download the [[Play 2.0 beta binary package | http://download.playframework.org/releases/play-2.0-beta.zip]] and extract the archive. For convenience, you should add the framework installation directory to your system PATH. If you’re on UNIX, make sure that the play script is runnable (otherwise simply do a `chmod +x play`). That’s all.
 
-## Check that the `play` command is available
+## Check that the play command is available
 
 From a shell, try to launch the `play help` command. If everything is properly installed, you should see the very basic help:
 
 [[play.png]]
+
+## Building from sources
+
+To benefit from the latest improvements and bug fixes after the first beta release, you may want to compile Play 2.0 from sources. You’ll need a [[Git client | http://git-scm.com/]] to fetch the sources.
+
+From the shell, first checkout the Play 2.0 sources:
+
+```bash
+$ git clone git://github.com/playframework/Play20.git
+```
+
+Then enter into `Play20/framework` and launch the `build` script to enter teh sbt build console:
+
+```bash
+$ cd Play20/framework
+$ ./build
+```
+Once in the sbt console, run `build-repository` to compile and build everything. It will also create the local ivy repository containing every needed dependencies.
+
+If you want to make change to the code you can use `compile` to recompile and `publish-local` to repackage only the play related jars.
