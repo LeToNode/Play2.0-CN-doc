@@ -14,7 +14,13 @@ Download the [[Play 2.0 beta binary package | http://download.playframework.org/
 
 ## Check that the play command is available
 
-From a shell, try to launch the `play help` command. If everything is properly installed, you should see the very basic help:
+From a shell, try to launch the `play help` command. 
+
+```bash
+$ play help
+```
+
+If everything is properly installed, you should see the very basic help:
 
 [[play.png]]
 
