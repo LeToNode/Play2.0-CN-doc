@@ -1,3 +1,5 @@
+- [[Home]]
+
 - [[Play 2.0 beta walkthrough | Walkthrough]]
 - [[Installing Play 2.0 beta | Installing]]
 - [[Creating a new application | NewApplication]]
