@@ -187,7 +187,7 @@ And if you map it in the `conf/routes` file:
 ```
 # Hello action
 GET   /hello/:name          controllers.Application.hello(name)
-``` 
+```
 
 You can then reverse the URL using the `controllers.routes.Application` reverse controller:
 
