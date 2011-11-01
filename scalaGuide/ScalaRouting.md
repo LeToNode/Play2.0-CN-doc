@@ -149,9 +149,9 @@ You can also provide a default value, meaning that if no value is found is the i
 GET   /clients              controllers.Clients.list(page: Int ?= 1)
 ```
 
-# Routes priority
+## Routes priority
 
 Many routes can match the same request. If there is any conflict, the first route (following the declaration order) is used.
 
-# Reverse routing
+## Reverse routing
 
