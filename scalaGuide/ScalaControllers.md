@@ -31,7 +31,7 @@ A controller defines several `Action` generators, like the `index` method in thi
 
 ## What's an Action?
 
-An `Action` is basically a `(Request => Result)` function, handling a request and generating a result to be sent to the client.
+An `play.api.mvc.Action` is basically a `(Request => Result)` function, handling a request and generating a result to be sent to the client.
 
 ```scala
 val echo = Action { request =>
@@ -43,5 +43,5 @@ An Action returns a `play.api.mvc.Result` value, representing the HTTP response 
 
 ## Controllers as Action generators
 
-Actually a Controller is nothing more than a singleton object generating `play.api.mvc.Action` values. 
+Actually a Controller is nothing more than a singleton object generating `Action` values. 
 
