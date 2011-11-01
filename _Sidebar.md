@@ -2,8 +2,8 @@
 
 [[/utils/line.png]]
 
-- [[Play 2.0 for Java developers | JavaHome]]
 - [[Play 2.0 for Scala developers | ScalaHome]]
+- [[Play 2.0 for Java developers | JavaHome]]
 
 [[/utils/line.png]]
 
