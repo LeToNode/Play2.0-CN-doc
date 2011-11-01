@@ -34,11 +34,15 @@ The HTTP method can be any of the valid methods supported by HTTP (`GET`, `POST`
 
 The URI pattern defines the route’s request path. Some parts of the request path can be dynamic.
 
+### Static path
+
 For example, to exactly match the `GET /clients/all` incoming requests, you can define this route:
 
 ```
 GET   /clients              controllers.Clients.list()
 ```
+
+### Dynamic parts 
 
 But if you want to define a route that retrieve a client by id, you need to add a dynamic part:
 
@@ -50,6 +54,8 @@ GET   /clients/:id          controllers.Clients.show(id: Long)
 
 The default matching strategy for a dynamic part is defined by the regular expression `[^/]+`, meaning that any dynamic part defined as `:id` will match exactly one URI part.
 
+### Dynamic parts spanning several /
+
 If you want to capture more than URI part, you can define a dynamic part using the `*id` syntax, that will use the `.*` regular expression:
 
 ```
@@ -57,6 +63,8 @@ GET   /files/*name          controllers.Application.download(name)
 ```
 
 Here for a request like `GET /files/images/logo.png`, the `name` dynamic part will capture the `images/logo.png` value.
+
+### Dynamic parts with custom regular expression
 
 You can also defines your own regular expression for a dynamic part, using the `$id<regex>` syntax:
     
@@ -104,6 +112,8 @@ def show(page: String) = Action {
 }
 ```
 
+### Parameters types
+
 For parameter of type `String`, typing the parameter is optional. But if you want that Play transform the incoming parameter into a specific scala type, you must explicitely type the parameter:
 
 ```
@@ -120,6 +130,8 @@ def show(id: Long) = Action {
 }
 ```
 
+### Parameters with fixed values
+
 Sometimes you want to use a fixed value for a parameter:
 
 ```
@@ -127,6 +139,8 @@ Sometimes you want to use a fixed value for a parameter:
 GET   /                     controllers.Application.show(page = "home")
 GET   /:page                controllers.Application.show(page)
 ```
+
+### Parameters with default values
 
 You can also provide a default value, meaning that if no value is found is the incoming request, the default value will be used:
 
