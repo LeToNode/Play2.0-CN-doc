@@ -70,7 +70,7 @@ def index = Action { implicit request =>
 }
 ```
 
-Of course the `Action` generator method can have parameters. And these parameters can be captured by the `Action` closure:
+Of course the action generator method can have parameters. And these parameters can be captured by the `Action` closure:
 
 ```scala
 def hello(name: String) = Action {
@@ -78,7 +78,20 @@ def hello(name: String) = Action {
 }
 ```
 
+## Composing Actions
 
+Action can be easily composed. For example you can define a cached and secured action using:
+
+```scala
+def hello(name: String) = Authenticated {
+  Cached {
+    Action {
+      Ok("Hello " + name)
+    }
+  }      
+}
+
+```
 
 
 
