@@ -41,7 +41,7 @@ resolvers ++= Seq(
   "Maven Repository" at "http://repo1.maven.org/maven2/",
   "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/"
 )
-``` 
+```
 
 ### In project/Build.scala:
 
