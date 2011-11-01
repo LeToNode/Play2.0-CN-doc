@@ -13,7 +13,7 @@ The `conf/routes` file is the configuration file used by the Router. This file l
 
 Let’s see what a route definition looks like:
 
-```ruby
+```
 GET   /clients/:id            controllers.Clients.show(id: Long)  
 ```
 
@@ -21,7 +21,7 @@ Each route starts with the HTTP method, followed by the URI pattern. The last el
 
 You can add a comment to the route file, with the `#` character.
 
-```ruby
+```
 # Display a client
 GET   /clients/:id            controllers.Clients.show(id: Long)  
 ```
@@ -36,13 +36,13 @@ The URI pattern defines the route’s request path. Some parts of the request pa
 
 For example, to exactly match the `GET /clients/all` incoming requests, you can define this route:
 
-```ruby
+```
 GET   /clients/all            controllers.Clients.list()
 ```
 
 But if you want to define a route that retrieve a client by id, you need to add a dynamic part:
 
-```ruby
+```
 GET   /clients/:id            controllers.Clients.show(id: Long)  
 ```
 
@@ -52,7 +52,7 @@ The default matching strategy for a dynamic part is defined by the regular expre
 
 If you want to capture more than URI part, you can define a dynamic part using the `*id` syntax, that will use the `.*` regular expression:
 
-```ruby
+```
 GET   /files/*path            controllers.Application.download(path)  
 ```
 
@@ -60,7 +60,7 @@ Here for a request like `GET /files/images/logo.png`, the `path` dynamic part wi
 
 You can also defines your own regular expression for a dynamic part, using the `$id<regex>` syntax:
     
-```ruby
+```
 GET   /clients/$id<[0-9]+>    controllers.Clients.show(id: Long)  
 ```
 
@@ -76,20 +76,20 @@ The last part of a route definition is the call. This part must define a valid c
 
 If the method does not define any parameter, just define the fully qualified method name:
 
-```ruby
+```
 GET   /                       controllers.Application.index()
 ```
 
 If the action method defines some parameters, all these parameter values will be searched in the URI part, either extracted from the URI path itself, or from the QueryString.
 
-```ruby
+```
 # Extract the page parameter from the path
 GET   /:page                  controllers.Application.show(page)
 ```
 
 Or:
 
-```ruby
+```
 # Extract the page parameter from the queryString
 GET   /page                   controllers.Application.show(page)
 ```
@@ -106,7 +106,7 @@ def show(page: String) = Action {
 
 For parameter of type `String`, typing the parameter is optional. But if you want that Play transform the incoming parameter into a specific scala type, you must explicitely type the parameter:
 
-```ruby
+```
 GET   /client/:id             controllers.Clients.show(id: Long)
 ```
 
@@ -122,9 +122,9 @@ def show(id: Long) = Action {
 
 Sometimes you want to use a fixed value for a parameter:
 
-```ruby
+```
 # Extract the page parameter from the path, or fix the value for /home
 GET   /                       controllers.Application.show(page="home")
-GET   /:page/                  controllers.Application.show(page)
+GET   /:page                  controllers.Application.show(page)
 ```
 
