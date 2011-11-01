@@ -130,7 +130,7 @@ def show(id: Long) = Action {
 }
 ```
 
-### Parameters with fixed values
+### Parameters with fixed value
 
 Sometimes you want to use a fixed value for a parameter:
 
@@ -140,7 +140,7 @@ GET   /                     controllers.Application.show(page = "home")
 GET   /:page                controllers.Application.show(page)
 ```
 
-### Parameters with default values
+### Parameters with default value
 
 You can also provide a default value, meaning that if no value is found is the incoming request, the default value will be used:
 
@@ -148,3 +148,10 @@ You can also provide a default value, meaning that if no value is found is the i
 # Pagination links, like /clients?page=3
 GET   /clients              controllers.Clients.list(page: Int ?= 1)
 ```
+
+# Routes priority
+
+Many routes can match the same request. If there is any conflict, the first route (following the declaration order) is used.
+
+# Reverse routing
+
