@@ -43,11 +43,9 @@ resolvers ++= Seq(
 )
 ``` 
 
-
 And in `project/Build.scala`:
 
-
-```scala
+```
 import sbt._
 import Keys._
  
