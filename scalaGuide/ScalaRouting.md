@@ -66,6 +66,12 @@ You can also defines your own regular expression for a dynamic part, using the `
     
 ```ruby
 GET   /clients/$id<[0-9]+>       Clients.show(id: Long)  
-```   
+```
+
+To summarize, you can define a dynamic part using one of these 3 forms:
+
+- `:id`
+- `*id`
+- `$id<[0-9]+>`
 
  
