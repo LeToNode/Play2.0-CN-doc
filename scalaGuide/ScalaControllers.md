@@ -8,7 +8,7 @@ This is precisely the role played by the Controller layer: providing a glue betw
 
 The Controller layer reduces the impedance mismatch between HTTP and the Domain Model.
 
-## A controller overview
+## A Controller overview
 
 A Controller is a Scala singleton object, hosted by the controllers package, and subclassing `play.api.mvc.Controller`. You can declare as many controllers you want in the same file.
 
@@ -27,11 +27,9 @@ object Application extends Controller {
 }
 ```
 
-A controller defines several Action generators.
+A controller defines several Action generators, like the `index` method in this example.
 
 ## What's an Action?
-
-Actually a Controller is nothing more than a singleton object able to generate `play.api.mvc.Action` values. The `Action` values are what will really handle the HTTP requests in and generate HTTP responses.
 
 An `Action[A]` is basically a `(Request[A] => Result)` function, handling a request and generating a result to be sent to the client.
 
@@ -42,5 +40,11 @@ val echo = Action { request =>
   Ok("Got request [" + request + "]")
 }
 ```
+
+An Action returns a `play.api.mvc.Result` value, representing the HTTP response to send to the web client.
+
+## Controllers as Action generators
+
+Actually a Controller is nothing more than a singleton object able to generate `play.api.mvc.Action` values. The `Action` values are what will really handle the HTTP requests in and generate HTTP responses.
 
 
