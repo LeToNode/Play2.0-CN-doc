@@ -13,7 +13,7 @@ The `conf/routes` file is the configuration file used by the Router. This file l
 
 Let’s see what a route definition looks like:
 
-```scala
+```python
 GET    /clients/:id             Clients.show(id: Long)  
 ```
 
@@ -21,7 +21,7 @@ Each route starts with the HTTP method, followed by the URI pattern. The last el
 
 You can add a comment to the route file, with the # character.
 
-```scala
+```python
 # Display a client
 GET    /clients/:id             Clients.show(id: Long)  
 ```
