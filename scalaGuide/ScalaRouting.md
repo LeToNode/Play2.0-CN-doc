@@ -28,7 +28,7 @@ GET    /clients/:id             Clients.show(id: Long)
 
 ### The HTTP method
 
-The HTTP method can be any of the valid methods supported by HTTP (`GET`,`POST`,`PUT`,`DELETE`,`HEAD`).
+The HTTP method can be any of the valid methods supported by HTTP (`GET`, `POST`, `PUT`, `DELETE`, `HEAD`).
 
 ### The URI Pattern
 
