@@ -37,13 +37,13 @@ The URI pattern defines the route’s request path. Some parts of the request pa
 For example, to exactly match the `GET /clients/all` incoming requests, you can define this route:
 
 ```ruby
-GET   /clients/all               controllers.Clients.list()
+GET   /clients/all            controllers.Clients.list()
 ```
 
 But if you want to define a route that retrieve a client by id, you need to add a dynamic part:
 
 ```ruby
-GET   /clients/:id               controllers.Clients.show(id: Long)  
+GET   /clients/:id            controllers.Clients.show(id: Long)  
 ```
 
 > Note that a URI pattern may have more than one dynamic part.
@@ -53,7 +53,7 @@ The default matching strategy for a dynamic part is defined by the regular expre
 If you want to capture more than URI part, you can define a dynamic part using the `*id` syntax, that will use the `.*` regular expression:
 
 ```ruby
-GET   /files/*path               controllers.Application.download(path)  
+GET   /files/*path            controllers.Application.download(path)  
 ```
 
 Here for a request like `GET /files/images/logo.png`, the `path` dynamic part will capture the `images/logo.png` value.
@@ -61,7 +61,7 @@ Here for a request like `GET /files/images/logo.png`, the `path` dynamic part wi
 You can also defines your own regular expression for a dynamic part, using the `$id<regex>` syntax:
     
 ```ruby
-GET   /clients/$id<[0-9]+>       controllers.Clients.show(id: Long)  
+GET   /clients/$id<[0-9]+>    controllers.Clients.show(id: Long)  
 ```
 
 To summarize, you can define a dynamic part using one of these 3 forms:
@@ -77,14 +77,14 @@ The last part of a route definition is the call. This part must define a valid c
 If the method does not define any parameter, just define the fully qualified method name:
 
 ```ruby
-GET   /home                       controllers.Application.index()
+GET   /home                   controllers.Application.index()
 ```
 
 If the action method defines some parameters, all these parameter values will be searched in the URI part, either extracted from the URI path itself, or from the QueryString.
 
 ```ruby
 # Extract the page parameter from the path
-GET   /pages/:page                 controllers.Application.show(page)
+GET   /pages/:page            controllers.Application.show(page)
 ```
 
 And the corresponding, `show` method definition in the `controllers.Application` controller:
