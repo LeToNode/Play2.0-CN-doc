@@ -61,7 +61,9 @@ Typing `console` you can enter the interactive Scala console, allowing to test y
 
 ## Using the sbt features
 
-The Play console is just a normal sbt console, so you can use any sbt features like **trigerred execution**. For example, using `~ compile`
+The Play console is just a normal sbt console, so you can use any sbt features like **triggered execution**. 
+
+For example, using `~ compile`
 
 ```bash
 [My first application] $ ~ compile
