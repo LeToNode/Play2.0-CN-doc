@@ -33,4 +33,8 @@ To run the current application in development mode, use the `run` command:
 
 In this mode, the server will be launched with the auto-reload feature enabled, meaning that for each request Play will check your project and recompile required sources. If needed the application will restart automatically.
 
+If there is any compilation error you will see the result of the compilation directly in your browser:
+
+[[errorPage.png]]
+
 To stop the server, you can press the `Crtl + D` key, and you will come back to the Play console prompt.
