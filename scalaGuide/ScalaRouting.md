@@ -77,7 +77,7 @@ The last part of a route definition is the call. This part must define a valid c
 If the method does not define any parameter, just define the fully qualified method name:
 
 ```ruby
-GET   /                   controllers.Application.index()
+GET   /                      controllers.Application.index()
 ```
 
 If the action method defines some parameters, all these parameter values will be searched in the URI part, either extracted from the URI path itself, or from the QueryString.
