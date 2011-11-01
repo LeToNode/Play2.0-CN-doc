@@ -72,7 +72,7 @@ To summarize, you can define a dynamic part using one of these 3 forms:
 
 ### Call to action generator method.
 
-The last part of a route definition is the call. This part must define a valid call to a method returning an `play.api.mvc.Action` value, so typically to a Controller action method.
+The last part of a route definition is the call. This part must define a valid call to a method returning a `play.api.mvc.Action` value, so typically to a Controller action method.
 
 If the method does not define any parameter, just define the fully qualified method name:
 
@@ -87,11 +87,44 @@ If the action method defines some parameters, all these parameter values will be
 GET   /pages/:page            controllers.Application.show(page)
 ```
 
+Or:
+
+```ruby
+# Extract the page parameter from the queryString
+GET   /pages                  controllers.Application.show(page)
+```
+
 And the corresponding, `show` method definition in the `controllers.Application` controller:
 
 ```scala
 def show(page: String) = Action {
-    ...
+    contentOf(page).map { htmlContent =>
+        Ok(htmlContent).as("text/html")
+    }.getOrElse(NotFound)
 }
+```
+
+For parameter of type `String`, typing the parameter is optional. But if you want that Play transform the incoming parameter into a specific scala type, you must explicitely type the parameter:
+
+```ruby
+GET   /client/:id            controllers.Clients.show(id: Long)
+```
+
+And the corresponding, `show` method definition in the `controllers.Clients` controller:
+
+```scala
+def show(id: Long) = Action {
+    Client.findById(id).map { client =>
+        Ok(views.html.Clients.display(client))
+    }.getOrElse(NotFound)
+}
+```
+
+Sometimes you want to use a fixed value for a parameter:
+
+```ruby
+# Extract the page parameter from the path, or fix the value for /home
+GET   /home                   controllers.Application.show(page = "home")
+GET   /pages/:page            controllers.Application.show(page)
 ```
 
