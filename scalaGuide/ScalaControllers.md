@@ -33,10 +33,14 @@ A controller defines several Action generators.
 
 Actually a Controller is nothing more than a singleton object able to generate `play.api.mvc.Action` values. The `Action` values are what will really handle the HTTP requests in and generate HTTP responses.
 
-An action is basically a `(Request[A] => Result) function`, handling a request and generating a result to be sent to the client.
+An `Action[A]` is basically a `(Request[A] => Result) function`, handling a request and generating a result to be sent to the client.
+
+> Here the `A` type parameter represents the HTTP request body type. For example you can have a `Request[Json]`, `Request[Xml]` or `Request[UrlFormEncoded]`. The default is to handle `Request[AnyContent]`.
 
 ```scala
 val echo = Action { request =>
   Ok("Got request [" + request + "]")
 }
 ```
+
+
