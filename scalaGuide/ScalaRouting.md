@@ -84,14 +84,14 @@ If the action method defines some parameters, all these parameter values will be
 
 ```ruby
 # Extract the page parameter from the path
-GET   /pages/:page            controllers.Application.show(page)
+GET   /:page                  controllers.Application.show(page)
 ```
 
 Or:
 
 ```ruby
 # Extract the page parameter from the queryString
-GET   /pages                  controllers.Application.show(page)
+GET   /page                   controllers.Application.show(page)
 ```
 
 And the corresponding, `show` method definition in the `controllers.Application` controller:
@@ -107,7 +107,7 @@ def show(page: String) = Action {
 For parameter of type `String`, typing the parameter is optional. But if you want that Play transform the incoming parameter into a specific scala type, you must explicitely type the parameter:
 
 ```ruby
-GET   /client/:id            controllers.Clients.show(id: Long)
+GET   /client/:id             controllers.Clients.show(id: Long)
 ```
 
 And the corresponding, `show` method definition in the `controllers.Clients` controller:
@@ -124,7 +124,7 @@ Sometimes you want to use a fixed value for a parameter:
 
 ```ruby
 # Extract the page parameter from the path, or fix the value for /home
-GET   /home                   controllers.Application.show(page="home")
-GET   /pages/:page            controllers.Application.show(page)
+GET   /                       controllers.Application.show(page="home")
+GET   /:page                  controllers.Application.show(page)
 ```
 
