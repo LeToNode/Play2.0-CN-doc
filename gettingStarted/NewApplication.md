@@ -1,7 +1,5 @@
 # Creating a new application
 
-Once the Play is [[correctly installed | Installing]], you can create a new application.
-
 ## Create a new application with the play script.
 
 The easiest way to create a new application is to use the `play new` command.
