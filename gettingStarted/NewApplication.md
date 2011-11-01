@@ -43,7 +43,7 @@ resolvers ++= Seq(
 )
  
 libraryDependencies += "play" %% "play" % "2.0-beta"
-``` 
+`````` 
 
 And in `project/Build.scala`:
 
