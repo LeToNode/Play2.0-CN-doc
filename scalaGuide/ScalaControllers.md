@@ -41,7 +41,7 @@ val echo = Action { request =>
 }
 ```
 
-An Action returns a `play.api.mvc.Result` value, representing the HTTP response to send to the web client.
+An Action returns a `play.api.mvc.Result` value, representing the HTTP response to send to the web client. In this example `Ok` construct a **200 OK** response containing a **text/plain** response body.
 
 ## Controllers as Action generators
 
