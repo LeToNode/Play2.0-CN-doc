@@ -37,7 +37,7 @@ The URI pattern defines the route’s request path. Some parts of the request pa
 For example, to exactly match the `GET /clients/all` incoming requests, you can define this route:
 
 ```
-GET   /clients/all            controllers.Clients.list()
+GET   /clients                controllers.Clients.list()
 ```
 
 But if you want to define a route that retrieve a client by id, you need to add a dynamic part:
@@ -53,10 +53,10 @@ The default matching strategy for a dynamic part is defined by the regular expre
 If you want to capture more than URI part, you can define a dynamic part using the `*id` syntax, that will use the `.*` regular expression:
 
 ```
-GET   /files/*path            controllers.Application.download(path)  
+GET   /files/*name            controllers.Application.download(name)  
 ```
 
-Here for a request like `GET /files/images/logo.png`, the `path` dynamic part will capture the `images/logo.png` value.
+Here for a request like `GET /files/images/logo.png`, the `name` dynamic part will capture the `images/logo.png` value.
 
 You can also defines your own regular expression for a dynamic part, using the `$id<regex>` syntax:
     
@@ -77,7 +77,7 @@ The last part of a route definition is the call. This part must define a valid c
 If the method does not define any parameter, just define the fully qualified method name:
 
 ```
-GET   /                       controllers.Application.index()
+GET   /                       controllers.Application.home()
 ```
 
 If the action method defines some parameters, all these parameter values will be searched in the URI part, either extracted from the URI path itself, or from the QueryString.
