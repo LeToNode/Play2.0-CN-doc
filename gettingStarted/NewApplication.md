@@ -43,7 +43,9 @@ resolvers ++= Seq(
 )
 ``` 
 
+
 And in `project/Build.scala`:
+
 
 ```scala
 import sbt._
