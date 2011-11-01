@@ -159,3 +159,41 @@ Many routes can match the same request. If there is any conflict, the first rout
 
 ## Reverse routing
 
+The Router can be used to generate a URL from within a Scala call. So you’re able to centralize in one only configuration file all your URI patterns, and then be more confident when refactoring your application.
+
+For each Controller used in the routes file, the Router will generate a "reverse Controller" in the 'routes' package, having the same action methods with the same signature, but returning a `play.api.mvc.Call` instead of a `play.api.mvc.Action`. 
+
+The `play.api.mvc.Call` define an HTTP call by providing both the HTTP method and the URI.
+
+For example, if you create a controller like:
+
+```scala
+package controllers
+
+import play.api._
+import play.api.mvc._
+
+object Application extends Controller {
+    
+  def hello(name: String) = Action {
+      Ok("Hello " + name + "!")
+  }
+    
+}
+```
+
+And if you map it in the `conf/routes` file:
+
+```
+# Hello action
+GET   /hello/:name          controllers.Application.hello(name)
+``` 
+
+You can then reverse the URL using the `controllers.routes.Application` reverse controller:
+
+```scala
+// Redirect to /hello/Bob
+def helloBob = Action {
+    Redirect(controllers.routes.Application.hello("Bob"))    
+}
+```
