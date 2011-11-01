@@ -61,6 +61,14 @@ def index = Action { request =>
 }
 ```
 
+Note, that it is useful to define the `request` parameter as **implicit**, as many API needs a request as input.
+
+```scala
+def index = Action { implicit request =>
+  Ok("It works!")
+}
+```
+
 
 
 
