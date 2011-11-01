@@ -62,11 +62,19 @@ def index = Action { request =>
 }
 ```
 
-Note, that it is useful to define the `request` parameter as **implicit**, as many API needs a request as input.
+Note, that it is useful to define the `request` parameter as **implicit**, since many API need a request as input.
 
 ```scala
 def index = Action { implicit request =>
   Ok("It works!")
+}
+```
+
+Of course the `Action` generator method can have parameters. And these parameters can be captured by the `Action` closure:
+
+```scala
+def hello(name: String) = Action {
+  Ok("Hello " + name)
 }
 ```
 
