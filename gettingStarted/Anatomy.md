@@ -29,9 +29,9 @@ target                         --> Generated stuff
   `-- scala-2.9.1              
         `-- cache              
         `-- classes            --> Compiled class files
-        `-- classes_managed    --> Managed class files (templates, router)
-        `-- resource_managed   --> Managed resources (for compiled assets)
-        `-- src_managed        --> Generated sources (templates, router)
+        `-- classes_managed    --> Managed class files (templates, ...)
+        `-- resource_managed   --> Managed resources (less, ...)
+        `-- src_managed        --> Generated sources (templates, ...)
 ```
 
 ### The app/ directory
