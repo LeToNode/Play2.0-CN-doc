@@ -27,3 +27,16 @@ object Application extends Controller {
 }
 ```
 
+A controller defines several Action generators.
+
+## What's an Action?
+
+Actually a Controller is nothing more than a singleton object able to generate `play.api.mvc.Action` values. The `Action` values are what will really handle the HTTP requests in and generate HTTP responses.
+
+An action is basically a `(Request[A] => Result) function`, handling a request and generating a result to be sent to the client.
+
+```scala
+val echo = Action { request =>
+  Ok("Got request [" + request + "]")
+}
+```
