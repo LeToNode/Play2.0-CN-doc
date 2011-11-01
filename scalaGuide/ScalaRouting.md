@@ -21,9 +21,9 @@ Each route starts with the HTTP method, followed by the URI pattern. The last el
 
 You can add a comment to the route file, with the `#` character.
 
-```scala
+```python
 # Display a client
-GET   /clients/:id               Clients.show(id: Long)  
+...
 ```
 
 ### The HTTP method
