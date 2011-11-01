@@ -124,7 +124,7 @@ Sometimes you want to use a fixed value for a parameter:
 
 ```ruby
 # Extract the page parameter from the path, or fix the value for /home
-GET   /home                   controllers.Application.show(page = "home")
+GET   /home                   controllers.Application.show(page="home")
 GET   /pages/:page            controllers.Application.show(page)
 ```
 
