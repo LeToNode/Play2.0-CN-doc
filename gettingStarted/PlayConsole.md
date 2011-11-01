@@ -58,3 +58,22 @@ Typing `console` you can enter the interactive Scala console, allowing to test y
 ```
 
 [[consoleEval.png]] 
+
+## Using the sbt features
+
+The Play console is just a normal sbt console, so you can use any sbt features like **trigerred execution**. For example, using `~ compile`
+
+```bash
+[My first application] $ ~ compile
+```
+
+The compilation will be triggered each time you change a source file.
+
+You can also do the same for `~ test`, testing continously your project each time you modify a source file:
+
+```bash
+[My first application] $ ~ test
+```
+ 
+
+
