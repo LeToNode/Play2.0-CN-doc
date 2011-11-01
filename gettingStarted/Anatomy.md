@@ -23,6 +23,7 @@ project                        --> sbt configuration files
   `-- build.properties         --> Marker for sbt project
   `-- Build.scala              --> Application build script
   `-- plugins.sbt              --> sbt plugins
+libs                           --> Unmanaged libraries dependencies
 logs                           --> Standard logs folder
   `-- application.log          --> Default log file
 target                         --> Generated stuff
