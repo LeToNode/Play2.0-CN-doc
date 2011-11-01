@@ -32,7 +32,7 @@ You can also create a new Play application without installing Play, using sbt.
 
 Just create a new directory for your new application, and configure your sbt build script, by adding:
 
-### In project/plugins.sbt:
+In `project/plugins.sbt`:
 
 ```scala
 resolvers ++= Seq(
@@ -43,7 +43,7 @@ resolvers ++= Seq(
 libraryDependencies += "play" %% "play" % "2.0-beta"
 ```
 
-### In project/Build.scala:
+In `project/Build.scala`:
 
 ```scala
 import sbt._
