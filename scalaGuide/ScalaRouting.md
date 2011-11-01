@@ -13,7 +13,7 @@ The `conf/routes` file is the configuration file used by the Router. This file l
 
 Let’s see what a route definition looks like:
 
-```scala
+```ruby
 GET   /clients/:id               Clients.show(id: Long)  
 ```
 
@@ -21,9 +21,9 @@ Each route starts with the HTTP method, followed by the URI pattern. The last el
 
 You can add a comment to the route file, with the `#` character.
 
-```python
+```ruby
 # Display a client
-...
+GET   /clients/:id               Clients.show(id: Long)  
 ```
 
 ### The HTTP method
@@ -36,19 +36,19 @@ The URI pattern defines the route’s request path. Some parts of the request pa
 
 For example, to exactly match the `GET /clients/all` incoming requests, you can define this route:
 
-```scala
+```ruby
 GET   /clients/all               Clients.list()
 ```
 
 But if you want to define a route that retrieve a client by id, you need to add a dynamic part:
 
-```scala
+```ruby
 GET   /clients/:id               Clients.show(id: Long)  
 ```
 
 A URI pattern may have more than one dynamic part:
 
-```scala
+```ruby
 GET   /clients/:id/:accountId    Clients.show(id: Long, accountId: Long)
 ```
 
@@ -56,7 +56,7 @@ The default matching strategy for a dynamic part is defined by the regular expre
 
 If you want to capture more than URI part, you can define a dynamic part using the `*id` syntax, that will use the `.*` regular expression:
 
-```scala
+```ruby
 GET   /files/*path               Application.download(path)  
 ```
 
@@ -64,7 +64,7 @@ Here for a request like `GET /files/images/logo.png`, the `path` dynamic part wi
 
 You can also defines your own regular expression for a dynamic part, using the `$id<regex>` syntax:
     
-```scala
+```ruby
 GET   /clients/$id<[0-9]+>       Clients.show(id: Long)  
 ```   
 
