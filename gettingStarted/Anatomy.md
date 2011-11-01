@@ -2,9 +2,39 @@
 
 ## The standard application layout
 
-The layout of a Play application is standardized to keep things as simple as possible.
+The layout of a Play application is standardized to keep things as simple as possible. A standard Play application looks like:
 
-#### The app/ directory
+```txt
+app                            --> Application sources
+  `-- assets                   --> Compiled asset sources
+        `-- stylesheets        --> Typically lesscss sources
+        `-- javascripts        --> Typically coffeescript sources
+  `-- controllers              --> Application controllers
+  `-- models                   --> Application business layer
+  `-- views                    --> Templates
+conf                           --> Configurations files
+  `-- application.conf         --> Main configuration file
+  `-- routes                   --> Routes definition
+public                         --> Public assets
+  `-- stylesheets              --> CSS files
+  `-- javascripts              --> Javascript files
+  `-- images                   --> Image files
+project                        --> sbt configuration files
+  `-- build.properties         --> Marker for sbt project
+  `-- Build.scala              --> Application build script
+  `-- plugins.sbt              --> sbt plugins
+logs                           --> Standard logs folder
+  `-- application.log          --> Default log file
+target                         --> Generated stuff
+  `-- scala-2.9.1              
+        `-- cache              
+        `-- classes            --> Compiled class files
+        `-- classes_managed    --> Managed class files (templates, router)
+        `-- resource_managed   --> Managed resources (for compiled assets)
+        `-- src_managed        --> Generated sources (templates, router)
+```
+
+### The app/ directory
 
 The `app` directory contains all executable artifacts: Java and Scala source code, templates as well as compiled assets sources.
 
@@ -20,7 +50,7 @@ You can of course add your own packages like for example an `app/utils` package.
 
 There is also an optional directory called `app/assets` containing compiled assets like [[Less sources | http://lesscss.org/]] or [[CofeeScript sources | http://jashkenas.github.com/coffee-script/]].
 
-#### The public/ directory
+### The public/ directory
 
 Resources stored in the `public` directory are static assets and are served directly by the Web server.
 
@@ -28,7 +58,7 @@ This directory is split into three standard sub-directories: for images, CSS sty
 
 > In default created application the `/public` directory is mapped to the `/assets` URL path, but you can easily change that, or even use several directories for your static assets.
 
-#### The conf/ directory
+### The conf/ directory
 
 The `conf` directory contains all configuration files for the application.
 
