@@ -14,16 +14,16 @@ The `conf/routes` file is the configuration file used by the Router. This file l
 Let’s see what a route definition looks like:
 
 ```scala
-GET   /clients/:id             Clients.show(id: Long)  
+GET   /clients/:id               Clients.show(id: Long)  
 ```
 
 Each route starts with the HTTP method, followed by the URI pattern. The last element of a route is the call definition.
 
 You can add a comment to the route file, with the `#` character.
 
-```python
+```scala
 # Display a client
-GET   /clients/:id             Clients.show(id: Long)  
+GET   /clients/:id               Clients.show(id: Long)  
 ```
 
 ### The HTTP method
@@ -37,17 +37,17 @@ The URI pattern defines the route’s request path. Some parts of the request pa
 For example, to exactly match the `GET /clients/all` incoming requests, you can define this route:
 
 ```scala
-GET   /clients/all             Clients.list()
+GET   /clients/all               Clients.list()
 ```
 
 But if you want to define a route that retrieve a client by id, you need to add a dynamic part:
 
 ```scala
-GET   /clients/:id             Clients.show(id: Long)  
+GET   /clients/:id               Clients.show(id: Long)  
 ```
 
 A URI pattern may have more than one dynamic part:
 
 ```scala
-GET   /clients/:id/:accountId  Clients.show(id: Long, accountId: Long)
+GET   /clients/:id/:accountId    Clients.show(id: Long, accountId: Long)
 ```
