@@ -43,5 +43,25 @@ An Action returns a `play.api.mvc.Result` value, representing the HTTP response 
 
 ## Controllers as Action generators
 
-Actually a Controller is nothing more than a singleton object generating `Action` values. 
+Actually a `Controller` is nothing more than a singleton object generating `Action` values. 
+
+The simplest use case to define an action generator is a simple method without parameters returning an `Action` value.:
+
+```scala
+def index = Action {
+  Ok("It works!")
+}
+```
+
+Often, your action will need a reference on the HTTP request, so you can defines a `Action` accepting a `play.api.mvc.Request` value as input:
+
+```scala
+def index = Action { request =>
+  Ok("It works!")
+}
+```
+
+
+
+
 
