@@ -80,7 +80,7 @@ def hello(name: String) = Action {
 
 ## Composing Actions
 
-Action can be easily composed. For example you can define a cached and secured action using:
+Action can easily be composed. For example you can define a cached and secured action using:
 
 ```scala
 def hello(name: String) = {
