@@ -27,13 +27,11 @@ object Application extends Controller {
 }
 ```
 
-A controller defines several Action generators, like the `index` method in this example.
+A controller defines several `Action` generators, like the `index` method in this example.
 
 ## What's an Action?
 
-An `Action[A]` is basically a `(Request[A] => Result)` function, handling a request and generating a result to be sent to the client.
-
-> Here the `A` type parameter represents the HTTP request body type. For example you can have a `Request[Json]`, `Request[Xml]` or `Request[UrlFormEncoded]`. The default is to handle `Request[AnyContent]`.
+An `Action` is basically a `(Request => Result)` function, handling a request and generating a result to be sent to the client.
 
 ```scala
 val echo = Action { request =>
@@ -41,7 +39,7 @@ val echo = Action { request =>
 }
 ```
 
-An Action returns a `play.api.mvc.Result` value, representing the HTTP response to send to the web client. In this example `Ok` construct a **200 OK** response containing a **text/plain** response body.
+An Action returns a `play.api.mvc.Result` value, representing the HTTP response to send to the web client. In this example `Ok` constructs a **200 OK** response containing a **text/plain** response body.
 
 ## Controllers as Action generators
 
