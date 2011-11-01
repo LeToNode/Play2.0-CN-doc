@@ -7,6 +7,10 @@ An HTTP request is seen as an event by the MVC framework. The event contains two
 - The Request path (such as `/clients/1542`, `/photos/list`), including the query string.
 - The HTTP method (GET, POST, ...)
 
+Routes are defined in the `conf/routes` file that is compiled.
+
+[[routesError.png]]
+
 ## The routes file syntax
 
 The `conf/routes` file is the configuration file used by the Router. This file lists all the routes needed by the application. Each route consists of an HTTP method + URI pattern associated with a call to an `Action` generator.
