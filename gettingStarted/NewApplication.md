@@ -8,7 +8,7 @@ The easiest way to create a new application is to use the `play new` command.
 $ play new myFirstApp
 ```
 
-It will ask a few question:
+It will ask a few questions:
 
 - The application name (just for information, this name will be used later in several messages).
 - The template to use for this new application. You can choose over a default Scala application, a default Java application, or an empty application.
