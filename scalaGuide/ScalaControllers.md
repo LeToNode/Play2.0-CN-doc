@@ -83,14 +83,15 @@ def hello(name: String) = Action {
 Action can be easily composed. For example you can define a cached and secured action using:
 
 ```scala
-def hello(name: String) = Authenticated {
-  Cached {
-    Action {
-      Ok("Hello " + name)
-    }
-  }      
+def hello(name: String) = {
+  Authenticated {
+    Cached {
+      Action {
+        Ok("Hello " + name)
+      }
+    }      
+  }
 }
-
 ```
 
 
