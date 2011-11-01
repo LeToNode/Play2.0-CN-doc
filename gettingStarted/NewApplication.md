@@ -43,5 +43,7 @@ resolvers ++= Seq(
 )
 ``` 
 
+And in `project/Build.scala`:
+
 
 
