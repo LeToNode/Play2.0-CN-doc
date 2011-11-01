@@ -49,5 +49,5 @@ GET    /clients/:id             Clients.show(id: Long)
 A URI pattern may have more than one dynamic part:
 
 ```python
-GET    /clients/:id/accounts/:accountId    Clients.show(id: Long, accountId: Long)  
+GET    /clients/:id/:accountId  Clients.show(id: Long, accountId: Long)  
 ```
