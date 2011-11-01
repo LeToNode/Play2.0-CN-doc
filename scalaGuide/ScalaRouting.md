@@ -124,7 +124,7 @@ Sometimes you want to use a fixed value for a parameter:
 
 ```
 # Extract the page parameter from the path, or fix the value for /
-GET   /                       controllers.Application.show(page="home")
+GET   /                       controllers.Application.show(page = "home")
 GET   /:page                  controllers.Application.show(page)
 ```
 
