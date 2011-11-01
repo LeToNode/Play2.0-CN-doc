@@ -77,7 +77,7 @@ The last part of a route definition is the call. This part must define a valid c
 If the method does not define any parameter, just define the fully qualified method name:
 
 ```
-GET   /                       controllers.Application.home()
+GET   /                       controllers.Application.homePage()
 ```
 
 If the action method defines some parameters, all these parameter values will be searched in the URI part, either extracted from the URI path itself, or from the QueryString.
@@ -123,8 +123,14 @@ def show(id: Long) = Action {
 Sometimes you want to use a fixed value for a parameter:
 
 ```
-# Extract the page parameter from the path, or fix the value for /home
+# Extract the page parameter from the path, or fix the value for /
 GET   /                       controllers.Application.show(page="home")
 GET   /:page                  controllers.Application.show(page)
 ```
 
+You can also provide a default value, meaning that if no value is found is the incoming request, the default value will be used:
+
+```
+# Pagination links, like /clients?page=3
+GET   /clients                controllers.Clients.list(page: Int ?= 1)
+```
