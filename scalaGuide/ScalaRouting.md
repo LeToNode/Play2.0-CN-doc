@@ -14,7 +14,7 @@ The `conf/routes` file is the configuration file used by the Router. This file l
 Let’s see what a route definition looks like:
 
 ```ruby
-GET   /clients/:id               Clients.show(id: Long)  
+GET   /clients/:id               controllers.Clients.show(id: Long)  
 ```
 
 Each route starts with the HTTP method, followed by the URI pattern. The last element of a route is the call definition.
@@ -23,7 +23,7 @@ You can add a comment to the route file, with the `#` character.
 
 ```ruby
 # Display a client
-GET   /clients/:id               Clients.show(id: Long)  
+GET   /clients/:id               controllers.Clients.show(id: Long)  
 ```
 
 ### The HTTP method
@@ -37,27 +37,23 @@ The URI pattern defines the route’s request path. Some parts of the request pa
 For example, to exactly match the `GET /clients/all` incoming requests, you can define this route:
 
 ```ruby
-GET   /clients/all               Clients.list()
+GET   /clients/all               controllers.Clients.list()
 ```
 
 But if you want to define a route that retrieve a client by id, you need to add a dynamic part:
 
 ```ruby
-GET   /clients/:id               Clients.show(id: Long)  
+GET   /clients/:id               controllers.Clients.show(id: Long)  
 ```
 
-A URI pattern may have more than one dynamic part:
-
-```ruby
-GET   /clients/:id/:accountId    Clients.show(id: Long, accountId: Long)
-```
+> Note that a URI pattern may have more than one dynamic part.
 
 The default matching strategy for a dynamic part is defined by the regular expression `[^/]+`, meaning that any dynamic part defined as `:id` will match exactly one URI part.
 
 If you want to capture more than URI part, you can define a dynamic part using the `*id` syntax, that will use the `.*` regular expression:
 
 ```ruby
-GET   /files/*path               Application.download(path)  
+GET   /files/*path               controllers.Application.download(path)  
 ```
 
 Here for a request like `GET /files/images/logo.png`, the `path` dynamic part will capture the `images/logo.png` value.
@@ -65,7 +61,7 @@ Here for a request like `GET /files/images/logo.png`, the `path` dynamic part wi
 You can also defines your own regular expression for a dynamic part, using the `$id<regex>` syntax:
     
 ```ruby
-GET   /clients/$id<[0-9]+>       Clients.show(id: Long)  
+GET   /clients/$id<[0-9]+>       controllers.Clients.show(id: Long)  
 ```
 
 To summarize, you can define a dynamic part using one of these 3 forms:
@@ -74,4 +70,28 @@ To summarize, you can define a dynamic part using one of these 3 forms:
 - `*id`
 - `$id<[0-9]+>`
 
- 
+### Call to action generator method.
+
+The last part of a route definition is the call. This part must define a valid call to a method returning an `play.api.mvc.Action` value, so typically to a Controller action method.
+
+If the method does not define any parameter, just define the fully qualified method name:
+
+```ruby
+GET   /home                       controllers.Application.index()
+```
+
+If the action method defines some parameters, all these parameter values will be searched in the URI part, either extracted from the URI path itself, or from the QueryString.
+
+```ruby
+# Extract the page parameter from the path
+GET   /pages/:page                 controllers.Application.show(page)
+```
+
+And the corresponding, `show` method definition in the `controllers.Application` controller:
+
+```scala
+def show(page: String) = Action {
+    ...
+}
+```
+
