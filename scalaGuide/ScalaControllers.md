@@ -6,7 +6,7 @@ A client uses the uniform API provided by the HTTP protocol to manipulate these 
 
 This is precisely the role played by the Controller layer: providing a glue between the domain model objects and transport layer events. As the Model layer, controllers are written in pure Java, making it easy to access or modify Model objects. Like the HTTP interface, Controllers are procedural and Request/Response oriented.
 
-> The Controller layer reduces the impedance mismatch between HTTP and the Domain Model.
+The Controller layer reduces the impedance mismatch between HTTP and the Domain Model.
 
 ## A controller overview
 
