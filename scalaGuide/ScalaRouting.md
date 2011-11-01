@@ -26,11 +26,11 @@ You can add a comment to the route file, with the `#` character.
 GET   /clients/:id          controllers.Clients.show(id: Long)  
 ```
 
-### The HTTP method
+## The HTTP method
 
 The HTTP method can be any of the valid methods supported by HTTP (`GET`, `POST`, `PUT`, `DELETE`, `HEAD`).
 
-### The URI Pattern
+## The URI Pattern
 
 The URI pattern defines the route’s request path. Some parts of the request path can be dynamic.
 
@@ -70,7 +70,7 @@ To summarize, you can define a dynamic part using one of these 3 forms:
 - `*id`
 - `$id<[0-9]+>`
 
-### Call to action generator method.
+## Call to action generator method.
 
 The last part of a route definition is the call. This part must define a valid call to a method returning a `play.api.mvc.Action` value, so typically to a Controller action method.
 
