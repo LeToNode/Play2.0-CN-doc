@@ -43,6 +43,5 @@ An Action returns a `play.api.mvc.Result` value, representing the HTTP response 
 
 ## Controllers as Action generators
 
-Actually a Controller is nothing more than a singleton object able to generate `play.api.mvc.Action` values. The `Action` values are what will really handle the HTTP requests in and generate HTTP responses.
-
+Actually a Controller is nothing more than a singleton object generating `play.api.mvc.Action` values. 
 
