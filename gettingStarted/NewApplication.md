@@ -36,8 +36,8 @@ In `project/plugins.sbt`:
 
 ```scala
 resolvers ++= Seq(
-    "Maven Repository" at "http://repo1.maven.org/maven2/",
-    "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/"
+  "Maven Repository" at "http://repo1.maven.org/maven2/",
+  "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/"
 )
 
 libraryDependencies += "play" %% "play" % "2.0-beta"
@@ -51,12 +51,12 @@ import Keys._
 
 object ApplicationBuild extends Build {
 
-    val appName         = "My first application"
-    val appVersion      = "1.0"
+  val appName         = "My first application"
+  val appVersion      = "1.0"
 
-    val appDependencies = Nil
+  val appDependencies = Nil
 
-    val main = PlayProject(appName, appVersion, appDependencies)
+  val main = PlayProject(appName, appVersion, appDependencies)
 
 }
 ```
