@@ -14,7 +14,7 @@ The `conf/routes` file is the configuration file used by the Router. This file l
 Let’s see what a route definition looks like:
 
 ```
-GET   /clients/:id            controllers.Clients.show(id: Long)  
+GET   /clients/:id          controllers.Clients.show(id: Long)  
 ```
 
 Each route starts with the HTTP method, followed by the URI pattern. The last element of a route is the call definition.
@@ -23,7 +23,7 @@ You can add a comment to the route file, with the `#` character.
 
 ```
 # Display a client
-GET   /clients/:id            controllers.Clients.show(id: Long)  
+GET   /clients/:id          controllers.Clients.show(id: Long)  
 ```
 
 ### The HTTP method
@@ -37,13 +37,13 @@ The URI pattern defines the route’s request path. Some parts of the request pa
 For example, to exactly match the `GET /clients/all` incoming requests, you can define this route:
 
 ```
-GET   /clients                controllers.Clients.list()
+GET   /clients              controllers.Clients.list()
 ```
 
 But if you want to define a route that retrieve a client by id, you need to add a dynamic part:
 
 ```
-GET   /clients/:id            controllers.Clients.show(id: Long)  
+GET   /clients/:id          controllers.Clients.show(id: Long)  
 ```
 
 > Note that a URI pattern may have more than one dynamic part.
@@ -53,7 +53,7 @@ The default matching strategy for a dynamic part is defined by the regular expre
 If you want to capture more than URI part, you can define a dynamic part using the `*id` syntax, that will use the `.*` regular expression:
 
 ```
-GET   /files/*name            controllers.Application.download(name)  
+GET   /files/*name          controllers.Application.download(name)  
 ```
 
 Here for a request like `GET /files/images/logo.png`, the `name` dynamic part will capture the `images/logo.png` value.
@@ -61,7 +61,7 @@ Here for a request like `GET /files/images/logo.png`, the `name` dynamic part wi
 You can also defines your own regular expression for a dynamic part, using the `$id<regex>` syntax:
     
 ```
-GET   /clients/$id<[0-9]+>    controllers.Clients.show(id: Long)  
+GET   /clients/$id<[0-9]+>  controllers.Clients.show(id: Long)  
 ```
 
 To summarize, you can define a dynamic part using one of these 3 forms:
@@ -77,21 +77,21 @@ The last part of a route definition is the call. This part must define a valid c
 If the method does not define any parameter, just define the fully qualified method name:
 
 ```
-GET   /                       controllers.Application.homePage()
+GET   /                     controllers.Application.homePage()
 ```
 
 If the action method defines some parameters, all these parameter values will be searched in the URI part, either extracted from the URI path itself, or from the QueryString.
 
 ```
 # Extract the page parameter from the path
-GET   /:page                  controllers.Application.show(page)
+GET   /:page                controllers.Application.show(page)
 ```
 
 Or:
 
 ```
 # Extract the page parameter from the queryString
-GET   /page                   controllers.Application.show(page)
+GET   /page                 controllers.Application.show(page)
 ```
 
 And the corresponding, `show` method definition in the `controllers.Application` controller:
@@ -107,7 +107,7 @@ def show(page: String) = Action {
 For parameter of type `String`, typing the parameter is optional. But if you want that Play transform the incoming parameter into a specific scala type, you must explicitely type the parameter:
 
 ```
-GET   /client/:id             controllers.Clients.show(id: Long)
+GET   /client/:id           controllers.Clients.show(id: Long)
 ```
 
 And the corresponding, `show` method definition in the `controllers.Clients` controller:
@@ -124,13 +124,13 @@ Sometimes you want to use a fixed value for a parameter:
 
 ```
 # Extract the page parameter from the path, or fix the value for /
-GET   /                       controllers.Application.show(page = "home")
-GET   /:page                  controllers.Application.show(page)
+GET   /                     controllers.Application.show(page = "home")
+GET   /:page                controllers.Application.show(page)
 ```
 
 You can also provide a default value, meaning that if no value is found is the incoming request, the default value will be used:
 
 ```
 # Pagination links, like /clients?page=3
-GET   /clients                controllers.Clients.list(page: Int ?= 1)
+GET   /clients              controllers.Clients.list(page: Int ?= 1)
 ```
