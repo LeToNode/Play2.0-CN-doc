@@ -37,4 +37,24 @@ If there is any compilation error you will see the result of the compilation dir
 
 [[errorPage.png]]
 
-To stop the server, you can press the `Crtl + D` key, and you will come back to the Play console prompt.
+To stop the server, you can press the `Crtl+D` key, and you will come back to the Play console prompt.
+
+## Compiling
+
+In Play 2.0 you can also compile your application without running the server. Just use the `compile` command:
+
+```bash
+[My first application] $ compile
+```
+
+[[consoleCompile.png]]
+
+## Launch the interactive console
+
+Typing `console` you can enter the interactive Scala console, allowing to test your code interactively:
+
+```bash
+[My first application] $ console
+```
+
+[[consoleEval.png]] 
