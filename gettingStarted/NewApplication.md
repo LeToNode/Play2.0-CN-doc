@@ -45,5 +45,28 @@ resolvers ++= Seq(
 
 And in `project/Build.scala`:
 
+```scala
+import sbt._
+import Keys._
+ 
+object ApplicationBuild extends Build {
+ 
+  val appName         = "My first application"
+  val appVersion      = "1.0"
+ 
+  val appDependencies = Nil
+ 
+  val main = PlayProject(appName, appVersion, appDependencies)
+ 
+}
+```
 
+You can then launch the sbt console in this directory:
+
+```bash
+$ cd myFirstApp
+$ sbt
+```
+
+**sbt** will load your project and fetch every dependencies.
 
