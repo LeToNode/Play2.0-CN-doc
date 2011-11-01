@@ -36,14 +36,14 @@ Then create a new directory for your new application, and configure your sbt bui
 
 In `project/plugins.sbt`:
 
-    scala
-    resolvers ++= Seq(
-      "Maven Repository" at "http://repo1.maven.org/maven2/",
-      "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/"
-    )
-     
-    libraryDependencies += "play" %% "play" % "2.0-beta"
+```scala
+resolvers ++= Seq(
+  "Maven Repository" at "http://repo1.maven.org/maven2/",
+  "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/"
+)
  
+libraryDependencies += "play" %% "play" % "2.0-beta"
+``` 
 
 And in `project/Build.scala`:
 
