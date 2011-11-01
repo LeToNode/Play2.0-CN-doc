@@ -3,6 +3,9 @@
 [[/utils/line.png]]
 
 - [[Play 2.0 beta walkthrough | Walkthrough]]
+
+[[/utils/line.png]]
+
 - [[Installing Play 2.0 beta | Installing]]
 - [[Creating a new application | NewApplication]]
 - [[Anatomy of a Play 2.0 application | Anatomy]]

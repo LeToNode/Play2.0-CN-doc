@@ -34,7 +34,7 @@ From the shell, first checkout the Play 2.0 sources:
 $ git clone git://github.com/playframework/Play20.git
 ```
 
-Then enter into `Play20/framework` and launch the `build` script to enter teh sbt build console:
+Then enter into `Play20/framework` and launch the `build` script to enter the sbt build console:
 
 ```bash
 $ cd Play20/framework
