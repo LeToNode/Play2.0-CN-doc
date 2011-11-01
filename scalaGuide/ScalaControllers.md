@@ -57,7 +57,8 @@ Often, your action will need a reference on the HTTP request, so you can defines
 
 ```scala
 def index = Action { request =>
-  Ok("It works!")
+  val name = request.queryString.get("name").flatMap(_.headOption)
+  Ok("Hello " + name.getOrElse("Guest"))
 }
 ```
 
