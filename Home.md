@@ -6,7 +6,6 @@ Welcome to the Play framework 2.0 beta documentation. This documentation is a wo
 
 ## Getting started
 
-- [[Play 2.0 beta walkthrough | Walkthrough]].
 - [[Installing Play 2.0 beta | Installing]].
 - [[Creating a new application | NewApplication]].
 - [[Anatomy of a Play 2.0 application | Anatomy]].
@@ -14,8 +13,8 @@ Welcome to the Play framework 2.0 beta documentation. This documentation is a wo
 
 ## Working with Play 2.0
 
-- [[Play 2.0 for Java developers | JavaHome]].
 - [[Play 2.0 for Scala developers | ScalaHome]].
+- [[Play 2.0 for Java developers | JavaHome]].
 
 ## Settings
 
