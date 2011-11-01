@@ -52,9 +52,9 @@ A URI pattern may have more than one dynamic part:
 GET   /clients/:id/:accountId    Clients.show(id: Long, accountId: Long)
 ```
 
-The default matching strategy for a dynamic part is defined by the regular expression `/[^/]+/`, meaning that any dynamic part defined as `:identifier` will match exactly one URI part.
+The default matching strategy for a dynamic part is defined by the regular expression `[^/]+`, meaning that any dynamic part defined as `:id` will match exactly one URI part.
 
-If you want to capture more than URI part, you can define a dynamic part using the `*identifier` syntax, that will use the `/.*/` regular expression:
+If you want to capture more than URI part, you can define a dynamic part using the `*id` syntax, that will use the `.*` regular expression:
 
 ```scala
 GET   /files/*path               Application.download(path)  
@@ -62,7 +62,7 @@ GET   /files/*path               Application.download(path)
 
 Here for a request like `GET /files/images/logo.png`, the `path` dynamic part will capture the `images/logo.png` value.
 
-You can also defines your own regular expression for a dynamic part, using the `$identifier<regex>` syntax:
+You can also defines your own regular expression for a dynamic part, using the `$id<regex>` syntax:
     
 ```scala
 GET   /clients/$id<[0-9]+>       Clients.show(id: Long)  
