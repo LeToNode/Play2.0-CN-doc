@@ -14,7 +14,7 @@ The `conf/routes` file is the configuration file used by the Router. This file l
 Let’s see what a route definition looks like:
 
 ```ruby
-GET   /clients/:id               controllers.Clients.show(id: Long)  
+GET   /clients/:id            controllers.Clients.show(id: Long)  
 ```
 
 Each route starts with the HTTP method, followed by the URI pattern. The last element of a route is the call definition.
@@ -23,7 +23,7 @@ You can add a comment to the route file, with the `#` character.
 
 ```ruby
 # Display a client
-GET   /clients/:id               controllers.Clients.show(id: Long)  
+GET   /clients/:id            controllers.Clients.show(id: Long)  
 ```
 
 ### The HTTP method
@@ -77,7 +77,7 @@ The last part of a route definition is the call. This part must define a valid c
 If the method does not define any parameter, just define the fully qualified method name:
 
 ```ruby
-GET   /                      controllers.Application.index()
+GET   /                       controllers.Application.index()
 ```
 
 If the action method defines some parameters, all these parameter values will be searched in the URI part, either extracted from the URI path itself, or from the QueryString.
