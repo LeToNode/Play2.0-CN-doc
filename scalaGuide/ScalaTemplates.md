@@ -28,3 +28,44 @@ Here is for example, a classic template content:
 } 
 </ul>
 ```
+
+And you can easily use it from any Scala code:
+
+```scala
+val html = views.html.Application.index(customer, orders)
+```
+
+## Syntax: the magic ‘@’ character
+
+The Scala template uses `@` as single special character. Each time this character is encountered, it indicates the begining of a Scala statement. It does not require you to explicitly close the code-block, and will infer it from your code:
+
+```
+Hello @customer.name!
+       ^^^^^^^^^^^^^
+        Scala code
+```
+
+Because the template engine will automatically detect the end of your code block by analysing your code, it only allow for simple statements. If you want to insert a multi-token statement, just make it more explicit using brackets:
+
+```
+Hello @(customer.firstName + customer.lastName)!
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+                    Scala Code
+```
+
+You can also use curly bracket, like in plain Scala code, to write a multi-statements block:
+
+```
+Hello @{val name = customer.firstName + customer.lastName; name}!
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                             Scala Code
+```
+
+Because `@` is the only special character, if you want to escape it, just use `@@`:
+
+```
+My email is bob@@gmail.com
+```
+
+
+
