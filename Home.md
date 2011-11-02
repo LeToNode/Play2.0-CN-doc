@@ -25,7 +25,6 @@ Welcome to the Play framework 2.0 beta documentation. This documentation is a wo
 
 - [[Managing librairies dependencies | SBTDependencies]].
 - [[Working with sub-projects | SBTSubProjects]].
-- [[Creating a pure sbt project | SBTCreate]].
 
 ## Deploying on production
 
