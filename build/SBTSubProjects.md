@@ -71,8 +71,8 @@ import PlayProject._
 
 object ApplicationBuild extends Build {
 
-  val appName         = "zenexity.com"
-  val appVersion      = "1.2"
+  val appName = "zenexity.com"
+  val appVersion = "1.2"
 
   val common = Project(
     appName + "-common", appVersion, path = file("modules/common")
