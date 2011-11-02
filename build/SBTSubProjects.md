@@ -60,7 +60,9 @@ When you run your Play application in dev mode, the dependent projects are autom
 
 ## Splitting your web application in several parts.
 
-As a Play application is just a standard sbt project with a default configuration, you can of course depend of an other Play application. The configuration is very close to the previous one. Just configure your sub project as a `PlayProject`:
+As a Play application is just a standard sbt project with a default configuration, you can of course depend of an other Play application. 
+
+The configuration is very close to the previous one. Just configure your sub project as a `PlayProject`:
 
 ```
 import sbt._
