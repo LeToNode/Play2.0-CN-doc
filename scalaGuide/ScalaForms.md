@@ -69,7 +69,7 @@ val loginForm = Form(
     'email -> of[String],
     'password -> of[String]
   ) verifying("Invalid user name or pasword", { 
-      case (email,password) => User.authenticate(email,password).isDefined 
+      case (e,p) => User.authenticate(e,p).isDefined 
   })
 )
 ```
