@@ -181,10 +181,8 @@ The `views.html.helper` package contains several helpers to handle HTML forms co
 @import helper._
 
 @form(action = routes.Users.create()) {
-    
     @inputText(userForm("name"))
     @inputText(userForm("age"))
-    
 }
 ```
 
