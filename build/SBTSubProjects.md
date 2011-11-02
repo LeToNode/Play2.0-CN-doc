@@ -50,7 +50,7 @@ To change the current project use the `project` command:
 
 ```
 [my-first-application] $ project my-library
-[info] Set current project to my-library (in build file:/Volumes/Data/gbo/myFirstApp/)
+[info] Set current project to my-library
 >
 ```
 
@@ -58,5 +58,37 @@ When you run your Play application in dev mode, the dependent projects are autom
 
 [[subprojectError.png]]
 
+## Splitting your web application in several parts.
 
+As a Play application is just a standard sbt project with a default configuration, you can of course depend of an other Play application. The configuration is very close to the previous one. Just configure your sub project as a `PlayProject`:
+
+```
+import sbt._
+import Keys._
+import PlayProject._
+
+object ApplicationBuild extends Build {
+
+  val appName         = "my-first-application"
+  val appVersion      = "1.0"
+
+  val common = Project(
+    appName + "-common", appVersion, path = file("modules/common")
+  )
+  
+  val website = Project(
+    appName + "-website", appVersion, path file("modules/website")
+  ).dependsOn(common)
+  
+  val adminArea = Project(
+    appName + "-admin", appVersion, path file("modules/admin")
+  ).dependsOn(common)
+  
+  val main = PlayProject(
+    appName, appVersion
+  ).dependsOn(
+    website, adminArea
+  )
+}
+```
 
