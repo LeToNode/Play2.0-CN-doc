@@ -2,7 +2,7 @@
 
 ## Unmanaged dependencies
 
-Most people use managed dependencies instead of unmanaged, but unmanaged can be simpler when starting out.
+Most people end up using managed dependencies - which allows for fine-grained control, but unmanaged can be simpler when starting out.
 
 Unmanaged dependencies work like this: add jars to lib and they will automatically be placed on the application classpath. Not much else to it!
 
