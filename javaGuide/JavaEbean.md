@@ -54,15 +54,21 @@ public class Task extends Model {
 As you see we added a `find` static field, defining a `Finder` for entity of type `Task` with `Long` identifier. This helper field let us simplify querying our model:
 
 ```
+// Find all tasks
 List<Task> tasks = Task.find.all();
     
+// Find a task by id
 Task anyTask = Task.find.byId(34);
 
+// Delete a task
 Task.find.ref(34).delete();
 
+// More complex task query
 List<Task> tasks = find.where()
     .ilike("name", "%coco%")
     .orderBy("dueDate asc")
     .findPagingList(25)
     .getPage(1);
 ```
+
+> If you need more informatiosn about Ebean, check directly the Ebean documentation.
