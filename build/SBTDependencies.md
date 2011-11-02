@@ -2,11 +2,11 @@
 
 ## Unmanaged dependencies
 
-Most people use managed dependencies instead of unmanaged. But unmanaged can be simpler when starting out.
+Most people use managed dependencies instead of unmanaged, but unmanaged can be simpler when starting out.
 
-Unmanaged dependencies work like this: add jars to lib and they will be placed on the application classpath. Not much else to it!
+Unmanaged dependencies work like this: add jars to lib and they will automatically be placed on the application classpath. Not much else to it!
 
-There's nothing to add to `project/Build.scala` to use unmanaged dependencies, though you could change a configuration key if you'd like to use a different directory rather than lib.
+There's nothing to add to `project/Build.scala` to use unmanaged dependencies (though you could change a configuration key if you'd like to use a directory different to lib).
 
 ## Managed dependencies
 
