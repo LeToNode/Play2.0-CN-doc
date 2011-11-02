@@ -79,11 +79,11 @@ object ApplicationBuild extends Build {
   )
   
   val website = Project(
-    appName + "-website", appVersion, path file("modules/website")
+    appName + "-website", appVersion, path = file("modules/website")
   ).dependsOn(common)
   
   val adminArea = Project(
-    appName + "-admin", appVersion, path file("modules/admin")
+    appName + "-admin", appVersion, path = file("modules/admin")
   ).dependsOn(common)
   
   val main = PlayProject(
