@@ -282,10 +282,3 @@ Nothing special, you can just call any other templates (and in fact any other fu
   @common.sideBar()
 </div>
 ```
-
-## Using a template to produce an Action result:
-
-
-
-
-
