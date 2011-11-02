@@ -16,15 +16,16 @@ Welcome to the Play framework 2.0 beta documentation. This documentation is a wo
 - [[Play 2.0 for Scala developers | ScalaHome]].
 - [[Play 2.0 for Java developers | JavaHome]].
 
-## Settings
-
-- [[Configuring the JDBC connection pool | SettingsJDBC]].
-- [[Configuring logs | SettingsLogger]].
-
 ## The Build system
 
 - [[Managing librairies dependencies | SBTDependencies]].
 - [[Working with sub-projects | SBTSubProjects]].
+
+## Settings
+
+- [[Configuring the sbt build | SettingsSBT]].
+- [[Configuring the JDBC connection pool | SettingsJDBC]].
+- [[Configuring logs | SettingsLogger]].
 
 ## Deploying on production
 
