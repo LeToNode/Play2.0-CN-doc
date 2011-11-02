@@ -11,3 +11,19 @@ To enable the `DBPlugin`, configure a connection pool in the `conf/application.c
 db.default.driver=org.h2.Driver
 db.default.url=jdbc:h2:mem:play
 ```
+
+To configure several datasources:
+
+```properties
+# Orders database
+db.orders.driver=org.h2.Driver
+db.orders.url=jdbc:h2:mem:orders
+
+# Customers database
+db.customers.driver=org.h2.Driver
+db.customers.url=jdbc:h2:mem:customers
+```
+
+If something isn't properly configured you will be notified right into your browser:
+[[dbError.png]]
+
