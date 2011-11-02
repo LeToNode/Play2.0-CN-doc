@@ -15,7 +15,7 @@ val loginForm = Form(
 )
 ```
 
-Here the form is able to generate a `(String, String)` result value from a `Map[String,String]` set of value:
+Here the form is able to generate a `(String, String)` result value from a `Map[String,String]` set of data:
 
 ```scala
 val anyData = Map("email" -> "bob@gmail.com", "password" -> "secret")
