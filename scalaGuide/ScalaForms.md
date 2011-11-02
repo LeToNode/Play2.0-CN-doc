@@ -135,7 +135,7 @@ val userForm = Form(
 )
 ```
 
-## Display a form in a template
+## Displaying a form in a template
 
 The `Form` value contain everything needed to display the form to the user:
 
