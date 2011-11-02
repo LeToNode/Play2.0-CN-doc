@@ -38,7 +38,7 @@ import play.api.db._
 val ds = DB.getDatasource()
 ```
 
-## Integrating DB access layer
+## Integrating with a DataBase access layer
 
 From there you can integrate any JDBC access layer that need a JDBC datasource. For example to integrate with [[ScalaQuery | https://github.com/szeiger/scala-query]]:
 
