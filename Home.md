@@ -1,6 +1,6 @@
 # Play 2.0 beta documentation
 
-Welcome to the Play framework 2.0 beta documentation. This documentation is a work in progress, as Play 2.0 itself. 
+Welcome to the Play framework 2.0 beta documentation. This documentation is a work in progress, as is Play 2.0 itself. 
 
 > Read more about the [[current status, and missing features | Status]].
 
@@ -18,7 +18,7 @@ Welcome to the Play framework 2.0 beta documentation. This documentation is a wo
 
 ## The Build system
 
-- [[Managing librairies dependencies | SBTDependencies]].
+- [[Managing library dependencies | SBTDependencies]].
 - [[Working with sub projects | SBTSubProjects]].
 
 ## Working with compiled assets
@@ -33,11 +33,11 @@ Welcome to the Play framework 2.0 beta documentation. This documentation is a wo
 - [[Configuring the JDBC connection pool | SettingsJDBC]].
 - [[Configuring logs | SettingsLogger]].
 
-## Deploying on production
+## Deploying to production
 
-- [[Start your application in production mode | ProductionStart]].
-- [[Create a standalone version of your application | ProductionDist]].
-- [[Deploy to Heroku | ProductionHeroku]].
+- [[Starting your application in production mode | ProductionStart]].
+- [[Creating a standalone version of your application | ProductionDist]].
+- [[Deploying to Heroku | ProductionHeroku]].
 
 ## Sample applications
 
