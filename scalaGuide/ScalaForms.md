@@ -79,7 +79,7 @@ val loginForm = Form(
 Of course as you define constraints, you must handle the binding errors. You can use the `fold` operation for that:
 
 ```scala
-loginForm.bindFromRequest(
+loginForm.bindFromRequest.fold(
   f => // binding failure, you retrieve the form containing errors,
   v => // binding success, you get the actual value 
 )
