@@ -73,4 +73,4 @@ List<Task> tasks = find.where()
     .getPage(1);
 ```
 
-> If you need more informatiosn about Ebean, check directly the Ebean documentation.
+> If you need more informatiosn about Ebean, check directly the [[Ebean documentation | http://www.avaje.org/ebean/documentation.html]].
