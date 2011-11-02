@@ -4,7 +4,7 @@
 
 Play 2.0 provides a plugin able to manage JDBC connection pools. You can configure as many databases you need.
 
-To enable the `DBPlugin`, configure a connection pool in the `conf/application.conf` file. By convention the default JDBC datasource must be called `default`:
+To enable the database plugin, configure a connection pool in the `conf/application.conf` file. By convention the default JDBC datasource must be called `default`:
 
 ```properties
 # Default database configuration
