@@ -2,9 +2,9 @@
 
 ## Launching the console
 
-The Play 2.0 console is a development console based on **sbt** that allow to manage the complete development cycle of a Play application.
+The Play 2.0 console is a development console based on **sbt** that allow you to manage the complete development cycle of a Play application.
 
-To launche the console, enter any existing application directory and launch the `play` script:
+To launch the console, enter any existing application directory and run the `play` script:
 
 ```bash
 $ cd /path/to/any/application
@@ -33,11 +33,11 @@ To run the current application in development mode, use the `run` command:
 
 In this mode, the server will be launched with the auto-reload feature enabled, meaning that for each request Play will check your project and recompile required sources. If needed the application will restart automatically.
 
-If there is any compilation error you will see the result of the compilation directly in your browser:
+If there are any compilation errors you will see the result of the compilation directly in your browser:
 
 [[errorPage.png]]
 
-To stop the server, you can press the `Crtl+D` key, and you will come back to the Play console prompt.
+To stop the server, you can press the `Crtl+D` key, and you will be returned to the Play console prompt.
 
 ## Compiling
 
@@ -59,7 +59,7 @@ Typing `console` you can enter the interactive Scala console, allowing to test y
 
 [[consoleEval.png]] 
 
-## Using the sbt features
+## Using sbt features
 
 The Play console is just a normal sbt console, so you can use any sbt features like the **triggered execution**. 
 
