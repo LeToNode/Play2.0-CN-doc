@@ -17,7 +17,7 @@ A Play template is a simple text file text file, that contains small blocks of S
 
 It’s particularely designed to feel comfortable to those used to working with HTML, allowing Web designers to work with.
 
-They are compiled as standard Scala functions, following a simple naming convention: If you create a `views/Application/index.scala.html` template file, it will generate a `views.html.Application.index` function.
+They are compiled as standard Scala functions, following a simple naming convention: If you create a `views/Application/index.scala.html` template file, it will generate a `views.html.Application.index` class with a `render` method.
 
 Here is for example, a classic template content:
 
@@ -27,7 +27,7 @@ Here is for example, a classic template content:
 <h1>Welcome @customer.name!</h1>
 
 <ul> 
-@orders.map { order =>
+@for(order <- orders) {
   <li>@order.title</li>
 } 
 </ul>
@@ -39,7 +39,7 @@ And you can easily use it from any Java code:
 Html html = views.html.Application.index.render(customer, orders);
 ```
 
-> Note that even if you need to write the dynamic expression using Scala, it can be very close to the way you would write it in Java. You don't necessarely need to learn Scala before writing your first template.
+> Note that even if you need to write the dynamic expression using Scala, it can be very close to the way you would write it in Java. You don't necessarily need to learn Scala before writing your first template.
 
 ## Syntax: the magic ‘@’ character
 
@@ -111,16 +111,6 @@ You can use the Scala `for comprehension`, is a pretty standard way. Just note t
 </ul>
 ```
 
-But as you probably know, here the for comprehension is just syntaxic sugar for a classic map:
-
-```html
-<ul>
-@products.map { p =>
-  <li>@p.name ($@p.price)</li>
-} 
-</ul>
-```
-
 ## If-Blocks
 
 Nothing special here. Just use the if instruction from Scala:
@@ -130,24 +120,6 @@ Nothing special here. Just use the if instruction from Scala:
   <h1>Nothing to display</h1>
 } else {
   <h1>@items.size items!</h1>
-}
-```
-
-## Pattern matching
-
-You can also use pattern matching in templates:
-
-```html
-@connected match {
-    
-  case models.Admin(name) => {
-    <span class="admin">Connected as admin (@name)</span>
-  }
-
-  case models.User(name) => {
-    <span>Connected as @name</span>
-  }
-    
 }
 ```
 
@@ -243,27 +215,23 @@ Let’s write a simple `views/tags/notice.scala.html` tag that display an HTML n
 
 ```html
 @(level: String = "error")(body: (String) => Html)
- 
-@level match {
-    
-  case "success" => {
-    <p class="success">
-      @body("green")
-    </p>
-  }
 
-  case "warning" => {
-    <p class="warning">
-      @body("orange")
-    </p>
-  }
+@if(level == "success") {
+  <p class="success">
+    @body("green")
+  </p> 
+} 
 
-  case "error" => {
-    <p class="error">
-      @body("red")
-    </p>
-  }
-    
+@if(level == "warning") {
+  <p class="warning">
+    @body("orange")
+  </p>    
+}
+
+@if(level == "error") {
+  <p class="error">
+    @body("red")
+  </p>    
 }
 ```
 
