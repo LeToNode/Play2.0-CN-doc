@@ -27,3 +27,13 @@ db.customers.url=jdbc:h2:mem:customers
 If something isn't properly configured you will be notified right into your browser:
 [[dbError.png]]
 
+
+## Accessing the JDBC datasource
+
+The `play.api.db` package provide access to the configured datasources:
+
+```scala
+import play.api.db._
+
+val ds = DB.getDatasource()
+```
