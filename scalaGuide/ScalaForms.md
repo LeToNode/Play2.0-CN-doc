@@ -80,8 +80,8 @@ Of course as you define constraints, you must handle the binding errors. You can
 
 ```scala
 loginForm.bindFromRequest(
-  f => // binding failure, you retrieve the form here, containing errors,
-  v => // binding success, you get the actual value here
+  f => // binding failure, you retrieve the form containing errors,
+  v => // binding success, you get the actual value 
 )
 ```
 
