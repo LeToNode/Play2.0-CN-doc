@@ -24,7 +24,7 @@ db.customers.driver=org.h2.Driver
 db.customers.url=jdbc:h2:mem:customers
 ```
 
-If something isn't properly configured you will be notified right into your browser:
+If something isn't properly configured you will be notified directly in your browser:
 [[dbError.png]]
 
 
@@ -40,7 +40,7 @@ val ds = DB.getDatasource()
 
 ## Integrating with a DataBase access layer
 
-From here you can integrate any JDBC access layer that need a JDBC datasource. For example to integrate with [[ScalaQuery | https://github.com/szeiger/scala-query]]:
+From here you can integrate any JDBC access layer that need a JDBC datasource. For example, to integrate with [[ScalaQuery | https://github.com/szeiger/scala-query]]:
 
 ```scala
 import play.api.db._
