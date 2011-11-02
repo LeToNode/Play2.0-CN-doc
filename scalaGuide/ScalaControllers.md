@@ -15,7 +15,7 @@ A Controller is a Scala singleton object, hosted by the controllers package, and
 ```scala
 package controllers
 
-import play.api.__
+import play.api._
 import play.api.mvc._
 
 object Application extends Controller {
