@@ -8,16 +8,16 @@ The easiest way to create a new application is to use the `play new` command.
 $ play new myFirstApp
 ```
 
-It will ask a few questions:
+This will ask for a few bits of information:
 
-- The application name (just for information, this name will be used later in several messages).
-- The template to use for this new application. You can choose over a default Scala application, a default Java application, or an empty application.
+- The application name (just for display, this name will be used later in several messages).
+- The template to use for this application. You can choose either a default Scala application, a default Java application, or an empty application.
 
 [[playNew.png]]
 
-> Note that choosing a template at this point does not imply that you can't change of main language later. You can create a new application using the default Java application template and start adding some Scala code later.
+> Note that choosing a template at this point does not imply that you can't change of main language later. For example, you can create a new application using the default Java application template and start adding some Scala code at any point.
 
-Once the application is created you can use the `play` command again to enter the [[Play 2.0 console | PlayConsole]].
+Once the application has been created you can use the `play` command again to enter the [[Play 2.0 console | PlayConsole]].
 
 ```bash
 $ cd myFirstApp
@@ -26,7 +26,7 @@ $ play
 
 ## Create a new application without having Play installed.
 
-You can also create a new Play application without installing Play, using sbt. 
+You can also create a new Play application without installing Play, by using sbt. 
 
 > First install [[sbt 0.11.0 | https://github.com/harrah/xsbt/wiki/Getting-Started-Setup]] if needed.
 
@@ -68,5 +68,5 @@ $ cd myFirstApp
 $ sbt
 ```
 
-**sbt** will load your project and fetch every dependencies.
+**sbt** will load your project and fetch all the dependencies.
 
