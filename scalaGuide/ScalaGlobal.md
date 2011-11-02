@@ -30,7 +30,7 @@ object Global extends GlobalSettings {
   }  
     
 }
-``` 
+```
 
 ## Providing the application error page
 
