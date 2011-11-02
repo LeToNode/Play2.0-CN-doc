@@ -1,0 +1,97 @@
+# Application global settings
+
+## The Global object
+
+Defining a `Global` class allows to handle global settings for your application. This object must be defined in the root package.
+
+```java
+import play.*;
+
+public class Global extends GlobalSettings {
+
+}
+```
+
+## Hooking application start and stop
+
+You can override the `onStart` and `onStop` operation to be notified about the application lifecycle;
+
+```java
+import play.*;
+
+public class Global extends GlobalSettings {
+
+  @Override
+  public static void onStart(Application app) {
+    Logger.info("Application has started");
+  }  
+  
+  @Override
+  public static void onStop(Application app) {
+    Logger.info("Application shutdown...");
+  }  
+    
+}
+```
+
+## Providing the application error page
+
+When an exception occurs in your application, the `onError` operation will be called. The default is to use the internale framework error page:
+
+```java
+import play.*;
+import play.mvc.*;
+
+import static play.mvc.Results.*;
+
+public class Global extends GlobalSettings {
+
+  @Override
+  public static Result onError(Throwble t) {
+    return internalServerError(
+      views.html.errorPage(t)
+    );
+  }  
+    
+}
+```
+
+## Handling action not found
+
+If the framework doesn't find any action method for a request, the `onActionNotFound` operation will be called:
+
+```java
+import play.*;
+import play.mvc.*;
+
+import static play.mvc.Results.*;
+
+public class Global extends GlobalSettings {
+
+  @Override
+  public static Result onActionNotFound(String uri) {
+    return notFound(
+      views.html.pageNotFound(uri)
+    );
+  }  
+    
+}
+```
+
+The `onBadRequest` operation will be called if a route was found, but it was not possible to bind the request parameters:
+
+```scala
+import play.*;
+import play.mvc.*;
+
+import static play.mvc.Results.*;
+
+public class Global extends GlobalSettings {
+
+  @Override
+  public static Result onBadRequest(String uri, String error) {
+    return badRequest("Don't try to hack the URI");
+  }  
+    
+}
+```
