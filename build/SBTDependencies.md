@@ -1,4 +1,4 @@
-# Managing librairies dependencies
+# Managing library dependencies
 
 ## Unmanaged dependencies
 
