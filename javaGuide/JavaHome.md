@@ -1,8 +1,8 @@
 # Play 2.0 for Java developers
 
-The Java API for the Play 2.0 application developers is available into the `play` package. 
+The Java API for the Play 2.0 application developers is available in the `play` package. 
 
-> API available into the `play.api` package like `play.api.mvc` are reserved for Scala developers. As a Java developer looks at `play.mvc`.
+> The API available in the `play.api` package (such as `play.api.mvc`) are reserved for Scala developers. As a Java developer, look at `play.mvc`.
 
 ## Manual (first draft)
 
