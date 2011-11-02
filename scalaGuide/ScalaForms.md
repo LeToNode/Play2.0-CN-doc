@@ -93,6 +93,48 @@ Sometimes you want to fill a form with existing values, typically for edition fo
 userForm.fill(User("Bob", 18))
 ```
 
+## Using high level mapping
+
+The `play.api.data` package defines several high level mapping you can use directly.
+
+```scala
+val userForm = Form(
+  of(User)(
+    'email -> email,
+    'age -> number
+  )
+)
+```
+
+Where the `email` mapping is defined as:
+
+```scala
+val email = of[String] verifying pattern(
+  """\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}\b""".r,
+  "constraint.email",
+  "error.email"
+)
+```
+
+## Nested values
+
+A form can define any nested value:
+
+```scala
+case class User(name: String, address: Address)
+case class Address(street: String, city: String)
+
+val userForm = Form(
+  of(User)(
+    'name -> text,
+    'address -> of(Address)(
+        'street -> text,
+        'city -> text
+    )
+  )
+)
+```
+
 ## Display a form in a template
 
 The `Form` value contain everything needed to display the form to the user:
