@@ -85,6 +85,67 @@ loginForm.bindFromRequest.fold(
 )
 ```
 
+## Fill a form with initial values
+
+Sometimes you want to fill a form with existing values, typically for edition forms:
+
+```scala
+userForm.fill(User("Bob", 18))
+```
+
+## Display a form in a template
+
+The `Form` value contain everything needed to display the form to the user:
+
+```html
+@(userForm: Form[models.User])
+
+<form action="@routes.Users.create()" method="POST">
+    
+  <p>
+    @userForm.forField("name") { field =>
+      <label>@field.name</label>
+      <input type="text" value="@field.value">
+      @field.error.map { error =>
+        <p class="error">
+          @error
+        </p>
+      } 
+    }    
+  </p>
+  
+  <p>
+    @userForm.forField("age") { field =>
+      <label>@field.name</label>
+      <input type="text" value="@field.value">
+      @field.error.map { error =>
+        <p class="error">
+          @error
+        </p>
+      } 
+    }    
+  </p>
+    
+</form>
+```
+
+## Using the template form helpers
+
+The `views.html.helper` package contains several helpers to handle HTML forms construction.
+
+```html
+@(userForm: Form[models.User])
+
+@import helper._
+
+@form(action = routes.Users.create()) {
+    
+    @inputText(userForm("name"))
+    @inputText(userForm("age"))
+    
+}
+```
+
 
 
 
