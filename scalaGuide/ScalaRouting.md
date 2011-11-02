@@ -7,7 +7,7 @@ An HTTP request is seen as an event by the MVC framework. The event contains two
 - The Request path (such as `/clients/1542`, `/photos/list`), including the query string.
 - The HTTP method (GET, POST, ...)
 
-Routes are defined in the `conf/routes` file that is compiled.
+Routes are defined in the `conf/routes` file that is compiled, meaning that you see routes error directly in your browser:
 
 [[routesError.png]]
 
@@ -75,12 +75,6 @@ You can also defines your own regular expression for a dynamic part, using the `
 ```
 GET   /clients/$id<[0-9]+>  controllers.Clients.show(id: Long)  
 ```
-
-To summarize, you can define a dynamic part using one of these 3 forms:
-
-- `:id`
-- `*id`
-- `$id<[0-9]+>`
 
 ## Call to action generator method.
 
