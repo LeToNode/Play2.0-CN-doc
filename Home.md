@@ -19,7 +19,7 @@ Welcome to the Play framework 2.0 beta documentation. This documentation is a wo
 ## The Build system
 
 - [[Managing librairies dependencies | SBTDependencies]].
-- [[Working with sub-projects | SBTSubProjects]].
+- [[Working with sub projects | SBTSubProjects]].
 
 ## Working with compiled assets
 
