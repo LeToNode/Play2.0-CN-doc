@@ -20,7 +20,9 @@ object ApplicationBuild extends Build {
   
   val mySubProject = Project("my-library", file("modules/myLibrary"))
 
-  val main = PlayProject(appName, appVersion, appDependencies).dependsOn(mySubProject)
+  val main = PlayProject(
+    appName, appVersion, appDependencies
+  ).dependsOn(mySubProject)
 }
 ```
 
@@ -51,6 +53,10 @@ To change the current project use the `project` command:
 [info] Set current project to my-library (in build file:/Volumes/Data/gbo/myFirstApp/)
 >
 ```
+
+When you run your Play application in dev mode, the dependent projects are automatically recompiled, and if something cannot compile you will see the result in your browser:
+
+[[subprojectError.png]]
 
 
 
