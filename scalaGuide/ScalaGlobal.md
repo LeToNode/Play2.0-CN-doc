@@ -8,8 +8,7 @@ Defining a `Global` object allows to handle global settings for your application
 import play.api._
 
 object Global extends GlobalSettings {
-    
-    
+
 }
 ```
 
