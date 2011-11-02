@@ -27,7 +27,7 @@ object Application extends Controller {
 }
 ```
 
-A controller defines several `Action` generators, like the `index` method in this example.
+A controller defines several `Action` generators, such as the `index` method in the above example.
 
 ## What's an Action?
 
@@ -43,9 +43,7 @@ An Action returns a `play.api.mvc.Result` value, representing the HTTP response 
 
 ## Controllers as Action generators
 
-Actually a `Controller` is nothing more than a singleton object generating `Action` values. 
-
-The simplest use case to define an action generator is a simple method without parameters returning an `Action` value.:
+A `Controller` is nothing more than a singleton object that generates `Action` values. The simplest use case for defining an action generator is a method without parameters returning an `Action` value.:
 
 ```scala
 def index = Action {
@@ -53,7 +51,7 @@ def index = Action {
 }
 ```
 
-Often, your action will need a reference on the HTTP request, so you can defines a `Action` accepting a `play.api.mvc.Request` value as input:
+Often, your action will need a reference to the HTTP request, so you can defines an `Action` accepting a `play.api.mvc.Request` value as input:
 
 ```scala
 def index = Action { request =>
@@ -62,7 +60,7 @@ def index = Action { request =>
 }
 ```
 
-Note, that it is useful to define the `request` parameter as **implicit**, since many API need a request as input.
+Note, that it can be useful to define the `request` parameter as **implicit**, since many API need a request as input.
 
 ```scala
 def index = Action { implicit request =>
