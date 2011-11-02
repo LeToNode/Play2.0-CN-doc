@@ -30,7 +30,7 @@ If something isn't properly configured you will be notified right into your brow
 
 ## Accessing the JDBC datasource
 
-The `play.api.db` package provide access to the configured datasources:
+The `play.db` package provide access to the configured datasources:
 
 ```java
 import play.db.*;
