@@ -7,7 +7,7 @@ Play 2.0 comes with a new and really poweful Scala based template engine. The de
 - **Is not a new language**: We consciously chose not to create a new language. Instead we wanted to enable developers to use their existing Scala language skills, and deliver a template markup syntax that enables an awesome HTML construction workflow with your language of choice.
 - **Works with any Text Editor**: Doesn’t require a specific tool and enables you to be productive in any plain old text editor.
 
-The template are compiled and you will see any errors right into your browser:
+Templates are compiled and you will see any errors right into your browser:
 
 [[templatesError.png]]
 
