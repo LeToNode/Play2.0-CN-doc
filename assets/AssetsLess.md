@@ -46,5 +46,5 @@ h1 {
 The resulting CSS file will be compiled as `public/stylesheets/main.css`, that you can use in your template as:
 
 ```html
-<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+<link rel="stylesheet" href="@routes.Assets.at("stylesheets/main.css")">
 ```
