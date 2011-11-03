@@ -49,12 +49,12 @@ db.default.minConnectionsPerPartition=5
 # maxConnectionsPerPartition). Note: This is a per partition setting.
 db.default.acquireIncrement=1
 
-# After attempting to acquire a connection and failing, try to connect 
-# these many times before giving up.
+# After attempting to acquire a connection and failing, try to 
+# connect these many times before giving up.
 db.default.acquireRetryAttempts=10
 
-# Sets the number of ms to wait before attempting to obtain a connection 
-# again after a failure.
+# Sets the number of ms to wait before attempting to obtain a 
+# connection again after a failure.
 db.default.acquireRetryDelay=5000
 
 # Sets the maximum time (in milliseconds) to wait before a call 
