@@ -24,20 +24,20 @@ db.default.autocommit=true
 db.default.isolation=READ_COMMITTED
 
 # In order to reduce lock contention and thus improve performance, 
-# each incoming connection request picks off a connection from a pool 
-# that has thread-affinity, i.e. pool[threadId % partition_count]. 
+# each incoming connection request picks off a connection from a 
+# pool that has thread-affinity. 
 # The higher this number, the better your performance will be for the 
 # case when you have plenty of short-lived threads. 
 # Beyond a certain threshold, maintenence of these pools will start 
-# to have a negative effect on performance (and only for the case when 
-# connections on a partition start running out).
+# to have a negative effect on performance (and only for the case 
+# when connections on a partition start running out).
 db.default.partitionCount=2
 
 # The number of connections to create per partition. Setting this to 
 # 5 with 3 partitions means you will have 15 unique connections to the 
-# database. Note that BoneCP will not create all these connections in one 
-# go but rather start off with minConnectionsPerPartition and gradually 
-# increase connections as required.
+# database. Note that BoneCP will not create all these connections in 
+# one go but rather start off with minConnectionsPerPartition and 
+# gradually increase connections as required.
 db.default.maxConnectionsPerPartition=5
 
 # The number of connections to start off with per partition.
