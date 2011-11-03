@@ -26,3 +26,39 @@ my-first-application-1.0
 ```
 
 You can use the generated `start` script to run your application.
+
+Alternatively you can run directly `play dist` from your OS shell prompt:
+
+```bash
+$ play dist
+```
+
+It will do the same.
+
+## Publishing to a Maven (or Ivy) repository
+
+You can also publish your application to a Maven repository. It will publish both the jar file containing your application and the corresponding POM file.
+
+You need to configure the repository you want to publish to in the `project/Build.scala` file:
+
+```scala
+val main = PlayProject(appName, appVersion, appDependencies).settings(
+  
+  publishTo := Some(
+    "My resolver" at "http://mycompany.com/repo"
+  )
+  
+  credentials += Credentials(
+    "Repo", "http://mycompany.com/repo", "admin", "admin123"
+  )
+  
+)
+```
+
+Then in the Play console, use the `plublish` task:
+
+```bash
+[My first application] $ publish
+```
+
+> Check the sbt documentation to get more informations about the resolvers and credentials definition.
