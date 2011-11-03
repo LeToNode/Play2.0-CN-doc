@@ -57,3 +57,9 @@ The generated `start` script is really simple and you can directly issue the com
 
 java "$@" -cp "`dirname $0`/staged/*" play.core.server.NettyServer `dirname $0`/..
 ```
+
+If you don't have Play installed on the server, you can directly use sbt to do the same:
+
+```bash
+$ sbt clean compile stage
+```
