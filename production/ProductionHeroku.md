@@ -54,12 +54,16 @@ Heroku will run `sbt clean compile stage` to prepare your application. At the fi
 
 ## Check that your application is deployed
 
+Now, let’s check the state of the app’s processes:
+
 ```bash
 $ heroku ps
 Process       State               Command
 ------------  ------------------  ----------------------
 web.1         up for 10s          target/start 
 ```
+
+The web process is up. Review the logs for more information:
 
 ```bash
 $ heroku logs
@@ -69,6 +73,8 @@ $ heroku logs
 2011-08-18T00:14:19+00:00 heroku[web.1]: State changed from starting to up
 ...
 ```
+
+Looks good. We can now visit the app with `heroku open`.
 
 ## Running play commands remotely
 

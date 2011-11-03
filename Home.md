@@ -45,7 +45,7 @@ Welcome to the Play framework 2.0 beta documentation. This documentation is a wo
 - [[The computers database | SampleComputerDatabase]].
 - [[ZenTask | SampleZenTask]].
 
-## Apis
+## API documentation
 
 - [[Browse the Scala API (ScalaDoc) | #]].
 - [[Browse the Java API (JavaDoc) | #]].
