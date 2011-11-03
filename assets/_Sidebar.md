@@ -5,4 +5,4 @@
 - [[Serving public resources | AssetsPublic]]
 - [[Using Less CSS | AssetsLess]]
 - [[Using CoffeeScript | AssetsCoffeeScript]]
-- [[Using Google Closure | AssetsGoogleClosure]]
+- [[Using Google Closure Compiler | AssetsGoogleClosureCompiler]]
