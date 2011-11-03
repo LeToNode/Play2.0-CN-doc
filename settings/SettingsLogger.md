@@ -49,11 +49,6 @@ If you want to fully customize logback, just define a `conf/logger.xml` configur
   
   <logger name="play" level="INFO" />
   <logger name="application" level="INFO" />
-  
-  <!-- Off these ones as they are annoying, and anyway we manage configuration ourself -->
-  <logger name="com.avaje.ebean.config.PropertyMapLoader" level="OFF" />
-  <logger name="com.avaje.ebeaninternal.server.core.XmlConfigLoader" level="OFF" />
-  <logger name="com.avaje.ebeaninternal.server.lib.BackgroundThread" level="OFF" />
 
   <root level="ERROR">
     <appender-ref ref="STDOUT" />
