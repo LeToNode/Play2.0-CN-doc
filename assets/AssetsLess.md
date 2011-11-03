@@ -20,6 +20,8 @@ You can split you less source into several libraries, and use the less `import` 
 
 To be skipped by the compiler, these partial less source files must be named as `_myLibrary.less`, meaning that it must start with the `_` character.
 
+## Layout
+
 Here is an example layout:
 
 ```

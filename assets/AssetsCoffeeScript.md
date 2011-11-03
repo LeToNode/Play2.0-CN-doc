@@ -14,6 +14,8 @@ CoffeeScript sources are compiled automatically during a `compile` command, or w
 
 [[coffeeError.png]]
 
+## Layout
+
 Here is an example layout:
 
 ```
