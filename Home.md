@@ -34,7 +34,7 @@ Welcome to the Play framework 2.0 beta documentation. This documentation is a wo
 - [[Configuring the JDBC pool | SettingsJDBC]].
 - [[Configuring logs | SettingsLogger]].
 
-## Deploying to production
+## Deploying an application
 
 - [[Starting your application in production mode | ProductionStart]].
 - [[Creating a standalone version of your application | ProductionDist]].
