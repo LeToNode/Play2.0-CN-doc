@@ -13,3 +13,18 @@ For example a less source defined into `app/assets/javascripts/main.coffee` will
 CoffeeScript sources are compiled automatically during a `compile` command, or when you refresh any page in your browser while you are running in development mode. In any compilation error occurs you will see the error in your browser:
 
 [[coffeeError.png]]
+
+Here is an example layout:
+
+```
+app
+  `-- assets
+        `-- javascripts
+               ` main.coffee   
+```
+
+The resulting JavaScript file will be compiled as `public/javascripts/main.js`, that you can use in your template as:
+
+```html
+<script src="@routes.Assets.at("javascripts/main.js")">
+```
