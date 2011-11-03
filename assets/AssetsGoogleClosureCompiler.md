@@ -6,7 +6,7 @@ Any Javascript file present in @app/assets@ will be parsed by Google Closure com
 
 ## Check Javascript Sanity
 
-[[JavascriptError.png]]
+[[ClosureError.png]]
 
 ## Using Closure Compiler Annotations
 
