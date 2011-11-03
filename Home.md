@@ -23,7 +23,7 @@ Welcome to the Play framework 2.0 beta documentation. This documentation is a wo
 
 ## Working with public assets
 
-- [[Serving public resources | AssetsPublic]]
+- [[Serving public resources | AssetsPublic]].
 - [[Using Less CSS | AssetsLess]].
 - [[Using CoffeeScript | AssetsCoffeeScript]].
 - [[Using Google Closure | AssetsGoogleClosure]].
