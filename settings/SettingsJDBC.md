@@ -1,4 +1,4 @@
-# Configuring the JDBC connection pool.
+# Configuring the JDBC pool.
 
 ## Advanced configuration for BoneCP
 
