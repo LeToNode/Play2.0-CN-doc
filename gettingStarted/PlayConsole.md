@@ -83,7 +83,6 @@ You can also run commands directly without entering the Play console. For exampl
 
 ```bash
 $ play run
-$ play run
 [info] Loading project definition from myFirstApp/project
 [info] Set current project to My first application
 
