@@ -6,7 +6,7 @@
 
 Heroku needs a special file in the application root called `Procfile`, create it with this simple content:
 
-```
+```txt
 web: target/start
 ```
 
@@ -27,7 +27,7 @@ $ git commit -m "init"
 ```bash
 $ heroku create --stack cedar
 Creating warm-frost-1289... done, stack is cedar
-http://warm-frost-1289.herokuapp.com/ | git@heroku.com:warm-frost-1289.git
+http://warm-1289.herokuapp.com/ | git@heroku.com:warm-1289.git
 Git remote heroku added
 ```
 
