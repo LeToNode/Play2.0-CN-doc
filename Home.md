@@ -31,7 +31,7 @@ Welcome to the Play framework 2.0 beta documentation. This documentation is a wo
 ## Settings
 
 - [[Configuring the sbt build | SettingsSBT]].
-- [[Configuring the JDBC connection pool | SettingsJDBC]].
+- [[Configuring the JDBC pool | SettingsJDBC]].
 - [[Configuring logs | SettingsLogger]].
 
 ## Deploying to production
