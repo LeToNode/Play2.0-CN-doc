@@ -41,3 +41,19 @@ $ play clean compile stage
 ```
 
 [[stage.png]]
+
+It will clean and compile your application and retrieve every needed dependencies in the `target/staged` directory. It will also create a `target/start` script that will run the Play server.
+
+So you can directly start your application using:
+
+```bash
+$ target/start
+```
+
+The generated `start` script is really simple and you can directly issue the command yourself if needed:
+
+```bash
+#! /usr/bin/env sh
+
+java "$@" -cp "`dirname $0`/staged/*" play.core.server.NettyServer `dirname $0`/..
+```
