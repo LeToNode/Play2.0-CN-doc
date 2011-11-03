@@ -57,7 +57,7 @@ Heroku will run `sbt clean compile stage` to prepare your application. At the fi
 ```bash
 $ heroku ps
 Process       State               Command
-------------  ------------------  --------------------------------------------
+------------  ------------------  ----------------------
 web.1         up for 10s          target/start 
 ```
 
