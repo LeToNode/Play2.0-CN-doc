@@ -8,7 +8,7 @@
 [[/utils/line.png]]
 
 - [[The Build system | Build]]
-- [[Working with compiled assets | Asssets]]
+- [[Working with public assets | Assets]]
 - [[Settings | Settings]]
 - [[Deploying to production | Production]]
 

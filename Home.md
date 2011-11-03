@@ -21,9 +21,10 @@ Welcome to the Play framework 2.0 beta documentation. This documentation is a wo
 - [[Managing library dependencies | SBTDependencies]].
 - [[Working with sub projects | SBTSubProjects]].
 
-## Working with compiled assets
+## Working with public assets
 
-- [[Using LessCSS | AssetsLess]].
+- [[Serving public resources | AssetsPublic]]
+- [[Using Less CSS | AssetsLess]].
 - [[Using CoffeeScript | AssetsCoffeeScript]].
 - [[Using Google Closure | AssetsGoogleClosure]].
 
