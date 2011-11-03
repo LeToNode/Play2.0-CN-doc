@@ -77,6 +77,7 @@ GET  /images/*file             Assets.at("public/images", file)
 You will need to specify both parameter when using the reverse router:
 
 ```html
-<script src="@routes.Assets.at("public/javascripts", "jquery.js")"></script>
+<script src="@routes.Assets.at("public/javascripts", "jquery.js")">
+</script>
 <image src="@routes.Assets.at("public/images", "logo.png")">
 ```
