@@ -29,7 +29,7 @@ And the `test.js` file:
 
 require("lib")
 
-function tata(toto, second) {
+function tata(first, second) {
     alert(sum(first, second));
 }
 
@@ -45,7 +45,7 @@ function sum(a, b) {
 }
 // The test
 
-function tata(toto, second) {
+function tata(first, second) {
     alert(sum(first, second));
 }
 
