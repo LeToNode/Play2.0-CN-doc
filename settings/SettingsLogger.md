@@ -23,7 +23,7 @@ The root logger configuration affects all logger instead of they have a custom l
 logger.org.springframework=TRACE
 ```
 
-### Configuring logback
+## Configuring logback
 
 Play 2.0 uses [[logback | http://logback.qos.ch/]] as logger engine. The default is defining two appenders, one dispatched to the console, and the other into the `logs/application.log` file.
 
