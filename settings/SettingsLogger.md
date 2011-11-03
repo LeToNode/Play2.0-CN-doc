@@ -25,7 +25,7 @@ logger.org.springframework=TRACE
 
 ## Configuring logback
 
-Play 2.0 uses [[logback | http://logback.qos.ch/]] as logger engine. The default is defining two appenders, one dispatched to the console, and the other into the `logs/application.log` file.
+Play 2.0 uses [[logback | http://logback.qos.ch/]] as logger engine. The default is defining two appenders, one dispatched to the standard out stream, and the other into the `logs/application.log` file.
 
 If you want to fully customize logback, just define a `conf/logger.xml` configuration file. Here is the default configuration file used by Play:
 
