@@ -76,6 +76,24 @@ You can also do the same for `~ test`, testing continously your project each tim
 ```bash
 [My first application] $ ~ test
 ```
- 
+
+## Using the play commands directly
+
+You can also run commands directly without entering the Play console. For example if you type `play run`:
+
+```bash
+$ play run
+$ play run
+[info] Loading project definition from myFirstApp/project
+[info] Set current project to My first application
+
+--- (Running the application from SBT, auto-reloading is enabled) ---
+
+[info] play - Listening for HTTP on port 9000...
+
+(Server started, use Ctrl+D to stop and go back to the console...)
+```
+
+The application starts directly. When you quit the server using `Ctrl+D`, you will come back to your OS prompt.
 
 
