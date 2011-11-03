@@ -30,7 +30,7 @@ It will do the same.
 
 ## Using the stage task
 
-The problem with the `start` command is that it start the application interactively. Meaning that a human interaction is needed to check that everythin is ok and then to type `Ctrl+D` in order to detach the process.
+The problem with the `start` command is that it starts the application interactively. Meaning that a human interaction is needed to type `Ctrl+D` in order to detach the process.
 
 If you need to automatize to deployment, this solution is not really convenient.
 
