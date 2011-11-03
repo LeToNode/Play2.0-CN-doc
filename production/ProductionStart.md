@@ -50,7 +50,7 @@ So you can directly start your application using:
 $ target/start
 ```
 
-The generated `start` script is really simple and you can directly issue the command yourself if needed.
+The generated `start` script is really simple and you can directly issue the `java` command yourself if needed.
 
 If you don't have Play installed on the server, you can directly use sbt to do the same:
 
