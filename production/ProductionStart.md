@@ -6,6 +6,10 @@ The easiest way to start an application in production mode is to use the `start`
 
 > Note that the `run` command is intended to be used in development mode and must never be used to run an application in production. For each request a complete check is handled by sbt.
 
+```bash
+[My first application] $ start
+```
+
 [[start.png]]
 
 When you run the `start` command, Play will fork a new JVM and run the default Netty HTTP server. The standard output stream is redirected to the Play console, so you can check that everything is ok.
@@ -15,3 +19,25 @@ When you run the `start` command, Play will fork a new JVM and run the default N
 If you press `Ctrl+D`, the Play console will quit, but the created server process will keep running in background. The standard output stream of the forked JVM is then closed, and logs can be retrieved in the `logs/application.log` file.
 
 If you press `Ctrl+C`, you will kill both JVM: the Play console and the forked Play server. 
+
+Alternatively you can directly use `play start` at your OS command prompt:
+
+```bash
+$ play start
+```
+
+It will do the same.
+
+## Using the stage task
+
+The problem with the `start` command is that it start the application interactively. Meaning that a human interaction is needed to check that everythin is ok and then to type `Ctrl+D` in order to detach the process.
+
+If you need to automatize to deployment, this solution is not really convenient.
+
+You can then use the `stage` task to prepare your application to be run in place. The typical command to prepare a project to be run in place is:
+
+```bash
+$ play clean compile stage
+```
+
+[[stage.png]]
