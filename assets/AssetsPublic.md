@@ -40,13 +40,13 @@ GET  /assets/*file        Assets.at("public", file)
 Note that we define the `*file` dynamic part that will match the `.*` regular expression. If you send to server this request:
 
 ```
-GET /assets/javascripts/jquery-1.6.4.js
+GET /assets/javascripts/jquery.js
 ```
 
 The router will invoke the `Assets.at` action with the following parameter:
 
 ```
-controllers.Assets.at("public", "javascripts/jquery-1.6.4.js")
+controllers.Assets.at("public", "javascripts/jquery.js")
 ```
 
 This action will lookup for the file and serve it if it exists.
@@ -56,13 +56,13 @@ This action will lookup for the file and serve it if it exists.
 Like any controller mapped in the routes file, a reverse controller is created in `controllers.routes.Assets`. You can use it to reverse the URL needed to fetch a public resource. For example from a template:
 
 ```html
-<script src="@routes.Assets.at("javascripts/jquery-1.6.4.js")"></script>
+<script src="@routes.Assets.at("javascripts/jquery.js")"></script>
 ```
 
 That will produce the following result:
 
 ```html
-<script src="/assets/javascripts/jquery-1.6.4.js"></script>
+<script src="/assets/javascripts/jquery.js"></script>
 ```
 
 Note that we don't specify the first `folder` parameter when we reverse the route. This is because our routes file defines a single mapping for the `Assets.at` action, where the `folder` parameter is fixed. So it is useless to specify it.
@@ -77,6 +77,6 @@ GET  /images/*file             Assets.at("public/images", file)
 You will need to specify both parameter when using the reverse router:
 
 ```html
-<script src="@routes.Assets.at("public/javascripts", "jquery-1.6.4.js")"></script>
+<script src="@routes.Assets.at("public/javascripts", "jquery.js")"></script>
 <image src="@routes.Assets.at("public/images", "logo.png")">
 ```
