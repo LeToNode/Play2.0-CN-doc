@@ -56,7 +56,7 @@ This action will lookup for the file and serve it if it exists.
 Like any controller mapped in the routes file, a reverse controller is created in `controllers.routes.Assets`. You can use it to reverse the URL needed to fetch a public resource. For example from a template:
 
 ```html
-<script src="@controllers.routes.Assets.at("javascripts/jquery-1.6.4.js")"></script>
+<script src="@routes.Assets.at("javascripts/jquery-1.6.4.js")"></script>
 ```
 
 That will produce the following result:
@@ -77,6 +77,6 @@ GET  /images/*file             Assets.at("public/images", file)
 You will need to specify both parameter when using the reverse router:
 
 ```html
-<script src="@controllers.routes.Assets.at("public/javascripts", "jquery-1.6.4.js")"></script>
-<image src="@controllers.routes.Assets.at("public/images", "logo.png")">
+<script src="@routes.Assets.at("public/javascripts", "jquery-1.6.4.js")"></script>
+<image src="@routes.Assets.at("public/images", "logo.png")">
 ```
