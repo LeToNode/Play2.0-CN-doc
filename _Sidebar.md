@@ -10,7 +10,7 @@
 - [[The Build system | Build]]
 - [[Working with public assets | Assets]]
 - [[Settings | Settings]]
-- [[Deploying to production | Production]]
+- [[Deploying an application | Production]]
 
 [[/utils/line.png]]
 
