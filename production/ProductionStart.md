@@ -50,13 +50,7 @@ So you can directly start your application using:
 $ target/start
 ```
 
-The generated `start` script is really simple and you can directly issue the command yourself if needed:
-
-```bash
-#! /usr/bin/env sh
-
-java "$@" -cp "`dirname $0`/staged/*" play.core.server.NettyServer `dirname $0`/..
-```
+The generated `start` script is really simple and you can directly issue the command yourself if needed.
 
 If you don't have Play installed on the server, you can directly use sbt to do the same:
 
