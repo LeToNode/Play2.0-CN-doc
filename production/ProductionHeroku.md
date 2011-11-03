@@ -48,6 +48,14 @@ Total 34 (delta 0), reused 0 (delta 0)
 -----> Building app with sbt v0.11.0
 -----> Running: sbt clean compile stage
        ...
+-----> Discovering process types
+       Procfile declares types -> web
+-----> Compiled slug size is 46.3MB
+-----> Launching... done, v5
+       http://8044.herokuapp.com deployed to Heroku
+
+To git@heroku.com:floating-lightning-8044.git
+* [new branch]      master -> master
 ```
 
 Heroku will run `sbt clean compile stage` to prepare your application. At the first deployment all dependencies will be fetched from the internet, taking a while to complete (it will stay cached for the next deployments).
@@ -82,4 +90,20 @@ Cedar allows you to launch a REPL process attached to your local terminal for ex
 
 ```bash
 $ heroku run sbt play
+Running sbt play attached to terminal... up, run.2
+[info] Loading global plugins from /app/.sbt_home/.sbt/plugins
+[info] Updating {file:/app/.sbt_home/.sbt/plugins/}default-0f55ac...
+[info] Set current project to My first application (in build file:/app/)
+       _            _ 
+ _ __ | | __ _ _  _| |
+| '_ \| |/ _' | || |_|
+|  __/|_|\____|\__ (_)
+|_|            |__/ 
+             
+play! 2.0-beta, http://www.playframework.org
+
+> Type "help" or "license" for more information.
+> Type "exit" or use Ctrl+D to leave this console.
+
+[My first application] $
 ```
