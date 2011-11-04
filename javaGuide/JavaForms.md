@@ -85,7 +85,7 @@ userForm.fill(new User("bob@gmail.com", "secret"))
 
 ## Displaying a form in a template
 
-The `Form` value contain everything needed to display the form to the user:
+The `Form` value contains everything needed to display the form to the user:
 
 ```html
 @(userForm: Form[models.User])
