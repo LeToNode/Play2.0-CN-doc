@@ -47,5 +47,5 @@ Welcome to the Play framework 2.0 beta documentation. This documentation is a wo
 
 ## API documentation
 
-- [[Browse the Scala API (ScalaDoc) | #]].
-- [[Browse the Java API (JavaDoc) | #]].
+- [[Browse the Scala API (ScalaDoc) | http://playframework.github.com/api/scala/]].
+- [[Browse the Java API (JavaDoc) | http://playframework.github.com/api/java/]].
