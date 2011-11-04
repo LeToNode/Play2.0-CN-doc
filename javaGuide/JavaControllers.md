@@ -37,7 +37,7 @@ You can define parameters in the action method signature. These parameters will 
 
 ## What's an Action?
 
-An action is basically a Java method processing the request paramters and producing a result to be sent to the client.
+An action is basically a Java method that processes the request parameters, and produces a result to be sent to the client.
 
 ```java
 public static Result index() {
@@ -45,13 +45,13 @@ public static Result index() {
 }
 ```
 
-An action returns a `play.mvc.Result` value, representing the HTTP response to send to the web client. In this example the `ok` methid constructs a **200 OK** response containing a **text/plain** response body.
+An action returns a `play.mvc.Result` value, representing the HTTP response. In this example the `ok` methid constructs a **200 OK** response containing a **text/plain** response body.
 
 ## Controllers 
 
-Actually a `Controller` is nothing more than a class regrouping several action methods. 
+A `Controller` is really more than a class that groups of several action methods. 
 
-The simplest use case to define an action is a simple method without parameters returning an `Result` value.:
+The simplest version for defining an action is a method without parameters, which returns a `Result` value.:
 
 ```java
 public static Result index() {
@@ -69,7 +69,7 @@ public static Result index(String name) {
 
 ## Composing Actions
 
-Action can easily be composed using the `@With` annotation: 
+Action can also be easily composed using the `@With` annotation: 
 
 ```java
 @With(VerboseAction.class)
@@ -91,7 +91,7 @@ public static class VerboseAction extends Action.Simple {
 }
 ```
 
-It is also possible to define your own annotations, annotated themself using `@With`:
+It is also possible to define your own annotations, annotated themselves using `@With`:
 
 ```java
 @With(VerboseAction.class)
