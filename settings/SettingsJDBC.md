@@ -2,7 +2,7 @@
 
 ## Advanced configuration for BoneCP
 
-The Play 2.0 JDBC datasource are managed by [[BoneCP | http://jolbox.com/]]. In addition of the classical `driver`, `url`, `user`, `password` configuration properties it support more tuning if you need it:
+The Play 2.0 JDBC datasource are managed by [[BoneCP | http://jolbox.com/]]. In addition of the classical `driver`, `url`, `user`, `password` configuration properties, it supports more tuning if you need it:
 
 ```properties
 # The JDBC driver to use
