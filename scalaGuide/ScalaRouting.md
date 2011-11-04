@@ -43,7 +43,7 @@ The URI pattern defines the route’s request path. Some parts of the request pa
 For example, to exactly match the `GET /clients/all` incoming requests, you can define this route:
 
 ```
-GET   /clients              controllers.Clients.list()
+GET   /clients/all              controllers.Clients.list()
 ```
 
 ### Dynamic parts 
