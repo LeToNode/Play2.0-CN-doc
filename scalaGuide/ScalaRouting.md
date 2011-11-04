@@ -86,7 +86,7 @@ If the method does not define any parameters, just define the fully qualified me
 GET   /                     controllers.Application.homePage()
 ```
 
-If the action method defines some parameters, all these parameter values will be searched in the URI part, either extracted from the URI path itself, or from the QueryString.
+If the action method defines some parameters, all these parameter values will be searched for in the URI part, either extracted from the URI path itself, or from the QueryString.
 
 ```
 # Extract the page parameter from the path
@@ -112,7 +112,7 @@ def show(page: String) = Action {
 
 ### Parameters types
 
-For parameter of type `String`, typing the parameter is optional. But if you want Play to transform the incoming parameter into a specific scala type, you must explicitly type the parameter:
+For parameters of type `String`, typing the parameter is optional. But if you want Play to transform the incoming parameter into a specific scala type, you can explicitly type the parameter:
 
 ```
 GET   /client/:id           controllers.Clients.show(id: Long)
@@ -128,9 +128,9 @@ def show(id: Long) = Action {
 }
 ```
 
-### Parameters with fixed value
+### Parameters with fixed values
 
-Sometimes you need to use a fixed value for a parameter:
+Sometimes you'll want to use a fixed value for a parameter:
 
 ```
 # Extract the page parameter from the path, or fix the value for /
@@ -138,7 +138,7 @@ GET   /                     controllers.Application.show(page = "home")
 GET   /:page                controllers.Application.show(page)
 ```
 
-### Parameters with default value
+### Parameters with default values
 
 You can also provide a default value, so that if no value is found is the incoming request, the default value will be used:
 
@@ -147,13 +147,13 @@ You can also provide a default value, so that if no value is found is the incomi
 GET   /clients              controllers.Clients.list(page: Int ?= 1)
 ```
 
-## Routes priority
+## Routing priority
 
 Many routes can match the same request. If there is a conflict, the first route (following the declaration order) is used.
 
 ## Reverse routing
 
-The Router can also be used to generate a URL from within a Scala call. So you’re able to centralize in one only configuration file all your URI patterns, and then be more confident when refactoring your application.
+The Router can also be used to generate a URL from within a Scala call. So you’re able to centralize all your URI patterns in a single configuration file, and can be more confident when refactoring your application.
 
 For each Controller used in the routes file, the router will generate a "reverse Controller" in the `routes` package, having the same action methods, with the same signature, but returning a `play.api.mvc.Call` instead of a `play.api.mvc.Action`. 
 
