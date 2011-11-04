@@ -21,15 +21,15 @@ During the build process, the content of the `public` folder is processed and ad
 
 ## The Assets controller
 
-Play 2.0 comes with a built-in controller to server public assets. This controller provides automatically caching, ETag, gzip compression or Javascript minification support.
+Play 2.0 comes with a built-in controller to serve public assets. This controller provides automatically caching, ETag, gzip compression or Javascript minification support.
 
 This controller is available in the default play jar as `controllers.Assets`. It defines a single `at` action with two parameters:
 
 ```
-Assets.as(folder: String, file: String)
+Assets.at(folder: String, file: String)
 ```
 
-The `folder` parameter must be fixed and defined the directory managed by this action. The `file` parameter is usually dynamically extracted from the request path.
+The `folder` parameter must be fixed and defines the directory managed by this action. The `file` parameter is usually dynamically extracted from the request path.
 
 Here is a classical mapping of the `Assets` controller in your `conf/routes` file:
 
@@ -37,7 +37,7 @@ Here is a classical mapping of the `Assets` controller in your `conf/routes` fil
 GET  /assets/*file        Assets.at("public", file)
 ```
 
-Note that we define the `*file` dynamic part that will match the `.*` regular expression. If you send to server this request:
+Note that we define the `*file` dynamic part that will match the `.*` regular expression. If you send this request to the server:
 
 ```
 GET /assets/javascripts/jquery.js
