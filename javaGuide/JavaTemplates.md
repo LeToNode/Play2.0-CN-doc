@@ -7,19 +7,19 @@ Play 2.0 comes with a new and really poweful Scala based template engine. The de
 - **Is not a new language**: We consciously chose not to create a new language. Instead we wanted to enable developers to use their existing Scala language skills, and deliver a template markup syntax that enables an awesome HTML construction workflow with your language of choice.
 - **Works with any Text Editor**: Doesn’t require a specific tool and enables you to be productive in any plain old text editor.
 
-Templates are compiled and you will see any errors right into your browser:
+Play templates are compiled, so you'll be notified of any errors directly in your browser:
 
 [[templatesError.png]]
 
 ## Overview
 
-A Play template is a simple text file text file, that contains small blocks of Scala code. It can generate any text-based format (HTML, XML, CSV, etc.).
+A Play template is a simple text file, that contains small blocks of Scala code. It can generate any text-based format (HTML, XML, CSV, etc.).
 
-It’s particularely designed to feel comfortable to those used to working with HTML, allowing Web designers to work with.
+The template system has been designed to feel comfortable to those used to working with HTML, allowing Web designers to easily work with the templates.
 
-They are compiled as standard Scala functions, following a simple naming convention: If you create a `views/Application/index.scala.html` template file, it will generate a `views.html.Application.index` class with a `render` method.
+They are compiled as standard Scala functions, following a simple naming convention: If you create a `views/Application/index.scala.html` template file, it will generate a `views.html.Application.index` function.
 
-Here is for example, a classic template content:
+Here's an example of simple Play template:
 
 ```html
 @(customer: Customer, orders: Seq[Order])
@@ -33,17 +33,17 @@ Here is for example, a classic template content:
 </ul>
 ```
 
-And you can easily use it from any Java code:
+You can then call this from any Java code:
 
 ```java
 Html html = views.html.Application.index.render(customer, orders);
 ```
 
-> Note that even if you need to write the dynamic expression using Scala, it can be very close to the way you would write it in Java. You don't necessarily need to learn Scala before writing your first template.
+> Note even though you have to write the dynamic expressions in Scala, it's not very different than how you'd write it in Java - you don't have to learn much Scala before writing your first templates.
 
 ## Syntax: the magic ‘@’ character
 
-The Scala template uses `@` as single special character. Each time this character is encountered, it indicates the begining of a Scala statement. It does not require you to explicitly close the code-block, and will infer it from your code:
+The Scala template uses `@` as the single special character. Every time this character is encountered, it indicates the beginning of a Scala statement. It does not require you to explicitly close the code-block - this will be inferred from your code:
 
 ```
 Hello @customer.name!
@@ -51,7 +51,7 @@ Hello @customer.name!
         Scala code
 ```
 
-Because the template engine will automatically detect the end of your code block by analysing your code, it only allow for simple statements. If you want to insert a multi-token statement, just make it more explicit using brackets:
+Because the template engine automatically detects the end of your code block by analysing your code, it only allow for simple statements. If you want to insert a multi-token statement, explicitly mark it using brackets:
 
 ```
 Hello @(customer.firstName + customer.lastName)!
@@ -59,7 +59,7 @@ Hello @(customer.firstName + customer.lastName)!
                     Scala Code
 ```
 
-You can also use curly bracket, like in plain Scala code, to write a multi-statements block:
+You can also use curly bracket (like in plain Scala code) to write a multi-statements block:
 
 ```
 Hello @{val name = customer.firstName + customer.lastName; name}!
@@ -67,7 +67,7 @@ Hello @{val name = customer.firstName + customer.lastName; name}!
                              Scala Code
 ```
 
-Because `@` is the only special character, if you want to escape it, just use `@@`:
+Because `@` is the only special character, you'll sometimes need to escape it. Do this by using `@@`:
 
 ```
 My email is bob@@gmail.com
@@ -75,7 +75,7 @@ My email is bob@@gmail.com
 
 ## Template parameters
 
-Because a template is a function, it needs parameters. Template parameters must be declared on the first template line:
+A template is simply a function, so it needs parameters. Template parameters must be declared on the first line of the template file:
 
 ```scala
 @(customer: models.Customer, orders: Seq[models.Order])
@@ -101,7 +101,7 @@ And even implicit parameters:
 
 ## Looping
 
-You can use the Scala `for comprehension`, is a pretty standard way. Just note that the template compiler will just add a `yield` keyword before your block:
+You can use the Scala `for comprehension`, in a pretty standard way. Note that the template compiler will add a `yield` keyword before your block:
 
 ```html
 <ul>
@@ -113,7 +113,7 @@ You can use the Scala `for comprehension`, is a pretty standard way. Just note t
 
 ## If-Blocks
 
-Nothing special here. Just use the if instruction from Scala:
+Nothing special here. Simply use the standard Scala `if` instruction:
 
 ```html
 @if(items.isEmpty) {
@@ -151,7 +151,7 @@ Note that you can also declare reusable pure Scala blocks:
 
 ## Import statements
 
-You can import whatever you want at the begining of your template (or of a sub template):
+You can import whatever you want at the beginning of your template (or sub template):
 
 ```scala
 @(customer: models.Customer, orders: Seq[models.Order])
@@ -163,7 +163,7 @@ You can import whatever you want at the begining of your template (or of a sub t
 
 ## Comments
 
-You can write server side comments in templates:
+You can write server side block comments in templates using `@* *@`:
 
 ```
 @*********************
@@ -173,7 +173,7 @@ You can write server side comments in templates:
 
 ## Escaping
 
-By default the dynamic content parts are escaped following the template type (Html,Xml,...) rules. If you want to output a raw content fragment, wrap it into the template content type. For example to output raw Html:
+By default the dynamic content parts are escaped following the template type (Html,Xml,...) rules. If you want to output a raw content fragment, wrap it in the template content type. For example to output raw Html:
 
 ```html
 <p>
@@ -183,11 +183,11 @@ By default the dynamic content parts are escaped following the template type (Ht
 
 ## Composing templates (tags, layouts, includes, etc.)
 
-Templates being simple functions you can compose them in any way you want. Below are a few examples of other common scenarios:
+Templates, being simple functions, can be composed in any way you want. Below are a few examples of some common scenarios:
 
 ### Layout
 
-Let’s declare a `views/main.scala.html` template that will act as main layout:
+Let’s declare a `views/main.scala.html` template that will act as our main layout:
 
 ```html
 @(title: String)(content: Html)
@@ -199,7 +199,7 @@ Let’s declare a `views/main.scala.html` template that will act as main layout:
 </div>
 ```
 
-As you see this template takes 2 parameters: a title and an HTML block. Now we can use it from another `views/Application/index.scala.html` template:
+As you can see, this template takes 2 parameters: a title and an HTML block. Now we can use it from another `views/Application/index.scala.html` template:
 
 ```html
 @main(title = "Home") {
@@ -235,7 +235,7 @@ Let’s write a simple `views/tags/notice.scala.html` tag that display an HTML n
 }
 ```
 
-And let’s use it from any template:
+And noe let’s use it from any template:
 
 ```html
 @import tags._
@@ -247,7 +247,7 @@ And let’s use it from any template:
 
 ### Includes
 
-Nothing special, you can just call any other templates (and in fact any other function coming from anywhere):
+Again, there's nothing special here. You can just call any other template you like (and in fact any other function coming from anywhere at all):
 
 ```html
 <h1>Home</h1>
