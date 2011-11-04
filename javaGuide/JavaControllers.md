@@ -85,7 +85,7 @@ public static class VerboseAction extends Action.Simple {
 
   public Result call(Http.Context ctx) {
     Logger.info("Calling action for " + ctx);
-    return deleguate.call(ctx);
+    return delegate.call(ctx);
   }
 
 }
