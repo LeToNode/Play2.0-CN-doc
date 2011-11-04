@@ -22,11 +22,11 @@ val main = PlayProject(appName, appVersion, appDependencies).settings(
 )
 ```
 
-These default settings mostly define the default imports for generated template. For example it import `java.lang.*`, so types like `Long` are the Java one by default instead of the scala one. Also it import `java.util.*` so the default collection library will be the Java one.
+These default settings mostly define the default imports for generated templates. For example it imports `java.lang.*`, so types like `Long` are the Java one by default instead of the scala one. It also imports `java.util.*` so the default collection library will be the Java one.
 
 ## Default settings for Scala application
 
-Play 2.0 defines a default set of settings suitable for Java based application. To enable them add the `defaultScalaSettings` set of settings to your application definition:
+Play 2.0 defines a default set of settings suitable for Scala based application. To enable them add the `defaultScalaSettings` set of settings to your application definition:
 
 ```scala
 val main = PlayProject(appName, appVersion, appDependencies).settings(
@@ -34,7 +34,7 @@ val main = PlayProject(appName, appVersion, appDependencies).settings(
 )
 ```
 
-These default settings mostly define the default imports for generated template. For example it import `java.lang.*`, so types like `Long` are the Java one by default instead of the scala one. Also it import `java.util.*` so the default collection library will be the Java one.
+These default settings mostly define the default imports for generated templates. For example it imports `java.lang.*`, so types like `Long` are the Java one by default instead of the scala one. It also imports `java.util.*` so the default collection library will be the Java one.
 
 ## Play project settings with their default value
 
