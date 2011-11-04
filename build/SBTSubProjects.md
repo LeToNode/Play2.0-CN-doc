@@ -58,7 +58,7 @@ When you run your Play application in dev mode, the dependent projects are autom
 
 [[subprojectError.png]]
 
-## Splitting your web application in to several parts.
+## Splitting your web application into several parts.
 
 As a Play application is just a standard sbt project with a default configuration, you can of course depend on an other Play application. 
 
