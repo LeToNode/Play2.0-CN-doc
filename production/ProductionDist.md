@@ -61,4 +61,4 @@ Then in the Play console, use the `plublish` task:
 [My first application] $ publish
 ```
 
-> Check the sbt documentation to get more informations about the resolvers and credentials definition.
+> Check the sbt documentation to get more information about the resolvers and credentials definition.
