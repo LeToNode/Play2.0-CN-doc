@@ -106,8 +106,10 @@ playResourceDirectories <+= baseDirectory / "public",
 
 templatesImport := Seq("play.api.templates._", "play.api.templates.PlayMagic._"),
 
-templatesTypes := {
+templatesTypes := {	
   case "html" => ("play.api.templates.Html", "play.api.templates.HtmlFormat")
-}))
+  case "txt" => ("play.api.templates.Txt", "play.api.templates.TxtFormat")
+  case "xml" => ("play.api.templates.Xml", "play.api.templates.XmlFormat")
+}
 
 ```

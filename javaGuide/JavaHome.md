@@ -16,4 +16,4 @@ The Java API for the Play 2.0 application developers is available in the `play` 
 
 ## Tutorials
 
-1. [[‘Hello World’ tutorial — Your first Play 2.0 application | JavaHelloWorld]]
+(todo)

@@ -9,7 +9,3 @@
 - [[Application global settings | JavaGlobal]]
 - [[Accessing an SQL database | JavaDatabase]]
 - [[Using the Ebean ORM | JavaEbean]]
-
-[[/utils/line.png]]
-
-- [[‘Hello World’ tutorial — Your first Play 2.0 application | JavaHelloWorld]]
