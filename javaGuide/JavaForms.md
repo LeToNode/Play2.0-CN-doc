@@ -44,7 +44,7 @@ public class User {
 }
 ```
 
-You can also define an adhoc validation by defining a `validate` method on your top object:
+You can also define an ad-hoc validation by defining a `validate` method on your top object:
 
 ```java
 public class User {

@@ -6,13 +6,13 @@ Most people end up using managed dependencies - which allows for fine-grained co
 
 Unmanaged dependencies work like this: add jars to lib and they will automatically be placed on the application classpath. Not much else to it!
 
-There's nothing to add to `project/Build.scala` to use unmanaged dependencies (though you could change a configuration key if you'd like to use a directory different to lib).
+There’s nothing to add to `project/Build.scala` to use unmanaged dependencies (though you could change a configuration key if you’d like to use a directory different to lib).
 
 ## Managed dependencies
 
-Play 2.0 uses Apache Ivy (via sbt) to implement managed dependencies, so if you're familiar with Maven or Ivy, you won't have much trouble.
+Play 2.0 uses Apache Ivy (via sbt) to implement managed dependencies, so if you’re familiar with Maven or Ivy, you won’t have much trouble.
 
-Most of the time, you can simply list your dependencies in the `project/Build.scala` file. It's also possible to write a Maven POM file or Ivy configuration file to externally configure your dependencies, and have sbt use those external configuration files.
+Most of the time, you can simply list your dependencies in the `project/Build.scala` file. It’s also possible to write a Maven POM file or Ivy configuration file to externally configure your dependencies, and have sbt use those external configuration files.
 
 Declaring a dependency looks like this (defining `group`, `artifact` and `revision`):
 
@@ -34,7 +34,7 @@ Of course, sbt (via Ivy) has to know where to download the module. If your modul
 
 ### Getting the right Scala version with `%%`
 
-If you use `groupID` %% `artifactID` % `revision` rather than `groupID` % `artifactID` % `revision` (the difference is the double %% after the `groupID`), sbt will add your project's Scala version to the artifact name. This is just a shortcut. 
+If you use `groupID` %% `artifactID` % `revision` rather than `groupID` % `artifactID` % `revision` (the difference is the double %% after the `groupID`), sbt will add your project’s Scala version to the artifact name. This is just a shortcut. 
 
 You could write this without the %%:
 
@@ -54,7 +54,7 @@ val appDependencies = Seq(
 
 ### Resolvers
 
-Not all packages live on the same server; sbt uses the standard Maven2 repository and the Scala Tools Releases ([[http://scala-tools.org/repo-releases]]) repositories by default. If your dependency isn't on one of the default repositories, you'll have to add a resolver to help Ivy find it.
+Not all packages live on the same server; sbt uses the standard Maven2 repository and the Scala Tools Releases ([[http://scala-tools.org/repo-releases]]) repositories by default. If your dependency isn’t on one of the default repositories, you’ll have to add a resolver to help Ivy find it.
 
 Use the `resolvers` setting key to add your own resolver.
 

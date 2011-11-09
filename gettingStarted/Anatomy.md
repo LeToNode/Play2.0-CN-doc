@@ -7,8 +7,8 @@ The layout of a Play application is standardized to keep things as simple as pos
 ```txt
 app                            --> Application sources
   `-- assets                   --> Compiled asset sources
-        `-- stylesheets        --> Typically lesscss sources
-        `-- javascripts        --> Typically coffeescript sources
+        `-- stylesheets        --> Typically LESS CSS sources
+        `-- javascripts        --> Typically CoffeeScript sources
   `-- controllers              --> Application controllers
   `-- models                   --> Application business layer
   `-- views                    --> Templates
@@ -37,9 +37,9 @@ target                         --> Generated stuff
 
 ## The app/ directory
 
-The `app` directory contains all executable artifacts: Java and Scala source code, templates as well as compiled assets sources.
+The `app` directory contains all executable artifacts: Java and Scala source code, templates and compiled assets’ sources.
 
-There are three standard packages in the `app` directory, one for each layer of the MVC architectural pattern: 
+There are three standard packages in the `app` directory, one for each component of the MVC architectural pattern: 
 
 - `app/controllers`
 - `app/models`
@@ -47,56 +47,54 @@ There are three standard packages in the `app` directory, one for each layer of 
 
 You can of course add your own packages, for example an `app/utils` package.
 
-> Note that in Play 2.0, the controllers,models,views conventions are now really conventions only and can be changed if needed (such as prefixing everything with com.yourcompany).
+> Note that in Play 2.0, the controllers, models and views package name conventions are now just that and can be changed if needed (such as prefixing everything with `com.yourcompany`).
 
-There is also an optional directory called `app/assets` containing compiled assets such as [[Less sources | http://lesscss.org/]] and [[CofeeScript sources | http://jashkenas.github.com/coffee-script/]].
+There is also an optional directory called `app/assets` for compiled assets such as [[LESS sources | http://lesscss.org/]] and [[CoffeeScript sources | http://jashkenas.github.com/coffee-script/]].
 
 ## The public/ directory
 
 Resources stored in the `public` directory are static assets that are served directly by the Web server.
 
-This directory is split into three standard sub-directories: for images, CSS stylesheets and JavaScript files. You should try to organize your static assets like this to keep all Play applications consistent.
+This directory is split into three standard sub-directories for images, CSS stylesheets and JavaScript files. You should organize your static assets like this to keep all Play applications consistent.
 
-> In the default created application the `/public` directory is mapped to the `/assets` URL path, but you can easily change that, or even use several directories for your static assets.
+> In a newly-created application, the `/public` directory is mapped to the `/assets` URL path, but you can easily change that, or even use several directories for your static assets.
 
 ## The conf/ directory
 
-The `conf` directory contains all configuration files for the application.
+The `conf` directory contains the application’s configuration files. There are two main configuration files:
 
-There are two main configuration files:
-
-- `application.conf`, the main configuration file for the application. It contains standard configuration parameters.
+- `application.conf`, the main configuration file for the application, which contains standard configuration parameters
 - `routes`, the routes definition file.
 
-If you need to add configuration options specific to your application, it’s a good idea to add more options to the `application.conf` file.
+If you need to add configuration options that are specific to your application, it’s a good idea to add more options to the `application.conf` file.
 
-If any library needs a specific configuration file, try to file it under the conf directory.
+If a library needs a specific configuration file, try to file it under the `conf` directory.
 
 ## The lib/ directory
 
-The `lib` directory is optional and contains unmanaged library dependencies, ie. all jar files you want to manage manually outside of the build system. Just drop any jar files here and they will be added to your application classpath.
+The `lib` directory is optional and contains unmanaged library dependencies, ie. all JAR files you want to manually manage outside the build system. Just drop any JAR files here and they will be added to your application classpath.
 
 ## The project/ directory
 
-The `project` directory contains the **sbt** build definitions. 
+The `project` directory contains the sbt build definitions:
 
-- The `plugins.sbt` file defines sbt plugins used by this project.
-- The `Build.scala` file defines your application build script.
+- `plugins.sbt` defines sbt plugins used by this project
+- `Build.scala` defines your application build script.
 
 ## The target/ directory
 
-The `target` directory contains everything generated by the build system. It can be useful to know what is generated here:
+The `target` directory contains everything generated by the build system. It can be useful to know what is generated here.
 
-- The `classes` folder contains all compiled classes (from both Java and Scala sources).
-- The `classes_managed` contains only the classes that are managed by the framework (such as the classes generated by the Router or the Template system). It can be useful to add this class folder as an external class folder in your IDE project settings.
-- The `resource_managed` contains generated resources, typically compiled assets like lesscss and coffescript compilation results.
-- The `src_managed` contains generated sources, like the Scala sources generated by the template system.
+- `classes/` contains all compiled classes (from both Java and Scala sources).
+- `classes_managed/` contains only the classes that are managed by the framework (such as the classes generated by the router or the template system). It can be useful to add this class folder as an external class folder in your IDE project.
+- `resource_managed/` contains generated resources, typically compiled assets such as LESS CSS and CoffeeScript compilation results.
+- `src_managed/` contains generated sources, such as the Scala sources generated by the template system.
 
 ## Typical .gitignore file
 
-Generated folders should be ignored from your VCS. Here is the typical `.gitignore` file for a Play application:
+Generated folders should be ignored by your version control system. Here is the typical `.gitignore` file for a Play application:
 
-```
+```txt
 logs
 project/project
 project/target

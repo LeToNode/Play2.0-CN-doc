@@ -24,7 +24,7 @@ db.customers.driver=org.h2.Driver
 db.customers.url=jdbc:h2:mem:customers
 ```
 
-If something isn't properly configured you will be notified right into your browser:
+If something isn’t properly configured you will be notified right into your browser:
 [[dbError.png]]
 
 

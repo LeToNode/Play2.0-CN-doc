@@ -7,7 +7,7 @@ Play 2.0 comes with a new and really powerful Scala based template engine. The d
 - **Is not a new language**: We consciously chose not to create a new language. Instead we wanted to enable developers to use their existing Scala language skills, and deliver a template markup syntax that enables an awesome HTML construction workflow with your language of choice.
 - **Works with any Text Editor**: Doesn’t require a specific tool and enables you to be productive in any plain old text editor.
 
-Play templates are compiled, so you'll be notified of any errors directly in your browser:
+Play templates are compiled, so you’ll be notified of any errors directly in your browser:
 
 [[templatesError.png]]
 
@@ -19,7 +19,7 @@ The template system has been designed to feel comfortable to those used to worki
 
 They are compiled as standard Scala functions, following a simple naming convention: If you create a `views/Application/index.scala.html` template file, it will generate a `views.html.Application.index` function.
 
-Here's an example of simple Play template:
+Here’s an example of simple Play template:
 
 ```html
 @(customer: Customer, orders: Seq[Order])
@@ -39,7 +39,7 @@ You can then call this from any Java code:
 Html html = views.html.Application.index.render(customer, orders);
 ```
 
-> Note even though you have to write the dynamic expressions in Scala, it's not very different than how you'd write it in Java - you don't have to learn much Scala before writing your first templates.
+> Note even though you have to write the dynamic expressions in Scala, it’s not very different than how you’d write it in Java - you don’t have to learn much Scala before writing your first templates.
 
 ## Syntax: the magic ‘@’ character
 
@@ -67,7 +67,7 @@ Hello @{val name = customer.firstName + customer.lastName; name}!
                              Scala Code
 ```
 
-Because `@` is the only special character, you'll sometimes need to escape it. Do this by using `@@`:
+Because `@` is the only special character, you’ll sometimes need to escape it. Do this by using `@@`:
 
 ```
 My email is bob@@gmail.com
@@ -235,7 +235,7 @@ Let’s write a simple `views/tags/notice.scala.html` tag that display an HTML n
 }
 ```
 
-And noe let’s use it from any template:
+And now let’s use it from a template:
 
 ```html
 @import tags._
@@ -247,7 +247,7 @@ And noe let’s use it from any template:
 
 ### Includes
 
-Again, there's nothing special here. You can just call any other template you like (and in fact any other function coming from anywhere at all):
+Again, there’s nothing special here. You can just call any other template you like (and in fact any other function coming from anywhere at all):
 
 ```html
 <h1>Home</h1>

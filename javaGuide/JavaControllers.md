@@ -35,7 +35,7 @@ public static play.mvc.Result action_name(params...)
 
 You can define parameters in the action method signature. These parameters will be resolved by the Router from the corresponding HTTP parameters.
 
-## What's an Action?
+## What’s an Action?
 
 An action is basically a Java method that processes the request parameters, and produces a result to be sent to the client.
 
@@ -45,7 +45,7 @@ public static Result index() {
 }
 ```
 
-An action returns a `play.mvc.Result` value, representing the HTTP response. In this example the `ok` methid constructs a **200 OK** response containing a **text/plain** response body.
+An action returns a `play.mvc.Result` value, representing the HTTP response. In this example the `ok` method constructs a **200 OK** response containing a **text/plain** response body.
 
 ## Controllers 
 

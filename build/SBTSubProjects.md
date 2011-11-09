@@ -94,5 +94,5 @@ object ApplicationBuild extends Build {
 }
 ```
 
-Here we define a complete project splitted in two main parts: the website and the admin area. Moreover these two parts depend themselves on a common module.
+Here we define a complete project split in two main parts: the website and the admin area. Moreover these two parts depend themselves on a common module.
 

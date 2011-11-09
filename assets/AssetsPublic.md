@@ -65,7 +65,7 @@ That will produce the following result:
 <script src="/assets/javascripts/jquery.js"></script>
 ```
 
-Note that we don't specify the first `folder` parameter when we reverse the route. This is because our routes file defines a single mapping for the `Assets.at` action, where the `folder` parameter is fixed. So it is useless to specify it.
+Note that we don’t specify the first `folder` parameter when we reverse the route. This is because our routes file defines a single mapping for the `Assets.at` action, where the `folder` parameter is fixed. So it is useless to specify it.
 
 However if you define two mapping for the `Assets.at` action, like:
 

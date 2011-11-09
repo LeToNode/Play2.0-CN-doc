@@ -65,7 +65,7 @@ Hello @{val name = customer.firstName + customer.lastName; name}!
                              Scala Code
 ```
 
-Because `@` is the only special character, you'll sometimes need to escape it. Do this by using `@@`:
+Because `@` is the only special character, you’ll sometimes need to escape it. Do this by using `@@`:
 
 ```
 My email is bob@@gmail.com
@@ -109,7 +109,7 @@ You can use the Scala `for comprehension`, in a pretty standard way. But note th
 </ul>
 ```
 
-But as you probably know, here the `for` comprehension is just syntaxic sugar for a classic map:
+But as you probably know, here the `for` comprehension is just syntactic sugar for a classic map:
 
 ```html
 <ul>
@@ -177,7 +177,7 @@ Note that you can also declare reusable pure Scala blocks:
 
 ## Import statements
 
-You can import whatever you want at the begining of your template (or sub template):
+You can import whatever you want at the beginning of your template (or sub template):
 
 ```scala
 @(customer: models.Customer, orders: Seq[models.Order])
@@ -225,7 +225,7 @@ Let’s declare a `views/main.scala.html` template that will act as main layout:
 </div>
 ```
 
-As you can see, this template takes 2 parameters: a title and an HTML block. Now we can use it from another `views/Application/index.scala.html` template:
+As you can see, this template takes two parameters: a title and an HTML block. Now we can use it from another `views/Application/index.scala.html` template:
 
 ```html
 @main(title = "Home") {
@@ -277,7 +277,7 @@ And now let’s use it from another template:
 
 ### Includes
 
-Again, there's nothing special here. You can just call any other template you like (and in fact any other function coming from anywhere at all):
+Again, there’s nothing special here. You can just call any other template you like (and in fact any other function coming from anywhere at all):
 
 ```html
 <h1>Home</h1>

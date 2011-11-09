@@ -61,7 +61,7 @@ val userForm = Form(
 )
 ```
 
-And even define adhoc constraints on the fields:
+And even define ad-hoc constraints on the fields:
 
 ```scala
 val loginForm = Form(
@@ -87,7 +87,7 @@ loginForm.bindFromRequest.fold(
 
 ## Fill a form with initial values
 
-Sometimes you'll want to fill a form with existing values, typically for "editing" forms:
+Sometimes you’ll want to fill a form with existing values, typically for ‘editing’ forms:
 
 ```scala
 userForm.fill(User("Bob", 18))

@@ -12,7 +12,7 @@ object Global extends GlobalSettings {
 }
 ```
 
-## Hooking into application start and stop event
+## Hooking into application start and stop events
 
 You can override the `onStart` and `onStop` operation to be notified about the application lifecycle;
 
@@ -43,7 +43,7 @@ import play.api.mvc.Results.__
 
 object Global extends GlobalSettings {
 
-  override def onError(request: RequestHeader, ex: Throwble) = {
+  override def onError(request: RequestHeader, ex: Throwable) = {
     InternalServerError(
       views.html.errorPage(ex)
     )
@@ -54,7 +54,7 @@ object Global extends GlobalSettings {
 
 ## Handling "action not found"
 
-If the framework doesn't find an `Action` for a request, the `onActionNotFound` operation will be called:
+If the framework doesn’t find an `Action` for a request, the `onActionNotFound` operation will be called:
 
 ```scala
 import play.api._
@@ -82,7 +82,7 @@ import play.api.mvc.Results.__
 object Global extends GlobalSettings {
 
   override def onBadRequest(request: RequestHeader) = {
-    BadRequest("Don't try to hack my URL!")
+    BadRequest("Don’t try to hack my URL!")
   }  
     
 }

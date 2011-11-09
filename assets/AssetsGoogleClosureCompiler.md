@@ -1,6 +1,6 @@
 # Using Google Closure Compiler
 
-The [Closure Compiler](http://code.google.com/p/closure-compiler/) is a tool for making JavaScript download and run faster. It is a true compiler for JavaScript. Instead of compiling from a source language to machine code, it compiles from JavaScript to better JavaScript. It parses your JavaScript, analyzes it, removes dead code and rewrites and minimizes what's left.
+The [Closure Compiler](http://code.google.com/p/closure-compiler/) is a tool for making JavaScript download and run faster. It is a true compiler for JavaScript. Instead of compiling from a source language to machine code, it compiles from JavaScript to better JavaScript. It parses your JavaScript, analyzes it, removes dead code and rewrites and minimizes what’s left.
 
 Any Javascript file present in `app/assets` will be parsed by Google Closure compiler, checked for errors and dependencies and minified if activated in the build configuration.
 
@@ -12,7 +12,7 @@ Javascript code is compiled during the `compile` command, and automatically when
 
 ## CommonJS style dependencies
 
-Play's Closure Compiler integration can also resolve dependencies that you declare with a CommonJS style, similarly to [RequireJS](http://requirejs.org/).
+Play’s Closure Compiler integration can also resolve dependencies that you declare with a CommonJS style, similarly to [RequireJS](http://requirejs.org/).
 
 Consider the `lib.js` file:
 ```

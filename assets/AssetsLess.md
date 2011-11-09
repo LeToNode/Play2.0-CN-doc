@@ -2,7 +2,7 @@
 
 ## Enabling Less CSS support in your application
 
-[[Less CSS | http://lesscss.org/]] is the dynamic stylesheet language. It allows more flexibility in the way you are writting your CSS files using variables, mixins and more.
+[[Less CSS | http://lesscss.org/]] is the dynamic stylesheet language. It allows more flexibility in the way you are writing your CSS files using variables, mixins and more.
 
 The compiled assets in Play 2.0 must be defined in the `app/assets` directory. They are handled by the build process, and less sources are compiled into standard CSS files. The generated CSS files are distributed as standard resources into the same `public/` folder as the unmanaged assets, meaning that there is no difference in the way you use them once compiled.
 

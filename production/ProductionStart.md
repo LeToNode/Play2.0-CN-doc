@@ -14,7 +14,7 @@ The easiest way to start an application in production mode is to use the `start`
 
 When you run the `start` command, Play will fork a new JVM and run the default Netty HTTP server. The standard output stream is redirected to the Play console, so you can check that everything is ok.
 
-> The process id of the server is displayed at bootsrap and written in the `RUNNING_PID` file. To kill a running Play server, sending a `SIGTERM` to the process is enough to properly shutdown the application.
+> The process id of the server is displayed at bootstrap and written in the `RUNNING_PID` file. To kill a running Play server, sending a `SIGTERM` to the process is enough to properly shutdown the application.
 
 If you press `Ctrl+D`, the Play console will quit, but the created server process will keep running in background. The standard output stream of the forked JVM is then closed, and logs can be retrieved in the `logs/application.log` file.
 
@@ -32,7 +32,7 @@ It will do the same.
 
 The problem with the `start` command is that it starts the application interactively. Meaning that a human interaction is needed to type `Ctrl+D` in order to detach the process.
 
-If you need to automatize to deployment, this solution is not really convenient.
+If you need to automate deployment, this solution is not really convenient.
 
 You can then use the `stage` task to prepare your application to be run in place. The typical command to prepare a project to be run in place is:
 
@@ -52,7 +52,7 @@ $ target/start
 
 The generated `start` script is really simple and you can directly issue the `java` command yourself if needed.
 
-If you don't have Play installed on the server, you can directly use sbt to do the same:
+If you don’t have Play installed on the server, you can directly use sbt to do the same:
 
 ```bash
 $ sbt clean compile stage

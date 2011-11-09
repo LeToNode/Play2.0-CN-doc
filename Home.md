@@ -24,15 +24,15 @@ Welcome to the Play framework 2.0 beta documentation. This documentation is a wo
 ## Working with public assets
 
 - [[Serving public resources | AssetsPublic]].
-- [[Using Less CSS | AssetsLess]].
+- [[Using LESS CSS | AssetsLess]].
 - [[Using CoffeeScript | AssetsCoffeeScript]].
-- [[Using Google Closure Compiler | AssetsGoogleClosureCompiler]].
+- [[Using the Google Closure Compiler | AssetsGoogleClosureCompiler]].
 
 ## Settings
 
 - [[Configuring the sbt build | SettingsSBT]].
-- [[Configuring the JDBC pool | SettingsJDBC]].
-- [[Configuring logs | SettingsLogger]].
+- [[Configuring the JDBC database connection pool | SettingsJDBC]].
+- [[Configuring logging | SettingsLogger]].
 
 ## Deploying an application
 

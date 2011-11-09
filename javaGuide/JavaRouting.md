@@ -7,7 +7,7 @@ An HTTP request is seen as an event by the MVC framework. The event contains two
 - The Request path (such as `/clients/1542`, `/photos/list`), including the query string.
 - The HTTP method (GET, POST, ...)
 
-Routes are defined in the `conf/routes` file, which is compiled. This means that you'll see route errors directly in your browser:
+Routes are defined in the `conf/routes` file, which is compiled. This means that you’ll see route errors directly in your browser:
 
 [[routesError.png]]
 
@@ -131,7 +131,7 @@ public static Result show(Long id) {
 
 ### Parameters with fixed values
 
-Sometimes you'll want to use a fixed value for a parameter:
+Sometimes you’ll want to use a fixed value for a parameter:
 
 ```
 # Extract the page parameter from the path, or fix the value for /
@@ -156,7 +156,7 @@ Many routes can match the same request. If there is any conflict, the first rout
 
 The Router can be used to generate a URL from within a Java call. So you’re able to centralize all your URI patterns in a single configuration file, and can be more confident when refactoring your application.
 
-For each Controller used in the routes file, the router will generate a "reverse Controller" in the `routes` package, having the same action methods with the same signature, but returning a `play.mvc.Call` instead of a `play.mvc.Result`. 
+For each Controller used in the routes file, the router will generate a ‘reverse controller’ in the `routes` package, having the same action methods with the same signature, but returning a `play.mvc.Call` instead of a `play.mvc.Result`. 
 
 The `play.mvc.Call` define an HTTP call, and provides both the HTTP method and the URI.
 

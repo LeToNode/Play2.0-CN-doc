@@ -55,7 +55,7 @@ val main = PlayProject(appName, appVersion, appDependencies).settings(
 )
 ```
 
-Then in the Play console, use the `plublish` task:
+Then in the Play console, use the `publish` task:
 
 ```bash
 [My first application] $ publish

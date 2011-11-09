@@ -36,7 +36,7 @@ public class Global extends GlobalSettings {
 
 ## Providing the application error page
 
-When an exception occurs in your application, the `onError` operation will be called. The default is to use the internale framework error page:
+When an exception occurs in your application, the `onError` operation will be called. The default is to use the internal framework error page:
 
 ```java
 import play.*;
@@ -47,7 +47,7 @@ import static play.mvc.Results.*;
 public class Global extends GlobalSettings {
 
   @Override
-  public static Result onError(Throwble t) {
+  public static Result onError(Throwable t) {
     return internalServerError(
       views.html.errorPage(t)
     );
@@ -58,7 +58,7 @@ public class Global extends GlobalSettings {
 
 ## Handling action not found
 
-If the framework doesn't find any action method for a request, the `onActionNotFound` operation will be called:
+If the framework doesn’t find any action method for a request, the `onActionNotFound` operation will be called:
 
 ```java
 import play.*;
@@ -90,7 +90,7 @@ public class Global extends GlobalSettings {
 
   @Override
   public static Result onBadRequest(String uri, String error) {
-    return badRequest("Don't try to hack the URI");
+    return badRequest("Don’t try to hack the URI");
   }  
     
 }

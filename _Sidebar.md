@@ -18,5 +18,5 @@
 
 [[/utils/line.png]]
 
-- [[ScalaDoc | #]]
-- [[JavaDoc | #]]
+- [[ScalaDoc | http://playframework.github.com/api/scala/]]
+- [[JavaDoc | http://playframework.github.com/api/java/]]
