@@ -38,7 +38,7 @@ object FunctionalSpec extends Specification {
 "an Application" should {
   "pass functional test" in {
    withNettyServer{
-    val driver = new HtmlUnitDriver()
+      val driver = new HtmlUnitDriver()
       driver.get("http://localhost:9000")
       driver.getPageSource must contain ("Hello world")
    }   
