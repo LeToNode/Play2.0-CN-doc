@@ -85,9 +85,9 @@ loginForm.bindFromRequest.fold(
 )
 ```
 
-## Fill a form with initial values
+## Fill a form with initial default values
 
-Sometimes you’ll want to fill a form with existing values, typically for ‘editing’ forms:
+Sometimes you’ll want to fill a form with existing values, typically for editing:
 
 ```scala
 userForm.fill(User("Bob", 18))
@@ -173,7 +173,7 @@ The `Form` value contains everything needed to display the form to the user:
 
 ## Using the template form helpers
 
-The `views.html.helper` package contains several helpers to handle HTML forms construction.
+The `views.html.helper` package contains several helpers to handle HTML form construction.
 
 ```html
 @(userForm: Form[models.User])
