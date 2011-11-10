@@ -8,14 +8,14 @@ Play 2.0 comes with the [[Ebean | http://www.avaje.org/]] ORM. To enable it, add
 ebean.default=models.*
 ```
 
-Here you define a `default` Ebean server, using the `default` datasource that must be properly configured. You can actually create as many Ebean server you need, and define explicitely the mapped class for each server.
+Here you define a `default` Ebean server, using the `default` datasource that must be properly configured. You can actually create as many Ebean server you need, and explicitly define the mapped class for each server.
 
 ```properties
 ebean.orders=models.Order,models.OrderItem
 ebean.customers=models.Customer,models.Address
 ```
 
-Here you have access to 2 Ebean server, each one using its own database.
+In this example, we have access to 2 Ebean servers - each one using its own database.
 
 ## Using the play.db.ebean.Model superclass
 
@@ -53,7 +53,7 @@ public class Task extends Model {
 }
 ```
 
-As you see we added a `find` static field, defining a `Finder` for entity of type `Task` with `Long` identifier. This helper field let us simplify querying our model:
+As you can see we've added a `find` static field, defining a `Finder` for an entity of type `Task` with a `Long` identifier. This helper field is then used to simplify querying our model:
 
 ```
 // Find all tasks
