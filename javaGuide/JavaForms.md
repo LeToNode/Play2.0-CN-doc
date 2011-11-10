@@ -2,7 +2,7 @@
 
 ## Defining a form
 
-The `play.data` package contains several helpers to handle data submission and validation. The easiest way to handle a form submission is to define a `play.data.Form` that wrap any existing class:
+The `play.data` package contains several helpers to handle data submission and validation. The easiest way to handle a form submission is to define a `play.data.Form` that wraps an existing class:
 
 ```java
 public class User {
@@ -33,7 +33,7 @@ User user = userForm.bindFromRequest().get();
 
 ## Defining constraints
 
-You can define additional constraints that will be checked during the binding using JSR-303 annotations:
+You can define additional constraints that will be checked during the binding phase using JSR-303 annotations:
 
 ```java
 public class User {
@@ -44,7 +44,7 @@ public class User {
 }
 ```
 
-You can also define an ad-hoc validation by defining a `validate` method on your top object:
+You can also define an ad-hoc validation by adding a `validate` method to your top object:
 
 ```java
 public class User {
@@ -64,7 +64,7 @@ public class User {
 
 ## Handling binding failure
 
-Of course as you define constraints, you must handle the binding errors. 
+Of course if you can define constraints, then you need to be able to handle the binding errors.
 
 ```java
 if(userForm.hasErrors()) {
@@ -75,9 +75,9 @@ if(userForm.hasErrors()) {
 }
 ```
 
-## Fill a form with initial values
+## Fill a form with initial default values
 
-Sometimes you want to fill a form with existing values, typically for edition forms:
+Often you'll want to fill a form with existing default values - typically for editing:
 
 ```scala
 userForm.fill(new User("bob@gmail.com", "secret"))
@@ -121,7 +121,7 @@ The `Form` value contains everything needed to display the form to the user:
 
 ## Using the template form helpers
 
-The `views.html.helper` package contains several helpers to handle HTML forms construction.
+The `views.html.helper` package contains several helpers to handle HTML form construction.
 
 ```html
 @(userForm: Form[models.User])
