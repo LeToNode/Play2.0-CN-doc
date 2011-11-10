@@ -6,7 +6,7 @@ each part of the application can be mocked, one can easily create a spec where t
 
 The `withAppliaction` helper takes 
 
-*  a list of plugin references (for example `List("600:mymock.cache.CachePlugin")`) 
+*  a list of plugin references, for example `List("600:mymock.cache.CachePlugin")`
 
 * a Map[String,String] of app configuration (an in-memory datasource can be also used for testing databases in isolation) 
 
