@@ -28,4 +28,22 @@ object ApplicationSpec extends Specification {
 ```
 a full example can be found [here](https://github.com/playframework/Play20/blob/master/framework/integrationtest/test/ApplicationSpec.scala)
 
-# Writing integration tests
+# Writing Integration Test
+The other approach is to fire up a full application and run an integration test against it using [Selenium/WebDriver](http://seleniumhq.org/docs/03_webdriver.html). By default there are two drivers included in play's test scope: [HtmlUnitDriver](http://seleniumhq.org/docs/03_webdriver.html#htmlunit-driver) and [ChromeDriver](http://code.google.com/p/selenium/wiki/ChromeDriver#Overriding_the_Chrome_binary_location). Let's see an example using Htmlunit:
+```scala
+object FunctionalSpec extends Specification {
+
+"an Application" should {
+  "pass functional test" in {
+   withNettyServer{
+    val driver = new HtmlUnitDriver()
+      driver.get("http://localhost:9000")
+      driver.getPageSource must contain ("Hello world")
+   }   
+  }
+ }
+full example can be found [here](https://github.com/playframework/Play20/blob/master/framework/integrationtest/test/FunctionalSpec.scala)
+
+}
+```
+_Since this is a very resource intensive way of testing, it's recommended to have only functional test per application._
