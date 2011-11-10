@@ -10,7 +10,9 @@ The `withAppliaction` helper takes
 
 * a `Map[String,String]` of app configuration (an in-memory datasource can be also used for testing databases in isolation) 
 
-* and finally a user supplied block which will be executed in the application context. Putting it all together:
+* and finally a user supplied block which will be executed in the application context. 
+
+Putting it all together:
 
 ```scala
 object ApplicationSpec extends Specification {
