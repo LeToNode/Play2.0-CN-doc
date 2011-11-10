@@ -3,7 +3,7 @@
 _Tip: Java applications can be easily [tested with scala](https://github.com/playframework/Play20/wiki/Scalatest) as well. In fact, writing tests is probably the easiest way to pick up any new languages._
 
 # Writing unit tests
-Play comes with support for Junit and mocking. The idea is that in the `@Before` method we setup the mock play application and the any method marked with `@Test` will be executed in this context. `injectGlobalMock` takes
+Play comes with support for Junit and play context mocking. The idea is that in the `@Before` method we setup the mock play application and then any method marked with `@Test` will be executed in this context. `injectGlobalMock` takes
 - a List of plugin references, for example ArrayList<String> my new ArrayList<String>(); my.add("110:mymock.plugin.CachePlugin");"
 - a `Map<String,String>` of configuration (optionally one can use a predefined in-memory database mock, just like in the example below)
 
