@@ -1,4 +1,4 @@
-# Testing an application
+# Testing your application
 
 _Tip: Java applications can be [tested with scala](https://github.com/playframework/Play20/wiki/Scalatest) as well. In fact writing tests is probably the easiest to pick up any new languages._
 
