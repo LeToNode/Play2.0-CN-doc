@@ -101,7 +101,7 @@ The `play.api.data` package defines several high level mapping you can use direc
 val userForm = Form(
   of(User)(
     "email" -> email,
-    "age" -> number
+    "age" -> number(min=0)
   )
 )
 ```
