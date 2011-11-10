@@ -2,7 +2,7 @@
 
 ## Configuring JDBC connection pools
 
-Play 2.0 provides a plugin able to manage JDBC connection pools. You can configure as many databases you need.
+Play 2.0 provides a plugin for managing JDBC connection pools. You can configure as many databases you need.
 
 To enable the database plugin, configure a connection pool in the `conf/application.conf` file. By convention the default JDBC datasource must be called `default`:
 
@@ -24,7 +24,7 @@ db.customers.driver=org.h2.Driver
 db.customers.url=jdbc:h2:mem:customers
 ```
 
-If something isn’t properly configured you will be notified right into your browser:
+If something isn’t properly configured you will be notified directly in your browser:
 [[dbError.png]]
 
 
