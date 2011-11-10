@@ -2,7 +2,7 @@
 
 ## The Global object
 
-Defining a `Global` object allows you to handle global settings for your application. This object must be defined in the `_root_` package.
+Defining a `Global` object in your project allows you to handle global settings for your application. This object must be defined in the `_root_` package.
 
 ```scala
 import play.api._
@@ -14,7 +14,7 @@ object Global extends GlobalSettings {
 
 ## Hooking into application start and stop events
 
-You can override the `onStart` and `onStop` operation to be notified about the application lifecycle;
+You can override the `onStart` and `onStop` operation to be notified of the events in the application lifecycle;
 
 ```scala
 import play.api._
@@ -32,7 +32,7 @@ object Global extends GlobalSettings {
 }
 ```
 
-## Providing the application error page
+## Providing an application error page
 
 When an exception occurs in your application, the `onError` operation will be called. The default is to use the internal framework error page:
 
@@ -82,7 +82,7 @@ import play.api.mvc.Results.__
 object Global extends GlobalSettings {
 
   override def onBadRequest(request: RequestHeader) = {
-    BadRequest("Don’t try to hack my URL!")
+    BadRequest("Don't try to hack the URI!")
   }  
     
 }
