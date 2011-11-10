@@ -46,4 +46,4 @@ object FunctionalSpec extends Specification {
 ```
 full example can be found [here](https://github.com/playframework/Play20/blob/master/framework/integrationtest/test/FunctionalSpec.scala)
 
-_Since this is a very resource intensive way of testing, it's recommended to have only functional test per application._
+_Tip: since this is a very resource intensive way of testing, it's recommended to have only one integration test per application._
