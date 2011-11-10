@@ -74,15 +74,15 @@ object ApplicationBuild extends Build {
   val appName = "zenexity.com"
   val appVersion = "1.2"
 
-  val common = Project(
+  val common = PlayProject(
     appName + "-common", appVersion, path = file("modules/common")
   )
   
-  val website = Project(
+  val website = PlayProject(
     appName + "-website", appVersion, path = file("modules/website")
   ).dependsOn(common)
   
-  val adminArea = Project(
+  val adminArea = PlayProject(
     appName + "-admin", appVersion, path = file("modules/admin")
   ).dependsOn(common)
   
