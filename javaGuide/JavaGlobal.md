@@ -2,7 +2,7 @@
 
 ## The Global object
 
-Defining a `Global` class allows to handle global settings for your application. This object must be defined in the root package.
+Defining a `Global` object in your project allows you to handle global settings for your application. This object must be defined in the root package.
 
 ```java
 import play.*;
@@ -14,7 +14,7 @@ public class Global extends GlobalSettings {
 
 ## Hooking application start and stop
 
-You can override the `onStart` and `onStop` operation to be notified about the application lifecycle;
+You can override the `onStart` and `onStop` operation to be notified of the events in the application lifecycle;
 
 ```java
 import play.*;
@@ -34,7 +34,7 @@ public class Global extends GlobalSettings {
 }
 ```
 
-## Providing the application error page
+## Providing an application error page
 
 When an exception occurs in your application, the `onError` operation will be called. The default is to use the internal framework error page:
 
@@ -58,7 +58,7 @@ public class Global extends GlobalSettings {
 
 ## Handling action not found
 
-If the framework doesn’t find any action method for a request, the `onActionNotFound` operation will be called:
+If the framework doesn’t find an action method for a request, the `onActionNotFound` operation will be called:
 
 ```java
 import play.*;
@@ -90,7 +90,7 @@ public class Global extends GlobalSettings {
 
   @Override
   public static Result onBadRequest(String uri, String error) {
-    return badRequest("Don’t try to hack the URI");
+    return badRequest("Don't try to hack the URI!");
   }  
     
 }
