@@ -1,9 +1,9 @@
 # The templating system
 
-Play 2.0 comes with a new and really powerful Scala based template engine. The design of this new template engine has been inspired by ASP.NET Razor, specifically:
+Play 2.0 comes with a new and really powerful Scala based template engine. The design of the engine has been inspired by ASP.NET Razor, specifically:
 
-- **Compact, Expressive, and Fluid**: Minimizes the number of characters and keystrokes required in a file, and enables a fast, fluid coding workflow. Unlike most template syntaxes, you do not need to interrupt your coding to explicitly denote server blocks within your HTML. The parser is smart enough to infer this from your code. This enables a really compact and expressive syntax which is clean, fast and fun to type.
-- **Easy to Learn**: Enables you to quickly be productive with a minimum of concepts. You use all your existing Scala language and HTML skills.
+- **Compact, Expressive, and Fluid**: Minimizes the number of characters and keystrokes required in a file, and enables a fast, fluid coding workflow. Unlike most template syntaxes, you do not need to interrupt your coding to explicitly denote server blocks within your HTML. The parser is smart enough to infer this from your code. This enables a compact and expressive syntax which is clean, fast and fun to type.
+- **Easy to Learn**: Enables you to quickly be productive with a minimum number of new concepts. You use all your existing Scala language and HTML skills.
 - **Is not a new language**: We consciously chose not to create a new language. Instead we wanted to enable developers to use their existing Scala language skills, and deliver a template markup syntax that enables an awesome HTML construction workflow with your language of choice.
 - **Works with any Text Editor**: Doesn’t require a specific tool and enables you to be productive in any plain old text editor.
 
@@ -39,7 +39,7 @@ You can then call this from any Java code:
 Html html = views.html.Application.index.render(customer, orders);
 ```
 
-> Note even though you have to write the dynamic expressions in Scala, it’s not very different than how you’d write it in Java - you don’t have to learn much Scala before writing your first templates.
+> Note: even though you have to write the dynamic expressions in Scala, it’s not very different than how you’d write it in Java - you don’t have to learn much Scala before writing your first templates.
 
 ## Syntax: the magic ‘@’ character
 
@@ -125,7 +125,7 @@ Nothing special here. Simply use the standard Scala `if` instruction:
 
 ## Declaring reusable blocks
 
-You can create reusable code block:
+You can create reusable code blocks:
 
 ```html
 @display(product: models.Product) = {
