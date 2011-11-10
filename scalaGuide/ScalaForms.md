@@ -9,8 +9,8 @@ import play.api.data._
 
 val loginForm = Form(
   of(
-    'email -> of[String],
-    'password -> of[String]
+    "email" -> of[String],
+    "password" -> of[String]
   )
 )
 ```
@@ -37,8 +37,8 @@ case class User(name: String, age: Int)
 
 val userForm = Form(
   of(User)(
-    'name -> of[String],
-    'age -> of[Int]
+    "name" -> of[String],
+    "age" -> of[Int]
   )
 )
 
@@ -55,8 +55,8 @@ case class User(name: String, age: Int)
 
 val userForm = Form(
   of(User)(
-    'name -> of[String] verifying required,
-    'age -> of[Int] verifying (min(0), max(100))
+    "name" -> of[String] verifying required,
+    "age" -> of[Int] verifying (min(0), max(100))
   )
 )
 ```
@@ -66,8 +66,8 @@ And even define ad-hoc constraints on the fields:
 ```scala
 val loginForm = Form(
   of(
-    'email -> of[String],
-    'password -> of[String]
+    "email" -> of[String],
+    "password" -> of[String]
   ) verifying("Invalid user name or pasword", { 
       case (e,p) => User.authenticate(e,p).isDefined 
   })
@@ -100,8 +100,8 @@ The `play.api.data` package defines several high level mapping you can use direc
 ```scala
 val userForm = Form(
   of(User)(
-    'email -> email,
-    'age -> number
+    "email" -> email,
+    "age" -> number
   )
 )
 ```
@@ -126,10 +126,10 @@ case class Address(street: String, city: String)
 
 val userForm = Form(
   of(User)(
-    'name -> text,
-    'address -> of(Address)(
-        'street -> text,
-        'city -> text
+    "name" -> text,
+    "address" -> of(Address)(
+        "street" -> text,
+        "city" -> text
     )
   )
 )
