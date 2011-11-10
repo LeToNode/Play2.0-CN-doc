@@ -4,7 +4,7 @@ Play 2.0 comes with a new and really powerful Scala based template engine. The d
 
 - **Compact, Expressive, and Fluid**: Minimizes the number of characters and keystrokes required in a file, and enables a fast, fluid coding workflow. Unlike most template syntaxes, you do not need to interrupt your coding to explicitly denote server blocks within your HTML. The parser is smart enough to infer this from your code. This enables a compact and expressive syntax which is clean, fast and fun to type.
 - **Easy to Learn**: Enables you to quickly be productive with a minimum number of new concepts. You use all your existing Scala language and HTML skills.
-- **Is not a new language**: We consciously chose not to create a new language. Instead we wanted to enable developers to use their existing Scala language skills, and deliver a template markup syntax that enables an awesome HTML construction workflow with your language of choice.
+- **Is not a new language**: We consciously chose not to create a new language. Instead we wanted to enable developers to use their existing Scala language skills, and deliver a template markup syntax that enables an awesome and efficient HTML construction workflow.
 - **Works with any Text Editor**: Doesn’t require a specific tool and enables you to be productive in any plain old text editor.
 
 Play templates are compiled, so you’ll be notified of any errors directly in your browser:
