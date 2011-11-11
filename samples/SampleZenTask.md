@@ -1,4 +1,4 @@
-# Zentasks
+# ZenTasks
 
 [[zentask.png]]
 
