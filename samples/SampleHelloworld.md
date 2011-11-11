@@ -4,7 +4,7 @@
 
 > This sample application is available both in Java and Scala.
 
-This is a very basic application demonstration Play 2.0 fundamentals:
+This is a very basic application demonstrating Play 2.0 fundamentals:
 
 - Writing controllers and actions.
 - Routing and reverse routing.
