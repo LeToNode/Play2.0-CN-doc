@@ -42,6 +42,7 @@ Welcome to the Play framework 2.0 beta documentation. This documentation is a wo
 
 ## Sample applications
 
+- [[Hello World | SampleHelloworld]].
 - [[The computers database | SampleComputerDatabase]].
 - [[ZenTask | SampleZenTask]].
 
