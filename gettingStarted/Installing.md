@@ -10,7 +10,19 @@ Be sure to have the `java` and `javac` commands in the current path (you can che
 
 ## Download the binary package
 
-Download the [[Play 2.0 beta binary package | http://download.playframework.org/releases/play-2.0-beta.zip]] and extract the archive. For convenience, you should add the framework installation directory to your system PATH. If you’re on UNIX, make sure that the play script is runnable (otherwise do a `chmod +x play`). That’s all.
+Download the [[Play 2.0 beta binary package | http://download.playframework.org/releases/play-2.0-beta.zip]] and extract the archive. 
+
+## Add the play script in your PATH
+
+For convenience, you should add the framework installation directory to your system PATH. On UNIX system you should add something like that somewhere:
+
+```bash
+export PATH=$PATH:/path/to/play20
+```
+
+On windows system it should be set somewhere in the global environment variables.
+
+> If you’re on UNIX, make sure that the play script is runnable (otherwise do a `chmod +x play`). 
 
 ## Check that the play command is available
 
