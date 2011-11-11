@@ -2,9 +2,9 @@
 
 ## The public/ folder
 
-Serving a public resource in Play 2.0 is nothing more than serving any other HTTP request. It uses the same routing and then Controller/Action path to distribute CSS, JavaScript or images files to the web client.
+Serving a public resource in Play 2.0 is the same as serving any other HTTP request. It uses the same routing as regular resources: using the Controller/Action path to distribute CSS, JavaScript or image files to the client.
 
-By convention, the public assets are stored in the `public` folder of your application. This folder is organized as:
+By convention, public assets are stored in the `public` folder of your application. This folder is organized as follows:
 
 ```
 public
@@ -13,59 +13,59 @@ public
   `-- images
 ```
 
-If you follow this rule it will be simpler to get started. But nothing prevent you to adapt it once you understand how it works.
+If you follow this structure it will be simpler to get started, but nothing stops you to modifying it once you understand how it works.
 
 ## How public assets are packaged?
 
-During the build process, the content of the `public` folder is processed and added to the application classpath. When you package your application all these file are packaged into the application jar file (under the `public/` path).
+During the build process, the contents of the `public` folder is processed and added to the application classpath. When you package your application all these file are packaged into the application jar file (under the `public/` path).
 
 ## The Assets controller
 
-Play 2.0 comes with a built-in controller to serve public assets. This controller provides automatically caching, ETag, gzip compression or Javascript minification support.
+Play 2.0 comes with a built-in controller to serve public assets. By default, this controller provides caching, ETag, gzip compression and Javascript minification support.
 
-This controller is available in the default play jar as `controllers.Assets`. It defines a single `at` action with two parameters:
+The controller is available in the default play jar as `controllers.Assets`, and defines a single `at` action with two parameters:
 
 ```
 Assets.at(folder: String, file: String)
 ```
 
-The `folder` parameter must be fixed and defines the directory managed by this action. The `file` parameter is usually dynamically extracted from the request path.
+The `folder` parameter must be fixed and defines the directory managed by the action. The `file` parameter is usually dynamically extracted from the request path.
 
-Here is a classical mapping of the `Assets` controller in your `conf/routes` file:
+Here is the typical mapping of the `Assets` controller in your `conf/routes` file:
 
 ```
 GET  /assets/*file        Assets.at("public", file)
 ```
 
-Note that we define the `*file` dynamic part that will match the `.*` regular expression. If you send this request to the server:
+Note that we define the `*file` dynamic part that will match the `.*` regular expression. So for example, if you send this request to the server:
 
 ```
 GET /assets/javascripts/jquery.js
 ```
 
-The router will invoke the `Assets.at` action with the following parameter:
+The router will invoke the `Assets.at` action with the following parameters:
 
 ```
 controllers.Assets.at("public", "javascripts/jquery.js")
 ```
 
-This action will lookup for the file and serve it if it exists.
+This action will look up the file and serve it if it exists.
 
 ## Reverse routing for public assets
 
-Like any controller mapped in the routes file, a reverse controller is created in `controllers.routes.Assets`. You can use it to reverse the URL needed to fetch a public resource. For example from a template:
+Like any controller mapped in the routes file, a reverse controller is created in `controllers.routes.Assets`. You use this to reverse the URL needed to fetch a public resource. For example from a template:
 
 ```html
 <script src="@routes.Assets.at("javascripts/jquery.js")"></script>
 ```
 
-That will produce the following result:
+Will produce the following result:
 
 ```html
 <script src="/assets/javascripts/jquery.js"></script>
 ```
 
-Note that we don’t specify the first `folder` parameter when we reverse the route. This is because our routes file defines a single mapping for the `Assets.at` action, where the `folder` parameter is fixed. So it is useless to specify it.
+Note that we don’t specify the first `folder` parameter when we reverse the route. This is because our routes file defines a single mapping for the `Assets.at` action, where the `folder` parameter is fixed. So it is doesn't need to be specified explicitly.
 
 However if you define two mapping for the `Assets.at` action, like:
 
@@ -74,7 +74,7 @@ GET  /javascripts/*file        Assets.at("public/javascripts", file)
 GET  /images/*file             Assets.at("public/images", file)
 ```
 
-You will need to specify both parameter when using the reverse router:
+You will need to specify both parameters when using the reverse router:
 
 ```html
 <script src="@routes.Assets.at("public/javascripts", "jquery.js")">
