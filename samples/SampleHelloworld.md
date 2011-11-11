@@ -1,7 +1,5 @@
 # The Hello world application
 
-> This sample application is available both in Java and Scala.
-
 [[helloworld.png]]
 
 This is a very basic application demonstration Play 2.0 fundamentals:
@@ -11,3 +9,6 @@ This is a very basic application demonstration Play 2.0 fundamentals:
 - Public assets.
 - Templating.
 - Form handling with validation.
+
+> This sample application is available both in Java and Scala.
+
