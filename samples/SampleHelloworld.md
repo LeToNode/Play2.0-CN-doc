@@ -2,13 +2,14 @@
 
 [[helloworld.png]]
 
+> This sample application is available both in Java and Scala.
+
 This is a very basic application demonstration Play 2.0 fundamentals:
 
 - Writing controllers and actions.
 - Routing and reverse routing.
-- Public assets.
-- Templating.
-- Form handling with validation.
+- Linking public assets.
+- Using the template engine.
+- Handling forms with validation.
 
-> This sample application is available both in Java and Scala.
 
