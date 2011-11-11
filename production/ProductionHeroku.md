@@ -4,7 +4,7 @@
 
 ## Add the Procfile
 
-Heroku needs a special file in the application root called `Procfile`, create it with this simple content:
+Heroku requires a special file in the application root called `Procfile`. Create a simple text file with the following content:
 
 ```txt
 web: target/start
@@ -22,7 +22,7 @@ $ git commit -m "init"
 
 ## Create a new application on heroku
 
-> Note that you need an Heroku account, and to install the heroku gem before.
+> Note that you need an Heroku account, and to install the heroku gem.
 
 ```bash
 $ heroku create --stack cedar
@@ -58,9 +58,9 @@ To git@heroku.com:floating-lightning-8044.git
 * [new branch]      master -> master
 ```
 
-Heroku will run `sbt clean compile stage` to prepare your application. At the first deployment all dependencies will be fetched from the internet, taking a while to complete (it will stay cached for the next deployments).
+Heroku will run `sbt clean compile stage` to prepare your application. On the first deployment all dependencies will be fetched from the internet, taking a while to complete (it will stay cached for future deployments).
 
-## Check that your application is deployed
+## Check that your application has been deployed
 
 Now, let’s check the state of the app’s processes:
 
