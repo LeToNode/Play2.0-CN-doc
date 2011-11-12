@@ -22,7 +22,7 @@ export PATH=$PATH:/path/to/play20
 
 On windows system it should be set somewhere in the global environment variables.
 
-> If you’re on UNIX, make sure that the play script is runnable (otherwise do a `chmod +x play`). 
+> If you’re on UNIX, make sure that the play script is executable (otherwise do a `chmod +x play`). 
 
 ## Check that the play command is available
 
