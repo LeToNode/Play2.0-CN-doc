@@ -1,10 +1,10 @@
-# Http Routing
+# HTTP routing
 
 The router is the component in charge of translating each incoming HTTP request to an action call (a static, public method of a controller).
 
 An HTTP request is seen as an event by the MVC framework. This event contains two major pieces of information:
 
-- the Request path (e.g. `/clients/1542`, `/photos/list`), including the query string
+- the request path (e.g. `/clients/1542`, `/photos/list`), including the query string
 - the HTTP method (e.g. GET, POST, …).
 
 Routes are defined in the `conf/routes` file, which is compiled. This means that you’ll see route errors directly in your browser:
@@ -26,7 +26,7 @@ Each route starts with the HTTP method, followed by the URI pattern. The last el
 You can also add comments to the route file, with the `#` character.
 
 ```
-# Display a client
+# Display a client.
 GET   /clients/:id          controllers.Clients.show(id: Long)  
 ```
 
@@ -34,7 +34,7 @@ GET   /clients/:id          controllers.Clients.show(id: Long)
 
 The HTTP method can be any of the valid methods supported by HTTP (`GET`, `POST`, `PUT`, `DELETE`, `HEAD`).
 
-## The URI Pattern
+## The URI pattern
 
 The URI pattern defines the route’s request path. Parts of the request path can be dynamic.
 
@@ -76,7 +76,7 @@ You can also define your own regular expression for the dynamic part, using the 
 GET   /clients/$id<[0-9]+>  controllers.Clients.show(id: Long)  
 ```
 
-## Call to action generator method.
+## Call to action generator method
 
 The last part of a route definition is the call. This part must define a valid call to a method returning a `play.api.mvc.Action` value, which will typically be a controller action method.
 
@@ -89,14 +89,14 @@ GET   /                     controllers.Application.homePage()
 If the action method defines some parameters, all these parameter values will be searched for in the request URI, either extracted from the URI path itself, or from the query string.
 
 ```
-# Extract the page parameter from the path
+# Extract the page parameter from the path.
 GET   /:page                controllers.Application.show(page)
 ```
 
 Or:
 
 ```
-# Extract the page parameter from the queryString
+# Extract the page parameter from the query string.
 GET   /page                 controllers.Application.show(page)
 ```
 
@@ -140,7 +140,7 @@ GET   /:page                controllers.Application.show(page)
 
 ### Parameters with default values
 
-You can also provide a default value, that will be used if no value is found in the incoming request:
+You can also provide a default value that will be used if no value is found in the incoming request:
 
 ```
 # Pagination links, like /clients?page=3

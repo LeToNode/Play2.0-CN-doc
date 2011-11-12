@@ -6,8 +6,8 @@ The Scala API for Play 2.0 application developers is available in the `play.api`
 
 ## Manual (first draft)
 
-1. [[Controllers and Actions | ScalaControllers]]
-2. [[HTTP Routing | ScalaRouting]]
+1. [[Controllers and actions | ScalaControllers]]
+2. [[HTTP routing | ScalaRouting]]
 3. [[The templating system | ScalaTemplates]]
 4. [[Handling form submission and validation| ScalaForms]]
 5. [[Application global settings | ScalaGlobal]]

@@ -1,14 +1,14 @@
-# Controllers and Actions
+# Controllers and actions
 
 Business logic is managed in the domain model layer. As an application client (typically a web browser) cannot directly invoke this code, the application exposes a domain object’s functionality as resources represented by URIs.
 
-A client uses the uniform API provided by the HTTP protocol to manipulate these resources, and by implication the underlying business logic. However, this mapping of resources to domain objects is not a bijection: the granularity can be expressed at different levels, some resources may be virtual, for some resources aliases may be defined…
+A client uses the uniform API provided by the HTTP protocol to manipulate these resources, and by implication the underlying business logic. However, this mapping of resources to domain objects is not a bijection: the granularity can be expressed at different levels. Some resources may be virtual and for some resources, aliases may be defined.
 
 This is precisely the role played by the controller layer, which acts as glue between domain model objects and transport layer events. As with the model layer, controllers are written in pure Scala, making it easy to access or modify model objects. Like the HTTP interface, controllers are procedural and request/response oriented.
 
 The controller layer reduces the impedance mismatch between HTTP and the domain model.
 
-## A Controller overview
+## A controller overview
 
 A Controller is a Scala singleton object, hosted by the controllers package, that subclasses `play.api.mvc.Controller`. You can declare as many controllers you want in the same file.
 
@@ -41,7 +41,7 @@ val echo = Action { request =>
 
 An action returns a `play.api.mvc.Result` value, representing the HTTP response to send to the web client. In this example `Ok` constructs a **200 OK** response containing a **text/plain** response body.
 
-## Controllers as Action generators
+## Controllers as action generators
 
 A `Controller` is nothing more than a singleton object that generates `Action` values. The simplest use case for defining an action generator is a method with no parameters that returns an `Action` value	:
 
@@ -76,7 +76,7 @@ def hello(name: String) = Action {
 }
 ```
 
-## Composing Actions
+## Composing actions
 
 You can easily compose actions. For example, you can define a cached and secured action using:
 
