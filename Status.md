@@ -26,6 +26,10 @@ We have basic Specs/Junit integration for now. We will add better API for testin
 
 As in Play 1.x, Play 2.0 will provide out of the box integration with a powerful Web Service client, and OpendID, OAuth support.
 
+### IDE integration
+
+Currently there is no simple way to integrate your Play 2.0 project in your favorite IDE. You must configure it yourself. But we will add the so cool 'eclipsify', 'netbeansify' and 'idealize' tasks to the Play console.
+
 ### War support
 
 It is also planned to add War deployment support via Servlet 3.0.
