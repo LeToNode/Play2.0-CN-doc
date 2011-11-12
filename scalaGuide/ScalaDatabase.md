@@ -2,9 +2,9 @@
 
 ## Configuring JDBC connection pools
 
-Play 2.0 provides a plugin able to manage JDBC connection pools. You can configure as many databases you need.
+Play 2.0 provides a plugin for managing JDBC connection pools. You can configure as many databases you need.
 
-To enable the database plugin, configure a connection pool in the `conf/application.conf` file. By convention the default JDBC datasource must be called `default`:
+To enable the database plugin, configure a connection pool in the `conf/application.conf` file. By convention the default JDBC data source must be called `default`:
 
 ```properties
 # Default database configuration
@@ -12,7 +12,7 @@ db.default.driver=org.h2.Driver
 db.default.url=jdbc:h2:mem:play
 ```
 
-To configure several datasources:
+To configure several data sources:
 
 ```properties
 # Orders database
@@ -28,9 +28,9 @@ If something isn’t properly configured you will be notified directly in your b
 [[dbError.png]]
 
 
-## Accessing the JDBC datasource
+## Accessing the JDBC data source
 
-The `play.api.db` package provide access to the configured datasources:
+The `play.api.db` package provides access to the configured data sources:
 
 ```scala
 import play.api.db._
@@ -38,9 +38,9 @@ import play.api.db._
 val ds = DB.getDatasource()
 ```
 
-## Integrating with a DataBase access layer
+## Integrating with a database access layer
 
-From here you can integrate any JDBC access layer that need a JDBC datasource. For example, to integrate with [[ScalaQuery | https://github.com/szeiger/scala-query]]:
+From here you can integrate any JDBC access layer that needs a JDBC data source. For example, to integrate with [[ScalaQuery | https://github.com/szeiger/scala-query]]:
 
 ```scala
 import play.api.db._

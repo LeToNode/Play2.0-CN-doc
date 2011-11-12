@@ -14,7 +14,7 @@ object Global extends GlobalSettings {
 
 ## Hooking into application start and stop events
 
-You can override the `onStart` and `onStop` operation to be notified of the events in the application lifecycle;
+You can override the `onStart` and `onStop` methods to be notified of the events in the application lifecycle;
 
 ```scala
 import play.api._
@@ -52,7 +52,7 @@ object Global extends GlobalSettings {
 }
 ```
 
-## Handling "action not found"
+## Handling missing actions and binding errors
 
 If the framework doesn’t find an `Action` for a request, the `onActionNotFound` operation will be called:
 

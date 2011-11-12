@@ -2,7 +2,7 @@
 
 ## Defining a form
 
-The `play.api.data` package contains several helpers to handle data submission and validation. The easiest way to handle a form submission is to define a `play.api.data.Form` structure:
+The `play.api.data` package contains several helpers to handle HTTP form data submission and validation. The easiest way to handle a form submission is to define a `play.api.data.Form` structure:
 
 ```scala
 import play.api.data._
@@ -15,7 +15,7 @@ val loginForm = Form(
 )
 ```
 
-Here the form is able to generate a `(String, String)` result value from a `Map[String,String]` set of data:
+This form can generate a `(String, String)` result value from `Map[String,String]` data:
 
 ```scala
 val anyData = Map("email" -> "bob@gmail.com", "password" -> "secret")
@@ -30,7 +30,7 @@ val (user,password) = loginForm.bindFromRequest.get
 
 ## Wrapping an existing case class
 
-A form can use any function to construct the type. So you can, for example, define a form wrapping an existing case class:
+A form can use any function to construct the type. So you can, for example, define a form that wraps an existing case class:
 
 ```scala
 case class User(name: String, age: Int)
@@ -48,7 +48,7 @@ val user:User = userForm.bind(anyData).get
 
 ## Defining constraints
 
-For each mapping you can also define additional constraints that will be checked during the binding phase:
+For each mapping you can also define additional validation constraints that will be checked during the binding phase:
 
 ```scala
 case class User(name: String, age: Int)
@@ -61,7 +61,7 @@ val userForm = Form(
 )
 ```
 
-And even define ad-hoc constraints on the fields:
+You can even define ad-hoc constraints on the fields:
 
 ```scala
 val loginForm = Form(
@@ -93,9 +93,9 @@ Sometimes you’ll want to fill a form with existing values, typically for editi
 userForm.fill(User("Bob", 18))
 ```
 
-## Using high level mapping
+## Using high-level mapping
 
-The `play.api.data` package defines several high level mapping you can use directly.
+The `play.api.data` package defines several high-level mappings that you can use directly.
 
 ```scala
 val userForm = Form(
@@ -118,7 +118,7 @@ val email = of[String] verifying pattern(
 
 ## Nested values
 
-A form can define any nested value:
+A form can define a nested value:
 
 ```scala
 case class User(name: String, address: Address)
