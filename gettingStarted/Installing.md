@@ -10,7 +10,7 @@ Be sure to have the `java` and `javac` commands in the current path (you can che
 
 ## Download the binary package
 
-Download the [[Play 2.0 beta binary package | http://download.playframework.org/releases/play-2.0-preview.zip]] and extract the archive. 
+Download the [[Play 2.0 preview binary package | http://download.playframework.org/releases/play-2.0-preview.zip]] and extract the archive. 
 
 ## Add the play script in your PATH
 
