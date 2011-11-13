@@ -37,7 +37,8 @@ In `project/plugins.sbt`, add:
 ```scala
 resolvers ++= Seq(
   "Maven Repository" at "http://repo1.maven.org/maven2/",
-  "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/"
+  "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/",
+  Resolver.url("Play Ivy Repo", new java.net.URL("http://download.playframework.org/ivy-releases/"))(Resolver.ivyStylePatterns)
 )
 
 libraryDependencies += "play" %% "play" % "2.0-beta"
