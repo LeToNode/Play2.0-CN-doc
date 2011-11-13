@@ -2,11 +2,11 @@
 
 ## Unmanaged dependencies
 
-Most people end up using managed dependencies - which allows for fine-grained control, but unmanaged can be simpler when starting out.
+Most people end up using managed dependencies - which allows for fine-grained control, but unmanaged dependencies can be simpler when starting out.
 
-Unmanaged dependencies work like this: add jars to lib and they will automatically be placed on the application classpath. Not much else to it!
+Unmanaged dependencies work like this: add JAR files to the `lib/` directory and they will automatically be added to the application classpath. There’s not much else to it!
 
-There’s nothing to add to `project/Build.scala` to use unmanaged dependencies (though you could change a configuration key if you’d like to use a directory different to lib).
+There’s nothing to add to `project/Build.scala` to use unmanaged dependencies, though you could change a configuration key if you’d like to use a directory different to `lib`.
 
 ## Managed dependencies
 
@@ -34,9 +34,9 @@ Of course, sbt (via Ivy) has to know where to download the module. If your modul
 
 ### Getting the right Scala version with `%%`
 
-If you use `groupID` %% `artifactID` % `revision` rather than `groupID` % `artifactID` % `revision` (the difference is the double %% after the `groupID`), sbt will add your project’s Scala version to the artifact name. This is just a shortcut. 
+If you use `groupID %% artifactID % revision` instead of `groupID % artifactID % revision` (the difference is the double `%%` after the `groupID`), sbt will add your project’s Scala version to the artifact name. This is just a shortcut. 
 
-You could write this without the %%:
+You could write this without the `%%`:
 
 ```scala
 val appDependencies = Seq(

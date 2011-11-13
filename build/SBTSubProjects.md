@@ -1,8 +1,8 @@
-# Working with sub projects
+# Working with sub-projects
 
-A complex project is not necessarily composed of a single Play application. You may want to split a large project into several smaller application, or even extract some logic in a standard Java or Scala library that has nothing to do with a Play application.
+A complex project is not necessarily composed of a single Play application. You may want to split a large project into several smaller applications, or even extract some logic into a standard Java or Scala library that has nothing to do with a Play application.
 
-## Adding a simple library sub project
+## Adding a simple library sub-project
 
 You can make your application depend on a simple library project. Just add another sbt project definition in your `project/Build.scala` build file:
 
@@ -26,7 +26,7 @@ object ApplicationBuild extends Build {
 }
 ```
 
-Here we have defined a sub project in the `modules/myLibrary` folder of the application. This sub project is a standard sbt project, using the default layout:
+Here we have defined a sub-project in the application’s `modules/myLibrary` folder. This sub-project is a standard sbt project, using the default layout:
 
 ```
 modules
@@ -37,7 +37,7 @@ modules
                     `-- scala 
 ```
 
-When you have a sub project enabled in your build, you can focus on this project and compile/test/run it individually. Just use the `projects` command in the Play console prompt to display all projects:
+When you have a sub-project enabled in your build, you can focus on this project and compile, test or run it individually. Just use the `projects` command in the Play console prompt to display all projects:
 
 ```
 [my-first-application] $ projects
@@ -58,11 +58,11 @@ When you run your Play application in dev mode, the dependent projects are autom
 
 [[subprojectError.png]]
 
-## Splitting your web application into several parts.
+## Splitting your web application into several parts
 
 As a Play application is just a standard sbt project with a default configuration, it can depend on another Play application. 
 
-The configuration is very close to the previous one. Simply configure your sub project as a `PlayProject`:
+The configuration is very close to the previous one. Simply configure your sub-project as a `PlayProject`:
 
 ```
 import sbt._
