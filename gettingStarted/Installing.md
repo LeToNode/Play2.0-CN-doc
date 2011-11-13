@@ -14,15 +14,15 @@ Download the [[Play 2.0 preview binary package | http://download.playframework.o
 
 ## Add the play script in your PATH
 
-For convenience, you should add the framework installation directory to your system PATH. On UNIX system you should add something like that somewhere:
+For convenience, you should add the framework installation directory to your system PATH. On UNIX systems will be something like:
 
 ```bash
 export PATH=$PATH:/path/to/play20
 ```
 
-On windows system it should be set somewhere in the global environment variables.
+On windows systems you'll need to set it in the global environment variables.
 
-> If you’re on UNIX, make sure that the play script is executable (otherwise do a `chmod +x play`). 
+> If you’re on UNIX, make sure that the play script is executable (otherwise do a `chmod a+x play`).
 
 ## Check that the play command is available
 
