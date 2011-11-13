@@ -2,7 +2,7 @@
 
 ## Defining a form
 
-The `play.data` package contains several helpers to handle data submission and validation. The easiest way to handle a form submission is to define a `play.data.Form` that wraps an existing class:
+The `play.api.data` package contains several helpers to handle HTTP form data submission and validation. The easiest way to handle a form submission is to define a `play.data.Form` that wraps an existing class:
 
 ```java
 public class User {
@@ -15,7 +15,7 @@ public class User {
 Form<User> userForm = form(User.class);
 ```
 
-Here the form is able to generate a `User` result value from a `HashMap<String,String>` set of data:
+This form can generate a `User` result value from `HashMap<String,String>` data:
 
 ```java
 Map<String,String> anyData = new HashMap();
@@ -33,7 +33,7 @@ User user = userForm.bindFromRequest().get();
 
 ## Defining constraints
 
-You can define additional constraints that will be checked during the binding phase using JSR-303 annotations:
+You can define additional constraints that will be checked during the binding phase using JSR-303 (Bean Validation) annotations:
 
 ```java
 public class User {
@@ -77,15 +77,15 @@ if(userForm.hasErrors()) {
 
 ## Fill a form with initial default values
 
-Often you'll want to fill a form with existing default values - typically for editing:
+Sometimes you’ll want to fill a form with existing values, typically for editing:
 
-```scala
+```java
 userForm.fill(new User("bob@gmail.com", "secret"))
 ```
 
 ## Displaying a form in a template
 
-The `Form` value contains everything needed to display the form to the user:
+The `Form` value contains everything you need to display the form to the user:
 
 ```html
 @(userForm: Form[models.User])

@@ -2,20 +2,20 @@
 
 ## Configuring Ebean
 
-Play 2.0 comes with the [[Ebean | http://www.avaje.org/]] ORM. To enable it, add this line in your `conf/application.conf` file:
+Play 2.0 comes with the [[Ebean | http://www.avaje.org/]] ORM. To enable it, add the following line to `conf/application.conf`:
 
 ```properties
 ebean.default=models.*
 ```
 
-Here you define a `default` Ebean server, using the `default` datasource that must be properly configured. You can actually create as many Ebean server you need, and explicitly define the mapped class for each server.
+This defines a `default` Ebean server, using the `default` data source, which must be properly configured. You can actually create as many Ebean servers you need, and explicitly define the mapped class for each server.
 
 ```properties
 ebean.orders=models.Order,models.OrderItem
 ebean.customers=models.Customer,models.Address
 ```
 
-In this example, we have access to 2 Ebean servers - each one using its own database.
+In this example, we have access to two Ebean servers - each one using its own database.
 
 ## Using the play.db.ebean.Model superclass
 

@@ -4,7 +4,7 @@
 
 Play 2.0 provides a plugin for managing JDBC connection pools. You can configure as many databases you need.
 
-To enable the database plugin, configure a connection pool in the `conf/application.conf` file. By convention the default JDBC datasource must be called `default`:
+To enable the database plugin, configure a connection pool in the `conf/application.conf` file. By convention the default JDBC data source must be called `default`:
 
 ```properties
 # Default database configuration
@@ -12,7 +12,7 @@ db.default.driver=org.h2.Driver
 db.default.url=jdbc:h2:mem:play
 ```
 
-To configure several datasources:
+To configure several data sources:
 
 ```properties
 # Orders database
@@ -28,9 +28,9 @@ If something isn’t properly configured you will be notified directly in your b
 [[dbError.png]]
 
 
-## Accessing the JDBC datasource
+## Accessing the JDBC data source
 
-The `play.db` package provide access to the configured datasources:
+The `play.db` package provide access to the configured data sources:
 
 ```java
 import play.db.*;

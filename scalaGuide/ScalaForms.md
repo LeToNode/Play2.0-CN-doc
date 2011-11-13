@@ -76,7 +76,7 @@ val loginForm = Form(
 
 ## Handling binding failure
 
-Of course, if you define constraints - you must handle the binding errors. You can use the `fold` operation for that:
+Of course if you can define constraints, then you need to be able to handle the binding errors. You can use the `fold` operation for that:
 
 ```scala
 loginForm.bindFromRequest.fold(
@@ -137,7 +137,7 @@ val userForm = Form(
 
 ## Displaying a form in a template
 
-The `Form` value contains everything needed to display the form to the user:
+The `Form` value contains everything you need to display the form to the user:
 
 ```html
 @(userForm: Form[models.User])

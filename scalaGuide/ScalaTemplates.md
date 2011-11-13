@@ -7,7 +7,7 @@ Play 2.0 comes with a new and really powerful Scala-based template engine. This 
 - **not a new language**: we consciously chose not to create a new language. Instead we wanted to enable developers to use their existing Scala language skills, and deliver a template markup syntax that enables an awesome HTML construction workflow with your language of choice.
 - **editable in any text editor**: it doesn’t require a specific tool and enables you to be productive in any plain old text editor.
 
-Templates are compiled, and you will see any errors right in your browser:
+Templates are compiled, so you will see any errors right in your browser:
 
 [[templatesError.png]]
 
@@ -15,7 +15,7 @@ Templates are compiled, and you will see any errors right in your browser:
 
 A Play Scala template is a simple text file, that contains small blocks of Scala code. They can generate any text-based format, such as HTML, XML or CSV.
 
-The template system has been designed to feel comfortable to those used to working with HTML, allowing Web designers to easily work with the templates.
+The template system has been designed to feel comfortable to those used to working with HTML, allowing web designers to easily work with the templates.
 
 Templates are compiled as standard Scala functions, following a simple naming convention: If you create a `views/Application/index.scala.html` template file, it will generate a `views.html.Application.index` function.
 
@@ -57,7 +57,7 @@ Hello @(customer.firstName + customer.lastName)!
                     Scala Code
 ```
 
-You can also use curly brackets, like in plain Scala code, to write a multi-statements block:
+You can also use curly brackets, as in plain Scala code, to write a multi-statements block:
 
 ```
 Hello @{val name = customer.firstName + customer.lastName; name}!
@@ -68,7 +68,7 @@ Hello @{val name = customer.firstName + customer.lastName; name}!
 Because `@` is a special character, you’ll sometimes need to escape it. Do this by using `@@`:
 
 ```
-My email is bob@@gmail.com
+My email is bob@@example.com
 ```
 
 ## Template parameters
@@ -199,7 +199,7 @@ You can write server side block comments in templates using `@* *@`:
 
 ## Escaping
 
-By default the dynamic content parts are escaped following the template type (Html,Xml,...) rules. If you want to output a raw content fragment, wrap it in the template content type. For example to output raw Html:
+By default the dynamic content parts are escaped following the template type (e.g. HTML or XML) rules. If you want to output a raw content fragment, wrap it in the template content type. For example to output raw HTML:
 
 ```html
 <p>
