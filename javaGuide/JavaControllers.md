@@ -1,16 +1,16 @@
-# Controllers and Actions
+# Controllers and actions
 
-Business logic is managed in the domain model layer. As a client (typically a web browser) cannot directly invoke this code, the functionality of a domain object is exposed as resources represented by URIs.
+Business logic is managed in the domain model layer. As an application client (typically a web browser) cannot directly invoke this code, the application exposes a domain object’s functionality as resources represented by URIs.
 
-A client uses the uniform API provided by the HTTP protocol to manipulate these resources, and by implication the underlying business logic. However, this mapping of resources to domain objects is not a bijection: the granularity can be expressed at different levels, some resources may be virtual, for some resources aliases may be defined…
+A client uses the uniform API provided by the HTTP protocol to manipulate these resources, and by implication the underlying business logic. However, this mapping of resources to domain objects is not a bijection: the granularity can be expressed at different levels. Some resources may be virtual and for some resources, aliases may be defined.
 
-This is precisely the role played by the Controller layer: providing a glue between the domain model objects and transport layer events. As the Model layer, controllers are written in pure Java, making it easy to access or modify Model objects. Like the HTTP interface, Controllers are procedural and Request/Response oriented.
+This is precisely the role played by the controller layer, which acts as glue between domain model objects and transport layer events. As with the model layer, controllers are written in pure Scala, making it easy to access or modify model objects. Like the HTTP interface, controllers are procedural and request/response oriented.
 
-The Controller layer reduces the impedance mismatch between HTTP and the Domain Model.
+The controller layer reduces the impedance mismatch between HTTP and the domain model.
 
-## A Controller overview
+## A controller overview
 
-A Controller is a Java class, hosted by the controllers package, and subclassing `play.mvc.Controller`. 
+A controller is a Java class, hosted by the controllers package, that subclasses `play.mvc.Controller`. 
 
 ```java
 package controllers;
@@ -27,15 +27,15 @@ public class Application extends Controller {
 }
 ```
 
-Each public, static method in a Controller returning a `play.mvc.Result` type is called an action method. The signature for an action method is always:
+Each public static method in a controller that returns a `play.mvc.Result` type is called an action method. The signature for an action method is always:
 
 ```java
 public static play.mvc.Result action_name(params...)
 ```
 
-You can define parameters in the action method signature. These parameters will be resolved by the Router from the corresponding HTTP parameters.
+You can define parameters in the action method signature. These parameters will be resolved by the router from the corresponding HTTP parameters.
 
-## What’s an Action?
+## What’s an action?
 
 An action is basically a Java method that processes the request parameters, and produces a result to be sent to the client.
 
@@ -49,9 +49,9 @@ An action returns a `play.mvc.Result` value, representing the HTTP response. In 
 
 ## Controllers 
 
-A `Controller` is really more than a class that groups of several action methods. 
+A `Controller` is nothing more than a class that groups several action methods. 
 
-The simplest version for defining an action is a method without parameters, which returns a `Result` value.:
+The simplest syntax for defining an action is a method with not parameters that returns a `Result` value:
 
 ```java
 public static Result index() {
@@ -59,7 +59,7 @@ public static Result index() {
 }
 ```
 
-Of course the action method method can have parameters:
+Of course, the action method method can have parameters:
 
 ```java
 public static Result index(String name) {
@@ -67,9 +67,9 @@ public static Result index(String name) {
 }
 ```
 
-## Composing Actions
+## Composing actions
 
-Action can also be easily composed using the `@With` annotation: 
+Action methods can also be easily composed using the `@With` annotation: 
 
 ```java
 @With(VerboseAction.class)
@@ -78,7 +78,7 @@ public static Result index() {
 }
 ```
 
-And here is the definition of the `VerboseAction`:
+Here is the definition of the `VerboseAction`:
 
 ```java
 public static class VerboseAction extends Action.Simple {
@@ -91,7 +91,7 @@ public static class VerboseAction extends Action.Simple {
 }
 ```
 
-It is also possible to define your own annotations, annotated themselves using `@With`:
+It is also possible to define your own annotations, themselves annotated with `@With`:
 
 ```java
 @With(VerboseAction.class)
@@ -101,7 +101,7 @@ public @interface Verbose {
 }
 ```
 
-And then:
+You can then use your new annotation with an action method:
 
 ```java
 @Verbose

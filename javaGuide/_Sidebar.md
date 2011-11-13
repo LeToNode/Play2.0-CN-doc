@@ -2,8 +2,8 @@
 
 [[/utils/line.png]]
 
-- [[Controllers and Actions | JavaControllers]]
-- [[HTTP Routing | JavaRouting]]
+- [[Controllers and actions | JavaControllers]]
+- [[HTTP routing | JavaRouting]]
 - [[The templating system | JavaTemplates]]
 - [[Handling form submission and validation| JavaForms]]
 - [[Application global settings | JavaGlobal]]
