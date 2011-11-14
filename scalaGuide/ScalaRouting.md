@@ -97,7 +97,7 @@ Or:
 
 ```
 # Extract the page parameter from the query string.
-GET   /page                 controllers.Application.show(page)
+GET   /                     controllers.Application.show(page)
 ```
 
 Here is the corresponding, `show` method definition in the `controllers.Application` controller:
