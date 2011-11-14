@@ -4,7 +4,7 @@
 
 The preferred way to deploy a Play 2.0 application is to retrieve the source (typically via a git workflow) on the server and to use either `play start` or `play stage` to start it in place.
 
-However sometimes you need to build a binary version of your application and deploy it to the server without any dependencies on Play itself. To do that, you can use the `dist` task.
+However, you sometimes need to build a binary version of your application and deploy it to the server without any dependencies on Play itself. You can do this with the `dist` task.
 
 In the Play console, simply type `dist`:
 
@@ -14,7 +14,7 @@ In the Play console, simply type `dist`:
 
 [[dist.png]]
 
-This produces a zip containing all jar files needed to run your application in the `target` folder of your application, the content of the zip file is organized as:
+This produces a ZIP file containing all JAR files needed to run your application in the `target` folder of your application, the ZIP file’s contents are organized as:
 
 ```
 my-first-application-1.0
@@ -27,19 +27,17 @@ my-first-application-1.0
 
 You can use the generated `start` script to run your application.
 
-Alternatively you can run `play dist` directly from your OS shell prompt:
+Alternatively you can run `play dist` directly from your OS shell prompt, which does the same thing:
 
 ```bash
 $ play dist
 ```
 
-Which does the same.
-
 ## Publishing to a Maven (or Ivy) repository
 
-You can also publish your application to a Maven repository. This publishes both the jar file containing your application and the corresponding POM file.
+You can also publish your application to a Maven repository. This publishes both the JAR file containing your application and the corresponding POM file.
 
-You need to configure the repository you want to publish to in the `project/Build.scala` file:
+You have to configure the repository you want to publish to, in the `project/Build.scala` file:
 
 ```scala
 val main = PlayProject(appName, appVersion, appDependencies).settings(

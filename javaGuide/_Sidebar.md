@@ -9,3 +9,4 @@
 - [[Application global settings | JavaGlobal]]
 - [[Accessing an SQL database | JavaDatabase]]
 - [[Using the Ebean ORM | JavaEbean]]
+- [[Testing your application | JavaTesting]]

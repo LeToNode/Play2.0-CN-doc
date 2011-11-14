@@ -10,9 +10,9 @@ Heroku requires a special file in the application root called `Procfile`. Create
 web: target/start
 ```
 
-## Store Your App in Git
+## Store your application in git
 
-Just init a git repository for your application:
+Just create a git repository for your application:
 
 ```bash
 $ git init
@@ -20,7 +20,7 @@ $ git add .
 $ git commit -m "init"
 ```
 
-## Create a new application on heroku
+## Create a new application on Heroku
 
 > Note that you need an Heroku account, and to install the heroku gem.
 
@@ -33,7 +33,7 @@ Git remote heroku added
 
 ## Deploy your application
 
-To deploy your application on heroku, you just need to push it into the `heroku` remote:
+To deploy your application on Heroku, just use git to push it into the `heroku` remote repository:
 
 ```bash
 $ git push heroku master
@@ -58,11 +58,11 @@ To git@heroku.com:floating-lightning-8044.git
 * [new branch]      master -> master
 ```
 
-Heroku will run `sbt clean compile stage` to prepare your application. On the first deployment all dependencies will be fetched from the internet, taking a while to complete (it will stay cached for future deployments).
+Heroku will run `sbt clean compile stage` to prepare your application. On the first deployment, all dependencies will be downloaded, which takes a while to complete (but will be cached for future deployments).
 
 ## Check that your application has been deployed
 
-Now, let’s check the state of the app’s processes:
+Now, let’s check the state of the application’s processes:
 
 ```bash
 $ heroku ps
@@ -86,7 +86,7 @@ Looks good. We can now visit the app with `heroku open`.
 
 ## Running play commands remotely
 
-Cedar allows you to launch a REPL process attached to your local terminal for experimenting in your app’s environment:
+Cedar allows you to launch a REPL process attached to your local terminal for experimenting in your application’s environment:
 
 ```bash
 $ heroku run sbt play

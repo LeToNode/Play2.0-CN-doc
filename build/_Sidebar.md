@@ -2,5 +2,5 @@
 
 [[/utils/line.png]]
 
-- [[Managing librairies dependencies | SBTDependencies]].
-- [[Working with sub-projects | SBTSubProjects]].
+- [[Managing library dependencies | SBTDependencies]]
+- [[Working with sub-projects | SBTSubProjects]]

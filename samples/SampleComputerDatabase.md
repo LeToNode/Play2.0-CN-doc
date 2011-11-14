@@ -4,19 +4,19 @@
 
 > This sample application is available both in Java and Scala.
 
-This is a classical CRUD application, backed by a JDBC database. It demonstrates:
+This is a classic CRUD application, backed by a JDBC database. It demonstrates:
 
-- Accessing a JDBC database, using Ebean in Java and Anorm in Scala.
-- Achieving, table pagination and CRUD forms.
-- Integrating with a CSS framework (twitter bootsrap).
+- accessing a JDBC database, using Ebean in Java and Anorm in Scala.
+- achieving, table pagination and CRUD forms.
+- integrating with a CSS framework ([[Twitter Bootstrap | http://twitter.github.com/bootstrap/]]).
 
-Because [[twitter bootstrap | http://twitter.github.com/bootstrap/]] requires a form layout that is different from the default one generate by Play 2.0 form helper, it provides an example of integrating a custom form input constructor:
+Twitter Bootstrap requires a different form layout to the default one that the Play 2.0 form helper generates, so this application also provides an example of integrating a custom form input constructor:
 
 ```html
 @(elements: helper.InputElements)
 
 @**************************************************
-* Generate input according twitter bootsrap rules *
+* Generate input according Twitter Bootstrap rules *
 **************************************************@
 <div class="clearfix @if(!elements.errors.isEmpty) {error}">
     @elements.label
