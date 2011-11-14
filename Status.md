@@ -28,7 +28,7 @@ As in Play 1.x, Play 2.0 will provide out of the box integration with a powerful
 
 ### IDE integration
 
-Currently there is no simple way to integrate your Play 2.0 project in your favorite IDE - you must configure it yourself. But we will add the so cool 'eclipsify', 'netbeansify' and 'idealize' tasks to the Play console.
+Currently there is no simple way to integrate your Play 2.0 project in your favorite IDE - you must configure it yourself (or install an sbt plugin like [[sbt-idea | https://github.com/mpeltonen/sbt-idea]]). But we will add the so cool 'eclipsify', 'netbeansify' and 'idealize' tasks to the Play console.
 
 ### WAR support
 
