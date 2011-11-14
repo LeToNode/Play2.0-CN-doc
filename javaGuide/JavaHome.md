@@ -13,7 +13,8 @@ The Java API for the Play 2.0 application developers is available in the `play` 
 5. [[Application global settings | JavaGlobal]]
 6. [[Accessing an SQL database | JavaDatabase]]
 7. [[Using the Ebean ORM | JavaEbean]]
-8. [[Testing your application | JavaTesting]]
+8. [[Caching | JavaCaching]]
+9. [[Testing your application | JavaTesting]]
 
 ## Tutorials
 
