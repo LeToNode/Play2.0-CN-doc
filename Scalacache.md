@@ -1,6 +1,6 @@
 # Caching
 
-a simple, in-memory cache with expiry support is provided by Play.
+a basic, in-memory cache with expiry support is provided by Play.
 
 _Note: By default, this implementation is used for Play's internal caching as well_
 
