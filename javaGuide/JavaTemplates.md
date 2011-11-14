@@ -3,8 +3,8 @@
 Play 2.0 comes with a new and really powerful Scala-based template engine. This new template engine’s design was inspired by ASP.NET Razor, specifically it is:
 
 - **compact, expressive, and fluid**: it minimizes the number of characters and keystrokes required in a file, and enables a fast, fluid coding workflow. Unlike most template syntaxes, you do not need to interrupt your coding to explicitly denote server blocks within your HTML. The parser is smart enough to infer this from your code. This enables a really compact and expressive syntax which is clean, fast and fun to type.
-- **easy to learn**: it enables you to quickly be productive with a minimum of concepts. You use all your existing Scala language and HTML skills.
-- **not a new language**: we consciously chose not to create a new language. Instead we wanted to enable developers to use their existing Scala language skills, and deliver a template markup syntax that enables an awesome HTML construction workflow with your language of choice.
+- **easy to learn**: it enables you to quickly be productive with a minimum of concepts - Scala templates are just as easy to use as the Groovy templates in Play 1.x. You also get to use all your existing HTML skills.
+- **not a new language**: we consciously chose not to create a new language. Instead we wanted to leverage existing Scala language skills and documentation, and deliver a template markup syntax that enables an awesome HTML construction work-flow with your language of choice.
 - **editable in any text editor**: it doesn’t require a specific tool and enables you to be productive in any plain old text editor.
 
 Templates are compiled, so you will see any errors right in your browser:
@@ -13,7 +13,7 @@ Templates are compiled, so you will see any errors right in your browser:
 
 ## Overview
 
-A Play Scala template is a simple text file, that contains small blocks of Scala code. They can generate any text-based format, such as HTML, XML or CSV.
+A Play 2.0 template is a simple text file, that contains small blocks of Scala code. They can generate any text-based format, such as HTML, XML or CSV.
 
 The template system has been designed to feel comfortable to those used to working with HTML, allowing web designers to easily work with the templates.
 
@@ -43,7 +43,7 @@ Html html = views.html.Application.index.render(customer, orders);
 
 ## Syntax: the magic ‘@’ character
 
-The Scala template uses `@` as the single special character. Every time this character is encountered, it indicates the beginning of a Scala statement. It does not require you to explicitly close the code-block - this will be inferred from your code:
+The template uses `@` as the single special character. Every time this character is encountered, it indicates the beginning of a Scala statement. It does not require you to explicitly close the code-block - this will be inferred from your code:
 
 ```
 Hello @customer.name!
@@ -101,7 +101,7 @@ And even implicit parameters:
 
 ## Looping
 
-You can use the Scala for-comprehension, in a pretty standard way. But note that the template compiler will add a `yield` keyword before your block:
+You can use the Scala for-comprehension in a pretty standard way. But note that the template compiler will add a `yield` keyword before your block:
 
 ```html
 <ul>
@@ -113,7 +113,7 @@ You can use the Scala for-comprehension, in a pretty standard way. But note that
 
 ## If-Blocks
 
-If-blocks are nothing special. Simply use Scala’s standard `if` statement:
+If statements use a similar syntax, with an optional `else` block that starts on the same line as the closing brace:
 
 ```html
 @if(items.isEmpty) {
@@ -125,7 +125,7 @@ If-blocks are nothing special. Simply use Scala’s standard `if` statement:
 
 ## Declaring reusable blocks
 
-You can create reusable code blocks:
+You can create reusable template blocks:
 
 ```html
 @display(product: models.Product) = {
@@ -139,7 +139,7 @@ You can create reusable code blocks:
 </ul>
 ```
 
-Note that you can also declare reusable pure Scala blocks:
+Note that you can also declare reusable Scala code blocks:
 
 ```html
 @title(text: String) = @{
@@ -163,7 +163,7 @@ You can import whatever you want at the beginning of your template (or sub-templ
 
 ## Comments
 
-You can write server side block comments in templates using `@* *@`:
+You can write server-side block comments in templates using `@* *@`:
 
 ```
 @*********************

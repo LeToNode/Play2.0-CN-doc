@@ -4,7 +4,7 @@ Business logic is managed in the domain model layer. As an application client (t
 
 A client uses the uniform API provided by the HTTP protocol to manipulate these resources, and by implication the underlying business logic. However, this mapping of resources to domain objects is not a bijection: the granularity can be expressed at different levels. Some resources may be virtual and for some resources, aliases may be defined.
 
-This is precisely the role played by the controller layer, which acts as glue between domain model objects and transport layer events. As with the model layer, controllers are written in pure Scala, making it easy to access or modify model objects. Like the HTTP interface, controllers are procedural and request/response oriented.
+This is precisely the role played by the controller layer, which acts as glue between domain model objects and transport layer events. As with the model layer, controllers are written in pure Java, making it easy to access or modify model objects. Like the HTTP interface, controllers are procedural and request/response oriented.
 
 The controller layer reduces the impedance mismatch between HTTP and the domain model.
 
