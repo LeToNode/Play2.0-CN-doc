@@ -18,11 +18,11 @@ This produces a ZIP file containing all JAR files needed to run your application
 
 ```
 my-first-application-1.0
-  `-- conf
-        `-- application.conf
-  `-- lib
-        `-- *.jar
-  `-- start
+ └ conf
+    └ application.conf
+ └ lib
+    └ *.jar
+ └ start
 ```
 
 You can use the generated `start` script to run your application.

@@ -8,9 +8,9 @@ By convention, public assets are stored in the `public` folder of your applicati
 
 ```
 public
-  `-- javascripts
-  `-- stylesheets
-  `-- images
+ └ javascripts
+ └ stylesheets
+ └ images
 ```
 
 If you follow this structure it will be simpler to get started, but nothing stops you to modifying it once you understand how it works.

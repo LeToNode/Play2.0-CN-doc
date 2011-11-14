@@ -30,11 +30,11 @@ Here we have defined a sub-project in the application’s `modules/myLibrary` fo
 
 ```
 modules
-  `-- myLibrary
-        `-- src
-              `-- main
-                    `-- java
-                    `-- scala 
+ └ myLibrary
+    └ src
+       └ main
+          └ java
+          └ scala 
 ```
 
 When you have a sub-project enabled in your build, you can focus on this project and compile, test or run it individually. Just use the `projects` command in the Play console prompt to display all projects:

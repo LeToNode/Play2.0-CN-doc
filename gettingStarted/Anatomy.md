@@ -4,35 +4,35 @@
 
 The layout of a Play application is standardized to keep things as simple as possible. A standard Play application looks like this:
 
-```txt
-app                            --> Application sources
-  `-- assets                   --> Compiled asset sources
-        `-- stylesheets        --> Typically LESS CSS sources
-        `-- javascripts        --> Typically CoffeeScript sources
-  `-- controllers              --> Application controllers
-  `-- models                   --> Application business layer
-  `-- views                    --> Templates
-conf                           --> Configurations files
-  `-- application.conf         --> Main configuration file
-  `-- routes                   --> Routes definition
-public                         --> Public assets
-  `-- stylesheets              --> CSS files
-  `-- javascripts              --> Javascript files
-  `-- images                   --> Image files
-project                        --> sbt configuration files
-  `-- build.properties         --> Marker for sbt project
-  `-- Build.scala              --> Application build script
-  `-- plugins.sbt              --> sbt plugins
-lib                            --> Unmanaged libraries dependencies
-logs                           --> Standard logs folder
-  `-- application.log          --> Default log file
-target                         --> Generated stuff
-  `-- scala-2.9.1              
-        `-- cache              
-        `-- classes            --> Compiled class files
-        `-- classes_managed    --> Managed class files (templates, ...)
-        `-- resource_managed   --> Managed resources (less, ...)
-        `-- src_managed        --> Generated sources (templates, ...)
+```
+app                      → Application sources
+ └ assets                → Compiled asset sources
+    └ stylesheets        → Typically LESS CSS sources
+    └ javascripts        → Typically CoffeeScript sources
+ └ controllers           → Application controllers
+ └ models                → Application business layer
+ └ views                 → Templates
+conf                     → Configurations files
+ └ application.conf      → Main configuration file
+ └ routes                → Routes definition
+public                   → Public assets
+ └ stylesheets           → CSS files
+ └ javascripts           → Javascript files
+ └ images                → Image files
+project                  → sbt configuration files
+ └ build.properties      → Marker for sbt project
+ └ Build.scala           → Application build script
+ └ plugins.sbt           → sbt plugins
+lib                      → Unmanaged libraries dependencies
+logs                     → Standard logs folder
+ └ application.log       → Default log file
+target                   → Generated stuff
+ └ scala-2.9.1              
+    └ cache              
+    └ classes            → Compiled class files
+    └ classes_managed    → Managed class files (templates, ...)
+    └ resource_managed   → Managed resources (less, ...)
+    └ src_managed        → Generated sources (templates, ...)
 ```
 
 ## The app/ directory

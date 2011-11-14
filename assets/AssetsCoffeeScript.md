@@ -20,9 +20,9 @@ Here is an example layout for using CoffeeScript in your projects:
 
 ```
 app
-  `-- assets
-        `-- javascripts
-               ` main.coffee   
+ └ assets
+    └ javascripts
+       └ main.coffee   
 ```
 
 The resulting JavaScript file will be compiled as `public/javascripts/main.js`, and you can use it in your template as:

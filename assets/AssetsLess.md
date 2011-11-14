@@ -26,12 +26,12 @@ Here is an example layout for using LESS in your project:
 
 ```
 app
-  `-- assets
-        `-- stylesheets
-               ` main.less
-               ` utils
-                   ` _reset.css
-                   ` _layout.css    
+ └ assets
+    └ stylesheets
+       └ main.less
+       └ utils
+          └ _reset.css
+          └ _layout.css    
 ```
 
 With the following `main.less` source:
