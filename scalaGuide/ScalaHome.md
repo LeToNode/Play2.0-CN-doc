@@ -12,7 +12,8 @@ The Scala API for Play 2.0 application developers is available in the `play.api`
 4. [[Handling form submission and validation| ScalaForms]]
 5. [[Application global settings | ScalaGlobal]]
 6. [[Accessing an SQL database | ScalaDatabase]]
-7. [[Testing your application | Scalatest]] 
+7. [[Caching | ScalaCache]]
+8. [[Testing your application | Scalatest]] 
 
 ## Tutorials
 
