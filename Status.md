@@ -1,14 +1,14 @@
 # Play 2.0 current status
 
-Play 2.0 beta is a preview of the next major version of the Play framework, which integrates a brand new build system and awesome asynchronous architecture, all with native Java and Scala support.
+Play 2.0 beta is a preview of the next major version of the Play framework, which integrates a brand new build system and an awesome asynchronous architecture, all with native Java and Scala support.
 
-You can already write your first Play 2.0 applications with this beta version. It will give you an almost complete preview of the Play 2.0 experience, including the native Scala support, the new possibilities provided by the sbt integration, and the new controller/action API.
+You can start writing Play 2.0 applications right now with the beta version. It will give you an almost complete preview of the Play 2.0 experience: including the native Scala support, the new possibilities provided by the sbt integration, and the new controller/action API.
 
 Play 2.0 beta is not, however, ready to run production applications. 
 
 ## What’s missing?
 
-We have worked hard to reach this beta version and we are halfway to the final 2.0 version. The following features are the most important items we will be working on now.
+We have worked hard to reach this beta version and are halfway to the final 2.0 version. The following features are the most important items we will be working on now.
 
 ### Support for more content types out of the box
 
