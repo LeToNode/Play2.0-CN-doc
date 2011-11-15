@@ -12,7 +12,7 @@ We have worked hard to reach this beta version and are halfway to the final 2.0 
 
 ### Support for more content types out of the box
 
-Currently we have only support for parsing classical URL form-encoded HTTP requests. We will add out-of-the-box support for major content types like JSON, XML and file uploads.
+Currently we only support parsing classical URL form-encoded HTTP requests. We will add out-of-the-box support for major content types like JSON, XML and file uploads.
 
 ### Asynchronous support
 
@@ -28,12 +28,12 @@ As in Play 1.x, Play 2.0 will provide out of the box integration with a powerful
 
 ### IDE integration
 
-Currently there is no simple way to integrate your Play 2.0 project in your favorite IDE - you must configure it yourself (or install an sbt plugin like [[sbt-idea | https://github.com/mpeltonen/sbt-idea]]). But we will add the so cool 'eclipsify', 'netbeansify' and 'idealize' tasks to the Play console.
+Currently there is no simple way to integrate your Play 2.0 project in your favorite IDE - you must configure it yourself (or install an sbt plugin like [[sbt-idea | https://github.com/mpeltonen/sbt-idea]]). But we will be adding the cool 'eclipsify', 'netbeansify' and 'idealize' tasks to the Play console.
 
 ### WAR support
 
 We also plan to add WAR deployment support via Servlet 3.0.
 
-### And of course, everything that make a great release
+### And of course, everything that makes a great release
 
 … including more validators, binders, better documentation, tutorials and awesome sample applications.
