@@ -15,6 +15,7 @@ The Java API for the Play 2.0 application developers is available in the `play` 
 7. [[Using the Ebean ORM | JavaEbean]]
 8. [[Caching | JavaCaching]]
 9. [[Testing your application | JavaTesting]]
+10. [[Writing Plugins | JavaPlugin]]
 
 ## Tutorials
 
