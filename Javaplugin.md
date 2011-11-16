@@ -13,7 +13,7 @@ Play 2.0 comes with a few plugins predefined for all applications, these plugins
 
 However, one can easily add a new plugin to an application by following these steps:
 
-1. implement ```play.Plugin``` (see [this](https://github.com/playframework/Play20/blob/master/framework/play/src/main/java/play/db/ebean/EbeanPlugin.java) for an example
+1. implement ```play.Plugin``` (see [this](https://github.com/playframework/Play20/blob/master/framework/play/src/main/java/play/db/ebean/EbeanPlugin.java) for an example)
 2. this plugin should be available in the application either through pulling in it from a maven repository and referencing it
 as an app dependency or the plugin code can be part of a play application
 3. TODO
