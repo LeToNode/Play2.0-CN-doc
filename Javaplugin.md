@@ -1,6 +1,6 @@
 # Writing Plugins
 
-# Writing Plugins
+Please note: this is still work in progress.
 
 Play 2.0 comes with a few plugins predefined for all applications, these plugins are the following: 
 
