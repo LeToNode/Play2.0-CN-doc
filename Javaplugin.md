@@ -1,7 +1,5 @@
 # Writing Plugins
 
-Please note: this is still work in progress.
-
 Play 2.0 comes with a few plugins predefined for all applications, these plugins are the following: 
 
 * ```DBPlugin``` -> providing a JDBC datasource
@@ -16,6 +14,11 @@ However, one can easily add a new plugin to an application by following these st
 1. implement ```play.Plugin``` (see [this](https://github.com/playframework/Play20/blob/master/framework/play/src/main/java/play/db/ebean/EbeanPlugin.java) for an example)
 2. this plugin should be available in the application either through pulling in it from a maven repository and referencing it
 as an app dependency or the plugin code can be part of a play application
-3. you can access it like ```play.api.Play.unsafeApplication().plugin(MyPlugin.class).api``` which will give you an instance or subclass of ```MyPlugin```. (Obviously it's recommended to wrap this method call for easier access)
+3. you can access it like ```
+import static play.api.Play.*;
+import static play.libs.Scala.*;
+orNull(unsafeApplication().plugin(MyPlugin.class)).api()``` 
+which will return an instance or subclass of ```MyPlugin``` or null. 
+
 4. in your app create a file: ``conf/play.plugins``` and add a reference to your plugin, just like this ```5000:com.example.MyPlugin```
 _the number represents the plugin loading order, by setting it to > 1000 we can make sure it's loaded after the global plugins_
