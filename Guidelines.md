@@ -23,6 +23,6 @@ play core implementation must be free of:
 # testing and documentation
 * each and every public facing method and class need to have a corresponding scaladoc or javadoc with examples, description etc.
 * each feature requires either a functional test (```framework/integrationtest```) or a spec (```/play/src/test```)
-* run Play's integration test suite ```framework/runtests``` before pushing. If a test fail, fix it, do not ignore it.
+* run Play's integration test suite ```framework/runtests``` before pushing. If a test fails, fix it, do not ignore it.
 
 
