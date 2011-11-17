@@ -16,11 +16,11 @@ However, one can easily add a new plugin to an application by following these st
 as an app dependency or the plugin code can be part of a play application
 3. you can access it like 
 
-```java
+```
 import static play.api.Play.*;
 import static play.libs.Scala.*;
-Myplugin plug = orNull(unsafeApplication().plugin(MyPlugin.class)).api();``` 
-
+Myplugin plug = orNull(unsafeApplication().plugin(MyPlugin.class)).api();
+``` 
 which will return an instance or subclass of ```MyPlugin``` or null. 
 
 4. in your app create a file: ``conf/play.plugins``` and add a reference to your plugin, just like this ```5000:com.example.MyPlugin```
