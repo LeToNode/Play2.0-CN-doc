@@ -21,8 +21,8 @@ play core implementation must be free of:
   * wrap scala API for java users ([example](https://github.com/playframework/Play20/blob/master/framework/play/src/main/java/play/cache/Cache.java))
 
 # testing and documentation
-* each and every public facing method and class needs to have a scala and javadoc
+* each and every public facing method and class need to have either a scaladoc or javadoc
 * each feature requires either a functional test (```framework/integrationtest```) or a spec (```/play/src/test```)
-* run ```framework/runtests``` before pushing. If a test fail, fix it, do not ignore it.
+* run Play's integration test suite ```framework/runtests``` before pushing. If a test fail, fix it, do not ignore it.
 
 
