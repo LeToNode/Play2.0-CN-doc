@@ -26,7 +26,7 @@ public Myplugin plugin() {
 ``` 
 which will return an instance or subclass of ```MyPlugin``` fully initialized or ```null```. 
 
-4. in your app create a file: ``conf/play.plugins``` 
+4. in your app create a file: ```conf/play.plugins``` 
 and add a reference to your plugin, just like this 
 
 ```5000:com.example.MyPlugin```
