@@ -1,2 +1,28 @@
-#Contributor Guidelines
+# Contributor Guidelines
+
+play core implementation must be free of:
+
+* public mutable state
+* global state
+* implicit conversions
+* threadLocal
+* locks
+
+# git commits
+* prefer rebase
+* bigger changesets
+
+# API design
+* java only APIs should go to ```framework/play/src/main/java```, package structure is ```play.myapipackage.xxxx``` 
+* java and scala APIs should be implemented the following way:
+1. implement the core API in scala
+2. if your component requires life cycle management or needs to be swappable, create a plugin, otherwise skip this step
+3. wrap core API for scala users ([example](https://github.com/playframework/Play20/blob/master/framework/play/src/main/scala/play/api/cache/Cache.scala#L69))
+4. wrap scala API for java users ([example](https://github.com/playframework/Play20/blob/master/framework/play/src/main/java/play/cache/Cache.java))
+
+# testing and documentation
+* each and every public facing method and class needs to have a scala and javadoc
+* each feature requires either a functional test (```framework/integrationtest```) or a spec (```/play/src/test```)
+* run ```framework/runtests``` before pushing. If a test fail, fix it, do not ignore it.
+
 
