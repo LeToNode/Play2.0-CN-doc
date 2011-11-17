@@ -21,7 +21,7 @@ import static play.api.Play.*;
 import static play.libs.Scala.*;
 Myplugin plug = orNull(unsafeApplication().plugin(MyPlugin.class)).api();
 ``` 
-which will return an instance or subclass of ```MyPlugin``` or null. 
+which will return an instance or subclass of ```MyPlugin``` fully initialized or ```null```. 
 
 4. in your app create a file: ``conf/play.plugins``` and add a reference to your plugin, just like this ```5000:com.example.MyPlugin```
 _the number represents the plugin loading order, by setting it to > 1000 we can make sure it's loaded after the global plugins_
