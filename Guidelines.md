@@ -15,6 +15,7 @@ play core implementation must be free of:
 # API design
 * java only APIs should go to ```framework/play/src/main/java```, package structure is ```play.myapipackage.xxxx``` 
 * java and scala APIs should be implemented the following way:
+
 1. implement the core API in scala
 2. if your component requires life cycle management or needs to be swappable, create a plugin, otherwise skip this step
 3. wrap core API for scala users ([example](https://github.com/playframework/Play20/blob/master/framework/play/src/main/scala/play/api/cache/Cache.scala#L69))
