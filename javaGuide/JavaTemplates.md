@@ -211,7 +211,7 @@ As you can see, this template takes two parameters: a title and an HTML block. N
 
 ### Tags
 
-Let’s write a simple `views/tags/notice.scala.html` tag that display san HTML notice:
+Let’s write a simple `views/tags/notice.scala.html` tag that displays an HTML notice:
 
 ```html
 @(level: String = "error")(body: (String) => Html)
