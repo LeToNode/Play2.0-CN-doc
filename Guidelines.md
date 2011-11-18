@@ -25,4 +25,5 @@ play core implementation must be free of:
 * each feature requires either a functional test (```framework/integrationtest```) or a spec (```/play/src/test```)
 * run Play's integration test suite ```framework/runtests``` before pushing. If a test fails, fix it, do not ignore it.
 
-
+# Misc
+* try to be conservative with introducing new external dependencies
