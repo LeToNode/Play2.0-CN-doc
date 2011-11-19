@@ -109,7 +109,9 @@ val userForm = Form(
 Where the `email` mapping is defined as:
 
 ```scala
-val email = of[String] verifying pattern(
+import play.api.data.validation.Constraints._
+
+val email = text verifying pattern(
   """\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}\b""".r,
   "constraint.email",
   "error.email"
