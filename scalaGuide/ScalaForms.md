@@ -149,7 +149,7 @@ The `Form` value contains everything you need to display the form to the user:
   <p>
     @userForm.forField("name") { field =>
       <label>@field.name</label>
-      <input type="text" value="@field.value">
+      <input type="text" name="@field.name" value="@field.value">
       @field.error.map { error =>
         <p class="error">
           @error
@@ -161,7 +161,7 @@ The `Form` value contains everything you need to display the form to the user:
   <p>
     @userForm.forField("age") { field =>
       <label>@field.name</label>
-      <input type="text" value="@field.value">
+      <input type="text" name="@field.name" value="@field.value">
       @field.error.map { error =>
         <p class="error">
           @error
