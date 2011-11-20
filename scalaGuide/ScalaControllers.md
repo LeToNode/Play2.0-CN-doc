@@ -92,5 +92,22 @@ def hello(name: String) = {
 }
 ```
 
+## Redirecting to other actions
 
+To trigger a redirect to another action use Redirect with the reverse route:
+
+```scala
+  def add() = Action { implicit request =>
+    cookbookForm.bindFromRequest.fold(
+      errors => {
+        Ok(views.html.Cookbooks.create(errors))
+      },
+      form => {
+    	Cookbook.create(form.asCookbook)
+    	Redirect(routes.Cookbooks.list())
+      }
+    )
+  }
+
+```
 
