@@ -8,3 +8,6 @@
 - [[Handling form submission and validation| ScalaForms]]
 - [[Application global settings | ScalaGlobal]]
 - [[Accessing an SQL database | ScalaDatabase]]
+- [[Caching | ScalaCache]]
+- [[Testing your application | Scalatest]] 
+- [[Writing Plugins | ScalaPlugin]]
