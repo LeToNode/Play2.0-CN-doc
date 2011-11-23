@@ -4,6 +4,8 @@ While one can really take advantage of most play features while building a full 
 
 # Rolling your own
 
-Because play2's core is written in scala, the easiest way to provide a Java API is by creating the required API in scala. In practice it means that one need to extend ```GobalSettings``` as Global in the global name space GobalSettings has a method ``` def onRouteRequest(request: RequestHeader): Option[Handler] ``` that's handling play's routing. One could easily provide an alternative implementation and start using play as an REST library! 
+Because play2's core is written in scala, the easiest way to provide a Java API is by creating the required API in scala. 
+
+In practice it means that one need to extend ```GobalSettings``` as Global in the global name space GobalSettings has a method ``` def onRouteRequest(request: RequestHeader): Option[Handler] ``` that's handling play's routing. One could easily provide an alternative implementation and start using play as an REST library! 
 
 See [this](https://github.com/typesafehub/play2-mini/blob/master/src/main/scala/com/typesafe/play/mini/Setup.scala#L58) for an example.
