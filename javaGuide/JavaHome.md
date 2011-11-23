@@ -16,6 +16,7 @@ The Java API for the Play 2.0 application developers is available in the `play` 
 8. [[Caching | JavaCaching]]
 9. [[Testing your application | JavaTesting]]
 10. [[Writing Plugins | JavaPlugin]]
+11. [[Using Play as a Library | JavaPlayAsLibrary]]
 
 ## Tutorials
 
