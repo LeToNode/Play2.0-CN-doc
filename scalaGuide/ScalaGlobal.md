@@ -2,7 +2,7 @@
 
 ## The Global object
 
-Defining a `Global` object in your project allows you to handle global settings for your application. This object must be defined in the `_root_` package.
+Defining a `Global` object in your project allows you to handle global settings for your application. This object must be defined in the default (empty) package.
 
 ```scala
 import play.api._
