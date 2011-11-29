@@ -6,7 +6,7 @@ While one can really take advantage of most play features while building a full 
 
 # Rolling your own
 
-A ```Global``` object extending ```GobalSettings``` in the global name space is the key wiring point. GobalSettings has a method ``` def onRouteRequest(request: RequestHeader): Option[Handler] ``` that's handling play's routing. 
+A ```Global``` object extending ```GlobalSettings``` in the global name space is the key wiring point. GobalSettings has a method ``` def onRouteRequest(request: RequestHeader): Option[Handler] ``` that's handling play's routing. 
 
 One could easily provide an alternative implementation and start using play as an REST library! 
 
