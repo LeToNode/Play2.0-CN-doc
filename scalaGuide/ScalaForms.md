@@ -6,6 +6,7 @@ The `play.api.data` package contains several helpers to handle HTTP form data su
 
 ```scala
 import play.api.data._
+import format.Formatters._
 
 val loginForm = Form(
   of(
