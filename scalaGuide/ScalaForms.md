@@ -34,6 +34,8 @@ val (user,password) = loginForm.bindFromRequest.get
 A form can use any function to construct the type. So you can, for example, define a form that wraps an existing case class:
 
 ```scala
+import play.api.data._
+import format.Formatters._
 case class User(name: String, age: Int)
 
 val userForm = Form(
