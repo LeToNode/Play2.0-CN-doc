@@ -52,12 +52,16 @@ val user:User = userForm.bind(anyData).get
 For each mapping you can also define additional validation constraints that will be checked during the binding phase:
 
 ```scala
+import play.api.data.validation.Constraints._
+import play.api.data._
+import format.Formats._
+
 case class User(name: String, age: Int)
 
 val userForm = Form(
   of(User)(
-    "name" -> of[String] verifying required,
-    "age" -> of[Int] verifying (min(0), max(100))
+    "name" -> of[String].verifying(required),
+    "age" -> of[Int].verifying (min(0), max(100))
   )
 )
 ```
@@ -99,6 +103,8 @@ userForm.fill(User("Bob", 18))
 The `play.api.data` package defines several high-level mappings that you can use directly.
 
 ```scala
+import play.api.data._
+
 val userForm = Form(
   of(User)(
     "email" -> email,
