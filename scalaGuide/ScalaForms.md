@@ -54,9 +54,10 @@ val user:User = userForm.bind(anyData).get
 For each mapping you can also define additional validation constraints that will be checked during the binding phase:
 
 ```scala
-import play.api.data.validation.Constraints._
+
 import play.api.data._
 import format.Formats._
+import validation.Constraints._
 
 case class User(name: String, age: Int)
 
