@@ -30,8 +30,8 @@ app
     └ stylesheets
        └ main.less
        └ utils
-          └ _reset.css
-          └ _layout.css    
+          └ _reset.less
+          └ _layout.less    
 ```
 
 With the following `main.less` source:
