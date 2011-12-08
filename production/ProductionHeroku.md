@@ -23,7 +23,7 @@ $ git add .
 $ git commit -m "init"
 ```
 
-## Create a new application on Heroku　Heroku上に新しいアプリケーションを作成する
+## Create a new application on Heroku
 
 > Note that you need an Heroku account, and to install the heroku gem.
 
