@@ -5,11 +5,11 @@
 [[Heroku | http://www.heroku.com/]] はクラウドアプリケーションプラットフォームであり、 WEBアプリの構築とデプロイの新たな方法を提供します。 
 
 ## Add the Procfile　
-## Procfileを追加する
+Procfileを追加する
 
 Heroku requires a special file in the application root called `Procfile`. Create a simple text file with the following content:
 
-Herokuは'Procfile'と呼ばれる特別なファイルがアプリケーションルートに必要です。次のようなシンプルなテキストファイルをつくります。
+Herokuは `Procfile` と呼ばれる特別なファイルがアプリケーションルートに必要です。次のようなシンプルなテキストファイルをつくります。
 ```txt
 web: target/start
 ```
