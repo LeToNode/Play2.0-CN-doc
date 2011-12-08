@@ -1,24 +1,21 @@
-# Deploying to Heroku　Herokuへのデプロイ
+# Deploying to Heroku
 
 [[Heroku | http://www.heroku.com/]] is a cloud application platform – a new way of building and deploying web apps.
 
-[[Heroku | http://www.heroku.com/]] はクラウドアプリケーションプラットフォームであり、 WEBアプリの構築とデプロイの新たな方法を提供します。 
+
 
 ## Add the Procfile　
-Procfileを追加する
 
 Heroku requires a special file in the application root called `Procfile`. Create a simple text file with the following content:
 
-Herokuは `Procfile` と呼ばれる特別なファイルをアプリケーションルートに必要とします。次のようなシンプルなテキストファイルをつくります。
 ```txt
 web: target/start
 ```
 
-## Store your application in git　アプリケーションをgitにストアする
+## Store your application in git
 
 Just create a git repository for your application:
 
-次のようにして、あなたのアプリケーション用にgitリポジトリを作成します。
 
 ```bash
 $ git init
@@ -30,8 +27,6 @@ $ git commit -m "init"
 
 > Note that you need an Heroku account, and to install the heroku gem.
 
->　注意 Herokuアカウントとheroku gemをインストールする必要があります。
-
 ```bash
 $ heroku create --stack cedar
 Creating warm-frost-1289... done, stack is cedar
@@ -42,8 +37,6 @@ Git remote heroku added
 ## Deploy your application
 
 To deploy your application on Heroku, just use git to push it into the `heroku` remote repository:
-
-あなたのアプリケーションをHerokuにデプロイするには、単にgitで`heroku`リモートリポジトリにアプリケーションをpushします。
 
 ```bash
 $ git push heroku master
@@ -69,8 +62,6 @@ To git@heroku.com:floating-lightning-8044.git
 ```
 
 Heroku will run `sbt clean compile stage` to prepare your application. On the first deployment, all dependencies will be downloaded, which takes a while to complete (but will be cached for future deployments).
-
-Herokuは、あなたのアプリケーションを準備するため`sbt clean compile stage`を実行するでしょう。最初のデプロイでは、すべての依存性がダウンロードされ、完了するまでにしばらくかかります。（しかし、次のデプロイメントでは、キャッシュされたものが利用されます）
 
 ## Check that your application has been deployed
 
