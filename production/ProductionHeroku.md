@@ -1,11 +1,12 @@
-# Deploying to Heroku
+# Deploying to Heroku　Herokuへのデプロイ
 
 [[Heroku | http://www.heroku.com/]] is a cloud application platform – a new way of building and deploying web apps.
+[[Heroku | http://www.heroku.com/]] はクラウドアプリケーションプラットフォームであり、 WEBアプリの構築とデプロイの新たな方法を提供します。 
 
-## Add the Procfile
+## Add the Procfile　Procfileを追加する
 
 Heroku requires a special file in the application root called `Procfile`. Create a simple text file with the following content:
-
+Herokuは'Procfile'と呼ばれる特別なファイルがアプリケーションルートに必要です。次のようなシンプルなテキストファイルをつくります。
 ```txt
 web: target/start
 ```
