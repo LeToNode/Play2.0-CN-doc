@@ -217,15 +217,19 @@ Let’s declare a `views/main.scala.html` template that will act as a main layou
 
 ```html
 @(title: String)(content: Html)
- 
-<h1>@title</h1>
- 
-<div id="main">
-  @content
-</div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>@title</title>
+  </head>
+  <body>
+    <section class="content">@content</section>
+  </body>
+</html>
+
 ```
 
-As you can see, this template takes two parameters: a title and an HTML block. Now we can use it from another `views/Application/index.scala.html` template:
+As you can see, this template takes two parameters: a title and an HTML content block. Now we can use it from another `views/Application/index.scala.html` template:
 
 ```html
 @main(title = "Home") {
@@ -234,6 +238,48 @@ As you can see, this template takes two parameters: a title and an HTML block. N
     
 }
 ```
+
+Sometimes you need a second page-specific content block for a sidebar or breadcrumb trail, for example. You can do this with an additional parameter:
+
+```html
+@(title: String)(sidebar: Html)(content: Html)
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>@title</title>
+  </head>
+  <body>
+    <section class="sidebar">@sidebar</section>
+    <section class="content">@content</section>
+  </body>
+</html>
+```
+
+Using this from our ‘index’ template, we have:
+
+```html
+@main("Home") {
+  <h1>Sidebar</h1>
+
+} {
+  <h1>Home page</h1>
+
+}
+```
+
+Alternatively, we can declare the sidebar block separately:
+
+```html
+@sidebar = {
+  <h1>Sidebar</h1>
+}
+
+@main("Home")(sidebar) {
+  <h1>Home page</h1>
+
+}
+```
+
 
 ### Tags
 
