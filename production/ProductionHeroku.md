@@ -1,19 +1,23 @@
 # Deploying to Heroku　Herokuへのデプロイ
 
 [[Heroku | http://www.heroku.com/]] is a cloud application platform – a new way of building and deploying web apps.
+
 [[Heroku | http://www.heroku.com/]] はクラウドアプリケーションプラットフォームであり、 WEBアプリの構築とデプロイの新たな方法を提供します。 
 
 ## Add the Procfile　Procfileを追加する
 
 Heroku requires a special file in the application root called `Procfile`. Create a simple text file with the following content:
+
 Herokuは'Procfile'と呼ばれる特別なファイルがアプリケーションルートに必要です。次のようなシンプルなテキストファイルをつくります。
 ```txt
 web: target/start
 ```
 
-## Store your application in git
+## Store your application in git　アプリケーションをgitに保存する
 
 Just create a git repository for your application:
+
+次のようにあなたのアプリケーション用にgitリポジトリを作成します。
 
 ```bash
 $ git init
@@ -21,9 +25,11 @@ $ git add .
 $ git commit -m "init"
 ```
 
-## Create a new application on Heroku
+## Create a new application on Heroku　Heroku上に新しいアプリケーションを作成する
 
 > Note that you need an Heroku account, and to install the heroku gem.
+
+>　注意 Herokuアカウントとheroku gemをインストールする必要があります。
 
 ```bash
 $ heroku create --stack cedar
