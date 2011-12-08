@@ -9,7 +9,7 @@ Procfileを追加する
 
 Heroku requires a special file in the application root called `Procfile`. Create a simple text file with the following content:
 
-Herokuは `Procfile` と呼ばれる特別なファイルがアプリケーションルートに必要です。次のようなシンプルなテキストファイルをつくります。
+Herokuは `Procfile` と呼ばれる特別なファイルがアプリケーションルートに必要とします。次のようなシンプルなテキストファイルをつくります。
 ```txt
 web: target/start
 ```
