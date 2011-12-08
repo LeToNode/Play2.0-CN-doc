@@ -43,7 +43,7 @@ Git remote heroku added
 
 To deploy your application on Heroku, just use git to push it into the `heroku` remote repository:
 
-あなたのアプリケーションをHerokuにデプロイするため、gitを使い`heroku`リモートリポジトリにアプリケーションをpushします。
+あなたのアプリケーションをHerokuにデプロイするには、単にgitで`heroku`リモートリポジトリにアプリケーションをpushします。
 
 ```bash
 $ git push heroku master
@@ -69,6 +69,8 @@ To git@heroku.com:floating-lightning-8044.git
 ```
 
 Heroku will run `sbt clean compile stage` to prepare your application. On the first deployment, all dependencies will be downloaded, which takes a while to complete (but will be cached for future deployments).
+
+Herokuは、あなたのアプリケーションを準備するため`sbt clean compile stage`を実行するでしょう。最初のデプロイでは、すべての依存性がダウンロードされ、完了するまでにしばらくかかります。（しかし、次のデプロイメントでは、キャッシュされたものが利用されます）
 
 ## Check that your application has been deployed
 
