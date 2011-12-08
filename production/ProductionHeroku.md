@@ -4,7 +4,8 @@
 
 [[Heroku | http://www.heroku.com/]] はクラウドアプリケーションプラットフォームであり、 WEBアプリの構築とデプロイの新たな方法を提供します。 
 
-## Add the Procfile　Procfileを追加する
+## Add the Procfile　
+## Procfileを追加する
 
 Heroku requires a special file in the application root called `Procfile`. Create a simple text file with the following content:
 
@@ -13,11 +14,11 @@ Herokuは'Procfile'と呼ばれる特別なファイルがアプリケーショ�
 web: target/start
 ```
 
-## Store your application in git　アプリケーションをgitに保存する
+## Store your application in git　アプリケーションをgitにストアする
 
 Just create a git repository for your application:
 
-次のようにあなたのアプリケーション用にgitリポジトリを作成します。
+次のようにして、あなたのアプリケーション用にgitリポジトリを作成します。
 
 ```bash
 $ git init
