@@ -9,7 +9,7 @@ Procfileを追加する
 
 Heroku requires a special file in the application root called `Procfile`. Create a simple text file with the following content:
 
-Herokuは `Procfile` と呼ばれる特別なファイルがアプリケーションルートに必要とします。次のようなシンプルなテキストファイルをつくります。
+Herokuは `Procfile` と呼ばれる特別なファイルをアプリケーションルートに必要とします。次のようなシンプルなテキストファイルをつくります。
 ```txt
 web: target/start
 ```
@@ -42,6 +42,8 @@ Git remote heroku added
 ## Deploy your application
 
 To deploy your application on Heroku, just use git to push it into the `heroku` remote repository:
+
+あなたのアプリケーションをHerokuにデプロイするため、gitを使い`heroku`リモートリポジトリにアプリケーションをpushします。
 
 ```bash
 $ git push heroku master
