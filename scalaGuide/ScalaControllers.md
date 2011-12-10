@@ -10,7 +10,7 @@ The controller layer reduces the impedance mismatch between HTTP and the domain 
 
 ## A controller overview
 
-A Controller is a Scala singleton object, hosted by the controllers package, that subclasses `play.api.mvc.Controller`. You can declare as many controllers you want in the same file.
+A Controller is a Scala singleton object, hosted by the controllers package, that subclasses `play.api.mvc.Controller`. You can declare as many controllers as you want in the same file.
 
 ```scala
 package controllers
