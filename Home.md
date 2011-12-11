@@ -4,9 +4,8 @@ Welcome to the Play framework 2.0 beta documentation. This documentation is a wo
 
 > Read more about the [[current status, and missing features | Status]]
 
-## Issue tracker, CI Server
-- please report issues [here](https://play.lighthouseapp.com/dashboard)
-- our CI server can be found [here](https://playframework2.ci.cloudbees.com/)
+## Issue tracker
+- Please report issues [here](https://play.lighthouseapp.com/dashboard)
 
 ## Getting started
 
@@ -57,3 +56,6 @@ Welcome to the Play framework 2.0 beta documentation. This documentation is a wo
 
 ## Contributor guidelines
 - [[Guidelines]]
+
+## CI Server
+- our CI server can be found [here](https://playframework2.ci.cloudbees.com/)
