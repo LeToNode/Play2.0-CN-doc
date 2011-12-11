@@ -6,7 +6,7 @@ The `play.api.data` package contains several helpers to handle HTTP form data su
 
 ```scala
 import play.api.data._
-import format.Formatters._
+import format.Formats._
 
 val loginForm = Form(
   of(
@@ -35,7 +35,7 @@ A form can use any function to construct the type. So you can, for example, defi
 
 ```scala
 import play.api.data._
-import format.Formatters._
+import format.Formats._
 case class User(name: String, age: Int)
 
 val userForm = Form(
