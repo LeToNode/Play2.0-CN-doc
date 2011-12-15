@@ -22,9 +22,30 @@ public class ApplicationTest extends MockApplication{
   }
 
   @Test public void test() {
-    Action action = controllers.Application.index_java_cache();
-    Result result = action.apply(new FakeRequest());
-    assertEquals(result.toString().contains("200,Map(Content-Type -> text/html"),true);
+    //create mock request
+    play.api.mvc.Request<RequestBody> req = toRequest(
+    "/computers",
+    "GET",
+    new HashMap<String, String[]>(),
+    new HashMap<String, String[]>(),
+    "peter",
+    "/computers",
+    new HashMap<String, String[]>(),
+    new HashMap<String, String>()
+    );
+
+    //set mock request into context
+    Context.current.set(createJavaContext(req));
+
+    //create Action
+    play.api.mvc.Action action = toAction(
+      controllers.Application.list(0, "name", "asc", "")
+    );
+
+    //execute action
+    ResultData result = Extract.from(action.apply(req));
+
+    assertEquals(result.body().toString().contains("574 computers found"),true);
   }
   @After public void after() {
    clearMock();
@@ -32,7 +53,7 @@ public class ApplicationTest extends MockApplication{
 }
 ```
 
-[framework/integrationtest/test/ApplicationTest.java](https://github.com/playframework/Play20/blob/master/framework/integrationtest/test/ApplicationTest.java) provides a full example.
+[framework/integrationtest/test/ApplicationTest.java](https://github.com/playframework/Play20/blob/master/framework/samples/java/computer-database/ApplicationTest.java) provides a full example.
 
 # Writing integration tests
 
