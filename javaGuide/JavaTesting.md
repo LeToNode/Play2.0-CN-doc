@@ -53,29 +53,38 @@ public class ApplicationTest extends MockApplication{
 }
 ```
 
-[framework/integrationtest/test/ApplicationTest.java](https://github.com/playframework/Play20/blob/master/framework/samples/java/computer-database/ApplicationTest.java) provides a full example.
+[ApplicationTest.java](https://github.com/playframework/Play20/blob/master/samples/java/computer-database/test/ApplicationTest.java) provides a full example.
 
 # Writing integration tests
 
-The other approach is to fire up a full application and run an integration test against it using [Selenium/WebDriver](http://seleniumhq.org/docs/03_webdriver.html). By default there are two drivers included in Play's test scope: [HtmlUnitDriver](http://seleniumhq.org/docs/03_webdriver.html#htmlunit-driver) and [ChromeDriver](http://code.google.com/p/selenium/wiki/ChromeDriver). Here is an HtmlUnit example:
+The other approach is to fire up a full application and run an integration test against it using either [Selenium/WebDriver](http://seleniumhq.org/docs/03_webdriver.html) or [FluentLenium](https://github.com/MathildeLemee/FluentLenium) which is built on top of WebDrive. Let's see an example
 
 ```java
-package test;
+public class FunctionalTest extends FluentTest{
+  
+  public WebDriver webDriver = new HtmlUnitDriver();
 
-import org.junit.*;
-import static org.junit.Assert.assertEquals;
-import play.test.*;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
-
-public class ApplicationTest extends IntegrationTest {
-@Test public void funcTest() {
-   withNettyServer(new Runnable() {
-     public void run() {
-         HtmlUnitDriver driver = new HtmlUnitDriver();
-         driver.get("http://localhost:9000");
-         assertEquals(driver.getPageSource().contains("Hello world"), true);
-     }
-   });
+  @Override
+  public WebDriver getDefaultDriver() {
+        return webDriver;
   }
+
+  @Before public void init() {
+    Logger.warn("starting FunctionalTest...");
+    play.api.db.evolutions.OfflineEvolutions.applyScript("default");
+  }
+
+  @Test public void Test() {
+     withNettyServer(new Runnable() {
+          public void run() {
+            goTo("http://localhost:9001");
+            boolean cond =  pageSource().contains("574 computers found");
+            assertEquals(cond, true);
+          }});
+  }
+
 }
 ```
+
+[FunctionalTest.java](https://github.com/playframework/Play20/blob/master/samples/java/computer-database/test/FunctionalTest.java) provides a full example. Consult [FluentLenium](https://github.com/MathildeLemee/FluentLenium) for more information.
+
