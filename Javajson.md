@@ -5,6 +5,10 @@ Play includes the [Jackson](http://jackson.codehaus.org/) library as a dependenc
 # render JSON
 As for rendering to JSON, there is a helper ```play.json.Render.toJson``` method that can be used to send JSON as a response. For example
 ```
+import play.*;
+import play.mvc.*;
+import static play.json.Render.toJson;
+
 public class JavaApi extends Controller {
   
   public static Result index() {
