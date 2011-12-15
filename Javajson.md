@@ -8,7 +8,7 @@ As for rendering JSON, there is a helper method ```play.json.Render.toJson``` th
 ```
 import play.*;
 import play.mvc.*;
-import static play.json.Render.toJson;
+import static play.libs.Json.toJson;
 
 public class MyController extends Controller {
   
