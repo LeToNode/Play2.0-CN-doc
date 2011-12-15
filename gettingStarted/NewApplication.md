@@ -36,12 +36,11 @@ In `project/plugins.sbt`, add:
 
 ```scala
 resolvers ++= Seq(
-  "Maven Repository" at "http://repo1.maven.org/maven2/",
-  "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/",
-  Resolver.url("Play Ivy Repo", new java.net.URL("http://download.playframework.org/ivy-releases/"))(Resolver.ivyStylePatterns)
+    DefaultMavenRepository,
+    "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/"
 )
 
-libraryDependencies += "play" %% "play" % "2.0-beta"
+addSbtPlugin("play" % "sbt-plugin" % "2.0-RC1-SNAPSHOT")
 ```
 
 In `project/Build.scala`:
@@ -57,7 +56,7 @@ object ApplicationBuild extends Build {
  
   val appDependencies = Nil
  
-  val main = PlayProject(appName, appVersion, appDependencies)
+  val main = PlayProject(appName, appVersion, appDependencies, mainLang = JAVA) //or mainLang = SCALA, it defaults to JAVA
  
 }
 ```
