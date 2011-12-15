@@ -12,7 +12,7 @@ Welcome to the Play framework 2.0 beta documentation. This documentation is a wo
 
 ## breaking changes since 2.0 beta
 - sbt plugin name and architecture are different
-- sbt mainLang parameter is defining "Mostly Java" or "Mostly Scala" projects
+- sbt mainLang parameter is defining "Mostly Java" or "Mostly Scala" projects (only effecting scala projects)
 - form API tweaks
 - test framework teaws
 - application.conf entries require escaping (certain values need to be wrapped in double quotes)
