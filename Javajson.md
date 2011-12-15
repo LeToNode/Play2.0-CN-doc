@@ -9,14 +9,14 @@ import play.*;
 import play.mvc.*;
 import static play.json.Render.toJson;
 
-public class JavaApi extends Controller {
+public class MyController extends Controller {
   
   public static Result index() {
     Map<String,String> d = new HashMap<String,String>();
     d.put("peter","foo");
     d.put("yay","value");
-        return ok(toJson(d));
-    }   
+    return ok(toJson(d));
+   }   
 }
 ```
 
