@@ -1,4 +1,4 @@
-# Play 2.0 beta documentation
+# Play 2.0 RC1 documentation
 
 Welcome to the Play framework 2.0 beta documentation. This documentation is a work in progress, as is Play 2.0 itself. 
 
