@@ -3,5 +3,16 @@
 Play includes the [Jackson](http://jackson.codehaus.org/) library as a dependency _(A good tutorial of Jackson can be found [here](http://wiki.fasterxml.com/JacksonInFiveMinutes))_. What this means in practice is that one can serialize from and to JSON format. 
 
 # render JSON
-As for rendering to JSON, there is a helper ```play.json.Json.toJson``` method that can be used to send JSON as a response.
+As for rendering to JSON, there is a helper ```play.json.Render.toJson``` method that can be used to send JSON as a response. For example
+```
+public class JavaApi extends Controller {
+  
+  public static Result index() {
+    Map<String,String> d = new HashMap<String,String>();
+    d.put("peter","foo");
+    d.put("yay","value");
+        return ok(toJson(d));
+    }   
+}
+```
 
