@@ -2,7 +2,14 @@
 
 [[Heroku | http://www.heroku.com/]] is a cloud application platform – a new way of building and deploying web apps.
 
+## Create the Start Script
 
+Heroku needs to know how to start Play!.  To do this, add the following plugin to your project/plugins.sbt file:
+
+```txt
+addSbtPlugin("com.typesafe.startscript" % "xsbt-start-script-plugin" % "0.5.0")
+```
+When the stage command is executed in sbt (this will be done for you when you deploy later), it will create a script called 'start' in our 'target' folder.
 
 ## Add the Procfile　
 
