@@ -51,6 +51,9 @@ Then go to the `Play20/framework` directory and launch the `build` script to ent
 ```bash
 $ cd Play20/framework
 $ ./build
+> update
+> compile
+> publish-local
 ```
 
 Once in the sbt console, run `build-repository` to compile and build everything. This will also create the local Ivy repository containing all of the required dependencies.
