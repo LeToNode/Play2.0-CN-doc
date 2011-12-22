@@ -26,7 +26,7 @@ object ApplicationSpec extends Specification {
    }
 }
 ```
-a full example can be found [here](https://github.com/playframework/Play20/blob/master/framework/integrationtest/test/ApplicationSpec.scala)
+a full example can be found [here](https://github.com/playframework/Play20/blob/master/framework/test/integrationtest/test/ApplicationSpec.scala)
 
 # Writing Integration Test
 The other approach is to fire up a full application and run an integration test against it either using [Selenium/WebDriver](http://seleniumhq.org/docs/03_webdriver.html) or [FluentLenium](https://github.com/MathildeLemee/FluentLenium) (which is a library that's built on top of Web Driver and included in Play2.0 by default). Let's see an example using Htmlunit:
