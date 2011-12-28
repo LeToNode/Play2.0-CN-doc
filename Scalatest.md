@@ -1,3 +1,5 @@
+_this page is being rewritten to reflect on the new API_
+
 # Testing your Application
 
 # Writing Specs
