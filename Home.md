@@ -8,7 +8,7 @@ Welcome to the Play framework 2.0 beta documentation. This documentation is a wo
 - our CI server can be found [here](https://playframework2.ci.cloudbees.com/) (Thanks to [Cloudbees](http://cloudbees.com) for making it possible)
 
 ## Issue tracker
-- Please report issues [here](https://play.lighthouseapp.com/dashboard)
+- Please report issues [here](https://play.lighthouseapp.com/projects/82401-play-20)
 
 ## breaking changes since 2.0 beta
 - sbt plugin name and architecture are different
