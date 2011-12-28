@@ -27,3 +27,4 @@ play core implementation must be free of:
 
 # Misc
 * try to be conservative with introducing new external dependencies
+* run scalariform-format  before commit
