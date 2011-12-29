@@ -4,7 +4,7 @@
 
 Most people end up using managed dependencies - which allows for fine-grained control, but unmanaged dependencies can be simpler when starting out.
 
-Unmanaged dependencies work like this: add JAR files to the `lib/` directory and they will automatically be added to the application classpath. There’s not much else to it!
+Unmanaged dependencies work like this: create a `lib/` directory in the root of your project and then add jar files to that directory. They will automatically be added to the application classpath. There’s not much else to it!
 
 There’s nothing to add to `project/Build.scala` to use unmanaged dependencies, though you could change a configuration key if you’d like to use a directory different to `lib`.
 
