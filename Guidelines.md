@@ -8,7 +8,8 @@ Implementation-wise, the following things should be avoided as much as possible:
 * threadLocal
 * locks
 * casting
-* introducing new external dependencies
+
+Also, be careful with introducing new, heavy external dependencies.
 
 # source format
 * run scalariform-format  before commit
