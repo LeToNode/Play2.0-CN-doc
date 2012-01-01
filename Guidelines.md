@@ -4,8 +4,8 @@ Implementation-wise, the following things should be avoided as much as possible:
 
 * public mutable state
 * global state
-* adding implicit conversions
-* introducing threadLocal
+* implicit conversions
+* threadLocal
 * locks
 * casting
 
