@@ -8,8 +8,10 @@ Implementation-wise, the following things should be avoided as much as possible:
 * threadLocal
 * locks
 * casting
+* introducing new external dependencies
 
-
+# source format
+* run scalariform-format  before commit
 
 # git commits
 * prefer rebase
@@ -28,6 +30,4 @@ Implementation-wise, the following things should be avoided as much as possible:
 * each feature requires either a functional test (```framework/integrationtest```) or a spec (```/play/src/test```)
 * run Play's integration test suite ```framework/runtests``` before pushing. If a test fails, fix it, do not ignore it.
 
-# Misc
-* try to be conservative with introducing new external dependencies
-* run scalariform-format  before commit
+
