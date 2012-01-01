@@ -1,15 +1,14 @@
 # Contributor Guidelines
 
-implementation should avoid:
+Implementation-wise, the following things should be avoided as much as possible:
 
 * public mutable state
 * global state
-* implicit conversions
-* threadLocal
+* adding implicit conversions
+* introducing threadLocal
 * locks
 * casting
 
-as much as possible
 
 
 # git commits
