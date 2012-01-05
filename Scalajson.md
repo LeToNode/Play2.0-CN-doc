@@ -31,7 +31,7 @@ case class User(id: Long, name: String, friends: List[User])
       (json \ "id").as[Long],
       (json \ "name").as[String],
       (json \ "friends").asOpt[List[User]].getOrElse(List()))
-    //unmarshaling to JSValue is covered in the next paragraph, leaving a placeHolder here 
+    //unmarshaling to JSValue is covered in the next paragraph
     def writes(u: User): JsValue = JsUndefined("TODO")  
 
   }
