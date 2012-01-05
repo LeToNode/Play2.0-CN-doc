@@ -19,6 +19,7 @@ The benefit of this approach is that both the java and the scala side of Play ca
 * ```JsString```
 
 All of them inherit from the generic JSON value, ```JsValue```.
+
 Using these one can build a typesafe JSON deserializer and encapsulate the whole logic like this
 
 For example:
@@ -42,7 +43,9 @@ given this, one can marshall an incoming JSON string into a User case class like
 
 or if the data is coming from a request.body:
 
-```val user = Json.parse(request.body.asText.get).as[User]```
+```scala
+val user = Json.parse(request.body.asText.get).as[User]
+```
 
 it's also possible to pattern match on JsValue in cases where the underlying JSON type is not homogenous (say a JSON Map with different JSON type values) or if one wants to manage the object creation.
 
