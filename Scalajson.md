@@ -3,9 +3,30 @@
 The recommend way of dealing with JSON in a play app is using Play's JSON library. Play's JSON library was inspired by [SJSON](https://github.com/debasishg/sjson)'s Typeclass based JSON serialization but in fact it was built on top of [Jerkson](https://github.com/codahale/jerkson/) (which in return a Scala wrapper around the fast Java based JSON library, [Jackson](http://jackson.codehaus.org/)). The benefit of this approach is that both the java and the scala side of Play can share the same underlying library (Jackson), while we could avoid reimplementing many serialization facilities that Jerkson can provide.
 
 # How to deserialize form JSON 
+ ```play.api.libs.json``` package contains 7 JSON data types: ```JsOBject```, ```JsNull```, ```JsUndefined```,```JsBoolean```, ```JsNumber```,```JsArray```, ```JsString```. All of them inherit from the generic JSON value, ```JsValue```.
+Using these one can build a typesafe JSON serializer and encapsulate the whole logic like this
+
+For example:
+```scala
+case class User(id: Long, name: String, friends: List[User])
+
+  implicit object UserFormat extends Format[User] {
+    def reads(json: JsValue): User = User(
+      (json \ "id").as[Long],
+      (json \ "name").as[String],
+      (json \ "friends").asOpt[List[User]].getOrElse(List()))
+    def writes(u: User): JsValue = //unmarshall to JSON
+  }
+```
+
+it's also possible to pattern match on JsValue when the underlying type is not homogenous (say a Map[String,Any].
+ 
 
 # How to serialize to JSON
+The benefit of the typeclass based solution that it's significantly increasing typesafety with the price of maintaing some extra Mapping or conversion which is necessary to unmarshall domain objects to JSON.
 
+
+ 
 # Other options
 
 Just like with [SJSON](https://github.com/debasishg/sjson), a reflection based solution is also available if the typeclass based implemention is not desirable. [Jerkson](https://github.com/codahale/jerkson/) is a solid reflection based JSON library and it's bundled with Play. 
