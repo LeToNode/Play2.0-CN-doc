@@ -138,10 +138,10 @@ object MyController extends Controller{
 
  def sendJson(id: String) = Action {
 
-    //this won't work 
+    //this won't work, since it's not properly typed
     //toJson(Map("f"->Map[String,Any]("s"->List("1","f"),"f"->"f" )))
     
-    //this will generate a JSON string
+    //this will return JSON as a String
     //Json.stringify(toJson(Map("f"->Map("s"->List("1","f"))))) 
     
     //this will return a JSON string with content type "application/json"
