@@ -151,7 +151,7 @@ object MyController extends Controller{
 }
 ```
 
-The benefit of the typeclass based solution that it's significantly increasing typesafety with the price of maintaing some extra Mapping or type conversion into JsValue which is necessary to unmarshal data from domain objects to JSON.
+The benefit of the typeclass based solution is that it's significantly increasing typesafety albeit with the price of maintaing some extra Mapping or type conversion into JsValue which is necessary to unmarshal data from domain objects to JSON.
 
 
 # Other options
