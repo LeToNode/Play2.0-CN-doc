@@ -2,7 +2,8 @@
 
 The recommend way of dealing with JSON in a play app is using Play's JSON library. Play's JSON library was inspired by [SJSON](https://github.com/debasishg/sjson)'s Typeclass based JSON serialization but in fact it was built on top of [Jerkson](https://github.com/codahale/jerkson/) (which in return a Scala wrapper around the fast Java based JSON library, [Jackson](http://jackson.codehaus.org/)). The benefit of this approach is that both the java and the scala side of Play can share the same underlying library (Jackson), while we could avoid reimplementing many serialization facilities that Jerkson can provide.
 
-# How to deserialize from JSON 
+# How to parse JSON and marshall data to domain objects
+
  ```play.api.libs.json``` package contains 7 JSON data types: 
 * ```JsOBject```
 * ```JsNull```
@@ -49,16 +50,16 @@ _(note: \\ means lookup in the current object and all descendants, \ means looku
 
  
 
-# How to serialize to JSON
-Of course, deserializing from JSON is just half of the story, since in most situations users would like to return JSON as well.The benefit of the typeclass based solution that it's significantly increasing typesafety with the price of maintaing some extra Mapping or conversion which is necessary to unmarshall domain objects to JSON.
+# How to unmarshal data from domain objects to JSON
+Of course, parsing JSON is just half of the story, since in most situations users would like to return JSON as well.The benefit of the typeclass based solution that it's significantly increasing typesafety with the price of maintaing some extra Mapping or conversion which is necessary to unmarshal data from domain objects to JSON.
 
 
  
 # Other options
 
-while the typeclass based solution describe above is recommended, [Jerkson](https://github.com/codahale/jerkson/) is a solid reflection based JSON library and it's bundled with Play.
+while the typeclass based solution describe above is recommended, nothing stopping users from using any JSON libraries.
 
-Here is a small snippet which shows to serialize plain scala objects into JSON and send it over the wire:
+For example, here is a small snippet which shows how to marshal plain scala objects into JSON and send it over the wire using the bundled [Jerkson](https://github.com/codahale/jerkson/ library:
 ```scala
 object MyController extends Controller{
 
