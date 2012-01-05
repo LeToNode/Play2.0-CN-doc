@@ -7,4 +7,5 @@ The recommend way of dealing with JSON in a play app is using Play's Json librar
 # How to serialize to JSON
 
 # Other options
-If the typeclass based solution is not desirable for any reason, one can always fall back to [Jerkson](https://github.com/codahale/jerkson/) which is bundled with Play.
+
+Alternatively, if the typeclass based solution is not desirable for any reason, one can always fall back to [Jerkson](https://github.com/codahale/jerkson/) which is bundled with Play.
