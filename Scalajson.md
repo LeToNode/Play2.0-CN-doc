@@ -9,6 +9,7 @@ The benefit of this approach is that both the java and the scala side of Play ca
 # How to parse JSON and marshal data to domain objects
 
  ```play.api.libs.json``` package contains 7 JSON data types: 
+
 * ```JsOBject```
 * ```JsNull```
 * ```JsUndefined```
