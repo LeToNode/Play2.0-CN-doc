@@ -2,7 +2,7 @@
 
 The recommend way of dealing with JSON in a play app is using Play's JSON library. Play's JSON library was inspired by [SJSON](https://github.com/debasishg/sjson)'s Typeclass based JSON serialization but in fact it was built on top of [Jerkson](https://github.com/codahale/jerkson/) (which in return a Scala wrapper around the fast Java based JSON library, [Jackson](http://jackson.codehaus.org/)). The benefit of this approach is that both the java and the scala side of Play can share the same underlying library (Jackson), while we could avoid reimplementing many serialization facilities that Jerkson can provide.
 
-# How to deserialize form JSON 
+# How to deserialize from JSON 
  ```play.api.libs.json``` package contains 7 JSON data types: ```JsOBject```, ```JsNull```, ```JsUndefined```,```JsBoolean```, ```JsNumber```,```JsArray```, ```JsString```. All of them inherit from the generic JSON value, ```JsValue```.
 Using these one can build a typesafe JSON serializer and encapsulate the whole logic like this
 
@@ -15,11 +15,17 @@ case class User(id: Long, name: String, friends: List[User])
       (json \ "id").as[Long],
       (json \ "name").as[String],
       (json \ "friends").asOpt[List[User]].getOrElse(List()))
-    def writes(u: User): JsValue = //unmarshall to JSON
+    def writes(u: User): JsValue = JsObject(Nil) //unmarshalling to JSValue is covered bellow 
   }
 ```
+given this, one can parse an incoming JSON to a User like this:  ```play.api.libs.json.parse(incomingJSONstring).as[User]```
 
-it's also possible to pattern match on JsValue when the underlying type is not homogenous (say a Map[String,Any].
+it's also possible to pattern match on JsValue where the underlying JSON type is not homogenous (say a JSON Map with different JSON type values). 
+
+```scala
+ 
+```
+
  
 
 # How to serialize to JSON
