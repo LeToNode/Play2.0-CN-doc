@@ -74,7 +74,7 @@ _(note: \\\ means lookup in the current object and all descendants, \ means look
 
 # How to unmarshal from domain objects to JSON
 
-Of course, parsing JSON is just half of the story, since in most situations users would like to return JSON as well.
+Of course, parsing JSON is just half of the story, since in most situations we would like to return JSON as well.
 
 let's revisit the previous example:
 ```scala
