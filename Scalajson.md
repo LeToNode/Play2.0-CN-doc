@@ -50,13 +50,13 @@ _(note: \\ means lookup in the current object and all descendants, \ means looku
  
 
 # How to serialize to JSON
-The benefit of the typeclass based solution that it's significantly increasing typesafety with the price of maintaing some extra Mapping or conversion which is necessary to unmarshall domain objects to JSON.
+Of course, deserializing from JSON is just half of the story, since in most situations users would like to return JSON as well.The benefit of the typeclass based solution that it's significantly increasing typesafety with the price of maintaing some extra Mapping or conversion which is necessary to unmarshall domain objects to JSON.
 
 
  
 # Other options
 
-Just like with [SJSON](https://github.com/debasishg/sjson), a reflection based solution is also available if the typeclass based implemention is not desirable. [Jerkson](https://github.com/codahale/jerkson/) is a solid reflection based JSON library and it's bundled with Play. 
+while the typeclass based solution describe above is recommended, [Jerkson](https://github.com/codahale/jerkson/) is a solid reflection based JSON library and it's bundled with Play.
 
 Here is a small snippet which shows to serialize plain scala objects into JSON and send it over the wire:
 ```scala
