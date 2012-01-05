@@ -39,7 +39,11 @@ case class User(id: Long, name: String, friends: List[User])
 ```
 _(note: Format defines two methods: ```reads``` and ```writes``` which are responsible for marshaling to and from JsValue.)_
 
-given this, one can marshall an incoming JSON string into a User case class like this:  ```play.api.libs.json.parse(incomingJSONstring).as[User]```
+given this, one can marshall an incoming JSON string into a User case class like this:  
+
+```scala
+val data = play.api.libs.json.parse(incomingJSONstring).as[User]
+```
 
 or if the data is coming from a request.body:
 
@@ -47,7 +51,8 @@ or if the data is coming from a request.body:
 val user = Json.parse(request.body.asText.get).as[User]
 ```
 
-it's also possible to pattern match on JsValue in cases where the underlying JSON type is not homogenous (say a JSON Map with different JSON type values) or if one wants to manage the object creation.
+
+it's also possible to pattern match on ```JsValue``` in cases where the underlying JSON type is not homogenous (say a JSON Map with different JSON types) or if one wants to manage the object creation.
 
 ```scala
 import play.api.libs.json._
@@ -132,7 +137,14 @@ import play.api.mvc._
 object MyController extends Controller{
 
  def sendJson(id: String) = Action {
-    //this won't work toJson(Map("f"->Map[String,Any]("s"->List("1","f"),"f"->"f" )))
+
+    //this won't work 
+    //toJson(Map("f"->Map[String,Any]("s"->List("1","f"),"f"->"f" )))
+    
+    //this will generate a JSON string
+    //Json.stringify(toJson(Map("f"->Map("s"->List("1","f"))))) 
+    
+    //this will return a JSON string with content type "application/json"
     Ok(toJson(Map("f"->Map("s"->List("1","f")))))
   }
 
