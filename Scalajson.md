@@ -93,7 +93,7 @@ case class User(id: Long, name: String, friends: List[User])
       "friends" -> JsArray(u.friends.map(fr => JsObject(List("id" -> JsNumber(fr.id), "name" -> JsString(fr.name))))))) 
   }
 ```
-_note: the main building block is JsObject which takes a Seq[String,JsValue]_
+_(Note: the main building block is ```JsObject``` which takes a ```Seq[String,JsValue]```)_
 
 then
 
