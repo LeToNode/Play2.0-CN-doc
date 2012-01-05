@@ -2,7 +2,7 @@
 
 The recommend way of dealing with JSON is using Play's typeclass based JSON library, located at ```play.api.libs.json```. This library is built on top of [Jerkson](https://github.com/codahale/jerkson/) (which is a Scala wrapper around the super-fast Java based JSON library, [Jackson](http://jackson.codehaus.org/)). 
 
-The benefit of this approach is that both the java and the scala side of Play can share the same underlying library (Jackson), while we could avoid reimplementing many low level serialization facilities that Jerkson provides.
+The benefit of this approach is that both the java and the scala side of Play can share the same underlying library (Jackson), while we could avoid reimplementing many low level serialization facilities that Jerkson provides and provide a type safe implementation as well.
 
 # How to parse JSON and marshal data to domain objects
 
