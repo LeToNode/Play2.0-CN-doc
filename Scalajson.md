@@ -8,7 +8,7 @@ The recommend way of dealing with JSON in a play app is using Play's JSON librar
 
 # Other options
 
-Just like in [SJSON](https://github.com/debasishg/sjson), if the typeclass based solution is not desirable, one can always fall back to a reflection based solution. [Jerkson](https://github.com/codahale/jerkson/) is a solid reflection based library and it's bundled with Play. 
+Just like with [SJSON](https://github.com/debasishg/sjson), a reflection based solution is also available if the typeclass based implemention is not desirable. [Jerkson](https://github.com/codahale/jerkson/) is a solid reflection based JSON library and it's bundled with Play. 
 
 Here is a small snippet which shows to serialize plain scala objects into JSON and send it over the wire:
 ```scala
