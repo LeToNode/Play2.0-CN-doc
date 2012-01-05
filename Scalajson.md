@@ -36,7 +36,7 @@ case class User(id: Long, name: String, friends: List[User])
 
   }
 ```
-_(note: Format defines two methods which managing marshaling to and from JsValue.)_
+_(note: Format defines two methods (```reads``` and ```writes```) which are responsible for marshaling to and from JsValue.)_
 
 given this, one can marshall an incoming JSON string into a User case class like this:  ```play.api.libs.json.parse(incomingJSONstring).as[User]```
 
