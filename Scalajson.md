@@ -7,6 +7,7 @@ The recommend way of dealing with JSON in a play app is using Play's JSON librar
 Using these one can build a typesafe JSON deserializer and encapsulate the whole logic like this
 
 For example:
+
 ```scala
 case class User(id: Long, name: String, friends: List[User])
 
@@ -18,9 +19,10 @@ case class User(id: Long, name: String, friends: List[User])
     def writes(u: User): JsValue = JsObject(Nil) //unmarshalling to JSValue is covered bellow 
   }
 ```
-given this, one can parse an incoming JSON to a User like this:  ```play.api.libs.json.parse(incomingJSONstring).as[User]```
 
-it's also possible to pattern match on JsValue in cases where the underlying JSON type is not homogenous (say a JSON Map with different JSON type values) or one wants to manage the object creation.
+given this, one can marshall an incoming JSON string into a User case class like this:  ```play.api.libs.json.parse(incomingJSONstring).as[User]```
+
+it's also possible to pattern match on JsValue in cases where the underlying JSON type is not homogenous (say a JSON Map with different JSON type values) or if one wants to manage the object creation.
 
 ```scala
  val data = Map("newspaper" -> Map("url"->"http://nytimes.com","attributes"-> Map("name"->"nytimes", "country"->"US","id"->25), "links"->List("http://link1","http://link2")))
