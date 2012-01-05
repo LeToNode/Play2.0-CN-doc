@@ -23,7 +23,16 @@ given this, one can parse an incoming JSON to a User like this:  ```play.api.lib
 it's also possible to pattern match on JsValue where the underlying JSON type is not homogenous (say a JSON Map with different JSON type values). 
 
 ```scala
- 
+ val data = Map("newspaper" -> Map("url"->"http://nytimes.com","attributes"-> Map("name"->"nytimes", "country"->"US","id"->25), "links"->List("http://link1","http://link2")))
+
+case class Attributes(name: String, id: Int, links: List[String])
+
+val attributes = (data \\ "attributes") 
+
+println(Attributes( (attributes \ "name") match {case JsString(name)=>name;case _ => ""},
+                    (attributes \ "id") match {case JsNumber(id)=>id;case _ => 0},
+                    (attributes \ "links") match {case JsArray(links)=>links;case _ => Nil}))
+   
 ```
 
  
