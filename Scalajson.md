@@ -4,7 +4,7 @@ The recommend way of dealing with JSON in a play app is using Play's JSON librar
 
 # How to deserialize from JSON 
  ```play.api.libs.json``` package contains 7 JSON data types: ```JsOBject```, ```JsNull```, ```JsUndefined```,```JsBoolean```, ```JsNumber```,```JsArray```, ```JsString```. All of them inherit from the generic JSON value, ```JsValue```.
-Using these one can build a typesafe JSON serializer and encapsulate the whole logic like this
+Using these one can build a typesafe JSON deserializer and encapsulate the whole logic like this
 
 For example:
 ```scala
@@ -20,7 +20,7 @@ case class User(id: Long, name: String, friends: List[User])
 ```
 given this, one can parse an incoming JSON to a User like this:  ```play.api.libs.json.parse(incomingJSONstring).as[User]```
 
-it's also possible to pattern match on JsValue where the underlying JSON type is not homogenous (say a JSON Map with different JSON type values). 
+it's also possible to pattern match on JsValue in cases where the underlying JSON type is not homogenous (say a JSON Map with different JSON type values) or one wants to manage the object creation.
 
 ```scala
  val data = Map("newspaper" -> Map("url"->"http://nytimes.com","attributes"-> Map("name"->"nytimes", "country"->"US","id"->25), "links"->List("http://link1","http://link2")))
@@ -34,6 +34,7 @@ println(Attributes( (attributes \ "name") match {case JsString(name)=>name;case 
                     (attributes \ "links") match {case JsArray(links)=>links;case _ => Nil}))
    
 ```
+_(note: \\ means lookup in the current object and all descendants, \ means lookup corresponding property only)_
 
  
 
