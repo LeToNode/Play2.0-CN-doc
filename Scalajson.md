@@ -13,10 +13,13 @@ Alternatively, if the typeclass based solution is not desirable for some reason,
 Here is a small snippet which shows to serialize plain scala objects into JSON and send it over the wire:
 ```scala
 object MyController extends Controller{
+
  import com.codahale.jerkson.Json._
+
  def sendJson(id: String) = Action {
     val dataFromDataStore =  Map("url"->"http://nytimes.com","attributes"-> Map("name"->"nytimes", "country"->"US","id"->25), "links"->List("http://link1","http://link2")
     Ok(generate(dataFromDataStore)).as("application/json")
   }
+
 }
 ```
