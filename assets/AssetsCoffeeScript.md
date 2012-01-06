@@ -25,8 +25,12 @@ app
        └ main.coffee   
 ```
 
-The resulting JavaScript file will be compiled as `public/javascripts/main.js`, and you can use it in your template as:
+Two JavaScript files will be compiled: `public/javascripts/main.js` and `public/javascripts/main.min.js`. The first one is a readable file useful in development, and the second one a minified file that you can use in production. You can use either one or the other in your template:
 
 ```html
 <script src="@routes.Assets.at("javascripts/main.js")">
+```
+
+```html
+<script src="@routes.Assets.at("javascripts/main.min.js")">
 ```
