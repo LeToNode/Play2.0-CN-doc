@@ -10,6 +10,9 @@ Welcome to the Play framework 2.0 beta documentation. This documentation is a wo
 ## Issue tracker
 - Please report issues [here](https://play.lighthouseapp.com/projects/82401-play-20)
 
+## About pull requests
+- Please [[read this | PullRequests]] before sending pull requests.
+
 ## breaking changes since 2.0 beta
 - sbt plugin name and architecture are different
 - sbt mainLang parameter is defining "Mostly Java" or "Mostly Scala" projects (only effecting scala projects)
