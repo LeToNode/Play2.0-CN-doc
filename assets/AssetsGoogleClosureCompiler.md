@@ -55,11 +55,6 @@ function showSum(first, second) {
 showSum([2,3], 4);
 ```
 
-## Activate minification
+## Minification
 
-Minification is disabled by default. To enable it, modify `project/Build.scala` as follows:
-
-```
-val main = PlayProject(appName, appVersion, appDependencies)
-          .settings(PlayProject.minify := true)
-```
+A minified file is also generated, where `.js` is replaces by `.min.js`. In our example, it would be `test.min.js`.
