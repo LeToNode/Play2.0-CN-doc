@@ -50,3 +50,12 @@ The resulting CSS file will be compiled as `public/stylesheets/main.css`, and yo
 ```html
 <link rel="stylesheet" href="@routes.Assets.at("stylesheets/main.css")">
 ```
+
+## Minified file
+
+A more compact version of the file is also generated:
+
+```html
+<link rel="stylesheet" href="@routes.Assets.at("stylesheets/main.min.css")">
+```
+
