@@ -33,7 +33,7 @@ target                   → Generated stuff
     └ classes_managed    → Managed class files (templates, ...)
     └ resource_managed   → Managed resources (less, ...)
     └ src_managed        → Generated sources (templates, ...)
-test                     -> source folders for Java or Scala tests
+test                     -> source folders for unit or functional tests
 ```
 
 ## The app/ directory
