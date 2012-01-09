@@ -13,6 +13,9 @@ Welcome to the Play framework 2.0 beta documentation. This documentation is a wo
 ## About pull requests
 - Please [[read this | PullRequests]] before sending pull requests.
 
+## Contributor guidelines
+- [[Guidelines]]
+
 ## breaking changes since 2.0 beta
 - sbt plugin name and architecture are different
 - sbt mainLang parameter is defining "Mostly Java" or "Mostly Scala" projects (only effecting scala projects)
@@ -68,6 +71,5 @@ Welcome to the Play framework 2.0 beta documentation. This documentation is a wo
 - [[Browse the Scala API (ScalaDoc) | http://playframework.github.com/api/scala/]]
 - [[Browse the Java API (JavaDoc) | http://playframework.github.com/api/java/]]
 
-## Contributor guidelines
-- [[Guidelines]]
+
 
