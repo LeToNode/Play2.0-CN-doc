@@ -13,7 +13,7 @@ Welcome to the Play framework 2.0 beta documentation. This documentation is a wo
 ## About pull requests
 - Please [[read this | PullRequests]] before sending pull requests.
 
-## Contributor guidelines
+## Contributor's guidelines
 - [[Guidelines]]
 
 ## breaking changes since 2.0 beta
