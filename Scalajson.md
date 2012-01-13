@@ -46,7 +46,7 @@ val data = play.api.libs.json.parse(incomingJSONstring).as[User]
 or if the data is coming from a request.body:
 
 ```scala
-val user = Json.parse(request.body.asText.get).as[User]
+val user = Json.parse(request.body.asJson.get).as[User]
 ```
 
 
