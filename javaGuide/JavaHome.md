@@ -14,11 +14,12 @@ The Java API for the Play 2.0 application developers is available in the `play` 
 6. [[Accessing an SQL database | JavaDatabase]]
 7. [[Using the Ebean ORM | JavaEbean]]
 8. [[Working with JSON | JavaJSON]]
-9. [[Caching | JavaCaching]]
-10. [[Using cookies | JavaCookies]]
-10. [[Testing your application | JavaTesting]]
-11. [[Writing Plugins | JavaPlugin]]
-12. [[Using Play as a Library | JavaPlayAsLibrary]]
+9. [[Making HTTP calls | JavaHttp]]
+10. [[Caching | JavaCaching]]
+11. [[Using cookies | JavaCookies]]
+12. [[Testing your application | JavaTesting]]
+13. [[Writing Plugins | JavaPlugin]]
+14. [[Using Play as a Library | JavaPlayAsLibrary]]
 
 ## Tutorials
 
