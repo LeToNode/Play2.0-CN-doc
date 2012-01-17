@@ -13,10 +13,11 @@ The Scala API for Play 2.0 application developers is available in the `play.api`
 5. [[Application global settings | ScalaGlobal]]
 6. [[Accessing an SQL database | ScalaDatabase]]
 7. [[Working with JSON | ScalaJSON]]
-8. [[Caching | ScalaCache]]
-9. [[Testing your application | Scalatest]] 
-10. [[Writing Plugins | ScalaPlugin]]
-11. [[Using Play as a Library| ScalaExtend]]
+8. [[Making HTTP calls || ScalaHttp]]
+9. [[Caching | ScalaCache]]
+10. [[Testing your application | Scalatest]] 
+11. [[Writing Plugins | ScalaPlugin]]
+12. [[Using Play as a Library| ScalaExtend]]
 
 ## Tutorials
 
