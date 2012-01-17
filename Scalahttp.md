@@ -1,6 +1,6 @@
 # Making HTTP calls
 
-Sometimes we would like to call other HTTP services from a play application. Play supports this task via its ```play.api.libs.WS``` library which provides a mechanism to make async http calls.
+Sometimes we would like to call other HTTP services from a play application. Play supports this task via its ```play.api.libs.WS``` library which provides a mechanism to make async http calls. Any calls made by ```play.api.libs.WS``` should return a ```play.api.libs.concurrent[T]``` which we can then handle using play's asynchronous mechanisms
 
 # A short introduction
 
@@ -26,4 +26,5 @@ val contentForm: String = WS.url("http://localhost:9001/post").post(Map("param1"
 contentForm must contain ("AnyContentAsUrlFormEncoded")
 contentForm must contain ("foo")
 ```
+one also can add custom request and authentication headers and even a signature. For more information please see the api doc [here](https://github.com/playframework/Play20/blob/master/framework/src/play/src/main/scala/play/api/libs/WS.scala)
 
