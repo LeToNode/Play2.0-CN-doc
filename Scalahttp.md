@@ -1,6 +1,6 @@
 # Making HTTP calls
 
-Sometimes we would like to call other HTTP services from within a play application. Play supports this task via its ```play.api.libs.WS``` library which provides a mechanism to make async http calls. Any calls made by ```play.api.libs.WS``` should return a ```play.api.libs.concurrent.Promise[T]``` which we can later handle with play's asynchronous components.
+Sometimes we would like to call other HTTP services from within a play application. Play supports this task via its ```play.api.libs.WS``` library which provides a way to make async http calls. Any calls made by ```play.api.libs.WS``` should return a ```play.api.libs.concurrent.Promise[T]``` which we can later handle with play's asynchronous mechanisms.
 
 # A short introduction
 
