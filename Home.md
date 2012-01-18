@@ -30,6 +30,7 @@ Welcome to the Play framework 2.0 beta documentation. This documentation is a wo
 - [[Creating a new application | NewApplication]]
 - [[Anatomy of a Play 2.0 application | Anatomy]]
 - [[Using the Play 2.0 console | PlayConsole ]]
+- [[Common Gotchas]]
 
 ## Working with Play 2.0
 
