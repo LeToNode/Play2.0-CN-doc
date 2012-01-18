@@ -33,6 +33,7 @@ _[Please consult the javadoc for more information](https://github.com/playframew
 
 ## Hello Post
 ```java
+import play.libs.*;
 import com.ning.http.client.Realm;
 
 F.Promise<WS.Response> jpromise = WS.url("http://mysite.com/post")
