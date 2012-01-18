@@ -1,4 +1,4 @@
-# Making HTTP calls
+# Making HTTP Requests
 
 Sometimes we would like to call other HTTP services from within a play application. Play supports this task via its ```play.api.libs.WS``` library which provides a way to make asynchronous HTTP calls. 
 
