@@ -88,5 +88,5 @@ public class FunctionalTest extends FluentTest{
 }
 ```
 
-[FunctionalTest.java](https://github.com/playframework/Play20/blob/master/samples/java/computer-database/test/FunctionalTest.java) provides a full example. Consult [FluentLenium's wiki](https://github.com/MathildeLemee/FluentLenium) for more information.
+[FunctionalTest.java](https://github.com/playframework/Play20/blob/master/samples/java/computer-database/test/FunctionalTest.java) provides a full example. Consult [FluentLenium's wiki](https://github.com/FluentLenium/FluentLenium/wiki) for more information.
 
