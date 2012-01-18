@@ -175,6 +175,16 @@ Note that you can also declare reusable pure Scala blocks:
 <h1>@title("hello world")</h1>
 ```
 
+## Declaring reusable values
+
+You can define scoped values using the `defining` helper:
+
+```html
+@defining(user.firstName + " " + user.lastName) { fullName =>
+  <div>Hello @fullName</div>
+}
+```
+
 ## Import statements
 
 You can import whatever you want at the beginning of your template (or sub-template):
