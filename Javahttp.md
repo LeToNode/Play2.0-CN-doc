@@ -25,6 +25,8 @@ org.w3c.dom.Document doc = res.asXml();
 org.codehaus.jackson.JsonNode json = res.asJson();
 
 ```
+_Note: in this example we used  ```play.libs.F.Promise#get``` to retrieve the result of the promise in a blocking fashion, however, since this is an async call, one might want to avoid blocking by using ```play.libs.F.Promise#onRedeem``` callback or 
+```flatMap``` and ```map```. Please consult the javadoc for more [information](https://github.com/playframework/Play20/blob/master/framework/src/play/src/main/java/play/libs/F.java)_
 
 ## Hello Post
 ```java
