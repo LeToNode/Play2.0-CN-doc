@@ -46,4 +46,4 @@ String body = jpromise.get().getBody();
 
 ```
 
-one also can add custom request and authentication headers and even a signature. For more information please see the api doc [here](https://github.com/playframework/Play20/blob/master/framework/src/play/src/main/java/play/libs/WS.java)
+For more information please see the api doc [here](https://github.com/playframework/Play20/blob/master/framework/src/play/src/main/java/play/libs/WS.java)
