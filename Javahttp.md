@@ -2,13 +2,13 @@
 
 Sometimes we would like to call other HTTP services from within a play application. Play supports this task via its ```play.libs.WS``` library which provides a way to make asynchronous HTTP calls. 
 
-Any calls made by ```play.libs.WS``` should return a ``` play.libs.F.Promise[play.libs.WS.ws.Response]``` which we can later handle with play's asynchronous mechanisms.
+Any calls made by ```play.libs.WS``` should return a ``` play.libs.F.Promise[play.libs.WS.Response]``` which we can later handle with play's asynchronous mechanisms.
 
 # A short introduction
 
 ## Hello Get
-```scala
-import play.api.libs._
+```java
+import play.libs.WS;
 //let's try to retrive the value from the promise within 5sec
 val myfeed: Promise[ws.Response] = WS.url("http://mysite.com").get()
 
