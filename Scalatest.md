@@ -1,4 +1,4 @@
-_this page is being rewritten to reflect on the new API_
+_this page is obsolete and being rewritten to reflect on the new API_
 
 # Testing your Application
 
