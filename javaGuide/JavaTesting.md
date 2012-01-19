@@ -1,6 +1,6 @@
 # Testing your application
 
-_this page is being rewritten to reflect on the new API_
+_this page is obsolete and being rewritten to reflect on the new API_
 
 _Tip: Java applications can be easily [tested with Scala](https://github.com/playframework/Play20/wiki/Scalatest) as well. In fact, writing tests is probably the easiest way to pick up a new language._
 
