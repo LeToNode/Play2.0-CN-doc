@@ -40,7 +40,7 @@ _(note: Format defines two methods: ```reads``` and ```writes``` which are respo
 given this, one can marshall an incoming JSON string into a User case class like this:  
 
 ```scala
-val data = play.api.libs.json.parse(incomingJSONstring).as[User]
+val data = play.api.libs.json.Json.parse(incomingJSONstring).as[User]
 ```
 
 or if the data is coming from a request.body:
