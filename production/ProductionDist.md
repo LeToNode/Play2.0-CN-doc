@@ -14,24 +14,28 @@ In the Play console, simply type `dist`:
 
 [[dist.png]]
 
-_Tip: one can easily use an external application.conf by using a special system property called ```conf.file```, so assuming my production ```application.conf``` stored under my home directory, the following command should create a play distribution using the custom ```application.conf```:_ 
+_Tip: one can easily use an external application.conf by using a special system property called ```conf.file```, so assuming your production ```application.conf``` stored under your home directory, the following command should create a play distribution using the custom ```application.conf```:_ 
 ```bash
  $ play -Dconfig.file=/home/peter/prod/application.conf dist 
 ```
+
 
 
 This produces a ZIP file containing all JAR files needed to run your application in the `target` folder of your application, the ZIP file’s contents are organized as:
 
 ```
 my-first-application-1.0
- └ conf
-    └ application.conf
  └ lib
     └ *.jar
  └ start
 ```
 
 You can use the generated `start` script to run your application.
+_Tip: one can easily use an external application.conf by using a special system property called ```conf.file```, so assuming your production ```application.conf``` stored under your home directory, the following command should start the play distribution using the custom ```application.conf```:_ 
+```bash
+ $ start -Dconfig.file=/home/peter/prod/application.conf 
+```
+
 
 Alternatively you can run `play dist` directly from your OS shell prompt, which does the same thing:
 
