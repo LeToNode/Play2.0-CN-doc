@@ -31,6 +31,7 @@ my-first-application-1.0
 ```
 
 You can use the generated `start` script to run your application.
+
 _Tip: one can easily use an external application.conf by using a special system property called ```conf.file```, so assuming your production ```application.conf``` stored under your home directory, the following command should start the play distribution using the custom ```application.conf```:_ 
 ```bash
  $ start -Dconfig.file=/home/peter/prod/application.conf 
