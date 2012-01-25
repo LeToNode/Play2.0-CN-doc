@@ -26,7 +26,7 @@ Alternatively you can directly use `play start` at your OS command prompt, which
 $ play start
 ```
 
-_Tip: one can easily use an external application.conf by using a special system property called ```conf.file```, so assuming my production ```application.conf``` stored under my home directory, the following command should launch play using the custom ```application.conf```:_ 
+_Tip: one can easily use an external application.conf by using a special system property called ```conf.file```, so assuming your production ```application.conf``` stored under your home directory, the following command should launch play using the custom ```application.conf```:_ 
 ```bash
  $ play -Dconfig.file=/home/peter/prod/application.conf start 
 ```
