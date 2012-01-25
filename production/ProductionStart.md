@@ -28,7 +28,7 @@ $ play start
 
 _Tip: one can easily use an external application.conf by using a special system property called ```conf```, so assuming my production ```application.conf``` stored under my home directory, the following command should launch play using the custom ```application.conf```:_ 
 ```bash
- $ play "start -Dconfig.file=/home/peter/prod/application.conf"
+ $ play -Dconfig.file=/home/peter/prod/application.conf start 
 ```
 
 ## Using the stage task
