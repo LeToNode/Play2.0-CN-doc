@@ -9,6 +9,6 @@ The Scala API with information about the usage can be found [here](https://githu
 # Plugging in your own 
 The following simple steps need to be taken if one would like to implement a different caching solution
 
-1. set ```cache.default=disabled``` in ```application.conf```
+1. set ```ehcacheplugin=disabled``` in ```application.conf```
 2. implement ```play.api.CacheAPI``` interface
 3. implement ```play.api.Plugin```
