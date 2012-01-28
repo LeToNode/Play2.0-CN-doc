@@ -28,7 +28,7 @@ $ play
 
 You can also create a new Play application without installing Play, by using sbt. 
 
-> First install [[sbt 0.11.0 | https://github.com/harrah/xsbt/wiki/Getting-Started-Setup]] if needed.
+> First install [[sbt 0.11.2 | https://github.com/harrah/xsbt/wiki/Getting-Started-Setup]] if needed.
 
 Just create a new directory for your new application and configure your sbt build script with two additions.
 
