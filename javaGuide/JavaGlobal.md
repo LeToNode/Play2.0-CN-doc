@@ -22,12 +22,12 @@ import play.*;
 public class Global extends GlobalSettings {
 
   @Override
-  public static void onStart(Application app) {
+  public void onStart(Application app) {
     Logger.info("Application has started");
   }  
   
   @Override
-  public static void onStop(Application app) {
+  public void onStop(Application app) {
     Logger.info("Application shutdown...");
   }  
     
@@ -47,7 +47,7 @@ import static play.mvc.Results.*;
 public class Global extends GlobalSettings {
 
   @Override
-  public static Result onError(Throwable t) {
+  public Result onError(Throwable t) {
     return internalServerError(
       views.html.errorPage(t)
     );
@@ -69,7 +69,7 @@ import static play.mvc.Results.*;
 public class Global extends GlobalSettings {
 
   @Override
-  public static Result onActionNotFound(String uri) {
+  public Result onActionNotFound(String uri) {
     return notFound(
       views.html.pageNotFound(uri)
     );
@@ -89,7 +89,7 @@ import static play.mvc.Results.*;
 public class Global extends GlobalSettings {
 
   @Override
-  public static Result onBadRequest(String uri, String error) {
+  public Result onBadRequest(String uri, String error) {
     return badRequest("Don't try to hack the URI!");
   }  
     
