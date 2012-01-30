@@ -16,7 +16,7 @@ When the stage command is executed in sbt (this will be done for you when you de
 Heroku requires a special file in the application root called `Procfile`. Create a simple text file with the following content:
 
 ```txt
-web: target/start
+web: target/start -Dhttp.port=${PORT}
 ```
 
 ## Store your application in git
