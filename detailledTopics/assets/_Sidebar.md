@@ -1,4 +1,4 @@
-# Working with public assets
+#### Working with public assets
 
 - [[Home | Assets]]
 - [[Using CoffeeScript | AssetsCoffeeScript]]

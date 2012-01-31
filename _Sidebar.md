@@ -7,12 +7,12 @@
 - [[Setting-up your preferred IDE | IDE]]
 - [[Sample applications | Samples]]
 
-# Working with Play 2.0
+#### Working with Play 2.0
 
 - [[Play 2.0 for Scala developers | ScalaHome]]
 - [[Play 2.0 for Java developers | JavaHome]]
 
-# Detailled topics
+#### Detailled topics
 
 - [[The Build system | Build]]
 - [[Working with public assets | Assets]]
@@ -22,7 +22,7 @@
 - [[Configuring logging | SettingsLogger]]
 - [[Deploying your application | Production]]
 
-# Additional documentations
+#### Additional documentations
 
 - [[Scala|http://docs.scala-lang.org/]]
 - [[Akka|http://akka.io/docs/]]

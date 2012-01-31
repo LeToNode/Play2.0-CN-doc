@@ -1,4 +1,4 @@
-# The Build system
+#### The Build system
 
 - [[Home | Build]]
 - [[Read about sbt settings | SBTSettings]]
