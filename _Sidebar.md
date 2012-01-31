@@ -1,22 +1,32 @@
-- [[Getting started | GettingStarted]]
+# Getting started
 
-[[/utils/line.png]]
+- [[Installing Play 2.0 | Installing]]
+- [[Creating a new application | NewApplication]]
+- [[Anatomy of a Play 2.0 application | Anatomy]]
+- [[Using the Play 2.0 console | PlayConsole ]]
+- [[Setting-up your preferred IDE | IDE]]
+- [[Sample applications | Samples]]
+
+# Working with Play 2.0
 
 - [[Play 2.0 for Scala developers | ScalaHome]]
 - [[Play 2.0 for Java developers | JavaHome]]
 
-[[/utils/line.png]]
+# Detailled topics
 
-- [[The build system | Build]]
+- [[The Build system | Build]]
 - [[Working with public assets | Assets]]
-- [[Settings | Settings]]
-- [[Deploying an application | Production]]
+- [[Configuration file syntax and features | Configuration]]
+- [[Configuring the JDBC connection pool | SettingsJDBC]]
+- [[Configuring the internal Akka system | AkkaCore]]
+- [[Configuring logging | SettingsLogger]]
+- [[Deploying your application | Production]]
 
-[[/utils/line.png]]
+# Additional documentations
 
-- [[Sample applications | Samples]]
+- [[Scala|http://docs.scala-lang.org/]]
+- [[Akka|http://akka.io/docs/]]
+- [[sbt|http://www.scala-sbt.org/learn.html]]
+- [[Configuration|https://github.com/typesafehub/config]]
+- [[Logback|http://logback.qos.ch/documentation.html]]
 
-[[/utils/line.png]]
-
-- [[ScalaDoc | http://playframework.github.com/api/scala/]]
-- [[JavaDoc | http://playframework.github.com/api/java/]]

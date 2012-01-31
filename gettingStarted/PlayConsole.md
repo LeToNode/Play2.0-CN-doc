@@ -11,14 +11,14 @@ $ cd /path/to/any/application
 $ play 
 ```
 
-[[console.png]]
+[[images/console.png]]
 
 ## Getting help
 
-Use the `help` command to get basic help about the available commands:
+Use the `help play` command to get basic help about the available commands:
 
 ```bash
-[My first application] $ help
+[My first application] $ help play
 ```
 
 ## Running the server in development mode
@@ -29,13 +29,13 @@ To run the current application in development mode, use the `run` command:
 [My first application] $ run
 ```
 
-[[consoleRun.png]]
+[[images/consoleRun.png]]
 
 In this mode, the server will be launched with the auto-reload feature enabled, meaning that for each request Play will check your project and recompile required sources. If needed the application will restart automatically.
 
 If there are any compilation errors you will see the result of the compilation directly in your browser:
 
-[[errorPage.png]]
+[[images/errorPage.png]]
 
 To stop the server, type `Crtl+D` key, and you will be returned to the Play console prompt.
 
@@ -47,7 +47,7 @@ In Play 2.0 you can also compile your application without running the server. Ju
 [My first application] $ compile
 ```
 
-[[consoleCompile.png]]
+[[images/consoleCompile.png]]
 
 ## Launch the interactive console
 
@@ -57,7 +57,7 @@ Type `console` to enter the interactive Scala console, which allows you to test 
 [My first application] $ console
 ```
 
-[[consoleEval.png]] 
+[[images/consoleEval.png]] 
 
 ## Using sbt features
 
@@ -70,6 +70,14 @@ For example, using `~ compile`
 ```
 
 The compilation will be triggered each time you change a source file.
+
+If you are using `~ run`
+
+```bash
+[My first application] $ ~ run
+```
+
+The triggered compilation will be enabled while a development server is running.
 
 You can also do the same for `~ test`, to continuously test your project each time you modify a source file:
 

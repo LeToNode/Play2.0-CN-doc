@@ -6,7 +6,7 @@ The benefit of this approach is that both the java and the scala side of Play ca
 
 # How to parse JSON and marshal data to domain objects
 
- ```play.api.libs.json``` package contains 7 JSON data types: 
+```play.api.libs.json``` package contains 7 JSON data types: 
 
 * ```JsOBject```
 * ```JsNull```
@@ -35,6 +35,7 @@ case class User(id: Long, name: String, friends: List[User])
 
   }
 ```
+
 _(note: Format defines two methods: ```reads``` and ```writes``` which are responsible for marshaling to and from JsValue.)_
 
 given this, one can marshall an incoming JSON string into a User case class like this:  
@@ -66,6 +67,7 @@ println(Attributes( (attributes \ "name") match {case JsString(name)=>name;case 
                     (attributes \ "links") match {case JsArray(links)=>links;case _ => Nil}))
    
 ```
+
 _(note: \\\ means lookup in the current object and all descendants, \ means lookup corresponding property only)_
 
  
@@ -75,6 +77,7 @@ _(note: \\\ means lookup in the current object and all descendants, \ means look
 Of course, parsing JSON is just half of the story, since in most situations we would like to return JSON as well.
 
 let's revisit the previous example:
+
 ```scala
 import play.api.libs.json._
 
@@ -91,6 +94,7 @@ case class User(id: Long, name: String, friends: List[User])
       "friends" -> JsArray(u.friends.map(fr => JsObject(List("id" -> JsNumber(fr.id), "name" -> JsString(fr.name))))))) 
   }
 ```
+
 _(Note: the main building block is ```JsObject``` which takes a ```Seq[String,JsValue]```)_
 
 then

@@ -13,9 +13,9 @@ This will ask for some information.
 - The application name (just for display, this name will be used later in several messages).
 - The template to use for this application. You can choose either a default Scala application, a default Java application, or an empty application.
 
-[[playNew.png]]
+[[images/playNew.png]]
 
-> Note that choosing a template at this point does not imply that you can’t change the main language later. For example, you can create a new application using the default Java application template and start adding Scala code at any point.
+> Note that choosing a template at this point does not imply that you can’t change use another language later. For example, you can create a new application using the default Java application template and start adding Scala code at any point.
 
 Once the application has been created you can use the `play` command again to enter the [[Play 2.0 console | PlayConsole]].
 
@@ -35,12 +35,7 @@ Just create a new directory for your new application and configure your sbt buil
 In `project/plugins.sbt`, add:
 
 ```scala
-resolvers ++= Seq(
-    DefaultMavenRepository,
-    "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/"
-)
-
-addSbtPlugin("play" % "sbt-plugin" % "2.0-RC1-SNAPSHOT")
+addSbtPlugin("play" % "sbt-plugin" % "2.0")
 ```
 
 In `project/Build.scala`:
@@ -56,7 +51,9 @@ object ApplicationBuild extends Build {
  
   val appDependencies = Nil
  
-  val main = PlayProject(appName, appVersion, appDependencies, mainLang = JAVA) //or mainLang = SCALA, it defaults to JAVA
+  val main = PlayProject(
+    appName, appVersion, appDependencies, mainLang = SCALA
+  ) 
  
 }
 ```

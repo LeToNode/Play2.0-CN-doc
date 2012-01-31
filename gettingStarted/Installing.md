@@ -1,8 +1,8 @@
-# Installing Play 2.0 beta
+# Installing Play 2.0
 
 ## Prerequisites
 
-To run the Play framework, you need [[JDK 6 or later| http://www.oracle.com/technetwork/java/javase/downloads/index.html]]. If you wish to build Play from source, you will need the [[Git source control client | http://git-scm.com/]] to fetch the source code.
+To run the Play framework, you need [[JDK 6 or later| http://www.oracle.com/technetwork/java/javase/downloads/index.html]]. 
 
 > If you are using MacOS, Java is built-in. If you are using Linux, make sure to use either the Sun JDK or OpenJDK (and not gcj which is the default Java command on many Linux distros). If you are using Windows, just download and install the latest JDK package.
 
@@ -10,7 +10,7 @@ Be sure to have the `java` and `javac` commands in the current path (you can che
 
 ## Download the binary package
 
-Download the [[Play 2.0 beta binary package | http://download.playframework.org/releases/play-2.0-beta.zip]] and extract the archive to a location where you have both read **and write** access. (Running `play` writes some files to directories within the archive, so don't install to `/opt`, `/usr/local` or anywhere else you'd need special permission to write to.)
+Download the [[Play 2.0 binary package | http://download.playframework.org/releases/play-2.0.zip]] and extract the archive to a location where you have both read **and write** access. (Running `play` writes some files to directories within the archive, so don't install to `/opt`, `/usr/local` or anywhere else you'd need special permission to write to.)
 
 ## Add the play script in your PATH
 
@@ -34,30 +34,4 @@ $ play help
 
 If everything is properly installed, you should see the basic help:
 
-[[play.png]]
-
-## Building from sources
-
-To benefit from the latest improvements and bug fixes after the initial beta release, you may want to compile Play 2.0 from sources. You’ll need a [[Git client | http://git-scm.com/]] to fetch the sources.
-
-From the shell, first checkout the Play 2.0 sources:
-
-```bash
-$ git clone git://github.com/playframework/Play20.git
-```
-
-Then go to the `Play20/framework` directory and launch the `build` script to enter the sbt build console:
-
-```bash
-$ cd Play20/framework
-$ ./build
-> update
-> compile
-> publish-local
-```
-
-Once in the sbt console, run `build-repository` to compile and build everything. This will also create the local Ivy repository containing all of the required dependencies.
-
-> Note that you don’t need to install sbt yourself: Play 2.0 embeds its own version (currently sbt 0.11.2).
-
-If you want to make changes to the code you can use `compile` and `publish-local` to rebuild the framework.
+[[images/play.png]]

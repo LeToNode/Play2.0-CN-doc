@@ -1,28 +1,8 @@
-# Play 2.0 RC1 documentation
+# Play 2.0 documentation
 
-Welcome to the Play framework 2.0 beta documentation. This documentation is a work in progress, as is Play 2.0 itself. 
-
-> Read more about the [[current status, and missing features | Status]]
-
-## CI Server
-- our CI server can be found [here](https://playframework2.ci.cloudbees.com/) (Thanks to [Cloudbees](http://cloudbees.com) for making it possible)
-
-## Issue tracker
-- Please report issues [here](https://play.lighthouseapp.com/projects/82401-play-20)
-
-## About pull requests
-- Please [[read this | PullRequests]] before sending pull requests.
-
-## Contributor's guidelines
-- [[Guidelines]]
-
-## breaking changes since 2.0 beta
-- sbt plugin name and architecture are different
-- sbt mainLang parameter is defining "Mostly Java" or "Mostly Scala" projects (only effecting scala projects)
-- form API tweaks
-- test framework teaws
-- application.conf entries require escaping (certain values need to be wrapped in double quotes)
- 
+> Play 2.0 is a high productivity Java and Scala Web application framework, integrating all components and API needed for modern Web application development. 
+>
+> It is based on a lightweight stateless Web friendly architecture and features predictable and minimal resources consumption (CPU, Memory, Threads) for highly scalable applications thanks to its reactive model based on Iteratee IO.
 
 ## Getting started
 
@@ -30,47 +10,40 @@ Welcome to the Play framework 2.0 beta documentation. This documentation is a wo
 - [[Creating a new application | NewApplication]]
 - [[Anatomy of a Play 2.0 application | Anatomy]]
 - [[Using the Play 2.0 console | PlayConsole ]]
-- [[Common Gotchas]]
+- [[Setting-up your preferred IDE | IDE]]
+- [[Sample applications | Samples]]
 
 ## Working with Play 2.0
 
 - [[Play 2.0 for Scala developers | ScalaHome]]
 - [[Play 2.0 for Java developers | JavaHome]]
 
-## The Build system
+## Detailled topics
 
-- [[Managing library dependencies | SBTDependencies]]
-- [[Working with sub-projects | SBTSubProjects]]
-
-## Working with public assets
-
-- [[Serving public resources | AssetsPublic]]
-- [[Using LESS CSS | AssetsLess]]
-- [[Using CoffeeScript | AssetsCoffeeScript]]
-- [[Using the Google Closure Compiler | AssetsGoogleClosureCompiler]]
-
-## Settings
-
-- [[Configuring the sbt build | SettingsSBT]]
-- [[Configuring the JDBC database connection pool | SettingsJDBC]]
+- [[The Build system | Build]]
+- [[Working with public assets | Assets]]
+- [[Configuration file syntax and features | Configuration]]
+- [[Configuring the JDBC connection pool | SettingsJDBC]]
+- [[Configuring the internal Akka system | AkkaCore]]
 - [[Configuring logging | SettingsLogger]]
+- [[Deploying your application | Production]]
 
-## Deploying an application
+## Additional documentations
 
-- [[Starting your application in production mode | ProductionStart]]
-- [[Creating a standalone version of your application | ProductionDist]]
-- [[Deploying to Heroku | ProductionHeroku]]
+- [[Scala|http://docs.scala-lang.org/]]
+- [[Akka|http://akka.io/docs/]]
+- [[sbt|http://www.scala-sbt.org/learn.html]]
+- [[Configuration|https://github.com/typesafehub/config]]
+- [[Logback|http://logback.qos.ch/documentation.html]]
 
-## Sample applications
+## Hacking Play 2.0
 
-- [[Hello World | SampleHelloworld]]
-- [[The computers database | SampleComputerDatabase]]
-- [[ZenTasks | SampleZenTask]]
+- [[Building Play 2.0 from source | BuildingFromSource]]
+- [[CI server at Cloudbees | CIServer]]
+- [[Issues tracker | Issues]]
+- [[Pull requests | PullRequests]]
+- [[Contributor guidelines | Guidelines]]
 
-## API documentation
-
-- [[Browse the Scala API (ScalaDoc) | http://playframework.github.com/api/scala/]]
-- [[Browse the Java API (JavaDoc) | http://playframework.github.com/api/java/]]
 
 
 
