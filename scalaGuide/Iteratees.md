@@ -153,7 +153,7 @@ There is actually already a method in `Iteratee` object that does exactly this f
 ```
 Of course one should be worried now about how hard would it be to manually push input into an iteratee by folding over iteratee states over and over again. For example pushing input manually into this iteratee using nested folds. That's when `Enumerator`s come in handy.
 
-## Enumeraters
+## Enumerators
 
 If iteratee represents the consumer, or sink, of input, an `Enumerator` is the source that pushes input into a given iteratee. As the name tells, it enumerates some input into the iteratee and eventually returns a new state of that iteratee. This can be easily seen looking at the Enumerators signature:
 
@@ -207,10 +207,38 @@ You might notice here that an `Iteratee` will eventually produce a result (retur
 
 ```
 
-An `Enumerator` has some symbolic methods that can act as operators, this can be useful in some contexts for saving some parentheses, like the `|>` method which does exactly like apply:
+An `Enumerator` has some symbolic methods that can act as operators, this can be useful in some contexts for saving some parentheses, like the `|>>` method which does exactly like apply:
 
 ```scala
 
-  val eventuallyResult: Promise[String] = Iteratee.flatten( enumerateUsers |> consume  ).run
+  val eventuallyResult: Promise[String] = Iteratee.flatten( enumerateUsers |>> consume  ).run
 
 ```
+Since an `Enumerator` pushes some input into an iteratee and eventually return a new state of the iteratee, we can go on pushing more input into the returned iteratee using another `Enumerator`. This can be done either by using the `flatMap` function on `Promise`s or more simply by combining 'Enumerator's using the `andThen` method like the following:
+
+```scala
+
+  val colorsEnumerators = Enumerator("Red","Blue","Green")
+
+  val moreColors = Enumerator("Grey","Orange","Yellow")
+
+  val combinedEnumerator = colors.andThen(moreColors)
+
+  val eventuallyIteratee = combinedEnumerator(consume)
+
+```
+
+As for apply, there is a symbol version of the `andThen` that can be used to save some parentheses when appropriate:
+
+```scala
+
+  val eventuakkyIteratee = 
+
+    Enumerator("Red","Blue","Green") >>>
+
+    Enumerator("Grey","Orange","Yellow") |>>
+
+    consume
+
+```
+
