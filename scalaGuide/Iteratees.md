@@ -205,7 +205,7 @@ You might notice here that an `Iteratee` will eventually produce a result (retur
   //Eventually print the result 
   eventuallyResult.onRedeem( s => println(s)) // Prints "GuillaumeSadekPeterErwan"
 
- ```
+```
 
 An `Enumerator` has some symbolic methods that can act as operators, this can be useful in some contexts for saving some parentheses, like the `|>` method which does exactly like apply:
 
