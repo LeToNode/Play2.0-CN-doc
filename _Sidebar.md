@@ -7,7 +7,7 @@
 - [[Setting-up your preferred IDE | IDE]]
 - [[Sample applications | Samples]]
 
-#### Working with Play 2.0
+### Working with Play 2.0
 
 - [[Play 2.0 for Scala developers | ScalaHome]]
 - [[Play 2.0 for Java developers | JavaHome]]
