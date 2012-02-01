@@ -148,9 +148,20 @@ There is actually already a method in `Iteratee` object that does exactly this f
 
 ```scala
 
-  val consume = consume[String]()
+  val consume = Iteratee.consume[String]()
 
 ```
+
+One common case is to create an iteratee that does some imperative operation for each chunk of input:
+
+```scala
+
+  val printlnIteratee = Iteratee.foreach[String](s => println(s))
+
+```
+
+More interesting methods exist like `repeat`, `ignore` and `fold1` which is different for the preceding `fold` in offering the opportunity to be asynchronous in treating input chunks.
+
 Of course one should be worried now about how hard would it be to manually push input into an iteratee by folding over iteratee states over and over again. For example pushing input manually into this iteratee using nested folds. That's when `Enumerator`s come in handy.
 
 ## Enumerators
@@ -228,11 +239,11 @@ Since an `Enumerator` pushes some input into an iteratee and eventually return a
 
 ```
 
-As for apply, there is a symbol version of the `andThen` that can be used to save some parentheses when appropriate:
+As for apply, there is a symbolic version of the `andThen` that can be used to save some parentheses when appropriate:
 
 ```scala
 
-  val eventuakkyIteratee = 
+  val eventuallyIteratee = 
 
     Enumerator("Red","Blue","Green") >>>
 
@@ -241,4 +252,36 @@ As for apply, there is a symbol version of the `andThen` that can be used to sav
     consume
 
 ```
+
+We can also create `Enumerators` for enumerating files contents:
+
+```scala
+
+  val fileEnumerator: Enumerator[Array[Byte]] = Enumerator.enumerateFile(new File("path/to/some/file"))
+
+```
+
+Or more generally enumerating a `java.io.InputStream`. It is important to note that input won't be read until the iteratee this `Enumerator` is applied on is ready to take more input.
+Actually both methods are based on the more generic `Enumerator.callback` that has the following signature:
+
+```scala
+
+  def callback[E](
+    retriever: () => Promise[Option[E]],
+    onComplete: () => Unit = () => (),
+    onError: (String, Input[E]) => Unit = (_: String, _: Input[E]) => ()): Enumerator[E] = ...
+
+```
+
+This method defined on the `Enumerator` object is one of the most important methods for creating `Enumerator`s from imperative logic. Looking closely at the signature, this method takes a callback function `retriever: () => Promise[Option[E]]` that will be called each time the iteratee this `Enumerator` is applied to is ready to take some input. It can be easily used to create an `Enumerator` that represents a stream of time values every 100 millisecond using the opportunity that we can return a promise, like the following:
+
+```scala
+
+  Enumerator.callbackEnumerator { () =>
+        Promise.timeout(Some(dateFormat.format(new Date)), 100 milliseconds)
+  }
+
+```
+
+In the same manner we can construct an `Enumerator` that would fetch a url every some time using the `WS` api which returns, not suprisingly` a `Promise`
 
