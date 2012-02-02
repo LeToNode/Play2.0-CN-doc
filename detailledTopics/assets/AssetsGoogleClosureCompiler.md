@@ -22,6 +22,7 @@ Consider the `lib.js` file:
 function sum(a, b) {
     return a + b;
 }
+exports.sum = sum;
 ```
 
 And the `test.js` file:
@@ -32,7 +33,7 @@ And the `test.js` file:
 require("lib");
 
 function showSum(first, second) {
-    alert(sum(first, second));
+    alert(require.modules.lib.exports.sum(first, second));
 }
 
 showSum([2,3], 4);
@@ -41,15 +42,22 @@ showSum([2,3], 4);
 After compilation, the file served for `test.js` will be the following:
 
 ```
+require.register("lib", function(module, exports, require){ 
 // The lib
 
 function sum(a, b) {
     return a + b;
 }
+exports.sum = sum;
+
+}
+
+require("lib")
+
 // The test
 
 function showSum(first, second) {
-    alert(sum(first, second));
+    alert(require.modules.lib.exports.sum(first, second));
 }
 
 showSum([2,3], 4);
