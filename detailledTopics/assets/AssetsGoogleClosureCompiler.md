@@ -33,7 +33,7 @@ And the `test.js` file:
 require("lib");
 
 function showSum(first, second) {
-    alert(require.modules.lib.exports.sum(first, second));
+    alert(require("lib").sum(first, second));
 }
 
 showSum([2,3], 4);
@@ -57,11 +57,12 @@ require("lib")
 // The test
 
 function showSum(first, second) {
-    alert(require.modules.lib.exports.sum(first, second));
+    alert(require("lib").sum(first, second));
 }
 
 showSum([2,3], 4);
 ```
+
 
 ## Minification
 
