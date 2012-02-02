@@ -4,80 +4,114 @@
 
 The `play.api.data` package contains several helpers to handle HTTP form data submission and validation. The easiest way to handle a form submission is to define a `play.api.data.Form` structure:
 
-```scala
+```
 import play.api.data._
-import format.Formats._
+import play.api.data.Forms._
 
 val loginForm = Form(
-  of(
-    "email" -> of[String],
-    "password" -> of[String]
+  tuple(
+    "email" -> text,
+    "password" -> text
   )
 )
 ```
 
 This form can generate a `(String, String)` result value from `Map[String,String]` data:
 
-```scala
+```
 val anyData = Map("email" -> "bob@gmail.com", "password" -> "secret")
-val (user,password) = loginForm.bind(anyData).get
+val (user, password) = loginForm.bind(anyData).get
 ```
 
 If you have a request available in the scope, you can bind directly to it from the request content:
 
 ```scala
-val (user,password) = loginForm.bindFromRequest.get
+val (user, password) = loginForm.bindFromRequest.get
 ```
 
-## Wrapping an existing case class
+## Constructing complex objects
 
-A form can use any function to construct the type. So you can, for example, define a form that wraps an existing case class:
+A form can use any functions to construct and deconstruct the value. So you can, for example, define a form that wraps an existing case class:
 
 ```scala
 import play.api.data._
-import format.Formats._
+import play.api.data.Forms._
+
 case class User(name: String, age: Int)
 
 val userForm = Form(
-  of(User.apply _, User.unapply _)(
-    "name" -> of[String],
-    "age" -> of[Int]
-  )
+  mapping(
+    "name" -> text,
+    "age" -> number
+  )(User.apply)(User.unapply)
 )
 
 val anyData = Map("email" -> "bob@gmail.com", "age" -> "18")
-val user:User = userForm.bind(anyData).get
+val user: User = userForm.bind(anyData).get
 ```
+
+> **Note:** The difference between using `tuple` and `mapping` is that when you are using `tuple` the construction and deconstruction functions don't need to be specified (we now how to construct and deconstruct a tuple right?). 
+>
+> The `mapping` method just let you define your custom functions. And when you want to construct and deconstruct a case class, you can just use its default `apply` and `unapply` functions as they do exactly that!
+
+Of course often the `Form` signature doesn't match exactly the case class. Let's take an example a form that contain an additional checkbox field used to accept the terms and services. We don't need to fill this in our User value right? It's just a dummy field that serve for form validation but which doesn't carry any useful information once validated.
+
+As we can define our own construction and deconstruction functions, it is easy to handle it:
+
+```
+val userForm = Form(
+  mapping(
+    "name" -> text,
+    "age" -> number,
+    "accept" -> checked("Please accept the terms and conditions")
+  )( 
+    (name, age, _) => User(name, age),
+    (user: User) => Some(user.name, user.age, false)
+  )
+)
+```
+
+> **Note:** The deconstruction function is used when we fill a form with an existing `User` value. It is useful if we want the load a user from the database and prepare a form to update it.
 
 ## Defining constraints
 
 For each mapping you can also define additional validation constraints that will be checked during the binding phase:
 
 ```scala
-
 import play.api.data._
-import format.Formats._
-import validation.Constraints._
+import play.api.data.Forms._
+import play.api.data.validation.Constraints._
 
 case class User(name: String, age: Int)
 
 val userForm = Form(
-  of(User.apply _, User.unapply _)(
-    "name" -> of[String].verifying(required),
-    "age" -> of[Int].verifying (min(0), max(100))
-  )
+  mapping(
+    "name" -> text verifying(required),
+    "age" -> number verifying(min(0), max(100))
+  )(User.apply)(User.unapply)
 )
 ```
 
-You can even define ad-hoc constraints on the fields:
+> **Note:** That can be also written:
+>
+> ```
+> mapping(
+>   "name" -> nonEmptyText,
+>   "age" -> number(min=0, max=100)
+> )
+> ```
+>
+> That constructs the same mappings with additional constraints
+
+You can also define ad-hoc constraints on the fields:
 
 ```scala
 val loginForm = Form(
-  of(
-    "email" -> of[String],
-    "password" -> of[String]
+  tuple(
+    "email" -> nonEmptyText,
+    "password" -> text
   ) verifying("Invalid user name or password", { 
-      case (e,p) => User.authenticate(e,p).isDefined 
+      case (e, p) => User.authenticate(e,p).isDefined 
   })
 )
 ```
@@ -88,8 +122,8 @@ Of course if you can define constraints, then you need to be able to handle the 
 
 ```scala
 loginForm.bindFromRequest.fold(
-  f => // binding failure, you retrieve the form containing errors,
-  v => // binding success, you get the actual value 
+  formWithErrors => // binding failure, you retrieve the form containing errors,
+  value => // binding success, you get the actual value 
 )
 ```
 
@@ -98,105 +132,69 @@ loginForm.bindFromRequest.fold(
 Sometimes you’ll want to fill a form with existing values, typically for editing:
 
 ```scala
-userForm.fill(User("Bob", 18))
-```
-
-## Using high-level mapping
-
-The `play.api.data` package defines several high-level mappings that you can use directly.
-
-```scala
-import play.api.data._
-
-val userForm = Form(
-  of(User.apply _, User.unapply _)(
-    "email" -> email,
-    "age" -> number(min=0)
-  )
-)
-```
-
-Where the `email` mapping is defined as:
-
-```scala
-import play.api.data.validation.Constraints._
-
-val email = text verifying pattern(
-  """\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}\b""".r,
-  "constraint.email",
-  "error.email"
-)
+val filledForm = userForm.fill(User("Bob", 18))
 ```
 
 ## Nested values
 
-A form can define a nested value:
+A form mapping can define nested values:
 
 ```scala
 case class User(name: String, address: Address)
 case class Address(street: String, city: String)
 
 val userForm = Form(
-  of(User.apply _, User.unapply _)(
+  mapping(
     "name" -> text,
-    "address" -> of(Address)(
+    "address" -> mapping(
         "street" -> text,
         "city" -> text
-    )
-  )
+    )(Address.apply)(Address.unapply)
+  )(User.apply, User.unapply)
 )
 ```
 
-## Displaying a form in a template
+> **Note:** When you are using nested data this way, the form data sent by the browser need to be written as `address.street`, `address.city`, etc.
 
-The `Form` value contains everything you need to display the form to the user:
+## Repeated values
 
-```html
-@(userForm: Form[models.User])
+A form mapping can also define repeated values:
 
-<form action="@routes.Users.create()" method="POST">
-    
-  <p>
-    @userForm.forField("name") { field =>
-      <label>@field.name</label>
-      <input type="text" name="@field.name" value="@field.value">
-      @field.error.map { error =>
-        <p class="error">
-          @error
-        </p>
-      } 
-    }    
-  </p>
-  
-  <p>
-    @userForm.forField("age") { field =>
-      <label>@field.name</label>
-      <input type="text" name="@field.name" value="@field.value">
-      @field.error.map { error =>
-        <p class="error">
-          @error
-        </p>
-      } 
-    }    
-  </p>
-    
-</form>
+```
+case class User(name: String, emails: List[String])
+
+val userForm = Form(
+  mapping(
+    "name" -> text,
+    "emails" -> list(text)
+  )(User.apply, User.unapply)
+)
 ```
 
-## Using the template form helpers
+> **Note:** When you are using repeated data this way, the form data sent by the browser need to be written as `emails[0]`, `emails[1]`, `emails[2]`, etc.
 
-The `views.html.helper` package contains several helpers to handle HTML form construction.
+## Optional values
 
-```html
-@(userForm: Form[models.User])
+A form mapping can also define optional values:
 
-@import helper._
-
-@form(action = routes.Users.create()) {
-    @inputText(userForm("name"))
-    @inputText(userForm("age"))
-}
 ```
+case class User(name: String, email: Option[String])
+
+val userForm = Form(
+  mapping(
+    "name" -> text,
+    "email" -> optional(text)
+  )(User.apply, User.unapply)
+)
+```
+
+> **Note:** The email field will be ignored and set to `None` if the field `email` is missing in the request payload or if it contains a blank value.
+
+Now you can mix optional, nested and repeated mappings any way you want to created complex forms.
+
+> **Next:** [[Using the form template helpers | ScalaFormHelpers]]
+
+
 
 
 

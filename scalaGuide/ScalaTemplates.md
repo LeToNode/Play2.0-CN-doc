@@ -1,4 +1,6 @@
-# The templating system
+# The template engine
+
+## A type safe template engine based on Scala
 
 Play 2.0 comes with a new and really powerful Scala-based template engine. This new template engine’s design was inspired by ASP.NET Razor, specifically it is:
 
@@ -33,7 +35,7 @@ For example, here is a simple template:
 </ul>
 ```
 
-You can then call this from any Scala code:
+You can then call this from any Scala code as you would call a function:
 
 ```scala
 val html = views.html.Application.index(customer, orders)
@@ -97,7 +99,7 @@ And even implicit parameters:
 @(title: String)(body: => Html)(implicit request: play.api.mvc.Request)
 ```
 
-## Looping
+## Iterating
 
 You can use the Scala for-comprehension, in a pretty standard way. But note that the template compiler will add a `yield` keyword before your block:
 
@@ -175,6 +177,14 @@ Note that you can also declare reusable pure Scala blocks:
 <h1>@title("hello world")</h1>
 ```
 
+> **Note:** Declaring Scala block this way in a template can be sometime useful but keep in mind that a template is not the best place to write complex logic. It is often better to externalize these kind of code in a pure scala source file (that you can store under the `views/` package as well if your want).
+
+By convention a reusable block defined with a name starting with **implicit** will be marked as `implicit`:
+
+```
+@implicitFieldConstructor = @{ MyFieldConstructor() }
+```
+
 ## Declaring reusable values
 
 You can define scoped values using the `defining` helper:
@@ -207,9 +217,24 @@ You can write server side block comments in templates using `@* *@`:
  *********************@   
 ```
 
+You can put a comment on the first line to document your template into the Scala API doc:
+
+```
+@*************************************
+ * Home page.                        *
+ *                                   *
+ * @param msg The message to display *
+ *************************************@
+@(msg: String)
+
+<h1>@msg</h1>
+```
+
 ## Escaping
 
-By default the dynamic content parts are escaped following the template type (e.g. HTML or XML) rules. If you want to output a raw content fragment, wrap it in the template content type. For example to output raw HTML:
+By default the dynamic content parts are escaped following the template type (e.g. HTML or XML) rules. If you want to output a raw content fragment, wrap it in the template content type. 
+
+For example to output raw HTML:
 
 ```html
 <p>
@@ -217,128 +242,4 @@ By default the dynamic content parts are escaped following the template type (e.
 </p>
 ```
 
-## Composing templates (tags, layouts, includes, etc.)
-
-Templates, being simple functions, can be composed in any way you want. Below are a few examples of some common scenarios:
-
-### Layout
-
-Let’s declare a `views/main.scala.html` template that will act as a main layout template:
-
-```html
-@(title: String)(content: Html)
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>@title</title>
-  </head>
-  <body>
-    <section class="content">@content</section>
-  </body>
-</html>
-
-```
-
-As you can see, this template takes two parameters: a title and an HTML content block. Now we can use it from another `views/Application/index.scala.html` template:
-
-```html
-@main(title = "Home") {
-    
-  <h1>Home page</h1>
-    
-}
-```
-
-Sometimes you need a second page-specific content block for a sidebar or breadcrumb trail, for example. You can do this with an additional parameter:
-
-```html
-@(title: String)(sidebar: Html)(content: Html)
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>@title</title>
-  </head>
-  <body>
-    <section class="sidebar">@sidebar</section>
-    <section class="content">@content</section>
-  </body>
-</html>
-```
-
-Using this from our ‘index’ template, we have:
-
-```html
-@main("Home") {
-  <h1>Sidebar</h1>
-
-} {
-  <h1>Home page</h1>
-
-}
-```
-
-Alternatively, we can declare the sidebar block separately:
-
-```html
-@sidebar = {
-  <h1>Sidebar</h1>
-}
-
-@main("Home")(sidebar) {
-  <h1>Home page</h1>
-
-}
-```
-
-
-### Tags
-
-Let’s write a simple `views/tags/notice.scala.html` tag that displays an HTML notice:
-
-```html
-@(level: String = "error")(body: (String) => Html)
- 
-@level match {
-    
-  case "success" => {
-    <p class="success">
-      @body("green")
-    </p>
-  }
-
-  case "warning" => {
-    <p class="warning">
-      @body("orange")
-    </p>
-  }
-
-  case "error" => {
-    <p class="error">
-      @body("red")
-    </p>
-  }
-    
-}
-```
-
-And now let’s use it from another template:
-
-```html
-@import tags._
- 
-@notice("error") { color =>
-  Oops, something is <span style="color:@color">wrong</span>
-}
-```
-
-### Includes
-
-Again, there’s nothing special here. You can just call any other template you like (and in fact any other function coming from anywhere at all):
-
-```html
-<h1>Home</h1>
- 
-<div id="side">
-  @common.sideBar()
-</div>
-```
+> **Next:** [[Common use cases | ScalaTemplateUseCases]]

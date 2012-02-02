@@ -25,10 +25,10 @@ db.customers.url=jdbc:h2:mem:customers
 ```
 
 If something isn’t properly configured you will be notified directly in your browser:
+
 [[dbError.png]]
 
-
-## Accessing the JDBC data source
+## Accessing the JDBC datasource
 
 The `play.api.db` package provides access to the configured data sources:
 
@@ -38,35 +38,32 @@ import play.api.db._
 val ds = DB.getDatasource()
 ```
 
-## Integrating with a database access layer
+## Obtaining a JDBC connection
 
-From here you can integrate any JDBC access layer that needs a JDBC data source. For example, to integrate with [[ScalaQuery | https://github.com/szeiger/scala-query]]:
+There is several ways to retrieve a JDBC connection. The first is the most simple:
 
-```scala
-import play.api.db._
-import play.api.Play.current
+```
+val connection = DB.getConnection()
+```
 
-import org.scalaquery.ql._
-import org.scalaquery.ql.TypeMapper._
-import org.scalaquery.ql.extended.{ExtendedTable => Table}
+But of course you need to call `close()` at some point on the opened connection to put it back to the connection pool. Another way is to let Play manage the connection close for you:
 
-import org.scalaquery.ql.extended.H2Driver.Implicit._ 
-
-import org.scalaquery.session._
-
-object Task extends Table[(Long, String, Date, Boolean)]("tasks") {
-    
-  lazy val database = Database.forDataSource(DB.getDataSource())
-  
-  def id = column[Long]("id", O PrimaryKey, O AutoInc)
-  def name = column[String]("name", O NotNull)
-  def dueDate = column[Date]("due_date")
-  def done = column[Boolean]("done")
-  def * = id ~ name ~ dueDate ~ done
-  
-  def findAll = database.withSession { implicit db:Session =>
-      (for(t <- this) yield t.id ~ t.name).list
-  }
-  
+```
+DB.withConnection { conn =>
+  // do whatever you need with the connection
 }
 ```
+
+The connection will be automatically closed at the end of the block.
+
+> **Tip:** Not only that but all `Statement` and `ResultSet` created with this connection will be closed as well.
+
+A variant is to set the connection autocommit to `false` automatically and to manage a transaction for the block:
+
+```
+DB.withTransaction { conn =>
+  // do whatever you need with the connection
+}
+```
+
+> **Next:** [[Using Anorm to access your database | ScalaAnorm]]

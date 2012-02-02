@@ -1,12 +1,25 @@
-- [[Home]]
+### Play for Java developers
 
-[[/utils/line.png]]
+- [[Basic HTTP programming]]
+- [[Asynchronous HTTP programming]]
+- [[The template engine]]
+- [[HTTP form submission and validation]]
+- [[Working with Json]]
+- [[Working with XML]]
+- [[Handling file upload]]
+- [[Accessing an SQL database]]
+- [[Using the Cache]]
+- [[Calling WebServices]]
+- [[Integrating with Akka]]
+- [[The application Global object]]
+- [[Testing your application]]
 
-- [[Controllers and actions | JavaControllers]]
-- [[HTTP routing | JavaRouting]]
-- [[The templating system | JavaTemplates]]
-- [[Handling form submission and validation| JavaForms]]
-- [[Application global settings | JavaGlobal]]
-- [[Accessing an SQL database | JavaDatabase]]
-- [[Using the Ebean ORM | JavaEbean]]
-- [[Testing your application | JavaTesting]]
+### Advanced topics
+
+- [[Handling data streams reactively]]
+- [[Writing a Play plugin]]
+- [[Typeclasses everywhere]]
+
+### Tutorials
+
+- [[The Hello World tutorial]]

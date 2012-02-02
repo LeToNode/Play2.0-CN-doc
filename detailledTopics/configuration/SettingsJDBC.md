@@ -59,16 +59,20 @@ db.default.acquireRetryDelay=5 seconds
 # to getConnection is timed out.
 db.default.connectionTimeout=1 second
 
-# Idle max age (in seconds).
-db.default.idleMaxAge=60 seconds
+# Idle max age
+db.default.idleMaxAge=10 minute
+
+# This sets the time for a connection to remain idle before sending a test query to the DB. 
+# This is useful to prevent a DB from timing out connections on its end. 
+db.default.idleConnectionTestPeriod=5 minutes
 
 # An initial SQL statement that is run only when 
 # a connection is first created.
-db.default.initSQL=SELECT 1
+db.default.initSQL="SELECT 1"
 
 # If enabled, log SQL statements being executed.
 db.default.logStatements=false
 
-# The maxiumum connection age.
-db.default.maxConnectionAge=60 seconds
+# The maximum connection age.
+db.default.maxConnectionAge=1 hour
 ```

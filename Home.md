@@ -21,12 +21,23 @@
 ## Detailled topics
 
 - [[The Build system | Build]]
+    - [[About sbt settings | SBTSettings]]
+    - [[Manage application dependencies | SBTDependencies]]
+    - [[Working with sub-projects | SBTSubProjects]]
 - [[Working with public assets | Assets]]
+    - [[Using CoffeeScript | AssetsCoffeeScript]]
+    - [[Using LESS CSS | AssetsLess]]
+    - [[Using Google Closure Compiler | AssetsGoogleClosureCompiler]]
+- [[Managing database evolutions | Evolutions]]
 - [[Configuration file syntax and features | Configuration]]
-- [[Configuring the JDBC connection pool | SettingsJDBC]]
-- [[Configuring the internal Akka system | AkkaCore]]
-- [[Configuring logging | SettingsLogger]]
+    - [[Configuring the JDBC connection pool | SettingsJDBC]]
+    - [[Configuring the internal Akka system | AkkaCore]]
+    - [[Configuring logging | SettingsLogger]]
 - [[Deploying your application | Production]]
+    - [[Creating a standalone version of your application | ProductionDist]]
+    - [[Aditionnal configuration | ProductionConfiguration]]
+    - [[Deploying to Heroku | ProductionHeroku]]
+    - [[Set-up a front-end HTTP server | HTTPServer]]
 
 ## Additional documentations
 

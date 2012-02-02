@@ -1,0 +1,60 @@
+# Handling file upload
+
+## Uploading files in a form using multipart/form-data
+
+The standard way of uploading files in a Web application is to use a form with a special `multipart/form-data` encoding. It allows to mix standard form data with file attachment.
+
+Start by writing an Html form:
+
+```
+@form(action = @routes.Application.upload, 'enctype -> "multipart/form-data") {
+    
+    <input type="file" name="picture">
+    
+    <p>
+        <input type="submit">
+    </p>
+    
+}
+```
+
+Now let's define the `upload` action using a `multipartFormData` body parser:
+
+```
+def upload = Action(parse.mutipartFormData) { request =>
+  request.body.file("picture").map { picture =>
+    val filename = picture.filename 
+    val contentType = picture.contentType
+    picture.ref.moveTo("/tmp/picture")
+    Ok("File uploaded")
+  }.getOrElse {
+    flash("error", "Missing file")
+    Redirect(routes.Application.index)
+  }
+}
+```
+
+The `ref` attribute give you a reference to a `TemporaryFile`. This is the default way the `mutipartFormData` parser handle file upload.
+
+> **Note:** As always you can also use the `anyContent` body parser and retrieve it as `request.asMultipartFormData`.
+
+## Direct file upload
+
+Another way to send files to the server is to use Ajax to upload file asynchronously in a form. In this case the request body with not been encoded as `multipart/form-data`, but will just contain the plain file content.
+
+In this case we can just use a body parser that store the request body content to a file. In this example let's use the `temporaryFile` body parser:
+
+```
+def upload = Action(parse.temporaryFile) { request =>
+  request.body.moveTo("/tmp/picture")
+  Ok("File uploaded")
+}
+```
+
+## Writing your own body parser
+
+If you want to handle the file upload directly without buffering it in a temporary file, you can just write your own `BodyParser`. In this case you will receive chunks of data you are free to push anywhere you want.
+
+If you want to use the `multipart/form-data` encoding, you can still use the default `mutipartFormData` parser by providing your own `PartHandler[FilePart[A]]`. You receive the part headers, and you have to give an `Iteratee[Array[Byte], FilePart[A]]` that will produce the right `FilePart`.
+
+> **Next:** [[Accessing an SQL database | ScalaDatabase]]

@@ -1,6 +1,8 @@
 # HTTP routing
 
-The router is the component in charge of translating each incoming HTTP request to an action call (a static, public method of a controller).
+## The build-in HTTP router
+
+The router is the component in charge of translating each incoming HTTP request to an Action.
 
 An HTTP request is seen as an event by the MVC framework. This event contains two major pieces of information:
 
@@ -76,7 +78,7 @@ You can also define your own regular expression for the dynamic part, using the 
 GET   /clients/$id<[0-9]+>  controllers.Clients.show(id: Long)  
 ```
 
-## Call to action generator method
+## Call to the Action generator method
 
 The last part of a route definition is the call. This part must define a valid call to a method returning a `play.api.mvc.Action` value, which will typically be a controller action method.
 
@@ -104,7 +106,7 @@ Here is the corresponding, `show` method definition in the `controllers.Applicat
 
 ```scala
 def show(page: String) = Action {
-    contentOf(page).map { htmlContent =>
+    loadContentFromDatabase(page).map { htmlContent =>
         Ok(htmlContent).as("text/html")
     }.getOrElse(NotFound)
 }
@@ -191,3 +193,5 @@ def helloBob = Action {
     Redirect(controllers.routes.Application.hello("Bob"))    
 }
 ```
+
+> **Next:** [[Manipulating results | ScalaResults]]

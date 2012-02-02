@@ -1,4 +1,4 @@
-# SBT Settings
+# About SBT Settings
 
 ## About sbt settings
 

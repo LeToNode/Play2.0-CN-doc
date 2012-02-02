@@ -1,13 +1,25 @@
-- [[Home]]
+### Main concepts
 
-[[/utils/line.png]]
+- [[Basic HTTP programming | ScalaActions]]
+- [[Asynchronous HTTP programming]]
+- [[The template engine]]
+- [[HTTP form submission and validation]]
+- [[Working with Json]]
+- [[Working with XML]]
+- [[Handling file upload]]
+- [[Accessing an SQL database]]
+- [[Using the Cache]]
+- [[Calling WebServices]]
+- [[Integrating with Akka]]
+- [[The application Global object]]
+- [[Testing your application]]
 
-- [[Controllers and actions | ScalaControllers]]
-- [[HTTP routing | ScalaRouting]]
-- [[The templating system | ScalaTemplates]]
-- [[Handling form submission and validation| ScalaForms]]
-- [[Application global settings | ScalaGlobal]]
-- [[Accessing an SQL database | ScalaDatabase]]
-- [[Caching | ScalaCache]]
-- [[Testing your application | Scalatest]] 
-- [[Writing Plugins | ScalaPlugin]]
+### Advanced topics
+
+- [[Handling data streams reactively]]
+- [[Writing a Play plugin]]
+- [[Typeclasses everywhere]]
+
+### Tutorials
+
+- [[The Hello World tutorial]]
