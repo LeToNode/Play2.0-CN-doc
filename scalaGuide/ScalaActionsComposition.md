@@ -6,7 +6,7 @@ This chapter introduce several ways of defining generic functionalities for acti
 
 Let's take a first simple example of a logging decorator: we want to log each call to this action.
 
-The first way it to not define our own Action, but just provide an helper method building an standard Action:
+The first way is to not define our own Action, but just to provide a helper method building a standard Action:
 
 ```
 def LoggingAction(f: Request[AnyContent] => Result): Action[AnyContent] = {
