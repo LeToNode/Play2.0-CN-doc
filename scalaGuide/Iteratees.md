@@ -12,7 +12,7 @@ Iteratees provide a paradigm and an api that allow this manipulation focusing on
 
 ## Iteratees
 
-An Iteratee is a consumer, it describes the way input will be consumed to produce some value. Iteratee is a consumer that returns a value it calculates after being fed some input.
+An Iteratee is a consumer, it describes the way input will be consumed to produce some value. Iteratee is a consumer that returns a value it computes after being fed enough input.
 
 ```scala
 Iteratee[String,Int] // an iteratee that consumes chunkes of String and produces an Int
@@ -38,7 +38,7 @@ Obviously depending on the state of the iteratee, `fold` will produce the approp
 
 To sum up, iteratee consists of 3 states, and `fold` provides the means to interact with the state of the iteratee.
 
-## Some important types in the `Iteratee` definition:
+### Some important types in the `Iteratee` definition:
 
 Before providing some concrete examples of iteratees, let's clarify two important types we mentioned above:
 
@@ -47,7 +47,7 @@ For example, `Input[String]` can be `El("Hello!")`, Empty, or EOF
 
 - `Promise[A]` represents, as the name talls, a promise of value of type `A`. This means that it will eventually be redeemed with a value of type `A` and you can schedule a callback, among other things you can do, if you are interested in that value. A promise is a very nice primitive for synchronization and composing async calls, and is explained further at the [PromiseScala] section.
 
-## Some primitive iteratees
+### Some primitive iteratees:
 
 By implementing the iteratee, and more specifically it's fold method, we can now create some primitive iteratees that we can use later on.
 
@@ -117,7 +117,7 @@ In the same manner there is a built-in way to create an iteratee in the `Error` 
 
 Back to the `consumeOneInputAndEventuallyReturnIt`, it is possible to create a two step simple iteratee manually but it becomes harder and cumbersome to create any real world iteratee capable of consuming a lot of chunks before, possibly contionally, it eventually returns a result. Luckily there are some built in methods to create common iteratee shapes in the `Iteratee` object.
 
-## Folding input
+### Folding input:
 
 One common task when using iteratees is maintaining some state and altering it each time input is pushed. This type of iteratee can be easily created using the `Iteratee.fold` which has the signature:
 
@@ -166,7 +166,7 @@ Of course one should be worried now about how hard would it be to manually push 
 
 ## Enumerators
 
-If iteratee represents the consumer, or sink, of input, an `Enumerator` is the source that pushes input into a given iteratee. As the name tells, it enumerates some input into the iteratee and eventually returns a new state of that iteratee. This can be easily seen looking at the Enumerators signature:
+If an iteratee represents the consumer, or sink, of input, an `Enumerator` is the source that pushes input into a given iteratee. As the name tells, it enumerates some input into the iteratee and eventually returns a new state of that iteratee. This can be easily seen looking at the `Enumerator`'s signature:
 
 ```scala
 
@@ -195,7 +195,7 @@ Now we can apply it to the consume iteratee we created above:
 
 ```
 
-To terminate the iteratee and extract the computed result we should pass `Input.EOF`, an `Iteratee` carries a method `run` that does just this. It pushs an `Input.EOF` and returns a `Promise[A]` ignoring the left input if any.
+To terminate the iteratee and extract the computed result we pass `Input.EOF`. An `Iteratee` carries a method `run` that does just this. It pushs an `Input.EOF` and returns a `Promise[A]` ignoring left input if any.
 
 ```scala
 
@@ -239,7 +239,7 @@ Since an `Enumerator` pushes some input into an iteratee and eventually return a
 
 ```
 
-As for apply, there is a symbolic version of the `andThen` that can be used to save some parentheses when appropriate:
+As for apply, there is a symbolic version of the `andThen` called `>>>` that can be used to save some parentheses when appropriate:
 
 ```scala
 
@@ -253,7 +253,7 @@ As for apply, there is a symbolic version of the `andThen` that can be used to s
 
 ```
 
-We can also create `Enumerators` for enumerating files contents:
+We can also create `Enumerator`s for enumerating files contents:
 
 ```scala
 
@@ -283,5 +283,62 @@ This method defined on the `Enumerator` object is one of the most important meth
 
 ```
 
-In the same manner we can construct an `Enumerator` that would fetch a url every some time using the `WS` api which returns, not suprisingly` a `Promise`
+In the same manner we can construct an `Enumerator` that would fetch a url every some time using the `WS` api which returns, not suprisingly a `Promise`
 
+Combining this, callback Enumerator, with an imperative `Iteratee.foreach` we can println a stream of time values periodically:
+
+```scala
+
+  val timeStream = Enumerator.callback(() => 
+    Promise.timeout(Some(dateFormat.format(new Date)), 100 milliseconds))
+
+    val printlnSink = Iteratee.foreach[Date]( date => println(date))
+
+    timeStream |>> printlnSink
+
+```
+
+Another, more imperative, way of creating an `Enumerator` is by using `Enumerator.pushee` which once it is ready will give a `Pushee` interface on which defined methods `push` and `close`:
+
+```scala
+
+  val channel = Enumerator.pushee[String] { onStart = pushee =>
+    pushee.push("Hello")
+    pushee.push("World")
+  }
+
+  channel |>> Iteratee.foreach( println )
+
+```
+
+The `onStart` function will be called each time the `Enumerator` is applied to an `Iteratee`. In some applications, a chatroom for instance, it makes sense to assign the pushee to a synchronized global value ( using STMs for example) that will contain a list of listners. `Enumerator.pushee` accepts two other functions, `onComplete` and `onError`.
+
+One more interesting method is the `interleave` or `>-` method which as the name says, itrerleaves two Enumerators. For reactive `Enumerator`s Input will be passed as it happens from any of the interleaved `Enumerator`s
+
+## Enumerators À la carte
+
+Now that we have several interesting ways of creating `Enumerator`s, we can use these together with composition methods `andThen`/`>>>` and `interleave`/`>-` to compose `Enumerator`s on demand.
+Indeed one interesting way of organizing a streamful application is by creating primitive `Enumerator`s and then composing a collection of them. Let's imagine doing an application for monitoring systems:
+
+```scala
+  object AvailableStreams {
+
+    val cpu : Enumerator[JsValue] = Enumerator.callback( /* code here */ )
+
+    val memory: Enumerator[JsValue] = Enumerator.callback( /* code here */ )
+
+    val threads: Enumerator[JsValue] = Enumerator.callback( /* code here */ ) 
+
+    val heap: Enumerator[JsValue] = Enumerator.callback( /* code here */ )
+
+  }
+
+  val physicalMachine = AvailableStreams.cpu >- AvailableStreams.memory
+
+  val jvm = AvailableStreams.threads >- AvailableStreams.heap
+
+  def usersWidgetsComposition(prefs: Preferences) = // do the composition dynamically
+
+```
+
+## And Enumeratees!
