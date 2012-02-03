@@ -1,6 +1,6 @@
 # HTTP routing
 
-## The build-in HTTP router
+## The built-in HTTP router
 
 The router is the component in charge of translating each incoming HTTP request to an Action.
 
