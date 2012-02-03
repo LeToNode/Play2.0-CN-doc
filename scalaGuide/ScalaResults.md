@@ -67,7 +67,7 @@ Ok("Hello world").discardingCookies("theme")
 
 ## Changing the charset for text based HTTP responses.
 
-For text based HTTP response it is very important to handle correctly the charset. Play handles that for you anf use `utf-8` by default.
+For text based HTTP response it is very important to handle correctly the charset. Play handles that for you and uses `utf-8` by default.
 
 The charset is used to both convert the text response to the corresponding bytes to send over the network socket, and to alterate the Content-Type header with the proper `;charset=xxx` extension.
 
