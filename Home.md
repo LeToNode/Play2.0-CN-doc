@@ -18,7 +18,7 @@
 - [[Play 2.0 for Scala developers | ScalaHome]]
 - [[Play 2.0 for Java developers | JavaHome]]
 
-## Detailled topics
+## Detailed topics
 
 - [[The Build system | Build]]
     - [[About sbt settings | SBTSettings]]
@@ -35,7 +35,7 @@
     - [[Configuring logging | SettingsLogger]]
 - [[Deploying your application | Production]]
     - [[Creating a standalone version of your application | ProductionDist]]
-    - [[Aditionnal configuration | ProductionConfiguration]]
+    - [[Additional configuration | ProductionConfiguration]]
     - [[Deploying to Heroku | ProductionHeroku]]
     - [[Set-up a front-end HTTP server | HTTPServer]]
 
