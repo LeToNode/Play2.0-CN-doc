@@ -12,7 +12,7 @@
 - [[Play 2.0 for Scala developers | ScalaHome]]
 - [[Play 2.0 for Java developers | JavaHome]]
 
-### Detailled topics
+### Detailed topics
 
 - [[The Build system | Build]]
 - [[Working with public assets | Assets]]
