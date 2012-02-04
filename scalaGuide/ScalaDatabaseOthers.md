@@ -1,4 +1,8 @@
-## Integrating with a database access layer
+# Integrating with other database libraries
+
+Nothing prevent you to use any other **SQL** database access libraries from within Play. You can easily retrieve either a `Connection` or a `Datasource` from the `play.api.db.DB` helper.
+
+## Integrating with ScalaQuery
 
 From here you can integrate any JDBC access layer that needs a JDBC data source. For example, to integrate with [[ScalaQuery | https://github.com/szeiger/scala-query]]:
 
@@ -30,3 +34,15 @@ object Task extends Table[(Long, String, Date, Boolean)]("tasks") {
   
 }
 ```
+
+## Exposing the datasource through JNDI
+
+Some libraries expect to retrieve the `Datasource` reference from JNDI. You can expose any Play managed datasource via JDNI by adding this configuration in `conf/application.conf`:
+
+```
+db.default.driver=org.h2.Driver
+db.default.url="jdbc:h2:mem:play"
+db.default.jndiName=DefaultDS
+```
+
+> **Next:** [[Using the Cache | ScalaCache]]
