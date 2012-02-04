@@ -23,7 +23,7 @@ Once the body parser finishes it job and give back a value of type `A`, the corr
 Previously we said that an `Action` was a `Request => Result` function. This is not totally true. Let's have a more precise look at the `Action` trait:
 
 ```
-trait Action[A] extends (Request[A] ⇒ Result) {
+trait Action[A] extends (Request[A] => Result) {
   def parser: BodyParser[A]
 }
 ```
