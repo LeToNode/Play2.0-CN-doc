@@ -28,7 +28,7 @@ An iteratee has one of three states, `Cont` meaning accepting more input, `Error
     error: (String, Input[E]) => Promise[B]): Promise[B]
 ```
 
-The fold method defines an iteratee as one of the three mentioned state. It accepts three callback functions and will call the appropiate one depending on its state to eventually extract a required value. When calling `fold` on an iteratee you are basically saying:
+The fold method defines an iteratee as one of the three mentioned states. It accepts three callback functions and will call the appropriate one depending on its state to eventually extract a required value. When calling `fold` on an iteratee you are basically saying:
 
 - If the iteratee is in the state `Done`, then I'd take the calculated result of type `A` and what is left from the last consumed chunk of input `Input[E]` and eventually produce a `B`
 - If the iteratee is in state `Cont`, then I'd take the provided continuation (which accepting an input) `Input[E] => Iteratee[E,A]` amd eventually produce a `B`. Note that this state provides the only way to push input into the iteratee using the provided continuation function. 
