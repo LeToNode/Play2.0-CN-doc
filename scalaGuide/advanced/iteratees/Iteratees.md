@@ -49,7 +49,7 @@ For example, `Input[String]` can be `El("Hello!")`, Empty, or EOF
 
 ### Some primitive iteratees:
 
-By implementing the iteratee, and more specifically it's fold method, we can now create some primitive iteratees that we can use later on.
+By implementing the iteratee, and more specifically its fold method, we can now create some primitive iteratees that we can use later on.
 
 - An iteratee in the `Done` state producing an `1:Int` and returning `Empty` as left from last `Input[String]`
 
@@ -115,7 +115,7 @@ As for `Done` there is a built-in way to define an iteratee in the `Cont` state 
 
 In the same manner there is a built-in way to create an iteratee in the `Error` state by providing and error message and an `Input[E]`
 
-Back to the `consumeOneInputAndEventuallyReturnIt`, it is possible to create a two step simple iteratee manually but it becomes harder and cumbersome to create any real world iteratee capable of consuming a lot of chunks before, possibly contionally, it eventually returns a result. Luckily there are some built in methods to create common iteratee shapes in the `Iteratee` object.
+Back to the `consumeOneInputAndEventuallyReturnIt`, it is possible to create a two step simple iteratee manually but it becomes harder and cumbersome to create any real world iteratee capable of consuming a lot of chunks before, possibly conditionally, it eventually returns a result. Luckily there are some built in methods to create common iteratee shapes in the `Iteratee` object.
 
 ### Folding input:
 
