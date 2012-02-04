@@ -6,9 +6,9 @@ Iteratees provide a paradigm and an api that allow this manipulation focusing on
 
 * Create, consume and transform streams of data.
 * Treat different data sources in the same manner (Files on disk, Websockets, Chunked Http, Data Upload, ...).
-* Composability: User trasnformers to change the shape of the source, or consumer. Construct your own or start with primitives.
+* Composability: User transformers to change the shape of the source, or consumer. Construct your own or start with primitives.
 * Have control over when it is enough data sent and being informed when source is done sending data.
-* Non blocking, reactive and allowing control over respurce consumption (Thread, Memory)
+* Non blocking, reactive and allowing control over resource consumption (Thread, Memory)
 
 ## Iteratees
 
