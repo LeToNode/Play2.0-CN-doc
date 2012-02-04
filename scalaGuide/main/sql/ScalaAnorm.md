@@ -193,7 +193,7 @@ So this parser will parse a result set to return a `Long`. It is useful to parse
 
 ```
 val count: Long = SQL("select count(*) from Country").as(scalar[Long].single)
-``` 
+```
 
 Let’s write a more complicated parser:
 
