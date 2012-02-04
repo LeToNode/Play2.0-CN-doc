@@ -24,7 +24,7 @@ If you run this action from a web browser, you will see the 3 events logged into
 Now we can write it in a better way by using an `Enumeratee` which is just an adapter transforming an `Enumerator[A]` into another `Enumerator[B]`. Let's use it to wrap standard messages into the `<script>` tags:
     
 ```
-// Transform a String message into an Htnl script tag
+// Transform a String message into an Html script tag
 val toCometMessage = Enumeratee.map[String] { data => 
     Html("""<script>console.log('""" + data + """')</script>""" 
 }
