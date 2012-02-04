@@ -25,3 +25,11 @@ If you make any important changes to your application, such as changing the clas
 > Do not commit Eclipse configuration files when you work in a team!
 
 The generated configuration files contain absolute references to your framework installation. These are specific to your own installation. When you work in a team, each developer must keep his Eclipse configuration files private.
+
+> **Next:** 
+>
+> - Explore the [[sample applications | Samples]]
+>
+> - Read the Play 2.0 manual:
+>     - [[Play 2.0 for Scala developers | ScalaHome]]
+>     - [[Play 2.0 for Java developers | JavaHome]]

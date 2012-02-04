@@ -1,3 +1,8 @@
+### HTTP form
+
+- [[Form definitions | ScalaForms]]
+- [[Using the form template helpers | ScalaFormHelpers]]
+
 ### Main concepts
 
 - [[HTTP programming | ScalaActions]]

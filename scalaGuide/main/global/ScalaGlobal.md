@@ -12,6 +12,8 @@ object Global extends GlobalSettings {
 }
 ```
 
+> **Tip:** You can also specify a custom `GlobalSettings` implementation class name using the `application.global` configuration key.
+
 ## Hooking into application start and stop events
 
 You can override the `onStart` and `onStop` methods to be notified of the events in the application lifecycle;
@@ -87,3 +89,21 @@ object Global extends GlobalSettings {
     
 }
 ```
+
+The `onError` operation will be called if an action throw an unexpected error:
+
+```scala
+import play.api._
+import play.api.mvc._
+import play.api.mvc.Results.__
+
+object Global extends GlobalSettings {
+
+  override def onError(request: RequestHeader, ex: Throwable) = {
+    InternalServerError("Oops: " + ex.toString)
+  }  
+    
+}
+```
+
+> **Next:** [[Testing your application | ScalaTest]]

@@ -11,7 +11,7 @@ Play 2.0 comes with a new and really powerful Scala-based template engine. This 
 
 Templates are compiled, so you will see any errors right in your browser:
 
-[[templatesError.png]]
+[[images/templatesError.png]]
 
 ## Overview
 

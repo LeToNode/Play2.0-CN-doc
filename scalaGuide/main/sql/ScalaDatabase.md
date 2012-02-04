@@ -26,7 +26,7 @@ db.customers.url=jdbc:h2:mem:customers
 
 If something isn’t properly configured you will be notified directly in your browser:
 
-[[dbError.png]]
+[[images/dbError.png]]
 
 ## Accessing the JDBC datasource
 

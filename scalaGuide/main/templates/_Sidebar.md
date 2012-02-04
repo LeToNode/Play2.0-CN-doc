@@ -1,3 +1,8 @@
+### The template engine
+
+- [[Scala templates syntax | ScalaTemplates]]
+- [[Common use cases | ScalaTemplateUseCases]]
+
 ### Main concepts
 
 - [[HTTP programming | ScalaActions]]

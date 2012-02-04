@@ -35,3 +35,5 @@ $ play help
 If everything is properly installed, you should see the basic help:
 
 [[images/play.png]]
+
+> **Next:** [[Creating a new application | NewApplication]]

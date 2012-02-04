@@ -11,7 +11,7 @@ An HTTP request is seen as an event by the MVC framework. This event contains tw
 
 Routes are defined in the `conf/routes` file, which is compiled. This means that you’ll see route errors directly in your browser:
 
-[[routesError.png]]
+[[images/routesError.png]]
 
 ## The routes file syntax
 

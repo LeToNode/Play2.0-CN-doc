@@ -65,3 +65,8 @@ A Chat room built using WebSockets. Additionally there is a bot used speaking on
 
 - WebSocket connections.
 - Advanced usage of Akka.
+
+> **Next:** 
+>
+>   - [[Play 2.0 for Scala developers | ScalaHome]]
+>   - [[Play 2.0 for Java developers | JavaHome]]

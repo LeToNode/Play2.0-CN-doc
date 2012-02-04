@@ -103,3 +103,4 @@ target
 tmp
 ```
 
+> **Next:** [[Using the Play 2.0 console | PlayConsole ]]

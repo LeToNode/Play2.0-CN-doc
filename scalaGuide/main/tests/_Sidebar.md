@@ -1,3 +1,8 @@
+### Testing your application
+
+- [[Writing tests | ScalaTest]]
+- [[Writing functional tests | ScalaFunctionalTest]]
+
 ### Main concepts
 
 - [[HTTP programming | ScalaActions]]
