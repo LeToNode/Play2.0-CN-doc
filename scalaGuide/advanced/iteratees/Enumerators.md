@@ -14,7 +14,7 @@ If an iteratee represents the consumer, or sink, of input, an `Enumerator` is th
     def apply[A](i: Iteratee[E, A]): Promise[Iteratee[E, A]]
 
 ```
-An `Enumerator[E]` takes an `Iteratee[E, A]` which is any iteratee that consumes `Input[E]` and returns a `Promise[Iteratee[E,A]]` which eventually give a new state of the iteratee.
+An `Enumerator[E]` takes an `Iteratee[E, A]` which is any iteratee that consumes `Input[E]` and returns a `Promise[Iteratee[E,A]]` which eventually gives a new state of the iteratee.
 We can go ahead and manually implement `Enumerator`s by consequently calling the iteratee's fold method, or use one of the provided `Enumerator` creation methods. For instance we can create an `Enumerator[String]` that pushs a list of strings into an iteratee, like the following:
 
 ```scala
@@ -23,7 +23,13 @@ We can go ahead and manually implement `Enumerator`s by consequently calling the
 
 ```
 
-Now we can apply it to the consume iteratee we created above:
+Now we can apply it to the consume iteratee we created before:
+
+```scala
+
+  val consume = Iteratee.consume[String]()
+
+```
 
 ```scala
 
@@ -47,7 +53,9 @@ You might notice here that an `Iteratee` will eventually produce a result (retur
 ```scala
 
   //Apply the enumerator and flatten then run the resulting iteratee
-  val eventuallyResult: Promise[String] = Iteratee.flatten( enumerateUsers( consume ) ).run
+  val newIteratee: Iteratee[String,String] = Iteratee.flatten(enumerateUsers( consume ))
+
+  val eventuallyResult: Promise[String] = newIteratee.run
    
   //Eventually print the result 
   eventuallyResult.onRedeem( s => println(s)) // Prints "GuillaumeSadekPeterErwan"
@@ -93,16 +101,16 @@ We can also create `Enumerator`s for enumerating files contents:
 
 ```scala
 
-  val fileEnumerator: Enumerator[Array[Byte]] = Enumerator.enumerateFile(new File("path/to/some/file"))
+  val fileEnumerator: Enumerator[Array[Byte]] = Enumerator.fromFile(new File("path/to/some/file"))
 
 ```
 
-Or more generally enumerating a `java.io.InputStream`. It is important to note that input won't be read until the iteratee this `Enumerator` is applied on is ready to take more input.
-Actually both methods are based on the more generic `Enumerator.callback` that has the following signature:
+Or more generally enumerating a `java.io.InputStream` using `Enumerator.fromStream`. It is important to note that input won't be read until the iteratee this `Enumerator` is applied on is ready to take more input.
+Actually both methods are based on the more generic `Enumerator.fromCallback` that has the following signature:
 
 ```scala
 
-  def callback[E](
+  def fromCallback[E](
     retriever: () => Promise[Option[E]],
     onComplete: () => Unit = () => (),
     onError: (String, Input[E]) => Unit = (_: String, _: Input[E]) => ()): Enumerator[E] = ...
@@ -113,7 +121,7 @@ This method defined on the `Enumerator` object is one of the most important meth
 
 ```scala
 
-  Enumerator.callbackEnumerator { () =>
+  Enumerator.fromCallback { () =>
         Promise.timeout(Some(dateFormat.format(new Date)), 100 milliseconds)
   }
 
@@ -125,7 +133,7 @@ Combining this, callback Enumerator, with an imperative `Iteratee.foreach` we ca
 
 ```scala
 
-  val timeStream = Enumerator.callback(() => 
+  val timeStream = Enumerator.fromCallback(() => 
     Promise.timeout(Some(dateFormat.format(new Date)), 100 milliseconds))
 
     val printlnSink = Iteratee.foreach[Date]( date => println(date))
@@ -159,13 +167,13 @@ Indeed one interesting way of organizing a streamful application is by creating 
 ```scala
   object AvailableStreams {
 
-    val cpu : Enumerator[JsValue] = Enumerator.callback( /* code here */ )
+    val cpu : Enumerator[JsValue] = Enumerator.fromCallback( /* code here */ )
 
-    val memory: Enumerator[JsValue] = Enumerator.callback( /* code here */ )
+    val memory: Enumerator[JsValue] = Enumerator.fromCallback( /* code here */ )
 
-    val threads: Enumerator[JsValue] = Enumerator.callback( /* code here */ ) 
+    val threads: Enumerator[JsValue] = Enumerator.fromCallback( /* code here */ ) 
 
-    val heap: Enumerator[JsValue] = Enumerator.callback( /* code here */ )
+    val heap: Enumerator[JsValue] = Enumerator.fromCallback( /* code here */ )
 
   }
 
@@ -176,3 +184,5 @@ Indeed one interesting way of organizing a streamful application is by creating 
   def usersWidgetsComposition(prefs: Preferences) = // do the composition dynamically
 
 ```
+
+Now, it is time to adapt and transform `Enumerator`s and `Iteratee`s using ... `Enumeratee`s!

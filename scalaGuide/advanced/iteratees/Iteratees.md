@@ -2,11 +2,11 @@
 
 Progressive Stream Processing and manipulation is an important task in modern Web Programming, starting from chunked upload/download to Live Data Streams consumption, creation, composition and publishing through different technologies including Comet and WebSockets.
 
-Iteratees provide a paradigm and an api that allow this manipulation focusing on several important aspects:
+Iteratees provide a paradigm and an api allowing this manipulation while focusing on several important aspects:
 
 * Create, consume and transform streams of data.
 * Treat different data sources in the same manner (Files on disk, Websockets, Chunked Http, Data Upload, ...).
-* Composability: User transformers to change the shape of the source, or consumer. Construct your own or start with primitives.
+* Composability: Adapters and  transformers to change the shape of the source, or consumer. Construct your own or start with primitives.
 * Have control over when it is enough data sent and being informed when source is done sending data.
 * Non blocking, reactive and allowing control over resource consumption (Thread, Memory)
 
@@ -31,12 +31,12 @@ An iteratee has one of three states, `Cont` meaning accepting more input, `Error
 The fold method defines an iteratee as one of the three mentioned states. It accepts three callback functions and will call the appropriate one depending on its state to eventually extract a required value. When calling `fold` on an iteratee you are basically saying:
 
 - If the iteratee is in the state `Done`, then I'd take the calculated result of type `A` and what is left from the last consumed chunk of input `Input[E]` and eventually produce a `B`
-- If the iteratee is in state `Cont`, then I'd take the provided continuation (which accepting an input) `Input[E] => Iteratee[E,A]` amd eventually produce a `B`. Note that this state provides the only way to push input into the iteratee using the provided continuation function. 
+- If the iteratee is in state `Cont`, then I'd take the provided continuation (which is accepting an input) `Input[E] => Iteratee[E,A]` amd eventually produce a `B`. Note that this state provides the only way to push input into the iteratee, and get a new iteratee state, using the provided continuation function. 
 - If the iteratee is in state `Error` then, then I'd take the error message of type `String` and the input that caused it and eventually produce a B.
 
 Obviously depending on the state of the iteratee, `fold` will produce the appropriate `B` using the corresponding passed function.
 
-To sum up, iteratee consists of 3 states, and `fold` provides the means to interact with the state of the iteratee.
+To sum up, iteratee consists of 3 states, and `fold` provides the means to do something useful with the state of the iteratee.
 
 ### Some important types in the `Iteratee` definition:
 
@@ -162,4 +162,4 @@ One common case is to create an iteratee that does some imperative operation for
 
 More interesting methods exist like `repeat`, `ignore` and `fold1` which is different for the preceding `fold` in offering the opportunity to be asynchronous in treating input chunks.
 
-Of course one should be worried now about how hard would it be to manually push input into an iteratee by folding over iteratee states over and over again. For example pushing input manually into this iteratee using nested folds. That's when `Enumerator`s come in handy.
+Of course one should be worried now about how hard would it be to manually push input into an iteratee by folding over iteratee states over and over again. Indeed each time one has to push input into an iteratee, one has to use the `fold` function to check on its state, if it is a `Cont` then push the input and get the new state or otherwise return the computed result. That's when `Enumerator`s come in handy.
