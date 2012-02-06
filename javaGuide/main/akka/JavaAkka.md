@@ -10,10 +10,10 @@ A Play application defines a special actor system to be used by the application.
 
 > **Note:** Nothing prevents you from using another actor system from within a Play application. The default one provided is just convenient if you only need to start a few actors without bothering with setting up your own actor system.
 
-You can access the default application actor system using the `play.api.libs.Akka` helper:
+You can access the default application actor system using the `play.libs.Akka` helper:
 
 ```
-val myActor = Akka.system.actorOf(Props[MyActor], name = "myactor")
+ActorRef myActor = Akka.system().actorOf(new Props(MyActor.class));
 ```
 
 ## Configuration
@@ -29,15 +29,19 @@ akka.debug.receive = on
 
 ## Converting Akka `Future` to Play `Promise`
 
-When you interact asynchronously with an Akka actor we will get `Future` object. You can easily convert them to play `Promise` using the implicit conversion provided in `play.api.libs.Akka._`:
+When you interact asynchronously with an Akka actor we will get `Future` object. You can easily convert them to play `Promise` using the conversion method provided in `play.libs.Akka.asPromise()`:
 
 ```
-def index = Action {
-  Async {
-    (myActor ? "hello").mapTo[String].asPromise { response =>
-      Ok(response)      
-    }    
-  }
+public static Result index() {
+  return async(
+    Akka.asPromise(myActor.ask("hello")).map(
+      new Function<Object,Result>() {
+        public Result apply(Object response) {
+          return ok(response.toString());
+        }
+      }
+    )
+  );
 }
 ```
 
@@ -46,12 +50,18 @@ def index = Action {
 A common use case within Akka is to have some computation performed concurrently without needing the extra utility of an Actor. If you find yourself creating a pool of Actors for the sole reason of performing a calculation in parallel, there is an easier (and faster) way:
 
 ```
-def index = Action {
-  Async {
-    Akka.future { longComputation() }.map { result =>
-      Ok("Got " + result)    
-    }    
-  }
+public static Result index() {
+  return async(
+    Akka.future(new Callable<Integer>() {
+      public Integer call() {
+        return longComputation();
+      }   
+    }).map(new Function<Integer,Result>() {
+      public Result apply(Integer i) {
+        return ok("Got " + i);
+      }   
+    })
+  );
 }
 ```
 
@@ -62,15 +72,25 @@ You can schedule sending messages to actors and executing tasks (functions or Ru
 For example, to send a message to the testActor every 30 minutes:
 
 ```
-Akka.system.scheduler.schedule(0 seconds, 30 minutes, testActor, "tick")
+Akka.system().scheduler().schedule(
+  Duration.create(0, TimeUnit.MILLISECONDS),
+  Duration.create(30, TimeUnit.MINUTES)
+  testActor, 
+  "tick"
+)
 ```
 
 Or to run a block of code 10 seconds from now:
 
 ```
-Akka.system.scheduler.scheduleOnce(10 seconds) {
-  file.delete()
-}
+Akka.system().scheduler().scheduleOnce(
+  Duration.create(10, TimeUnit.SECONDS),
+  new Runnable() {
+    public void run() {
+      file.delete()
+    }
+  }
+); 
 ```
 
-> **Next:** [[Internationalization | ScalaI18N]]
+> **Next:** [[Internationalization | JavaI18N]]

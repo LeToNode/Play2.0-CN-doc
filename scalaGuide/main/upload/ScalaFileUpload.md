@@ -28,8 +28,9 @@ def upload = Action(parse.mutipartFormData) { request =>
     picture.ref.moveTo("/tmp/picture")
     Ok("File uploaded")
   }.getOrElse {
-    flash("error", "Missing file")
-    Redirect(routes.Application.index)
+    Redirect(routes.Application.index).flashing(
+      "error" -> "Missing file"
+    )
   }
 }
 ```

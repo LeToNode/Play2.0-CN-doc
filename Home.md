@@ -4,6 +4,11 @@
 >
 > It is based on a lightweight, stateless, Web-friendly architecture and features predictable and minimal resources consumption (CPU, Memory, Threads) for highly scalable applications - thanks to its reactive model, based on Iteratee IO.
 
+## About
+
+- [[The Play framework philosophy]]
+- [[Architecture overview]]
+
 ## Getting started
 
 - [[Installing Play 2.0 | Installing]]

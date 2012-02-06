@@ -15,7 +15,8 @@ Iteratees provide a paradigm and an api allowing this manipulation while focusin
 An Iteratee is a consumer, it describes the way input will be consumed to produce some value. Iteratee is a consumer that returns a value it computes after being fed enough input.
 
 ```scala
-Iteratee[String,Int] // an iteratee that consumes chunkes of String and produces an Int
+// an iteratee that consumes chunkes of String and produces an Int
+Iteratee[String,Int] 
 ```
 
 The Iteratee interface `Iteratee[E,A]` takes two type parameters, `E` representing the type of the Input it accepts and `A` the type of the calculated result.
@@ -23,10 +24,11 @@ The Iteratee interface `Iteratee[E,A]` takes two type parameters, `E` representi
 An iteratee has one of three states, `Cont` meaning accepting more input, `Error` to indicate an error state and `Done` which carries the calculated result. These three states are defined by the `fold` method of an `Iteratee[E,A]` interface:
 
 ```scala
-  def fold[B](
-    done: (A, Input[E]) => Promise[B],
-    cont: (Input[E] => Iteratee[E, A]) => Promise[B],
-    error: (String, Input[E]) => Promise[B]): Promise[B]
+def fold[B](
+  done: (A, Input[E]) => Promise[B],
+  cont: (Input[E] => Iteratee[E, A]) => Promise[B],
+  error: (String, Input[E]) => Promise[B]
+): Promise[B]
 ```
 
 The fold method defines an iteratee as one of the three mentioned states. It accepts three callback functions and will call the appropriate one depending on its state to eventually extract a required value. When calling `fold` on an iteratee you are basically saying:
@@ -55,12 +57,12 @@ By implementing the iteratee, and more specifically its fold method, we can now 
 - An iteratee in the `Done` state producing an `1:Int` and returning `Empty` as left from last `Input[String]`
 
 ```scala
-  val doneIteratee = new Iteratee[String,Int] {
-    def fold[B](
-      done: (A, Input[E]) => Promise[B],
-      cont: (Input[E] => Iteratee[E, A]) => Promise[B],
-      error: (String, Input[E]) => Promise[B]): Promise[B] = done(1,Input.Empty)
-  }
+val doneIteratee = new Iteratee[String,Int] {
+  def fold[B](
+    done: (A, Input[E]) => Promise[B],
+    cont: (Input[E] => Iteratee[E, A]) => Promise[B],
+    error: (String, Input[E]) => Promise[B]): Promise[B] = done(1,Input.Empty)
+}
 ```
 
 As shown above, this is easily done by calling the appropriate callback function, in our case `done`, with the necessary information.
@@ -68,51 +70,58 @@ As shown above, this is easily done by calling the appropriate callback function
 To use this iteratee we will make use of the `Promise.pure` that is a promise already in the Redeemed state.
 
 ```scala
+val eventuallyMaybeResult: Promise[Option[Int]] = {
+  doneIteratee.fold(
+  
+    // if done return the computed result
+    (a,in) => Promise.pure(Some(a)),
 
-   val eventuallyMaybeResult:Promise[Option[Int]] = 
-     doneIteratee.fold(
-     // if done return the computed result
-     (a,in) => Promise.pure(Some(a)),
+    //if continue return None
+    k => Promise.pure(None),
 
-     //if continue return None
-     k => Promise.pure(None),
-
-     //on error return None
-     (msg,in) => Promise.pure(None) )
-
+    //on error return None
+    (msg,in) => Promise.pure(None) 
+  ) 
+}
 ```
 
 of course to see what is inside the `Promise` when it is redeemed we use `onRedeem`
 
 ```scala
-  eventuallyMaybeResult.onRedeem(i => println(i)) //will eventually print 1
-
+// will eventually print 1
+eventuallyMaybeResult.onRedeem(i => println(i)) 
 ```
 
 There is already a built-in way allowing us to create an iteratee in the `Done` state by providing a result and input, generalizing what is implemented above:
 
 ```scala
-  val doneIteratee = Done[Int,String](1,Input.Empty)
+val doneIteratee = Done[Int,String](1, Input.Empty)
 ```
 
 Creating a `Done` iteratee is simple, and sometimes useful, but it obviously does not consume any input. Let's create an iteratee that consumes one chunk and eventually returns it as the computed result:
 
 ```scala
-   
-   val consumeOneInputAndEventuallyReturnIt = new Iteratee[String,Int] {
-    def fold[B](
-      done: (Int, Input[String]) => Promise[B],
-      cont: (Input[String] => Iteratee[String, Int]) => Promise[B],
-      error: (String, Input[String]) => Promise[B]): Promise[B] = cont ( in => Done(in,Input.Empty))
+val consumeOneInputAndEventuallyReturnIt = new Iteratee[String,Int] {
+    
+  def fold[B](
+    done: (Int, Input[String]) => Promise[B],
+    cont: (Input[String] => Iteratee[String, Int]) => Promise[B],
+    error: (String, Input[String]) => Promise[B]
+  ): Promise[B] = {
+        
+    cont(in => Done(in, Input.Empty))
+      
   }
-
+  
+}
 ```
 
 As for `Done` there is a built-in way to define an iteratee in the `Cont` state by providing a function that takes `Input[E]` and returns a state of `Iteratee[E,A]` :
 
 ```
-  val consumeOneInputAndEventuallyReturnIt = Cont[String,Int]( in => Done(in,Input.Empty))
-
+val consumeOneInputAndEventuallyReturnIt = {
+  Cont[String,Int](in => Done(in,Input.Empty))
+}
 ```
 
 In the same manner there is a built-in way to create an iteratee in the `Error` state by providing and error message and an `Input[E]`
@@ -124,9 +133,7 @@ Back to the `consumeOneInputAndEventuallyReturnIt`, it is possible to create a t
 One common task when using iteratees is maintaining some state and altering it each time input is pushed. This type of iteratee can be easily created using the `Iteratee.fold` which has the signature:
 
 ```scala
-
-   def fold[E, A](state: A)(f: (A, E) => A): Iteratee[E, A]
-
+def fold[E, A](state: A)(f: (A, E) => A): Iteratee[E, A]
 ```
 
 Reading the signature one can realize that this fold takes an initial state `A`, a function that takes the state and an input chunk `(A, E) => A` and returning an `Iteratee[E,A]` capable of consuming `E`s and eventually returning an `A`. The created iteratee will return `Done` with the computed `A` when an input `EOF` is pushed.
@@ -134,34 +141,32 @@ Reading the signature one can realize that this fold takes an initial state `A`,
 One example can be creating an iteratee that counts the number of bytes pushed in:
 
 ```scala
-
-  val inputLength : Iteratee[Array[Byte],A] = Iteratee.fold[Array[Byte],Int](0){ (length, bytes) => length + bytes.size  }
-
+val inputLength: Iteratee[Array[Byte],A] = {
+  Iteratee.fold[Array[Byte],Int](0) { (length, bytes) => length + bytes.size }
+}
 ```
 Another could be consuming all input and eventually returning it:
 
 ```scala
-
-  val consume =  Iteratee.fold[String,String](""){ (result, chunk) => result ++ chunk  }
-
+val consume: Iteratee[String,String] = {
+  Iteratee.fold[String,String]("") { (result, chunk) => result ++ chunk }
+}
 ```
 
 There is actually already a method in `Iteratee` object that does exactly this for any scala `TraversableLike` called `consume`, so our example becomes:
 
 ```scala
-
-  val consume = Iteratee.consume[String]()
-
+val consume = Iteratee.consume[String]()
 ```
 
 One common case is to create an iteratee that does some imperative operation for each chunk of input:
 
 ```scala
-
-  val printlnIteratee = Iteratee.foreach[String](s => println(s))
-
+val printlnIteratee = Iteratee.foreach[String](s => println(s))
 ```
 
 More interesting methods exist like `repeat`, `ignore` and `fold1` which is different from the preceeding `fold` in offering the opportunity to be asynchronous in treating input chunks.
 
 Of course one should be worried now about how hard would it be to manually push input into an iteratee by folding over iteratee states over and over again. Indeed each time one has to push input into an iteratee, one has to use the `fold` function to check on its state, if it is a `Cont` then push the input and get the new state or otherwise return the computed result. That's when `Enumerator`s come in handy.
+
+> **Next:** [[Enumerators | Enumerators]]

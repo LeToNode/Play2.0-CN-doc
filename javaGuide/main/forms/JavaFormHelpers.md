@@ -1,0 +1,167 @@
+# Using the form template helpers
+
+Play provide several helper to help to render form fields in Html templates
+
+## Create a `<form>` tag
+    
+The first thing is to be able to create the `<form>` tag. It is a pretty simple helper that has no more value than setting automatically the `action` and `method` tag parameters according to the reverse route you pass in:
+    
+```
+@helper.form(action = @routes.Application.submit) {
+    
+}
+```
+
+You can also pass an extra set of parameters that will be added to the generated Html:
+
+```
+@helper.form(action = @routes.Application.submit, 'id -> "myForm") {
+    
+}
+```
+
+## Rendering an `<input>` element
+
+You can find several input helpers in the `views.html.helper` package. You feed them with a form field, and they display the corresponding Html input with filled value, constraints and errors:
+
+```
+@(myForm: Form[User])
+
+@helper.form(action = @routes.Application.submit) {
+    
+    @helper.inputText(myForm("username"))
+    
+    @helper.inputPassword(myForm("password"))
+    
+}
+```
+
+As for the `form` helper, you can specify an extra set of parameters that will be added to the generated Html:
+
+```
+@helper.inputText(myForm("username"), 'id -> "username", 'size -> 30)
+```
+
+> **Note:** All extra parameters will be added to the generated Html, unless they are starting with the **\_** characters. Arguments starting with **\_** are reserved for field constructor argument (we will see that just after).
+
+## Handling Html input creation yourself
+
+There is also a more generic `input` helper that let you draw the desired Html result:
+
+```
+@helper.input(myForm("username")) { (id, name, value, args) =>
+    <input type="date" name="@name" id="@id" @toHtmlArgs(args)>
+} 
+```
+
+## Field constructors
+
+An field rendering is not only composed of the `<input>` tag, but it also needs a `<label>` and a bunch of other tags used by your CSS framework to decorate the field.
+    
+All input helper take an implicit `FieldConstructor` that handle this part. The default one (used if there is no other field constructors available in the scope), generates Html like:
+
+```
+<dl class="error" id="username_field">
+    <dt><label for="username"><label>Username:</label></dt>
+    <dd><input type="text" name="username" id="username" value=""></dd>
+    <dd class="error">This field is required!</dd>
+    <dd class="error">Another error</dd>
+    <dd class="info">Required</dd>
+    <dd class="info">Another constraint</dd>
+</dl>
+```
+
+This default field constructor support additional options you can pass in the input helper arguments:
+
+```
+'_label -> "Custom label"
+'_id -> "idForTheTopDlElement"
+'_help -> "Custom help"
+'_showConstraints -> false
+'_error -> "Force an error"
+'_showErrors -> false
+```
+
+## Twitter bootstrap field constructor
+
+There is also another built-in field constructor that can be used with [[TwitterBootstrap | http://twitter.github.com/bootstrap/]].
+
+To use it, just import it in the current scope:
+
+```
+@import helper.twitterBootstrap._
+```
+
+It generates Html likes:
+
+```
+<div class="clearfix error" id="username_field">
+    <label for="username">Username:</label>
+    <div class="input">
+        <input type="text" name="username" id="username" value="">
+        <span class="help-inline">This field is required!, Another error</span>
+        <span class="help-block">Required, Another constraint</d</span> 
+    </div>
+</div>
+```
+
+It supports the same set of options as the default field constructor (see bellow).
+
+## Writing you own field constructor
+
+Often you will need to write your own field constructor. Start by writing a template like:
+
+```
+@(elements: helper.FieldElements)
+
+<div class="@if(elements.hasErrors) {error}">
+    <label for="@elements.id">@elements.label</label>
+    <div class="input">
+        @elements.input
+        <span class="errors">@elements.errors.mkString(", ")</span>
+        <span class="help">@elements.infos.mkString(", ")</span> 
+    </div>
+</div>
+```
+
+> **Note:** This is just a sample. You can make it as complicated as you need it. You have also access to the original field using `@elements.field`.
+
+Now create somewhere an `FieldConstructor` using:
+
+```
+@implicitField = @{ FieldConstructor(myFieldConstructorTemplate.f) }
+
+@inputText(myForm("username"))
+```
+
+## Handling repeated values
+
+The last helper nake it easier to generate inputs for repeated value. Let's you have this kind of form definition:
+
+```
+val myForm = Form(
+  tuple(
+    "name" -> text,
+    "emails" -> list(email)
+  )
+)
+```
+
+Now you have to generate as many inputs for the **emails** field as the form contain. Just use the `repeat` helper for that:
+
+```
+@inputText(myForm("name"))
+
+@repeat(myForm("emails"), min = 1) { emailField =>
+    
+    @inputText(emailField)
+    
+}
+```
+
+The `min` parameter allow to display a minium number of fields even if the corresponding form data are empty.
+
+> **Next:** [[Working with Json| JavaJsonRequests]]
+
+
+

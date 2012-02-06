@@ -1,3 +1,8 @@
+### HTTP forms
+
+- [[Form definitions | JavaForms]]
+- [[Using the form template helpers | JavaFormHelpers]]
+
 ### Main concepts
 
 - [[HTTP programming | JavaActions]]

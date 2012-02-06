@@ -19,7 +19,7 @@ The Scala API for Play 2.0 application developers is available in the `play.api`
     - [[Comet sockets | ScalaComet]]
     - [[WebSockets | ScalaWebSockets]]
 - [[The template engine | ScalaTemplates]]
-    - [[Scala templates syntax | ScalaTemplates]]
+    - [[Templates syntax | ScalaTemplates]]
     - [[Common use cases | ScalaTemplateUseCases]]
 - [[HTTP form submission and validation | ScalaForms]]
     - [[Form definitions | ScalaForms]]

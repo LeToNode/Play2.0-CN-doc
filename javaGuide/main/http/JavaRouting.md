@@ -1,5 +1,7 @@
 # HTTP routing
 
+## The built-in HTTP router
+
 The router is the component in charge of translating each incoming HTTP request to an action call (a static, public method of a controller).
 
 An HTTP request is seen as an event by the MVC framework. The event contains two major pieces of information:
@@ -9,7 +11,7 @@ An HTTP request is seen as an event by the MVC framework. The event contains two
 
 Routes are defined in the `conf/routes` file, which is compiled. This means that you’ll see route errors directly in your browser:
 
-[[routesError.png]]
+[[images/routesError.png]]
 
 ## The routes file syntax
 
@@ -80,7 +82,7 @@ GET   /clients/$id<[0-9]+>  controllers.Clients.show(id: Long)
 
 ## Call to action generator method
 
-The last part of a route definition is the call. This part must define a valid call to a method returning a `play.api.mvc.Action` value, which will typically be a controller action method.
+The last part of a route definition is the call. This part must define a valid call to an action method.
 
 If the method does not define any parameters, just give the fully-qualified method name:
 
@@ -129,6 +131,8 @@ public static Result show(Long id) {
 }
 ```
 
+> **Note:** The parameter types are specified using a suffix syntax. Also The generic types are specified using the `[]` symbols instead of the standard `<>` java ones, such as `List[String]`. But this is exactly the same.
+
 ### Parameters with fixed values
 
 Sometimes you’ll want to use a fixed value for a parameter:
@@ -145,7 +149,7 @@ You can also provide a default value that will be used if no value is found in t
 
 ```
 # Pagination links, like /clients?page=3
-GET   /clients              controllers.Clients.list(page: Int ?= 1)
+GET   /clients              controllers.Clients.list(page: Integer ?= 1)
 ```
 
 ## Routing priority
@@ -192,3 +196,5 @@ public static Result index() {
     return redirect(controllers.routes.Application.hello("Bob")); 
 }
 ```
+
+> **Next:** [[Manipulating the response | JavaResponse]]

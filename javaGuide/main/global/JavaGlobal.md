@@ -95,3 +95,5 @@ public class Global extends GlobalSettings {
     
 }
 ```
+
+> **Next:** [[Testing your application | JavaTest]]

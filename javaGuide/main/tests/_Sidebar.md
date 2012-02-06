@@ -1,3 +1,8 @@
+### Testing your application
+
+- [[Writing tests | JavaTest]]
+- [[Writing functional tests | JavaFunctionalTest]]
+
 ### Main concepts
 
 - [[HTTP programming | JavaActions]]

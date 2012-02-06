@@ -90,20 +90,4 @@ object Global extends GlobalSettings {
 }
 ```
 
-The `onError` operation will be called if an action throw an unexpected error:
-
-```scala
-import play.api._
-import play.api.mvc._
-import play.api.mvc.Results.__
-
-object Global extends GlobalSettings {
-
-  override def onError(request: RequestHeader, ex: Throwable) = {
-    InternalServerError("Oops: " + ex.toString)
-  }  
-    
-}
-```
-
 > **Next:** [[Testing your application | ScalaTest]]

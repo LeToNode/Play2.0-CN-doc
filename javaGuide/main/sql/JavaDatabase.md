@@ -25,16 +25,35 @@ db.customers.url=jdbc:h2:mem:customers
 ```
 
 If something isn’t properly configured you will be notified directly in your browser:
-[[dbError.png]]
 
+[[images/dbError.png]]
 
-## Accessing the JDBC data source
+## Accessing the JDBC datasource
 
-The `play.db` package provide access to the configured data sources:
+The `play.db` package provides access to the configured data sources:
 
 ```java
 import play.db.*;
-import javax.sql.*;
 
 DataSource ds = DB.getDatasource();
 ```
+
+## Obtaining a JDBC connection
+
+The same way you can retrieve a JDBC connection:
+
+```
+Connection connection = DB.getConnection();
+```
+
+## Exposing the datasource through JNDI
+
+Some libraries expect to retrieve the `Datasource` reference from JNDI. You can expose any Play managed datasource via JDNI by adding this configuration in `conf/application.conf`:
+
+```
+db.default.driver=org.h2.Driver
+db.default.url="jdbc:h2:mem:play"
+db.default.jndiName=DefaultDS
+```
+
+> **Next:** [[Using Ebean to access your database | JavaEbean]]

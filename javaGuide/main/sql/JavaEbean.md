@@ -17,6 +17,8 @@ ebean.customers=models.Customer,models.Address
 
 In this example, we have access to two Ebean servers - each one using its own database.
 
+> For more information about Ebean, see the [[Ebean documentation | http://www.avaje.org/ebean/documentation.html]].
+
 ## Using the play.db.ebean.Model superclass
 
 Play 2.0 defines a convenient superclass for your Ebean model classes. Here is a typical Ebean class mapped in Play 2.0:
@@ -73,4 +75,38 @@ List<Task> tasks = find.where()
     .getPage(1);
 ```
 
-> For more information about Ebean, see the [[Ebean documentation | http://www.avaje.org/ebean/documentation.html]].
+## Trasactional actions
+
+By default Ebean will not use any transaction. You can use any transaction helper provided by Ebean to create a transaction such as:
+
+```
+// run in Transactional scope...  
+Ebean.execute(new TxRunnable() {  
+  public void run() {  
+      
+    // code running in "REQUIRED" transactional scope  
+    // ... as "REQUIRED" is the default TxType  
+    System.out.println(Ebean.currentTransaction());  
+      
+    // find stuff...  
+    User user = Ebean.find(User.class, 1);  
+    ...  
+      
+    // save and delete stuff...  
+    Ebean.save(user);  
+    Ebean.delete(order);  
+    ...  
+  }  
+});
+```
+
+You also annotate your action methid with `@play.db.ebean.Transactional` to compose your action method with a `Action` that will automatically manages a transaction:
+
+```
+@Transactional
+public static Result save() {
+  ...
+}
+```
+
+> **Next:** [[Integrating with JPA | JavaJPA]]

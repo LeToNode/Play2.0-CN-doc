@@ -2,7 +2,7 @@
 
 ## Defining a form
 
-The `play.api.data` package contains several helpers to handle HTTP form data submission and validation. The easiest way to handle a form submission is to define a `play.data.Form` that wraps an existing class:
+The `play.data` package contains several helpers to handle HTTP form data submission and validation. The easiest way to handle a form submission is to define a `play.data.Form` that wraps an existing class:
 
 ```java
 public class User {
@@ -14,6 +14,8 @@ public class User {
 ```java
 Form<User> userForm = form(User.class);
 ```
+
+> **Note:** Underlying binding is done using [[Spring data binder| http://static.springsource.org/spring/docs/3.0.7.RELEASE/reference/html/validation.html]].
 
 This form can generate a `User` result value from `HashMap<String,String>` data:
 
@@ -43,6 +45,8 @@ public class User {
     public String password;
 }
 ```
+
+> **Tip:** The `play.data.validation.Constraints` class contains several built-in validation annotations.
 
 You can also define an ad-hoc validation by adding a `validate` method to your top object:
 
@@ -83,56 +87,7 @@ Sometimes you’ll want to fill a form with existing values, typically for editi
 userForm.fill(new User("bob@gmail.com", "secret"))
 ```
 
-## Displaying a form in a template
-
-The `Form` value contains everything you need to display the form to the user:
-
-```html
-@(userForm: Form[models.User])
-
-<form action="@routes.Users.create()" method="POST">
-    
-  <p>
-    @userForm.forField("email") { field =>
-      <label>@field.name</label>
-      <input type="text" value="@field.value">
-      @field.error.map { error =>
-        <p class="error">
-          @error
-        </p>
-      } 
-    }    
-  </p>
-  
-  <p>
-    @userForm.forField("password") { field =>
-      <label>@field.name</label>
-      <input type="text" value="@field.value">
-      @field.error.map { error =>
-        <p class="error">
-          @error
-        </p>
-      } 
-    }    
-  </p>
-    
-</form>
-```
-
-## Using the template form helpers
-
-The `views.html.helper` package contains several helpers to handle HTML form construction.
-
-```html
-@(userForm: Form[models.User])
-
-@import helper._
-
-@form(action = routes.Users.create()) {
-    @inputText(userForm("email"))
-    @inputText(userForm("password"))
-}
-```
+> **Next:** [[Using the form template helpers | JavaFormHelpers]]
 
 
 

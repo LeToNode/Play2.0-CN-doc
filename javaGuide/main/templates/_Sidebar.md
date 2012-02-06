@@ -1,3 +1,8 @@
+### The template engine
+
+- [[Templates syntax | JavaTemplates]]
+- [[Common use cases | JavaTemplateUseCases]]
+
 ### Main concepts
 
 - [[HTTP programming | JavaActions]]
