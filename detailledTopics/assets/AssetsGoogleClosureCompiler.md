@@ -82,5 +82,7 @@ val main = PlayProject(appName, appVersion, mainLang = SCALA).settings(
 
 The default definition:
 ```
-javascriptEntryPoints <<= (sourceDirectory in Compile)(base => ((base / "assets" ** "*.js") --- (base / "assets" ** "_*")).get)
+javascriptEntryPoints <<= (sourceDirectory in Compile)(base =>
+   ((base / "assets" ** "*.js") --- (base / "assets" ** "_*")).get
+)
 ```
