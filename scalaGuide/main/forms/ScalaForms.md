@@ -50,7 +50,7 @@ val anyData = Map("email" -> "bob@gmail.com", "age" -> "18")
 val user: User = userForm.bind(anyData).get
 ```
 
-> **Note:** The difference between using `tuple` and `mapping` is that when you are using `tuple` the construction and deconstruction functions don't need to be specified (we now how to construct and deconstruct a tuple right?). 
+> **Note:** The difference between using `tuple` and `mapping` is that when you are using `tuple` the construction and deconstruction functions don't need to be specified (we know how to construct and deconstruct a tuple right?). 
 >
 > The `mapping` method just let you define your custom functions. And when you want to construct and deconstruct a case class, you can just use its default `apply` and `unapply` functions as they do exactly that!
 
