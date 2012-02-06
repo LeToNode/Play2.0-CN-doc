@@ -76,9 +76,9 @@ The body parsers available in Play are defined in `play.api.mvc.BodyParsers.pars
 So for example, to define an action expecting a text body (like in the previous example):
 
 ```
-def save = Action(parse.text) { request =>
-  Ok("Got: " + text)
-}
+def save = Action(parse.text) { request => 
+   Ok("Got: " + request.body) 
+} 
 ```
 
 Do you see how the code is simpler? It is because the `parse.text` body parser already sent a `400 BAD_REQUEST` response if something went wrong. So we don't have to check again in our action code, and we can safely assume that `request.body` contains the valid `String` body.
@@ -87,7 +87,7 @@ Alternatively we can use:
 
 ```
 def save = Action(parse.tolerantText) { request =>
-  Ok("Got: " + text)
+  Ok("Got: " + request.body)
 }
 ```
 
