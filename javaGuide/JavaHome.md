@@ -9,7 +9,7 @@ The Java API for the Play 2.0 application developers is available in the `play` 
 - [[HTTP programming | JavaActions]]
     - [[Actions, Controllers and Results | JavaActions]]
     - [[HTTP routing | JavaRouting]]
-    - [[Manipulating results | JavaResults]]
+    - [[Manipulating the HTTP response | JavaResponse]]
     - [[Session and Flash scopes | JavaSessionFlash]]
     - [[Body parsers | JavaBodyParsers]]
     - [[Actions composition | JavaActionsComposition]]

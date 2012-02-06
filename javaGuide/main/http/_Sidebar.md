@@ -2,7 +2,7 @@
 
 - [[Actions, Controllers and Results | JavaActions]]
 - [[HTTP routing | JavaRouting]]
-- [[Manipulating results | JavaResults]]
+- [[Manipulating the HTTP response | JavaResponse]]
 - [[Session and Flash scopes | JavaSessionFlash]]
 - [[Body parsers | JavaBodyParsers]]
 - [[Actions composition | JavaActionsComposition]]
