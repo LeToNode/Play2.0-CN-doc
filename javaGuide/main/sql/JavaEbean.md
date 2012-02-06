@@ -5,14 +5,14 @@
 Play 2.0 comes with the [[Ebean | http://www.avaje.org/]] ORM. To enable it, add the following line to `conf/application.conf`:
 
 ```properties
-ebean.default=models.*
+ebean.default="models.*"
 ```
 
 This defines a `default` Ebean server, using the `default` data source, which must be properly configured. You can actually create as many Ebean servers you need, and explicitly define the mapped class for each server.
 
 ```properties
-ebean.orders=models.Order,models.OrderItem
-ebean.customers=models.Customer,models.Address
+ebean.orders="models.Order,models.OrderItem"
+ebean.customers="models.Customer,models.Address"
 ```
 
 In this example, we have access to two Ebean servers - each one using its own database.
