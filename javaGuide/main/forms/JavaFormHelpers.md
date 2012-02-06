@@ -27,7 +27,7 @@ You can find several input helpers in the `views.html.helper` package. You feed 
 ```
 @(myForm: Form[User])
 
-@helper.form(action = @routes.Application.submit) {
+@helper.form(action = routes.Application.submit()) {
     
     @helper.inputText(myForm("username"))
     
