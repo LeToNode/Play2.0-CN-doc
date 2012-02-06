@@ -6,8 +6,8 @@
 
 ## About
 
-- [[The Play framework philosophy]]
-- [[Architecture overview]]
+- [[The Play framework philosophy | Philosophy]]
+- [[Architecture overview | Architecture]]
 
 ## Getting started
 
