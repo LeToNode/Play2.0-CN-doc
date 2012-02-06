@@ -32,3 +32,13 @@ Two JavaScript files will be compiled: `public/javascripts/main.js` and `public/
 ```html
 <script src="@routes.Assets.at("javascripts/main.min.js")">
 ```
+
+## Options
+
+CoffeeScript compilation can be configured in your project's Build.scala. The only option currently supported is the *bare* mode.
+
+```
+coffeeScriptOptions := Seq("bare")
+```
+
+By default, the Javascript code is generated inside a top-level function the top-level function safety wrapper, preventing from polluting the global scope. The bare option remove this function wrapper.
