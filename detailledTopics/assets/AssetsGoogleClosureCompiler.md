@@ -69,13 +69,13 @@ A minified file is also generated, where `.js` is replaces by `.min.js`. In our 
 
 ## Entry Points
 
-By default, any Javascript file not prepended by an underscore will be compiled. This behavior can be changed in `project/Build.scala` by overriding the `javascriptEntryPoints` key. This key holds a `Seq[File]`, and you can use a `PathFinder` to help you define this list.
+By default, any Javascript file not prepended by an underscore will be compiled. This behavior can be changed in `project/Build.scala` by overriding the `javascriptEntryPoints` key. This key holds a `PathFinder`.
 
 For example, to compile only `.js` file from the `app/assets/javascripts/main` directory:
 ```
 val main = PlayProject(appName, appVersion, mainLang = SCALA).settings(
    javascriptEntryPoints <<= baseDirectory(base =>
-      (base / "app" / "assets" / "javascripts" / "main" ** "*.js").get
+      base / "app" / "assets" / "javascripts" / "main" ** "*.js"
    )
 )
 ```
