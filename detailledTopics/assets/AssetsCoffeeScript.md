@@ -41,4 +41,4 @@ CoffeeScript compilation can be configured in your project's Build.scala. The on
 coffeeScriptOptions := Seq("bare")
 ```
 
-By default, the Javascript code is generated inside a top-level function safety wrapper, preventing from polluting the global scope. The bare option removes this function wrapper.
+By default, the Javascript code is generated inside a top-level function safety wrapper, preventing from polluting the global scope. The `bare` option removes this function wrapper.
