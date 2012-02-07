@@ -84,9 +84,9 @@ GET  /images/*file             Assets.at("public/images", file)
 ```
 ## Etag support
 
-The `Assets` controller automatically manage **ETag** HTTP Headers. The ETag value is generated from the resource name and the file last modification date (if the resource file is embedded into a file, the jar file last modification date is used).
+The `Assets` controller automatically manages **ETag** HTTP Headers. The ETag value is generated from the resource name and the file last modification date (if the resource file is embedded into a file, the jar file last modification date is used).
 
-When a Web browser make a request specifying this **Etag**, the server can response with **304 NotModified**.
+When a Web browser makes a request specifying this **Etag**, the server can respond with **304 NotModified**.
 
 ## GZip support
 
