@@ -158,9 +158,9 @@ The benefit of the typeclass based solution is that it's significantly increasin
 
 # Other options
 
-while the typeclass based solution describe above is the on that's recommended, nothing stopping users from using any other JSON libraries.
+while the typeclass based solution described above is the one that's recommended, there is nothing stopping users from using any other JSON libraries.
 
-For example, here is a small snippet which demonstrates how to marshal plain scala objects into JSON and send it over the wire using the bundled, reflection based [Jerkson](https://github.com/codahale/jerkson/) library:
+For example, here is a small snippet which demonstrates how to marshal a plain scala object into JSON and send it over the wire using the bundled, reflection based [Jerkson](https://github.com/codahale/jerkson/) library:
 ```scala
 object MyController extends Controller{
 
