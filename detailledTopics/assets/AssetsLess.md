@@ -57,11 +57,12 @@ The resulting CSS file will be compiled as `public/stylesheets/main.css`, and yo
 
 The default behavior of compiling every file that is not prepended by an underscore may not fit every project; for example if you include a library that has not been designed that way.
 
-This can be configured in `project/Build.scala` by overriding the `lessEntryPoints` key. This key holds a `PathFinder`.
+This can be configured in `project/Build.scala` by overriding the `lessEntryPoints` key.
 
 For example, to compile `app/assets/stylesheets/main.less` and nothing else:
 ```
  val main = PlayProject(appName, appVersion, mainLang = SCALA).settings(
-     lessEntryPoints := baseDirectory(_ / "app" / "assets" / "stylesheets" ** "main.less")
+     lessEntryPoints := Seq.empty[File],
+     lessEntryPoints <+= baseDirectory(_ / "app" / "assets" / "stylesheets" / "main.less")
  )
 ```
