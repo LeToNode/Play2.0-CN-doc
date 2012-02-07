@@ -42,7 +42,7 @@ As for the `form` helper, you can specify an extra set of parameters that will b
 @helper.inputText(myForm("username"), 'id -> "username", 'size -> 30)
 ```
 
-> **Note:** All extra parameters will be added to the generated Html, unless they star with the **\_** character. Arguments starting with **\_** are reserved for field constructor argument (we will see that shortly).
+> **Note:** All extra parameters will be added to the generated Html, unless they start with the **\_** character. Arguments starting with **\_** are reserved for field constructor argument (we will see that shortly).
 
 ## Handling Html input creation yourself
 
