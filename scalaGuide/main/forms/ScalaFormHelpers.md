@@ -56,9 +56,9 @@ There is also a more generic `input` helper that lets you draw the desired Html 
 
 ## Field constructors
 
-An field rendering is not only composed of the `<input>` tag, but it also needs a `<label>` and a bunch of other tags used by your CSS framework to decorate the field.
+A field rendering is not only composed of the `<input>` tag, but it also needs a `<label>` and a bunch of other tags used by your CSS framework to decorate the field.
     
-All input helper take an implicit `FieldConstructor` that handle this part. The default one (used if there is no other field constructors available in the scope), generates Html like:
+All input helpers take an implicit `FieldConstructor` that handles this part. The default one (used if there are no other field constructors available in the scope), generates Html like:
 
 ```
 <dl class="error" id="username_field">
@@ -71,7 +71,7 @@ All input helper take an implicit `FieldConstructor` that handle this part. The 
 </dl>
 ```
 
-This default field constructor support additional options you can pass in the input helper arguments:
+This default field constructor supports additional options you can pass in the input helper arguments:
 
 ```
 '_label -> "Custom label"
@@ -92,7 +92,7 @@ To use it, just import it in the current scope:
 @import helper.twitterBootstrap._
 ```
 
-It generates Html likes:
+It generates Html like:
 
 ```
 <div class="clearfix error" id="username_field">
@@ -105,9 +105,9 @@ It generates Html likes:
 </div>
 ```
 
-It supports the same set of options as the default field constructor (see bellow).
+It supports the same set of options as the default field constructor (see below).
 
-## Writing you own field constructor
+## Writing your own field constructor
 
 Often you will need to write your own field constructor. Start by writing a template like:
 
@@ -124,9 +124,9 @@ Often you will need to write your own field constructor. Start by writing a temp
 </div>
 ```
 
-> **Note:** This is just a sample. You can make it as complicated as you need it. You have also access to the original field using `@elements.field`.
+> **Note:** This is just a sample. You can make it as complicated as you need it. You also have access to the original field using `@elements.field`.
 
-Now create somewhere an `FieldConstructor` using this template function:
+Now create a `FieldConstructor` using this template function:
 
 ```
 object MyHelpers {
@@ -146,7 +146,7 @@ And to make the form helpers use it, just import it in your templates:
 
 It will then use your field constructor to render the input text.
 
-> **Note:** You can also an implicit value for your `FieldConstructor` inline in your template this way:
+> **Note:** You can also set an implicit value for your `FieldConstructor` inline in your template this way:
 >
 > ```
 > @implicitField = @{ FieldConstructor(myFieldConstructorTemplate.f) }
@@ -156,7 +156,7 @@ It will then use your field constructor to render the input text.
 
 ## Handling repeated values
 
-The last helper nake it easier to generate inputs for repeated value. Let's you have this kind of form definition:
+The last helper makes it easier to generate inputs for repeated values. Let's say you have this kind of form definition:
 
 ```
 val myForm = Form(
@@ -167,7 +167,7 @@ val myForm = Form(
 )
 ```
 
-Now you have to generate as many inputs for the **emails** field as the form contain. Just use the `repeat` helper for that:
+Now you have to generate as many inputs for the **emails** field as the form contains. Just use the `repeat` helper for that:
 
 ```
 @inputText(myForm("name"))
@@ -179,7 +179,7 @@ Now you have to generate as many inputs for the **emails** field as the form con
 }
 ```
 
-The `min` parameter allow to display a minium number of fields even if the corresponding form data are empty.
+The `min` parameter allows you to display a minimum number of fields even if the corresponding form data are empty.
 
 > **Next:** [[Working with Json| ScalaJson]]
 
