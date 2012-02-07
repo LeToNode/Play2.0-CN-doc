@@ -64,7 +64,7 @@
 
 > The documentation is freely editable on [[https://github.com/playframework/Play20/wiki]]. Feel free to fix mistakes directly in the pages. 
 >
-> However if you want to provide additional documentation, please create new pages and reference them from here. A member of the core team will take care of integrating it in the most appriopriate section.
+> However if you want to provide additional documentation, please create new pages and reference them from here. A member of the core team will take care of integrating it in the most appropriate section.
 
 ### To be integrated:
 
