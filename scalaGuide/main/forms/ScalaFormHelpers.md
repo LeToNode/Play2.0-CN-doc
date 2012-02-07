@@ -46,7 +46,7 @@ As for the `form` helper, you can specify an extra set of parameters that will b
 
 ## Handling Html input creation yourself
 
-There is also a more generic `input` helper that let you draw the desired Html result:
+There is also a more generic `input` helper that lets you draw the desired Html result:
 
 ```
 @helper.input(myForm("username")) { (id, name, value, args) =>
