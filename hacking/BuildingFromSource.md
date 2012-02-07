@@ -35,3 +35,23 @@ We are also using several Play applications to test the framework. To run this c
 ```
 $ ./runtests
 ```
+
+## Creating projects
+
+Creating projects using the Play version you have built from source works much the same as a regular Play application.
+
+export PATH=$PATH:<projdir>/Play20
+
+If you have an existing Play 2.0 application that you are upgrading from Play 2.0 Beta to edge, please add 
+
+```
+resolvers ++= Seq(
+  ...
+  Resolver.url("Local Repository", url("file:///<projdir>/Play20/repository")),
+  ...
+)
+
+addSbtPlugin("play" % "sbt-plugin" % "2.0-RC1-SNAPSHOT")
+```
+
+to project/plugins.sbt.
