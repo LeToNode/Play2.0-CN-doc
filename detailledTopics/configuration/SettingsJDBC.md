@@ -1,6 +1,22 @@
 # Configuring the JDBC pool.
 
-The Play 2.0 JDBC datasource is managed by [[BoneCP | http://jolbox.com/]]. In addition to the classical `driver`, `url`, `user`, `password` configuration properties, it also supports additional tuning parameters if you need them:
+The Play 2.0 JDBC datasource is managed by [[BoneCP | http://jolbox.com/]]. 
+
+## Special URLs
+
+Play supports special url format for both **MySQL** and **PostgreSQL**:
+
+```
+# To configure MySQL
+db.url=mysql://localhost:root@secret/myDatabase
+
+# To configure PostgreSQL
+db.url=postgres://localhost:root@secret/myDatabase
+```
+
+## Reference
+
+In addition to the classical `driver`, `url`, `user`, `password` configuration properties, it also supports additional tuning parameters if you need them:
 
 ```properties
 # The JDBC driver to use
