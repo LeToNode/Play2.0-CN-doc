@@ -35,15 +35,11 @@ Just create a new directory for your new application and configure your sbt buil
 In `project/plugins.sbt`, add:
 
 ```scala
-resolvers ++= Seq(
-    DefaultMavenRepository,
-    Resolver.url("Play", url("http://download.playframework.org/ivy-releases/"))(Resolver.ivyStylePatterns),
-    "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/"
-)
+// The Typesafe repository 
+resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/"
 
-libraryDependencies += "play" %% "play" % "2.0-RC1-SNAPSHOT"
-
-addSbtPlugin("play" % "sbt-plugin" % "2.0-RC1-SNAPSHOT")
+// Use the Play sbt plugin for Play projects
+addSbtPlugin("play" % "sbt-plugin" % "%PLAY_VERSION%")
 ```
 
 In `project/Build.scala`:
