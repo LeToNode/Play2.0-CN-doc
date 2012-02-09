@@ -31,11 +31,20 @@ def isActiveProduct(id: String)(f: Request[AnyContent] => Result) = {
 }
 
 //then in a controller
-def listOrdersForProduct(id: String) = isActiveProduct(productId) {
-  Action{request => 
-    val orders = orders.filter(e.get(productId).isDefinedAt)
-    Ok(html.orders.list(orders))
+package controllers
+
+import play.api.mvc._
+import com.example.Orders
+
+object Application extends Controller {
+
+  def listOrdersForProduct(id: String) = isActiveProduct(productId) {
+     Action{request => 
+       val orders = Orders.current.filter(e.get(productId).isDefinedAt)
+       Ok(html.orders.list(orders))
+    }
   }
+
 }
 ```
 
