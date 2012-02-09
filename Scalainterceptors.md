@@ -28,7 +28,7 @@ def isActive(productId: String)(f: Request[AnyContent] => Result) = {
 }
 
 //then in a controller
-def listOrders(productId: String) = isActive {
+def listOrders(productId: String) = isActive(productId) {
   Action{request => 
     val orders = orders.filter(e.get(productId).isDefinedAt)
     Ok(html.orders.list(orders))
