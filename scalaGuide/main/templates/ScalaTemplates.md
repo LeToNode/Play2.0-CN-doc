@@ -17,7 +17,7 @@ Templates are compiled, so you will see any errors right in your browser:
 
 A Play Scala template is a simple text file, that contains small blocks of Scala code. They can generate any text-based format, such as HTML, XML or CSV.
 
-The template system has been designed to feel comfortable to those used to working with HTML, allowing web designers to easily work with the templates.
+The template system has been designed to feel comfortable to those used to deal with HTML, allowing web designers to easily work with the templates.
 
 Templates are compiled as standard Scala functions, following a simple naming convention: If you create a `views/Application/index.scala.html` template file, it will generate a `views.html.Application.index` function.
 
