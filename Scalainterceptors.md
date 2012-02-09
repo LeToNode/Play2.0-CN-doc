@@ -18,7 +18,7 @@ object Global extends GlobalSettings {
 }
 ```
 
-#intercepting only specific Action methods
+# Decorating Action methods
 
 Instead of intercepting each and every request, it's also possible to decorate only specific Action methods:
 
