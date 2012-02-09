@@ -17,7 +17,7 @@ object Global extends GlobalSettings {
 }
 ```
 
-#intercepting on method level
+#intercepting only specific Action methods
 
 It's also possible to intercept a specific Action logic:
 
