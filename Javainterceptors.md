@@ -46,4 +46,5 @@ public class Interceptor extends Simple {
         return ok(Interceptor.customState);
     }
 ```
+
 > **Next:** [[Testing your application | JavaTest]]
