@@ -45,6 +45,7 @@ The Scala API for Play 2.0 application developers is available in the `play.api`
     - [[Messages externalisation and i18n | ScalaI18N]]
 - [[The application Global object | ScalaGlobal]]
     - [[Application global settings | ScalaGlobal]]
+    - [[Intercepting requests | ScalaInterceptors]]
 - [[Testing your application | ScalaTest]]
     - [[Writing tests | ScalaTest]]
     - [[Writing functional tests | ScalaFunctionalTest]]
