@@ -41,10 +41,17 @@ public class Interceptor extends Simple {
 }
 
 //controllers/Application.java
- @With(Interceptor.class)
+  import play.*;
+  import play.mvc.*;
+
+  public class Application extends Controller {
+    
+    @With(Interceptor.class)
     public static Result myActionMethod {
         return ok(Interceptor.customState);
-    }
+   }
+
+ }
 ```
 
 > **Next:** [[Testing your application | JavaTest]]
