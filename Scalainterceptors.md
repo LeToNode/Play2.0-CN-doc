@@ -17,4 +17,19 @@ object Global extends GlobalSettings {
 }
 ```
 
+#intercepting on method level
+```scala
+def isActive(productId: String)(f: Request[AnyContent] => Result) = {
+   Products.get(id).map(_ => f).getOrElse( Results.Forbidden) 
+}
+
+//then in a controller
+def listOrders(productId: String) = isActive {
+  Action{request => 
+    val orders = orders.filter(e.get(productId).isDefinedAt)
+    Ok(html.orders.list(orders))
+  }
+}
+
+
 > **Next:** [[Testing your application | ScalaTest]]
