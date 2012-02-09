@@ -29,7 +29,7 @@ public class SimpleTest {
 
 ## Running in a Fake application
 
-If the code you want to test depends of a running application, you can easily create a `FakeApplication` on the fly:
+If the code you want to test depends on a running application, you can easily create a `FakeApplication` on the fly:
 
 ```
 @Test
