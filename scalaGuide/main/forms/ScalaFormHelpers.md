@@ -7,7 +7,7 @@ Play provides several helpers for rendering form fields in Html templates.
 The first thing is to be able to create the `<form>` tag. It is a pretty simple helper that has no more value than setting automatically the `action` and `method` tag parameters according to the reverse route you pass in:
     
 ```
-@helper.form(action = @routes.Application.submit) {
+@helper.form(action = routes.Application.submit) {
     
 }
 ```
@@ -15,7 +15,7 @@ The first thing is to be able to create the `<form>` tag. It is a pretty simple 
 You can also pass an extra set of parameters that will be added to the generated Html:
 
 ```
-@helper.form(action = @routes.Application.submit, 'id -> "myForm") {
+@helper.form(action = routes.Application.submit, 'id -> "myForm") {
     
 }
 ```
@@ -27,7 +27,7 @@ You can find several input helpers in the `views.html.helper` package. You feed 
 ```
 @(myForm: Form[User])
 
-@helper.form(action = @routes.Application.submit) {
+@helper.form(action = routes.Application.submit) {
     
     @helper.inputText(myForm("username"))
     
