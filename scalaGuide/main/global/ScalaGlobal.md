@@ -90,4 +90,4 @@ object Global extends GlobalSettings {
 }
 ```
 
-> **Next:** [[Testing your application | ScalaTest]]
+> **Next:** [[Intercepting requests | ScalaInterceptors]]
