@@ -25,7 +25,7 @@ object Global extends GlobalSettings {
 Instead of intercepting each and every request, it's also possible to decorate only specific Action methods:
 
 ```scala
-//app/util/Decorators.scala
+// util/Decorators.scala
 package util
 import com.example.Products
 
@@ -38,12 +38,13 @@ object Decorators {
 
 }
 
-//app/controllers/Application.scala
+// controllers/Application.scala
 package controllers
 
 import play.api.mvc._
 import com.example.Orders
 import util.Decorators.isActiveProduct
+
 object Application extends Controller {
 
   def listOrdersForProduct(id: String) = isActiveProduct(productId) {
