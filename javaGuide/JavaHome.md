@@ -44,6 +44,7 @@ The Java API for the Play 2.0 application developers is available in the `play` 
     - [[Messages externalisation and i18n | JavaI18N]]
 - [[The application Global object | JavaGlobal]]
     - [[Application global settings | JavaGlobal]]
+    - [[Intercepting requests | JavaInterceptors]]
 - [[Testing your application | JavaTest]]
     - [[Writing tests | JavaTest]]
     - [[Writing functional tests | JavaFunctionalTest]]
