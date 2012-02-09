@@ -23,13 +23,13 @@ object Global extends GlobalSettings {
 Instead of intercepting each and every request, it's also possible to decorate only specific Action methods:
 
 ```scala
-//return Results.Forbidden or the passed Action
-def isActive(productId: String)(f: Request[AnyContent] => Result) = {
+//return Results.Forbidden or the passed in Action
+def isActiveProduct(id: String)(f: Request[AnyContent] => Result) = {
    Products.get(productId).filter(_.isActive == true).map(_ => f).getOrElse( Results.Forbidden) 
 }
 
 //then in a controller
-def listOrders(productId: String) = isActive(productId) {
+def listOrdersForProduct(id: String) = isActiveProduct(productId) {
   Action{request => 
     val orders = orders.filter(e.get(productId).isDefinedAt)
     Ok(html.orders.list(orders))
