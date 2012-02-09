@@ -24,4 +24,4 @@
 
 ### Tutorials
 
-- [[The Hello World tutorial | JavaHelloWorld]]
+- [[Your first application | JavaTodoList]]

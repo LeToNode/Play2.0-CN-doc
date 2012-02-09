@@ -66,6 +66,14 @@ A Chat room built using WebSockets. Additionally there is a bot used speaking on
 - WebSocket connections.
 - Advanced usage of Akka.
 
+## Comet monitoring
+
+[[images/rps-screenshot.png]]
+
+A phone Web application monitoring the Play server performance. It demonstrates:
+
+- Advanced usage of Enumerators and Enumeratees.
+
 > **Next:** 
 >
 >   - [[Play 2.0 for Scala developers | ScalaHome]]

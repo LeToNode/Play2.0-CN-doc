@@ -59,6 +59,22 @@ Type `console` to enter the interactive Scala console, which allows you to test 
 
 [[images/consoleEval.png]] 
 
+## Debugging
+
+You can ask Play to start a **JPDA** debug port when starting the console. You can then connect using Java debugger. Use the `play debug` command to do that:
+
+```
+$ play debug
+```
+
+When a JPDA port is available, the JVM wil log this line during boot:
+
+```
+Listening for transport dt_socket at address: 9999
+```
+
+> **Note:** Using `play debug` the JPDA socket will be opened on port `9999`. You can also set the `JPDA_PORT` environment variable yourself using `set JPDA_PORT=1234`.
+
 ## Using sbt features
 
 The Play console is just a normal sbt console, so you can use sbt features such as **triggered execution**. 
@@ -102,5 +118,13 @@ $ play run
 ```
 
 The application starts directly. When you quit the server using `Ctrl+D`, you will come back to your OS prompt.
+
+## Force clean
+
+If something goes wrong and you think that the sbt cache is corrupted, use the `clean-all` command for your OS command line to clean all generated directories.
+
+```
+$ play clean-all
+```
 
 > **Next:** [[Setting-up your preferred IDE | IDE]]

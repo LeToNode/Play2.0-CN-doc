@@ -60,4 +60,4 @@ The Scala API for Play 2.0 application developers is available in the `play.api`
 
 ## Tutorials
 
-- [[The Hello World tutorial | ScalaHelloWorld]]
+- [[Your first application | ScalaTodoList]]

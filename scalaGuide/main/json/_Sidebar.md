@@ -26,4 +26,4 @@
 
 ### Tutorials
 
-- [[The Hello World tutorial | ScalaHelloWorld]]
+- [[Your first application | ScalaTodoList]]
