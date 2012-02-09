@@ -4,7 +4,7 @@ One another important aspect of  the ```Global``` object is that it provides a w
 
 > **Tip:** this hook can be also used for hijacking requests, allowing developers to plugin their own request routing mechanism. 
 
-Let's see how to intercept requests:
+Let's see how this works in practice:
 
 ```scala
 import play.api._
