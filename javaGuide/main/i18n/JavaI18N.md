@@ -2,7 +2,7 @@
 
 ## Specifying languages supported by your application
 
-A valid language code is specified by a valid **ISO Language Code**, optionnally followed by a valid **ISO Country Code**, such as `fr` or `en_US`.
+A valid language code is specified by a valid **ISO Language Code**, optionally followed by a valid **ISO Country Code**, such as `fr` or `en_US`.
 
 To start you need to specify the language supported by your application in the `conf/application.conf` file:
 
