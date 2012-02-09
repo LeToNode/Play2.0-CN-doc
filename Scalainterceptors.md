@@ -19,7 +19,10 @@ object Global extends GlobalSettings {
 
 #intercepting on method level
 
+It's also possible to intercept a specific Action logic:
+
 ```scala
+//return Results.Forbidden or the passed Action
 def isActive(productId: String)(f: Request[AnyContent] => Result) = {
    Products.get(id).map(_ => f).getOrElse( Results.Forbidden) 
 }
