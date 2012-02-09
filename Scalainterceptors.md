@@ -1,8 +1,8 @@
 # Intercepting requests
 
-One another important feature of  the ```Global``` object is that it provides a way to intercept requests and execute some business logic before a request is being dispatched to an Action. 
+One another important aspect of  the ```Global``` object is that it provides a way to intercept requests and execute some business logic before a request is being dispatched to an Action. 
 
-> **Tip:** this hook can be also used for hijacking the request, allowing developers to plugin their own request routing mechanisms. 
+> **Tip:** this hook can be also used for hijacking requests, allowing developers to plugin their own request routing mechanism. 
 
 Let's see how to intercept requests:
 
