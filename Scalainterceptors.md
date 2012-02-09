@@ -11,7 +11,7 @@ import play.api._
 
 object Global extends GlobalSettings {
   def onRouteRequest(request: RequestHeader): Option[Handler] = {
-     println("before request, yay:" + request.toString)
+     println("executed before every request:" + request.toString)
      super.onRouteRequest(request)
   }
 }
