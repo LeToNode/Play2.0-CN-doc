@@ -11,10 +11,12 @@ import play.api._
 
 //notice: this is in the default package
 object Global extends GlobalSettings {
+
   def onRouteRequest(request: RequestHeader): Option[Handler] = {
      println("executed before every request:" + request.toString)
      super.onRouteRequest(request)
   }
+
 }
 ```
 
