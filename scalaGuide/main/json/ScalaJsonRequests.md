@@ -56,7 +56,7 @@ Hello Guillaume
 
 ## Serving a Json response
 
-In our previous example we handle a Json request, but we reply with a `text/plain` response. Let'as change that to send back a valid Json HTTP response:
+In our previous example we handle a Json request, but we reply with a `text/plain` response. Let's change that to send back a valid Json HTTP response:
 
 ```
 def sayHello = Action(parse.json) { request =>
