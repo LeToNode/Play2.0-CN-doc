@@ -18,7 +18,7 @@ public Action onRequest(Request request, Method actionMethod) {
 }
 ```
 
-#Decorating Action methods with the ```With``` annotations
+#Decorating Action methods with the @With annotation
 
 Alternatively, it's also possible to decorate an Action method with another one using the ```play.mvc.With``` annotation.
 
