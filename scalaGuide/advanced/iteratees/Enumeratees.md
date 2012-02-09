@@ -5,7 +5,7 @@
 `Enumeratee` is a very important component of the iteratees api. It provides the means for adapting and tranforming streams of data.
 An `Enumeratee` that might sound familiar is the `Enumeratee.map`.
 
-Starting with a simple problems, consider the following `Iteratee`:
+Starting with a simple problem, consider the following `Iteratee`:
 
 ```scala
 
@@ -13,7 +13,7 @@ Starting with a simple problems, consider the following `Iteratee`:
 
 ```
 
-This `Iteratee` takes `Int`s as input and computed their sum. Now if we have an `Enumerator` like the following:
+This `Iteratee` takes `Int`s as input and computes their sum. Now if we have an `Enumerator` like the following:
 
 ```scala
 
@@ -22,7 +22,7 @@ This `Iteratee` takes `Int`s as input and computed their sum. Now if we have an 
 ```
 
 Then obviously we can not apply the `strings:Enumerator[String]` to an `Iteratee[Int,Int]`. What we need is transform each `String` to the corresponding `Int` so that the source and the consumer can be fit together. This means we either have to adapt the `Iteratee[Int,Int]` to be `Iteratee[String,Int]`, or adapt the `Enumerator[String]` to be rather an `Enumerator[Int]`.
-`Enumeratee`s are the right tool for doing that. We can create an `Enumeratee[String,Int]` and adapt `Iteratee` using it:
+`Enumeratee`s are the right tool for doing that. We can create an `Enumeratee[String,Int]` and adapt our `Iteratee[Int,Int]` using it:
 
 ```scala
   //create am Enumeratee using the map method on Enumeratee
@@ -42,7 +42,7 @@ There exist a symbolic alternative to the `transform` method, `&>>` which we can
 
 ```
 
-The `map` method will create an 'Enumeratee' that uses a function to map the input from the `From` type to the `To` type. We can also adapt the `Enumerator`:
+The `map` method will create an 'Enumeratee' that uses a provided `From => To` function to map the input from the `From` type to the `To` type. We can also adapt the `Enumerator`:
 
 ```scala
 
@@ -67,8 +67,6 @@ Let's have a look at the `transform` signature defined in the 'Enumeratee' trait
   trait Enumeratee[From, To] {
 
     def transform[A](inner: Iteratee[To, A]): Iteratee[From, A] = ...
-
-  }
 
 ```
 Fairly simple signature, same for the `through` defined on an `Enumerator` :
@@ -117,7 +115,7 @@ Indeed, an `Enumeratee` is more powerful than just transforming an `Iteratee` ty
 That's why we call the adapted (original) `Iteratee` inner and the resulting `Iteratee` outer.
 Now that the `Enumeratee` full picture is clear, it is very important to know that `transform` drops the left input of the inner `Iteratee` when it is `Done`. This means that if we use `Enumeratee.map` to transform input, if the inner `Iteratee` is `Done` with some left transformed input, the `transform` method will just ignore it.
 
-That might have seemed like a bit too much of details but it is useful for grasping the model. Back to our example on `Enumeratee.map`, there is a more general method `Enumeratee.mapInput` which gives the opportunity to return an EOF on some signal:
+That might have seemed like a bit too much of details but it is useful for grasping the model. Back to our example on `Enumeratee.map`, there is a more general method `Enumeratee.mapInput` which, for example, gives the opportunity to return an EOF on some signal:
 
 ```scala
 
@@ -127,7 +125,7 @@ That might have seemed like a bit too much of details but it is useful for grasp
   }
 
 ```
-`Enmeratee.map` and `Enumeratee.mapImput` are pretty straight forward, they operate on a per chunk bases and they convert them. Another useful `Enumeratee` is the `Enumeratee.filter` :
+`Enmeratee.map` and `Enumeratee.mapImput` are pretty straight forward, they operate on a per chunk basis and they convert them. Another useful `Enumeratee` is the `Enumeratee.filter` :
 
 ```scala
 
@@ -135,7 +133,7 @@ That might have seemed like a bit too much of details but it is useful for grasp
 
 ```
 
-The signature is pretty obvious, `Enumeratee.filter` creates an `Enumeratee[E,E]` and it will test each chunk of input using the given `predicate: E => Boolean` and it passes it along to the inner (adapted) iteratee if it statisfied that predicate:
+The signature is pretty obvious, `Enumeratee.filter` creates an `Enumeratee[E,E]` and it will test each chunk of input using the provided `predicate: E => Boolean` and it passes it along to the inner (adapted) iteratee if it statisfies that predicate:
 
 ```scala
 
@@ -177,4 +175,4 @@ Luckily there is the `Traversable` object that offers a set of methods for creat
 
 Other `Traversable` methods exist including `Traversable.takeUpTo`, `Traversable.drop`.
 
-Finally you can compose different `Enumeratee`s using the `compose` method that has the symbolic equivelant `><>`. Note that any left input on the `Done` of the composed `Enumeratee`s will be dropped. If you use `composeConcat` aliased `>+>`, any left input will be concatened. 
+Finally you can compose different `Enumeratee`s using the `compose` method that has the symbolic equivelant `><>`. Note that any left input on the `Done` of the composed `Enumeratee`s will be dropped. However, if you use `composeConcat` aliased `>+>`, any left input will be concatened. 
