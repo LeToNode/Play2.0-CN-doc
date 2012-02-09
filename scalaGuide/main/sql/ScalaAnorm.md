@@ -39,7 +39,7 @@ Sometimes we will provide you with prefilled SQL statements. But the idea is not
 
 Some argue that a type safe DSL is better since all your queries are checked by the compiler. Unfortunately the compiler check your queries based on a MetaModel definition that you often write yourself by ‘mapping’ your data structure to the database schema. 
 
-And there are no guarantees at all that this MetaModel is correct. Even if the compiler says that you code and your queries are correctly typed, it can still miserably fail at runtime because of a mismatch in your actual database definition.
+And there are no guarantees at all that this MetaModel is correct. Even if the compiler says that your code and your queries are correctly typed, it can still miserably fail at runtime because of a mismatch in your actual database definition.
 
 #### Take Control of your SQL code
 
