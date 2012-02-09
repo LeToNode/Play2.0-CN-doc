@@ -24,7 +24,7 @@ Instead of intercepting each and every request, it's also possible to decorate o
 ```scala
 //return Results.Forbidden or the passed Action
 def isActive(productId: String)(f: Request[AnyContent] => Result) = {
-   Products.get(id).map(_ => f).getOrElse( Results.Forbidden) 
+   Products.get(id).filter.(p.isActive == true).map(_ => f).getOrElse( Results.Forbidden) 
 }
 
 //then in a controller
