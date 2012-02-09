@@ -19,7 +19,7 @@ object Global extends GlobalSettings {
 
 #intercepting only specific Action methods
 
-It's also possible to intercept a specific Action logic:
+Instead of intercepting each and every request, it's also possible to decorate only specific Action methods:
 
 ```scala
 //return Results.Forbidden or the passed Action
