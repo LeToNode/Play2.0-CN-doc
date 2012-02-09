@@ -19,7 +19,7 @@ Play includes a simple data access layer called Anorm that uses plain SQL to mak
 
 It can feel strange to fallback to plain old SQL to access an SQL Database these days. In particular for Java developers that are accustomed to use high level Object Relational Mapper like Hibernate to completely hide this aspect.
 
-Now if we agree that these tools are almost required in Java, we think that they are not needed at all wehen you have the power of a higher level programming language like Scala, and in the contrary they will quickly become counter productive.
+Now if we agree that these tools are almost required in Java, we think that they are not needed at all when you have the power of a higher level programming language like Scala, and in the contrary they will quickly become counter productive.
 
 #### Using JDBC is a pain, but we provide a better API
 
