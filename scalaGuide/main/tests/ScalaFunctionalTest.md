@@ -22,8 +22,8 @@ You can call any `Action` code by providing a `FakeRequest`:
   val result = controllers.Application.index("Bob")(FakeRequest())
   
   status(result) must equalTo(OK)
-  contentType(result) must equalTo(Some("text/html"))
-  charset(result) must equalTo(Some("utf-8"))
+  contentType(result) must beSome("text/html")
+  charset(result) must beSome("utf-8")
   contentAsString(result) must contain("Hello Bob")
 }
 ```
@@ -37,8 +37,8 @@ Instead of calling the `Action` yourself, you can let the `Router` do that:
   val Some(result) = routeAndCall(FakeRequest(GET, "/Bob"))
   
   status(result) must equalTo(OK)
-  contentType(result) must equalTo(Some("text/html"))
-  charset(result) must equalTo(Some("utf-8"))
+  contentType(result) must beSome("text/html")
+  charset(result) must beSome("utf-8")
   contentAsString(result) must contain("Hello Bob")
 }
 ```
