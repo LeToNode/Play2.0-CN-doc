@@ -368,7 +368,7 @@ val task = {
     case id~label => Task(id, label)
   }
 }
-``` 
+```
 
 Here `task` is a parser which given a JDBC `ResultSet` row with `id` and `label` columns, is able to create a `Task` value. We can now write the `all()` method implementation:
 
