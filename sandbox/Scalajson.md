@@ -173,3 +173,4 @@ object MyController extends Controller{
 
 }
 ```
+> **Next:** [[Handling and serving Json requests | ScalaJsonRequests]]
