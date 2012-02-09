@@ -18,7 +18,7 @@ An action returns a `play.mvc.Result` value, representing the HTTP response to s
 
 A controller is nothing more than a class extending `play.mvc.Controller` that groups several action methods.
 
-The simplest syntax for defining an action is a static method with not parameters that returns a `Result` value:
+The simplest syntax for defining an action is a static method with no parameters that returns a `Result` value:
 
 ```
 public static Result index() {
