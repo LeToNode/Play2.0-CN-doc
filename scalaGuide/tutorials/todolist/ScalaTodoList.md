@@ -4,11 +4,11 @@ Let's write a simple todo list application with Play 2.0 and deploy it to the cl
 
 ## Prerequisites
 
-First of all, make sure that you have a [[working Play installation | Installing]]. You only need Java (version 6 minimum), and to unzip the Play binary package to start; everything is included.
+First of all, make sure that you have a [[working Play installation|Installing]]. You only need Java (version 6 minimum), and to unzip the Play binary package to start; everything is included.
 
 As we will use the command line a lot, it’s better to use a Unix-like OS. If you run a Windows system, it will also work fine; you’ll just have to type a few commands in the command prompt.
 
-You will of course need a text editor. If you are accustomed to use a full featured Java IDE like Eclipse or Netbeans you can of course use it. However with Play you can have fun working with a simple text editor like Textmate, Emacs or VI. This is because the framework manages the compilation and the deployment process itself.
+You will of course need a text editor. If you are accustomed to use a full featured Scala IDE like Eclipse or IntelliJ you can of course use it. However with Play you can have fun working with a simple text editor like Textmate, Emacs or VI. This is because the framework manages the compilation and the deployment process itself.
 
 ## Project creation
 
@@ -40,7 +40,7 @@ The play new command creates a new directory `todolist/` and populates it with a
 
 ## Using the Play console
 
-Once you have an application created, you can run the [[Play console | PlayConsole]]. Go to the new `todolist/` directory and run:
+Once you have an application created, you can run the Play console. Go to the new `todolist/` directory and run:
 
 ```
 $ play
@@ -70,7 +70,7 @@ The main entry point of your application is the `conf/routes` file. This file de
 GET	/       controllers.Application.index
 ```
 
-That simply tells Play that when the web server receives a GET request for the / path, it must retrieve an `Action` to execute from the `controllers.Application.index` method. 
+That simply tells Play that when the web server receives a GET request for the / path, it must retrieve the `Action` to execute from the `controllers.Application.index` method. 
 
 Let’s see how the `controllers.Application.index` method looks like. Open the `todolist/app/controllers/Application.scala` source file:
 
@@ -155,7 +155,7 @@ POST    /tasks                  controllers.Application.newTask
 POST    /tasks/:id/delete       controllers.Application.deleteTask(id: Long)
 ```
 
-We create a route to list all tasks, and another ones to handle task creation and deletion. The route to handle task deletion defines a variable argument `id` in the URL path. This value is then passed to the `deleteTask` method that will create the `Action`.
+We create a route to list all tasks, and a couple of others to handle task creation and deletion. The route to handle task deletion defines a variable argument `id` in the URL path. This value is then passed to the `deleteTask` method that will create the `Action`.
 
 Now if your reload in your browser, you will see that Play cannot compile your routes files:
 
@@ -217,11 +217,11 @@ object Task {
 }
 ```
 
-We have created a companion object to manage `Task` operations. For now we wrote a dummy implementation of all methods, but later in this tutorial we will write implementations able to store the tasks into a relational database.
+We have also created a companion object to manage `Task` operations. For now we wrote dummy implementation for each operation, but later in this tutorial we will write implementations able to store the tasks into a relational database.
 
 ## The application template
 
-Our simple application will use a single Web page containing both the tasks list and the task create form. Let's modify the `index.scala.html` template for that:
+Our simple application will use a single Web page containing both the tasks list and the task creation form. Let's modify the `index.scala.html` template for that:
 
 ```
 @(tasks: List[Task], taskForm: Form[String])
@@ -236,6 +236,7 @@ Our simple application will use a single Web page containing both the tasks list
         @tasks.map { task =>
             <li>
                 @task.label
+                
                 @form(routes.Application.deleteTask(task.id)) {
                     <input type="submit" value="Delete">
                 }
@@ -261,7 +262,7 @@ We changed the template signature to take 2 parameters:
 - A list of tasks to display
 - A task form
 
-We also import `helper._` that give us the form creation helpers, typically the `form` function that create HTML `<form>` with filled `action` and `method` attributes, and the `inputText` function that create the HTML imput given a Scala form field.
+We also imported `helper._` that give us the form creation helpers, typically the `form` function that create HTML `<form>` with filled `action` and `method` attributes, and the `inputText` function that create the HTML imput given a form field.
     
 > **Note:** Read more about the [[Templating system|ScalaTemplates]] and [[Forms helper|ScalaFormHelpers]].
     
@@ -314,7 +315,7 @@ def newTask = Action { implicit request =>
 }
 ```
 
-To fill the form we need to have the `request` in the scope. After calling `bindFromRequest` we get a new form filled with the request data. If there is any errors in the form, we redisplay it (note that here we will then use **400 Bad Request** instead of **200 OK**). If there are no errors, we create the task and then redirect to the tasks list.
+To fill the form we need to have the `request` in the scope. It is used by `bindFromRequest` to create a new form filled with the request data. If there is any errors in the form, we redisplay it (here we use **400 Bad Request** instead of **200 OK**). If there are no errors, we create the task and then redirect to the tasks list.
 
 > **Note:** Read more about the [[Form submissions|ScalaForms]].
 
@@ -327,9 +328,9 @@ db.default.driver=org.h2.Driver
 db.default.url="jdbc:h2:mem:play"
 ```
 
-Here we use a simple in memory database using **H2**. No need to restart the server, refreshing the browser is enough to set up the database.
+For now we will use a simple in memory database using **H2**. No need to restart the server, refreshing the browser is enough to set up the database.
 
-We will use **Anorm** in this tutorial to query the database. First we need to define the database schema. Let's use Play evolutions for that. Create a first evolution script in `conf/evolutions/default/1.sql`:
+We will use **Anorm** in this tutorial to query the database. First we need to define the database schema. Let's use Play evolutions for that, so create a first evolution script in `conf/evolutions/default/1.sql`:
 
 ```
 # Tasks schema
@@ -356,7 +357,7 @@ Just click the **Apply script** button to apply the script automatically. You da
 
 > **Note:** Read more about [[Evolutions|Evolutions]].
 
-It's now time to implement the SQL queries in the `Task` companion object. Let's start by the `all()` method. Using **Anorm** we can define a parser that will transform a JDBC `ResultSet` row to a `Task` value:
+It's now time to implement the SQL queries in the `Task` companion object. Let's start by the `all()` operation. Using **Anorm** we can define a parser that will transform a JDBC `ResultSet` row to a `Task` value:
 
 ```
 import anorm._
@@ -370,7 +371,9 @@ val task = {
 }
 ```
 
-Here `task` is a parser which given a JDBC `ResultSet` row with `id` and `label` columns, is able to create a `Task` value. We can now write the `all()` method implementation:
+Here `task` is a parser which given a JDBC `ResultSet` row with at least an `id` and a `label` column, is able to create a `Task` value. 
+
+We can now use this parser to write the `all()` method implementation:
 
 ```
 import play.api.db._
@@ -383,7 +386,7 @@ def all(): List[Task] = DB.withConnection { implicit c =>
 
 We use the Play `DB.withConnection` helper to create and release automatically a JDBC connection. 
 
-Then we use the **Anorm** `SQL` method to create the query. `as` allow to parse the `ResultSet` using the `task *` parser: it will parse as many task rows as possible and then return a `List[Task]` (since our `task` parser returns a `Task`).
+Then we use the **Anorm** `SQL` method to create the query. The `as` method allows to parse the `ResultSet` using the `task *` parser: it will parse as many task rows as possible and then return a `List[Task]` (since our `task` parser returns a `Task`).
 
 It's time to complete the implementation:
 
@@ -432,7 +435,7 @@ web: target/start -Dhttp.port=${PORT} -DapplyEvolutions.default=true -Ddb.defaul
 
 > **Note:** Read more about [[Deploying to Heroku|ProductionHeroku]].
 
-Using system properties we override the application configuration when running on Heroku. But since heroku provides PostgreSQL database we need to add the required driver to our application dependencies. 
+Using system properties we override the application configuration when running on Heroku. But since heroku provides an PostgreSQL database we need to add the required driver to our application dependencies. 
 
 Specify it into the `project/Build.scala` file:
 
@@ -497,5 +500,7 @@ Process       State               Command
 ------------  ------------------  ----------------------
 web.1         up for 10s          target/start
 ```
+
+It's started, you can now open it in your browser. 
 
 > Your first application is now up and running in production!
