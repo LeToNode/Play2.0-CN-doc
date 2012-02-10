@@ -2,7 +2,7 @@
 
 ## Using WebSockets instead of Comet sockets
 
-A Comet socket is a kind of hack allowing to send live events to the web browser. Also it supports only one way communication from the server to the client. Top push events to the server the Web browser can make Ajax requests.
+A Comet socket is a kind of hack allowing to send live events to the web browser. Also it supports only one way communication from the server to the client. To push events to the server the Web browser can make Ajax requests.
 
 > **Note:** It is also possible to achieve the same kind of live communication the other way around by using an infinite HTTP request handled by a custom `BodyParser` receiving chunks of input data but it is way more complicated.
 
