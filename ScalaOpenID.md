@@ -71,3 +71,5 @@ OpenID.redirectURL(
     Seq("email" -> "http://schema.openid.net/contact/email")
 )
 ```
+
+Attributes will then be available in the `UserInfo` provided by the OpenID server.
