@@ -123,7 +123,7 @@ With this change the **index** action will now respond with a simple `text/plain
 
 [[images/hello.png]]
 
-There is now need to compile the code yourself or restart the server to see the modification. It is automatically reloaded when a change is detected. But what happen when you make a mistake in your code?
+There is no need to compile the code yourself or restart the server to see the modification. It is automatically reloaded when a change is detected. But what happen when you make a mistake in your code?
 
 Let's try:
 
