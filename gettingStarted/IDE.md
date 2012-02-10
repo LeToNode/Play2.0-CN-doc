@@ -36,6 +36,8 @@ Play provides a command to simplify Intellij IDEA configuration. To transform a 
 [My first application] $ idea
 ```
 
+[[images/idea.png]] 
+
 You can use the Connect JPDA launcher using Debug As to start a debugging session at any time. Stopping the debugging session will not stop the server.
 
 If you make any important changes to your application, such as changing the classpath, use idea again to regenerate the configuration files.
