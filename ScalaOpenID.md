@@ -1,0 +1,61 @@
+# OpenID Support in Play
+
+OpenID is a protocol for users to access several services with a single account. As a web developer, you can use OpenID to offer users a way to login with an account they already have (their Google account for example). In the enterprise, you can use OpenID to connect to a company's SSO.
+
+Play offers OpenID client support, meaning you can use it to connect to other services.
+
+## The OpenID flow in a nutshell
+
+1. The user gives you his OpenID (a URL)
+2. Your server inspect the content behind the URL to produce a URL where you need to redirect the user
+3. The user validates the authorization on his OpenID provider, and gets redirected back to your server
+4. Your server receives information from that redirect, and check with the provider that the information is correct
+
+The step 1. may be omitted if all your users are using the same OpenID provider (for example if you decide to rely completely on Google accounts).
+
+## OpenID in Play Framework
+
+The OpenID API has two important functions:
+* `OpenID.redirectURL` calculates the URL where you should redirect the user. It involves fetching the user's OpenID page, this is why it returns a `Promise[String]` rather than a `String`. If the OpenID is invalid, the returned `Promise` will be a `Thrown`.
+* `OpenID.verifiedId` needs an implicit `Request`, and inspects it to establish the user information, including his verified OpenID. It will do a call to the OpenID server to check the authenticity of the information, this is why it returns a `Promise[UserInfo]` rather than just `UserInfo`. If the information is not correct or if the server check is false (for example if the redirect URL has been forged), the returned `Promise` will be a `Thrown`.
+
+In any case, when the `Promise` you get is a `Trown`, you should look at the `Throwable` and redirect back the user to the login page with relevant information.
+
+Here is an example of usage (from a controller):
+
+```
+def login = Action {
+  Ok(views.html.login())
+}
+
+def loginPost = Action { implicit request =>
+  Form(single(
+    "openid" -> nonEmptyText
+  )).bindFromRequest.fold(
+    error => {
+      Logger.info("bad request " + error.toString)
+      BadRequest(error.toString)
+    },
+    {
+      case (openid) => AsyncResult(OpenID.redirectURL(openid, routes.Application.openIDCallback.absoluteURL())
+          .extend( _.value match {
+              case Redeemed(url) => Redirect(url)
+              case Thrown(t) => Redirect(routes.Application.login)
+          }))
+    }
+  )
+}
+
+def openIDCallback = Action { implicit request =>
+  AsyncResult(
+    OpenID.verifiedId.extend( _.value match {
+      case Redeemed(info) => Ok(info.id + "\n" + info.attributes)
+      case Thrown(t) => {
+        // Here you should look at the error, and give feedback to the user
+        Redirect(routes.Application.login)
+      }
+    })
+  )
+}
+```
+
