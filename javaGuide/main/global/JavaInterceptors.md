@@ -13,8 +13,8 @@ public class Global extends GlobalSettings {
 
 @Override
 public Action onRequest(Request request, Method actionMethod) {
-   System.out.println("before each request..."+request.toString());
-   return super.onRequest(request,actionMethod);;
+   System.out.println("before each request..." + request.toString());
+   return super.onRequest(request.actionMethod);
 }
 
 }
