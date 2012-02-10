@@ -197,7 +197,7 @@ val count: Long = SQL("select count(*) from Country").as(scalar[Long].single)
 
 Let’s write a more complicated parser:
 
-`str("name") ~ int("population")`, will create a `RowParser` able to parse a row containing a String **name** column and a Integer **population** column. Then we can create a `ResultSetParser` that will parse as many rows of this king as it can using `*`: 
+`str("name") ~ int("population")`, will create a `RowParser` able to parse a row containing a String **name** column and a Integer **population** column. Then we can create a `ResultSetParser` that will parse as many rows of this kind as it can using `*`: 
 
 ```
 val populations:List[String~Int] = {
