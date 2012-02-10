@@ -20,6 +20,6 @@ public Action onRequest(Request request, Method actionMethod) {
 }
 ```
 
-Of course it's also possible to intercept only a specific method. This can be achieved via [[Actions composition | JavaActionsComposition]]
+Of course it's also possible to intercept only a specific Action method. This can be achieved via [[Actions composition | JavaActionsComposition]]
 
 > **Next:** [[Testing your application | JavaTest]]
