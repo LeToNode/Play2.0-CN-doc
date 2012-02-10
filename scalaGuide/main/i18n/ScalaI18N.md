@@ -19,13 +19,13 @@ The default `conf/messages` file matches all languages. Additionally you can spe
 Then you can retrieve messages using the `play.api.i18n.Messages` object:
 
 ```
-val title = Messages.get("home.title")
+val title = Messages("home.title")
 ```
 
 All i18n API take an implicit `play.api.i18.Lang` argument retrieved from the current scope. You can also specify it explicitly:
 
 ```
-val title = Messages.get("home.title", Lang("fr"))
+val title = Messages("home.title")(Lang("fr"))
 ```
 
 > **Note:** If you have an implicit `Request` in the scope, it will provide an implicit `Lang` value corresponding to the preferred language extracted from the `Accept-Language` header and matching one the application supported languages.
@@ -43,7 +43,7 @@ files.summary=The disk {1} contains {0} file(s).
 You can then specify parameters as:
 
 ```
-Messages.get("files.summary", d.files.length, d.name)
+Messages("files.summary", d.files.length, d.name)
 ```
 
 ## Retrieving supported language from an HTTP request
