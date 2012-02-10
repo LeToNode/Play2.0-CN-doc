@@ -59,7 +59,7 @@ public class User {
     
     public String validate() {
         if(authenticate(email,password) == null) {
-            return "Invalid user name or pasword";
+            return "Invalid email or password";
         }
         return null;
     }
