@@ -105,7 +105,7 @@ It generates Html likes:
 </div>
 ```
 
-It supports the same set of options as the default field constructor (see bellow).
+It supports the same set of options as the default field constructor (see below).
 
 ## Writing you own field constructor
 
