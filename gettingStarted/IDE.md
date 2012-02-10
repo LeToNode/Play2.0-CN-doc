@@ -36,6 +36,8 @@ Play provides a command to simplify Intellij IDEA configuration. To transform a 
 [My first application] $ idea
 ```
 
+You then need to import the application into your project (File->New Module->Import existing Module)
+
 [[images/idea.png]] 
 
 You can use the Connect JPDA launcher using Debug As to start a debugging session at any time. Stopping the debugging session will not stop the server.
