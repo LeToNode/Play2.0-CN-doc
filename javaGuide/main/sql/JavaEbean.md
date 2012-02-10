@@ -55,17 +55,17 @@ public class Task extends Model {
 }
 ```
 
-As you can see we've added a `find` static field, defining a `Finder` for an entity of type `Task` with a `Long` identifier. This helper field is then used to simplify querying our model:
+As you can see, we've added a `find` static field, defining a `Finder` for an entity of type `Task` with a `Long` identifier. This helper field is then used to simplify querying our model:
 
 ```
 // Find all tasks
 List<Task> tasks = Task.find.all();
     
 // Find a task by id
-Task anyTask = Task.find.byId(34);
+Task anyTask = Task.find.byId(34L);
 
 // Delete a task
-Task.find.ref(34).delete();
+Task.find.ref(34L).delete();
 
 // More complex task query
 List<Task> tasks = find.where()
@@ -77,7 +77,7 @@ List<Task> tasks = find.where()
 
 ## Trasactional actions
 
-By default Ebean will not use any transaction. You can use any transaction helper provided by Ebean to create a transaction such as:
+By default Ebean will not use any transactions. You can use any transaction helper provided by Ebean to create a transaction. For example:
 
 ```
 // run in Transactional scope...  
@@ -100,7 +100,7 @@ Ebean.execute(new TxRunnable() {
 });
 ```
 
-You also annotate your action methid with `@play.db.ebean.Transactional` to compose your action method with a `Action` that will automatically manages a transaction:
+You can also annotate your action method with `@play.db.ebean.Transactional` to compose your action method with a `Action` that will automatically manage a transaction:
 
 ```
 @Transactional
