@@ -22,7 +22,7 @@ object Global extends GlobalSettings {
 }
 ```
 
-Of course it's also possible to intercept only a specific method. This can be achieved via [[Actions composition | ScalaActionsComposition]]
+Of course it's also possible to intercept only a specific Action method. This can be achieved via [[Actions composition | ScalaActionsComposition]]
 
 
 > **Next:** [[Testing your application | ScalaTest]]
