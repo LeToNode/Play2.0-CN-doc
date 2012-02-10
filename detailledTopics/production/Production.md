@@ -59,6 +59,6 @@ $ sbt clean compile stage
 # To go further
 
 - [[Creating a standalone version of your application | ProductionDist]]
-- [[Aditionnal configuration | ProductionConfiguration]]
+- [[Additional configuration | ProductionConfiguration]]
 - [[Deploying to Heroku | ProductionHeroku]]
 - [[Set-up a front-end HTTP server | HTTPServer]]
