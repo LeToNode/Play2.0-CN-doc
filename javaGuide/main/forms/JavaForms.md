@@ -58,7 +58,7 @@ public class User {
     public String password;
     
     public String validate() {
-        if(authenticate(e,p) == null) {
+        if(authenticate(email,password) == null) {
             return "Invalid user name or pasword";
         }
         return null;
