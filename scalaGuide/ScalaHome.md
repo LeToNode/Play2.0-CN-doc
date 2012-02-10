@@ -39,6 +39,8 @@ The Scala API for Play 2.0 application developers is available in the `play.api`
     - [[The Play cache API | ScalaCache]]
 - [[Calling WebServices | ScalaWS]]
     - [[The Play WS API  | ScalaWS]]
+    - [[Connecting to OpenID services | ScalaOpenID]]
+    - [[Accessing ressources protected by OAuth | ScalaOAuth]]
 - [[Integrating with Akka | ScalaAkka]]
     - [[Setting up Actors and scheduling asynchronous tasks | ScalaAkka]]
 - [[Internationalization | ScalaI18N]]
