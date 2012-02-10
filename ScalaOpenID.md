@@ -1,8 +1,6 @@
 # OpenID Support in Play
 
-OpenID is a protocol for users to access several services with a single account. As a web developer, you can use OpenID to offer users a way to login with an account they already have (their Google account for example). In the enterprise, you can use OpenID to connect to a company's SSO.
-
-Play offers OpenID client support, meaning you can use it to connect to other services.
+OpenID is a protocol for users to access several services with a single account. As a web developer, you can use OpenID to offer users a way to login with an account they already have (their [[Google account | http://code.google.com/apis/accounts/docs/OpenID.html]] for example). In the enterprise, you can use OpenID to connect to a company's SSO server if it supports it.
 
 ## The OpenID flow in a nutshell
 
@@ -59,3 +57,17 @@ def openIDCallback = Action { implicit request =>
 }
 ```
 
+## Extended Attributes
+
+The OpenID of a user gives you his identity. The protocol also support getting [[extended attributes | http://openid.net/specs/openid-attribute-exchange-1_0.html]] such as the email address, the first name, the last name...
+
+You may request from the OpenID server *optional* attributes and/or *required* attributes. Asking for required attributes means the user can not login to your service if he doesn't provides them.
+
+Extended attributes are requested in the redirect URL:
+```
+OpenID.redirectURL(
+    openid,
+    routes.Application.openIDCallback.absoluteURL(),
+    Seq("email" -> "http://schema.openid.net/contact/email")
+)
+```
