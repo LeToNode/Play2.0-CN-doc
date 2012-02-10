@@ -43,7 +43,7 @@ The Java API for the Play 2.0 application developers is available in the `play` 
 - [[Integrating with Akka | JavaAkka]]
     - [[Setting up Actors and scheduling asynchronous tasks | JavaAkka]]
 - [[Internationalization | JavaI18N]]
-    - [[Messages externalisation and i18n | JavaI18N]]
+    - [[Messages externalization and i18n | JavaI18N]]
 - [[The application Global object | JavaGlobal]]
     - [[Application global settings | JavaGlobal]]
     - [[Intercepting requests | JavaInterceptors]]
