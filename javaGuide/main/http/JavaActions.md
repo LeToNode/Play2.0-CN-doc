@@ -51,7 +51,7 @@ public static Result index() {
 Here are several examples to create various results:
 
 ```
-Resukt ok = ok("Hello world!");
+Result ok = ok("Hello world!");
 Result notFound = notFound();
 Result pageNotFound = notFound("<h1>Page not found</h1>").as("text/html");
 Result badRequest = badRequest(views.html.form.render(formWithErrors));
