@@ -40,9 +40,27 @@ You then need to import the application into your project (File->New Module->Imp
 
 [[images/idea.png]] 
 
-You can use the Connect JPDA launcher using Debug As to start a debugging session at any time. Stopping the debugging session will not stop the server.
+To debug, first add a debug configuration
 
-If you make any important changes to your application, such as changing the classpath, use idea again to regenerate the configuration files.
+1. Open Run/Debug Configurations dialog - click Run -> Edit Configurations
+2. Add a Remote configuration - click `+` button, select `Remote`
+3. Set Name
+4. Transport: Socket
+5. Debugger mode: Attach
+6. Host: localhost
+7. Port: 9999
+8. Select module you imported
+9. Close dialog - click Apply
+
+Start play in debug mode, I had to do this in a terminal outside of IntelliJ
+
+`play debug`
+
+which should show print `Listening for transport dt_socket at address: 9999`.
+
+Finally, set some breakpoints. Run the web app by executing the task `play` (again I had to do this in same terminal I ran `play debug`).
+
+If you make any important changes to your application, such as changing the classpath, use eclipsify again to regenerate the configuration files.
 
 
 > **Next:** 
