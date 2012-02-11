@@ -42,26 +42,32 @@ You then need to import the application into your project (File->New Module->Imp
 
 To debug, first add a debug configuration
 
-1. Open Run/Debug Configurations dialog - click Run -> Edit Configurations
-2. Add a Remote configuration - click `+` button, select `Remote`
-3. Configure it
-   - Set Name
-   - Transport: Socket
-   - Debugger mode: Attach
-   - Host: localhost
-   - Port: 9999
-   - Select module you imported
-4. Close dialog - click Apply
+- Open Run/Debug Configurations dialog, then click Run -> Edit Configurations
+- Add a Remote configuration, then select `Remote`
+- Configure it:
+    - Set a name
+    - Transport: Socket
+    - Debugger mode: Attach
+    - Host: localhost
+    - Port: 9999
+    - Select module you imported
+- Close dialog - click Apply
 
-Start play in debug mode. I had to do this in a terminal outside of IntelliJ
+Start play in debug mode:
 
-`play debug`
+```
+$ play debug
+```
 
-which should print `Listening for transport dt_socket at address: 9999`.
+which should print: 
+
+```
+Listening for transport dt_socket at address: 9999
+```
 
 Set some breakpoints. Run the web app by executing the task `play` (again I had to do this in same terminal I ran `play debug`). Finally, browse `http://localhost:9000`. IntelliJ should stop at your breakpoint.
 
-If you make any important changes to your application, such as changing the classpath, use eclipsify again to regenerate the configuration files.
+If you make any important changes to your application, such as changing the classpath, use `idea` again to regenerate the configuration files.
 
 
 > **Next:** 
