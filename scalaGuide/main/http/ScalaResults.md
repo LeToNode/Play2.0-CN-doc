@@ -2,7 +2,7 @@
 
 ## Changing the default Content-Type
 
-The result Content-Type is automatically inferred from the Scala value you specify as body.
+The result content type is automatically inferred from the Scala value that you specify as the response body.
 
 For example:
 
@@ -10,7 +10,7 @@ For example:
 val textResult = Ok("Hello World!")
 ```
 
-Will automatically set the Content-Type header to `text/plain`, while:
+Will automatically set the `Content-Type` header to `text/plain`, while:
 
 ```
 val xmlResult = Ok(<message>Hello World!</message>)
@@ -20,7 +20,7 @@ will set the Content-Type header to `text/xml`.
 
 > **Tip:** this is done via the `play.api.http.ContentTypeOf` type class.
 
-This is pretty useful, but sometimes you want to change it. Just use the `as(newContentType)` method on a result to create a new similiar result with a different Content-Type header:
+This is pretty useful, but sometimes you want to change it. Just use the `as(newContentType)` method on a result to create a new similar result with a different `Content-Type` header:
 
 ```
 val htmlResult = Ok(<h1>Hello World!</h1>).as("text/html")
@@ -32,7 +32,7 @@ or even better, using:
 val htmlResult = Ok(<h1>Hello World!</h1>).as(HTML)
 ```
 
-> **Note:** The benefit of using `HTML` instead of the `"text/html"` is that the charset will be automatically handled for you and the actual Content-Type header will be set to `text/html; charset=utf-8`. We will see that just after.
+> **Note:** The benefit of using `HTML` instead of the `"text/html"` is that the charset will be automatically handled for you and the actual Content-Type header will be set to `text/html; charset=utf-8`. We will see that in a bit.
 
 ## Manipulating HTTP headers
 
@@ -69,7 +69,7 @@ Ok("Hello world").discardingCookies("theme")
 
 For text based HTTP response it is very important to handle the charset correctly. Play handles that for you and uses `utf-8` by default.
 
-The charset is used to both convert the text response to the corresponding bytes to send over the network socket, and to alterate the Content-Type header with the proper `;charset=xxx` extension.
+The charset is used to both convert the text response to the corresponding bytes to send over the network socket, and to alterate the `Content-Type` header with the proper `;charset=xxx` extension.
 
 The charset is handled automatically via the `play.api.mvc.Codec` type class. Just import an implicit instance of `play.api.mvc.Codec` in the current scope to change the charset that will be used by all operations:
 

@@ -1,12 +1,12 @@
-# Actions composition
+# Action composition
 
-This chapter introduce several ways of defining generic functionalities for actions.
+This chapter introduce several ways of defining generic action functionality.
 
 ## Basic action composition
 
-Let's take a first simple example of a logging decorator: we want to log each call to this action.
+Let’s start with the simple example of a logging decorator: we want to log each call to this action.
 
-The first way is to not define our own Action, but just to provide a helper method building a standard Action:
+The first way is not to define our own Action, but just to provide a helper method building a standard Action:
 
 ```
 def LoggingAction(f: Request[AnyContent] => Result): Action[AnyContent] = {
@@ -46,7 +46,7 @@ def index = LoggingAction(parse.text) { request =>
 
 ## Wrapping existing actions
 
-Another way is to define our own `LoggingAction` that would be a wrapper over another existing `Action`:
+Another way is to define our own `LoggingAction` that would be a wrapper over another `Action`:
 
 ```
 case class Logging[A](action: Action[A]) extends Action[A] {
@@ -57,11 +57,10 @@ case class Logging[A](action: Action[A]) extends Action[A] {
   }
   
   lazy val parser = action.parser
-  
 }
 ```
 
-Now you can use it to wrap any another action value:
+Now you can use it to wrap any other action value:
 
 ```
 def index = Logging { 
@@ -71,7 +70,7 @@ def index = Logging {
 }
 ```
 
-Note that it will just reuse the wrapped action body parser as is, so you can of course write:
+Note that it will just re-use the wrapped action body parser as is, so you can of course write:
 
 ```
 def index = Logging { 
@@ -94,7 +93,7 @@ def index = Logging {
 
 ## A more complicated example
 
-Let's see a more complicated but common example of an authenticated action. The main problem is that we need to pass the authenticated user to the wrapped action and to wrap the original body parser to check the authentication.
+Let’s look at the more complicated but common example of an authenticated action. The main problem is that we need to pass the authenticated user to the wrapped action and to wrap the original body parser to perform the authentication.
 
 ```
 def Authenticated[A](action: User => Action[A]): Action[A] = {
@@ -121,7 +120,7 @@ def Authenticated[A](action: User => Action[A]): Action[A] = {
 }
 ```
 
-And you can use it as:
+You can use it like this:
 
 ```
 def index = Authenticated { user =>
@@ -131,7 +130,7 @@ def index = Authenticated { user =>
 }
 ```
 
-> **Note:** There is already an Authenticated action in `play.api.mvc.Security.Authenticated` with a better implementation than this example.
+> **Note:** There is already an `Authenticated` action in `play.api.mvc.Security.Authenticated` with a better implementation than this example.
 
 ## Another way to create the Authenticated action
 
@@ -147,7 +146,7 @@ def Authenticated(f: (User, Request[AnyContent]) => Result) = {
 }
 ```
 
-That you can use as:
+To use this:
 
 ```
 def index = Authenticated { (user, request) =>

@@ -84,7 +84,7 @@ def hello(name: String) = Action {
 
 ## Simple results
 
-For now we are just interested by simple results: An HTTP result with a status code, a set of HTTP headers and a body to be sent to the Web client.
+For now we are just interested by simple results: An HTTP result with a status code, a set of HTTP headers and a body to be sent to the web client.
 
 These results are defined by `play.api.mvc.SimpleResult`:
 

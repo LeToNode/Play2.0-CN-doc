@@ -15,7 +15,7 @@ This will ask for some information.
 
 [[images/playNew.png]]
 
-> Note that choosing a template at this point does not imply that you can’t change use another language later. For example, you can create a new application using the default Java application template and start adding Scala code at any point.
+> Note that choosing a template at this point does not imply that you can’t change language later. For example, you can create a new application using the default Java application template and start adding Scala code whenever you like.
 
 Once the application has been created you can use the `play` command again to enter the [[Play 2.0 console | PlayConsole]].
 

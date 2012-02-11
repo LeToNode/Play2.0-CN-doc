@@ -2,25 +2,25 @@
 
 ## What is a body parser?
 
-An HTTP request (at least for those using the POST and PUT operations) contains a body. This body can be formatted with any format specified in the Content-Type header. A **body parser** transforms this request body into a Scala value. 
+An HTTP PUT or POST request contains a body. This body can use any format, specified in the `Content-Type` request header. In Play, **body parser** transforms this request body into a Scala value. 
 
-However the request body for an HTTP request can be very large and a **body parser** can't just wait and load the whole data set into memory before parsing it. A `BodyParser[A]` is basically an `Iteratee[Array[Byte],A]`, meaning that it receives chunks of bytes (as long as the Web browser upload some data) and computes a value of type `A` as result.
+However the request body for an HTTP request can be very large and a **body parser** can’t just wait and load the whole data set into memory before parsing it. A `BodyParser[A]` is basically an `Iteratee[Array[Byte],A]`, meaning that it receives chunks of bytes (as long as the web browser uploads some data) and computes a value of type `A` as result.
 
-Let's take some examples:
+Let’s consider some examples.
 
 - A **text** body parser could accumulate chunks of bytes into a String, and give the computed String as result (`Iteratee[Array[Byte],String]`).
 - A **file** body parser could store each chunk of bytes into a local file, and give a reference to the `java.io.File` as result (`Iteratee[Array[Byte],File]`).
 - A **s3** body parser could push each chunk of bytes to Amazon S3 and give a the S3 object id as result (`Iteratee[Array[Byte],S3ObjectId]`).
 
-Additionally a **body parser** has access to the HTTP request headers before starting parsing the request body and has the opportunity to run some precondition checks. It can for example check that some HTTP headers are properly set, or that the user trying to upload a large file has the permission to do it. 
+Additionally a **body parser** has access to the HTTP request headers before it starts parsing the request body, and has the opportunity to run some precondition checks. For example, a body parser can check that some HTTP headers are properly set, or that the user trying to upload a large file has the permission to do so.
 
 > **Note**: That's why a body parser is not really an `Iteratee[Array[Byte],A]` but more precisely a `Iteratee[Array[Byte],Either[Result,A]]`, meaning that it has the opportunity to send directly an HTTP result itself (typically `400 BAD_REQUEST`, `412 PRECONDITION_FAILED` or `413 REQUEST_ENTITY_TOO_LARGE`) if it decides than it is not able to compute a correct value for the request body
 
-Once the body parser finishes it job and give back a value of type `A`, the corresponding `Action` function is executed and the computed body value is passed into the request.
+Once the body parser finishes its job and gives back a value of type `A`, the corresponding `Action` function is executed and the computed body value is passed into the request.
 
-## Reminder about Actions
+## More about Actions
 
-Previously we said that an `Action` was a `Request => Result` function. This is not totally true. Let's have a more precise look at the `Action` trait:
+Previously we said that an `Action` was a `Request => Result` function. This is not entirely true. Let’s have a more precise look at the `Action` trait:
 
 ```
 trait Action[A] extends (Request[A] => Result) {
@@ -36,24 +36,24 @@ trait Request[+A] extends RequestHeader {
 }
 ```
 
-The `A` type is the type of the request body. We can use any Scala type as request body, for example `String`, `NodeSeq`, `Array[Byte]`, `JsonValue`, `java.io.File`, etc. as long as we have a body parser able to compute it.
+The `A` type is the type of the request body. We can use any Scala type as the request body, for example `String`, `NodeSeq`, `Array[Byte]`, `JsonValue`, or `java.io.File`, as long as we have a body parser able to process it.
 
-To summarize an `Action[A]` uses a `BodyParser[A]` to retrieve a value of type `A` from the HTTP request, and to build a `Request[A]` object that is passed to the action code. 
+To summarize, an `Action[A]` uses a `BodyParser[A]` to retrieve a value of type `A` from the HTTP request, and to build a `Request[A]` object that is passed to the action code. 
 
 ## Default body parser: AnyContent
 
-In our previous examples we never specified any body parser. So how can it work? If you don't specify your own body parser, Play will use the default one that compute the body as an instance of `play.api.mvc.AnyContent`.
+In our previous examples we never specified a body parser. So how can it work? If you don’t specify your own body parser, Play will use the default, which processes the body as an instance of `play.api.mvc.AnyContent`.
 
-This one check the Content-Type header and decide what kind of body to compute:
+This body parser checks the `Content-Type` header and decides what kind of body to process:
 
 - **text/plain**: `String`
 - **application/json**: `JsValue`
 - **text/xml**: `NodeSeq`
 - **application/form-url-encoded**: `Map[String, Seq[String]]`
 - **multipart/form-data**: `MultipartFormData[TemporaryFile]`
-- Any other content type: `RawBuffer`
+- any other content type: `RawBuffer`
 
-Example:
+For example:
 
 ```
 def save = Action { request =>
@@ -73,7 +73,7 @@ def save = Action { request =>
 
 The body parsers available in Play are defined in `play.api.mvc.BodyParsers.parse`.
 
-So for example, to define an action expecting a text body (like in the previous example):
+So for example, to define an action expecting a text body (as in the previous example):
 
 ```
 def save = Action(parse.text) { request => 
@@ -81,7 +81,7 @@ def save = Action(parse.text) { request =>
 } 
 ```
 
-Do you see how the code is simpler? It is because the `parse.text` body parser already sent a `400 BAD_REQUEST` response if something went wrong. So we don't have to check again in our action code, and we can safely assume that `request.body` contains the valid `String` body.
+Do you see how the code is simpler? This is because the `parse.text` body parser already sent a `400 BAD_REQUEST` response if something went wrong. We don’t have to check again in our action code, and we can safely assume that `request.body` contains the valid `String` body.
 
 Alternatively we can use:
 
@@ -91,11 +91,11 @@ def save = Action(parse.tolerantText) { request =>
 }
 ```
 
-This one doesn't check any Content-Type header and always load the request body as String.
+This one doesn't check the `Content-Type` header and always loads the request body as a `String`.
 
 > **Tip:** There is a `tolerant` fashion provided for all body parsers included in Play.
 
-Here is another example that will store the request body into a file:
+Here is another example, which will store the request body in a file:
 
 ```
 def save = Action(parse.file(to = new File("/tmp/upload"))) { request =>
@@ -105,7 +105,7 @@ def save = Action(parse.file(to = new File("/tmp/upload"))) { request =>
 
 ## Combining body parsers
 
-In the previous example all request bodies are stored into the same file. This is a bit problematic isn't it? Let's write another custom body parser that extract the username from the request Session to give a unique file per user:
+In the previous example, all request bodies are stored in the same file. This is a bit problematic isn’t it? Let’s write another custom body parser that extract the user name from the request Session, to give a unique file for each user:
 
 ```
 val storeInUserFile = parse.using { request =>
@@ -122,13 +122,13 @@ def save = Action(storeInUserFile) { request =>
 
 ```
 
-> **Note:** Here we are not really writing our own BodyParser, but just combining existing ones. This is often enough and should cover most use cases. Writing BodyParser from scratch is covered in the advanced topics section.
+> **Note:** Here we are not really writing our own BodyParser, but just combining existing ones. This is often enough and should cover most use cases. Writing a `BodyParser` from scratch is covered in the advanced topics section.
 
 ## Max content length
 
-Text based body parsers (such as **text**, **json**, **xml** or **formUrlEncoded**) use a max content length because they have to load all the content into memory. 
+Text based body parsers (such as **text**, **json**, **xml** or **formUrlEncoded**) use a maximum content length because they have to load all of the content into memory. 
 
-There is a default content length (the default is 100KB), but you can also specify it online:
+There is a default content length (the default is 100KB), but you can also specify it inline:
 
 ```
 // Accept only 10KB of data.
@@ -150,4 +150,4 @@ def save = Action(maxLength(1024 * 10, parser = storeInUserFile)) { request =>
 }
 ```
 
-> **Next:** [[Actions composition | ScalaActionsComposition]]
+> **Next:** [[Action composition | ScalaActionsComposition]]

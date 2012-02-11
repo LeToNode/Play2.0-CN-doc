@@ -1,6 +1,6 @@
 # Setting-up your preferred IDE
 
-Working with Play is easy. You don’t even need a sophisticated IDE as Play compiles and refreshes the modifications you make to your source files automatically. So you can easily work using a simple text editor.
+Working with Play is easy. You don’t even need a sophisticated IDE, because Play compiles and refreshes the modifications you make to your source files automatically, so you can easily work using a simple text editor.
 
 However, using a modern Java or Scala IDE provides cool productivity features like auto-completion, on-the-fly compilation, assisted refactoring and debugging.
 
@@ -8,7 +8,7 @@ However, using a modern Java or Scala IDE provides cool productivity features li
 
 ### Generate configuration
 
-Play provides a command to simplify Eclipse configuration. To transform a Play application into a working Eclipse project, use the eclipsify command:
+Play provides a command to simplify Eclipse configuration. To transform a Play application into a working Eclipse project, use the `eclipsify` command:
 
 ```
 [My first application] $ eclipsify
@@ -18,9 +18,9 @@ You then need to import the application into your Workspace with the **File/Impo
 
 [[images/eclipse.png]] 
 
-You can use the Connect JPDA launcher using Debug As to start a debugging session at any time. Stopping the debugging session will not stop the server.
+You can use the Connect JPDA launcher using **Debug As** to start a debugging session at any time. Stopping the debugging session will not stop the server.
 
-If you make any important changes to your application, such as changing the classpath, use eclipsify again to regenerate the configuration files.
+If you make any important changes to your application, such as changing the classpath, use `eclipsify` again to regenerate the configuration files.
 
 > Do not commit Eclipse configuration files when you work in a team!
 
@@ -68,7 +68,6 @@ Listening for transport dt_socket at address: 9999
 Set some breakpoints. Run the web app by executing the task `play` (again I had to do this in same terminal I ran `play debug`). Finally, browse `http://localhost:9000`. IntelliJ should stop at your breakpoint.
 
 If you make any important changes to your application, such as changing the classpath, use `idea` again to regenerate the configuration files.
-
 
 > **Next:** 
 >
