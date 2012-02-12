@@ -46,7 +46,7 @@ It this example we are creating an simple iteratee that print each message to co
 
 > **Tip:** You can test websocket on [[http://websocket.org/echo.html]]. Just set `ws://localhost:9000` as location.
 
-Let's write another example that discard totally the input data adn that close the socket just after sending the **Hello!** message:
+Let's write another example that discard totally the input data and that close the socket just after sending the **Hello!** message:
 
 ```
 def index = WebSocket.using[String] { request => 
