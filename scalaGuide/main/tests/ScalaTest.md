@@ -1,6 +1,6 @@
 # Testing your application
 
-Tests source files must be placed in the `test` folder of your application. You can run them from the play console using the `test` and `test-only` tasks.
+Test source files must be placed in your application’s `test` folder. You can run them from the Play console using the `test` and `test-only` tasks.
 
 ## Using specs2
 
@@ -27,7 +27,7 @@ class HelloWorldSpec extends Specification {
 }
 ```
 
-## Running in a Fake application
+## Running in a fake application
 
 If the code you want to test depends of a running application, you can easily create a `FakeApplication` on the fly:
 
@@ -47,7 +47,7 @@ If the code you want to test depends of a running application, you can easily cr
 }
 ```
 
-You can also pass (or override) additional configuration to the fake application, or mock any plugin. For example to create a `FakeApplication` using a `default` in memory database:
+You can also pass (or override) additional configuration to the fake application, or mock any plug-in. For example to create a `FakeApplication` using a `default` in memory database:
 
 ```
 FakeApplication(additionalConfiguration = inMemoryDatabase())

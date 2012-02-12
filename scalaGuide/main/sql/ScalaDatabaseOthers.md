@@ -1,6 +1,6 @@
 # Integrating with other database libraries
 
-Nothing prevent you to use any other **SQL** database access libraries from within Play. You can easily retrieve either a `Connection` or a `Datasource` from the `play.api.db.DB` helper.
+You can use any **SQL** database access library you like with Play, as can easily retrieve either a `Connection` or a `Datasource` from the `play.api.db.DB` helper.
 
 ## Integrating with ScalaQuery
 

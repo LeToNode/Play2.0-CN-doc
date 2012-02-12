@@ -16,7 +16,7 @@ object Global extends GlobalSettings {
 
 ## Hooking into application start and stop events
 
-You can override the `onStart` and `onStop` methods to be notified of the events in the application lifecycle;
+You can override the `onStart` and `onStop` methods to be notified of the events in the application life-cycle:
 
 ```scala
 import play.api._

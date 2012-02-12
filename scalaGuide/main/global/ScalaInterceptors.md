@@ -2,16 +2,16 @@
 
 ## Overriding onRouteRequest
 
-One another important aspect of  the ```Global``` object is that it provides a way to intercept requests and execute some business logic before a request is being dispatched to an Action. 
+One another important aspect of  the ```Global``` object is that it provides a way to intercept requests and execute business logic before a request is dispatched to an Action. 
 
-> **Tip:** this hook can be also used for hijacking requests, allowing developers to plugin their own request routing mechanism. 
+> **Tip** This hook can be also used for hijacking requests, allowing developers to plug-in their own request routing mechanism. 
 
-Let's see how this works in practice:
+Let’s see how this works in practice:
 
 ```scala
 import play.api._
 
-//notice: this is in the default package
+// Note: this is in the default package.
 object Global extends GlobalSettings {
 
   def onRouteRequest(request: RequestHeader): Option[Handler] = {
@@ -22,7 +22,7 @@ object Global extends GlobalSettings {
 }
 ```
 
-Of course it's also possible to intercept only a specific Action method. This can be achieved via [[Actions composition | ScalaActionsComposition]]
+It’s also possible to intercept a specific Action method, using [[Action composition | ScalaActionsComposition]].
 
 
 > **Next:** [[Testing your application | ScalaTest]]

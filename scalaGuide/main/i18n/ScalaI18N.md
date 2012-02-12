@@ -1,8 +1,8 @@
-# Messages externalisation and i18n 
+# Messages and internationalization
 
 ## Specifying languages supported by your application
 
-A valid language code is specified by a valid **ISO Language Code**, optionally followed by a valid **ISO Country Code**, such as `fr` or `en_US`.
+A valid language code is specified by a valid **ISO 639-2 language code**, optionally followed by a valid **ISO 3166-1 alpha-2 country code**, such as `fr` or `en_US`.
 
 To start you need to specify the languages supported by your application in the `conf/application.conf` file:
 
@@ -12,17 +12,17 @@ application.langs=en,en_US,fr
 
 ## Externalizing messages
 
-You can externalize messages in the `conf/messages.xxx` files. 
+You can externalize messages in the `conf/messages.xxx` files.
 
-The default `conf/messages` file matches all languages. Additionally you can specify language-specific message files like `conf/messages.fr` or `conf/messages.en_US`.
+The default `conf/messages` file matches all languages. Additionally you can specify language-specific message files such as `conf/messages.fr` or `conf/messages.en_US`.
 
-Then you can retrieve messages using the `play.api.i18n.Messages` object:
+You can then retrieve messages using the `play.api.i18n.Messages` object:
 
 ```
 val title = Messages("home.title")
 ```
 
-All i18n API take an implicit `play.api.i18.Lang` argument retrieved from the current scope. You can also specify it explicitly:
+All internationalization API calls take an implicit `play.api.i18.Lang` argument retrieved from the current scope. You can also specify it explicitly:
 
 ```
 val title = Messages("home.title")(Lang("fr"))
@@ -32,9 +32,7 @@ val title = Messages("home.title")(Lang("fr"))
 
 ## Messages format
 
-The messages can be formatted using the `java.text.MessageFormat` library. For example:
-
-Assuming you have message defined like:
+Messages can be formatted using the `java.text.MessageFormat` library. For example, assuming you have message defined like:
 
 ```
 files.summary=The disk {1} contains {0} file(s).
@@ -48,7 +46,7 @@ Messages("files.summary", d.files.length, d.name)
 
 ## Retrieving supported language from an HTTP request
 
-You can retrieve supported languages by a specific HTTP request:
+You can retrieve the languages supported by a specific HTTP request:
 
 ```
 def index = Action { request =>
