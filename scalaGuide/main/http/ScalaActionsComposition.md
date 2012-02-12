@@ -200,8 +200,8 @@ def index = Authenticated { implicit request =>
 
 We can of course extend this last example and make it more generic by making it possible to specify a body parser:
 
-```
-class AuthenticatedRequest[A](
+```scala
+case class AuthenticatedRequest[A](
   val user: User, request: Request[A]
 ) extends WrappedRequest(request)
 
@@ -214,7 +214,8 @@ def Authenticated[A](p: BodyParser[A])(f: AuthenticatedRequest[A] => Result) = {
 }
 
 // Overloaded method to use the default body parser
-def Authenticated(f: AuthenticatedRequest[AnyContent] => Result) = {
+import play.api.mvc.BodyParsers._
+def Authenticated(f: AuthenticatedRequest[AnyContent] => Result): Action[AnyContent]  = {
   Authenticated(parse.anyContent)(f)
 }
 ```
