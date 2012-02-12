@@ -22,7 +22,7 @@ You can use the Connect JPDA launcher using **Debug As** to start a debugging se
 
 If you make any important changes to your application, such as changing the classpath, use `eclipsify` again to regenerate the configuration files.
 
-> Do not commit Eclipse configuration files when you work in a team!
+> Tip: Do not commit Eclipse configuration files when you work in a team!
 
 The generated configuration files contain absolute references to your framework installation. These are specific to your own installation. When you work in a team, each developer must keep his Eclipse configuration files private.
 
@@ -37,6 +37,8 @@ Play provides a command to simplify Intellij IDEA configuration. To transform a 
 ```
 
 You then need to import the application into your project (File->New Module->Import existing Module)
+
+> Tip: There is an [Intellij IDEA issue](http://devnet.jetbrains.net/thread/433870) regarding building Java based Play2 apps while having the scala plugin installed. Until it's fixed, the recommended workaround is to disable scala plugin.
 
 [[images/idea.png]] 
 
