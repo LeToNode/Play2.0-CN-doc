@@ -37,7 +37,8 @@ object Twitter extends Controller {
   val TWITTER = OAuth(ServiceInfo(
     "https://api.twitter.com/oauth/request_token",
     "https://api.twitter.com/oauth/access_token",
-    "https://api.twitter.com/oauth/authorize", KEY))
+    "https://api.twitter.com/oauth/authorize", KEY),
+    false)
 
   def authenticate = Action { request =>
     request.queryString.get("oauth_verifier").flatMap(_.headOption).map { verifier =>
