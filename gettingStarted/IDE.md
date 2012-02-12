@@ -38,9 +38,9 @@ Play provides a command to simplify Intellij IDEA configuration. To transform a 
 
 You then need to import the application into your project (File->New Module->Import existing Module)
 
-> Tip: There is an [Intellij IDEA issue](http://devnet.jetbrains.net/thread/433870) regarding building Java based Play2 apps while having the scala plugin installed. Until it's fixed, the recommended workaround is to disable scala plugin.
-
 [[images/idea.png]] 
+
+> Tip: There is an [Intellij IDEA issue](http://devnet.jetbrains.net/thread/433870) regarding building Java based Play2 apps while having the scala plugin installed. Until it's fixed, the recommended workaround is to disable scala plugin.
 
 To debug, first add a debug configuration
 
