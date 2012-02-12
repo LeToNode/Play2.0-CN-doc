@@ -1,1 +1,0 @@
-https://github.com/playframework/Play20/wiki/Scalaoauth
