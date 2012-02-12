@@ -45,7 +45,7 @@ object Twitter extends Controller {
       // We got the verifier; now get the access token, store it and back to index
       TWITTER.retrieveAccessToken(tokenPair, verifier) match {
         case Right(t) => {
-          // We received the unauthorized tokens in the OAuth object - store it before we proceed
+          // We received the authorized tokens in the OAuth object - store it before we proceed
           Redirect(routes.Application.index).withSession("token" -> t.token, "secret" -> t.secret)
         }
         case Left(e) => throw e
