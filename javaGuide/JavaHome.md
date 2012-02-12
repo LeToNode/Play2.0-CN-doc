@@ -39,7 +39,6 @@ The Java API for the Play 2.0 application developers is available in the `play` 
 - [[Calling WebServices | JavaWS]]
     - [[The Play WS API  | JavaWS]]
     - [[Connect to OpenID servers | JavaOpenID]]
-    - [[Accessing ressources protected by OAuth | JavaOAuth]]
 - [[Integrating with Akka | JavaAkka]]
     - [[Setting up Actors and scheduling asynchronous tasks | JavaAkka]]
 - [[Internationalization | JavaI18N]]
