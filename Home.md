@@ -6,7 +6,7 @@
 
 ## About
 
-- [[The Play framework philosophy | Philosophy]]
+- [[Play 2.0 a Web framework for a new era | Philosophy]]
 - [[Architecture overview | Architecture]]
 
 ## Getting started
