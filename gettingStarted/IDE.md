@@ -33,7 +33,7 @@ The generated configuration files contain absolute references to your framework 
 Play provides a command to simplify Intellij IDEA configuration. To transform a Play application into a working IDEA module, use the idea command:
 
 ```
-[My first application] $ play idea
+[My first application] $ idea
 ```
 
 You then need to import the application into your project (File->New Module->Import existing Module)
