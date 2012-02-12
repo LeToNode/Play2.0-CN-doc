@@ -32,7 +32,7 @@ Here is the definition of the `VerboseAction`:
 ```
 public static class VerboseAction extends Action.Simple {
 
-  public Result call(Http.Context ctx) {
+  public Result call(Http.Context ctx) throws Throwable {
     Logger.info("Calling action for " + ctx);
     return delegate.call(ctx);
   }
