@@ -4,7 +4,7 @@
 - [[Asynchronous HTTP programming | ScalaAsync]]
 - [[The template engine | ScalaTemplates]]
 - [[HTTP form submission and validation | ScalaForms]]
-- [[Working with Json | ScalaJson]]
+- [[Working with JSON | ScalaJson]]
 - [[Working with XML | ScalaXmlRequests]]
 - [[Handling file upload | ScalaFileUpload]]
 - [[Accessing an SQL database | ScalaDatabase]]

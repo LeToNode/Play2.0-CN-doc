@@ -1,14 +1,14 @@
-# The Play Json library
+# The Play JSON library
 
 ## Overview
 
-The recommend way of dealing with JSON is using Play's typeclass based JSON library, located at ```play.api.libs.json```. 
+The recommend way of dealing with JSON is using Play’s typeclass based JSON library, located at ```play.api.libs.json```. 
 
-This library is built on top of [Jerkson](https://github.com/codahale/jerkson/) (which is a Scala wrapper around the super-fast Java based JSON library, [Jackson](http://jackson.codehaus.org/)). 
+This library is built on top of [Jerkson](https://github.com/codahale/jerkson/), which is a Scala wrapper around the super-fast Java based JSON library, [Jackson](http://jackson.codehaus.org/). 
 
-The benefit of this approach is that both the java and the scala side of Play can share the same underlying library (Jackson), while scala users can enjoy the extra typesafety that play's JSON support brings to the table.
+The benefit of this approach is that both the Java and the Scala side of Play can share the same underlying library (Jackson), while Scala users can enjoy the extra type safety that Play’s JSON support brings to the table.
 
-`play.api.libs.json` package contains 7 JSON data types: 
+`play.api.libs.json` package contains seven JSON data types: 
 
 * ```JsObject```
 * ```JsNull```
@@ -22,7 +22,7 @@ All of them inherit from the generic JSON value, ```JsValue```.
 
 ## Parsing a Json String
 
-You can easily parse any Json string as a `JsValue`:
+You can easily parse any JSON string as a `JsValue`:
 
 ```
 val json: JsValue = Json.parse(jsonString)

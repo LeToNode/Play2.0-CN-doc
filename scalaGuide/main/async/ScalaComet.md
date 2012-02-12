@@ -2,9 +2,9 @@
 
 ## Using chunked responses to create Comet sockets
 
-An useful usage of **Chunked responses** is to create Comet sockets. A Comet socket is just a chunked `text/html` response containing only `<script>` elements. At each chunk we write a `<script>` tag that is immediately executed by the Web browser. This way we can send events live to the Web browser from the server: for each message, wrap it into a `<script>` tag that call a javascript callback function, and write it to the chunked response.
+A good use for **Chunked responses** is to create Comet sockets. A Comet socket is just a chunked `text/html` response containing only `<script>` elements. At each chunk we write a `<script>` tag that is immediately executed by the web browser. This way we can send events live to the web browser from the server: for each message, wrap it into a `<script>` tag that calls a JavaScript callback function, and writes it to the chunked response.
     
-Let's write to write a first prove of concept: create an enumerator generating `<script>` tags calling the browser `console.log` function:
+Let’s write a first proof-of-concept: an enumerator that generates `<script>` tags that each call the browser `console.log` JavaScript function:
     
 ```
 def comet = Action {
@@ -17,11 +17,11 @@ def comet = Action {
 }
 ```
 
-If you run this action from a web browser, you will see the 3 events logged into the browser console.
+If you run this action from a web browser, you will see the three events logged in the browser console.
 
 > **Tip:** Writing `events >>> Enumerator.eof` is just another way of writing `events.andThen(Enumerator.eof)`
 
-Now we can write it in a better way by using an `Enumeratee` which is just an adapter transforming an `Enumerator[A]` into another `Enumerator[B]`. Let's use it to wrap standard messages into the `<script>` tags:
+We can write this in a better way by using an `Enumeratee` that is just an adapter to transform an `Enumerator[A]` into another `Enumerator[B]`. Let’s use it to wrap standard messages into the `<script>` tags:
     
 ```
 // Transform a String message into an Html script tag
@@ -39,11 +39,11 @@ def comet = Action {
 
 ## Using the `play.api.libs.Comet` helper
 
-We provide a Comet helper to handle these comet chunked streams that do almost the same stuff that we just wrote.
+We provide a Comet helper to handle these Comet chunked streams that do almost the same stuff that we just wrote.
 
-> **Note:** Actually it does more, like pushing an initial blank buffer data for browser compatibility, and it supports both String and Json messages. Also it can be extended via type classes to support more message types.
+> **Note:** Actually it does more, like pushing an initial blank buffer data for browser compatibility, and it supports both String and JSON messages. It can also be extended via type classes to support more message types.
 
-Let's just rewrite the previous example to use it:
+Let’s just rewrite the previous example to use it:
 
 ```
 def comet = Action {
@@ -52,11 +52,11 @@ def comet = Action {
 }
 ```
 
-> **Tip:** `Enumerator.callbackEnumerator` and `Enumerator.pushEnumerator` are two convenient way of creating reactive non-blocking enumerators in an imperative style.
+> **Tip:** `Enumerator.callbackEnumerator` and `Enumerator.pushEnumerator` are two convenient ways to create reactive non-blocking enumerators in an imperative style.
 
 ## The forever iframe technique
 
-The standard technique to write a Comet socket is to load an infinite chunked comet response in an iframe and to specify a callback calling the parent frame:
+The standard technique to write a Comet socket is to load an infinite chunked comet response in an HTML `iframe` and to specify a callback calling the parent frame:
 
 ```
 def comet = Action {

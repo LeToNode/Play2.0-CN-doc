@@ -1,12 +1,12 @@
 # Anorm, simple SQL data access
 
-Play includes a simple data access layer called Anorm that uses plain SQL to make your database request and provides several API to parse and transform the resulting dataset.
+Play includes a simple data access layer called Anorm that uses plain SQL to interact with the database and provides an API to parse and transform the resulting datasets.
 
-**Anorm is Not a Object Relational Mapper**
+**Anorm is Not an Object Relational Mapper**
 
 > In the following documentation, we will use the [[MySQL world sample database | http://dev.mysql.com/doc/world-setup/en/world-setup.html]]. 
 > 
-> If you want to enable it for your application, follow the MySQL website instruction, and enable it for your application by adding the following configuration line in your `conf/application.conf` file:
+> If you want to enable it for your application, follow the MySQL website instructions, and enable it for your application by adding the following configuration line in your `conf/application.conf` file:
 >
 > ```
 > db.default.driver= com.mysql.jdbc.Driver
@@ -17,41 +17,41 @@ Play includes a simple data access layer called Anorm that uses plain SQL to mak
 
 ## Overview
 
-It can feel strange to fallback to plain old SQL to access an SQL Database these days. In particular for Java developers that are accustomed to use high level Object Relational Mapper like Hibernate to completely hide this aspect.
+It can feel strange to return to plain old SQL to access an SQL database these days, especially for Java developers accustomed to using a high-level Object Relational Mapper like Hibernate to completely hide this aspect.
 
-Now if we agree that these tools are almost required in Java, we think that they are not needed at all when you have the power of a higher level programming language like Scala, and in the contrary they will quickly become counter productive.
+Although we agree that these tools are almost required in Java, we think that they are not needed at all when you have the power of a higher-level programming language like Scala. On the contrary, they will quickly become counter-productive.
 
 #### Using JDBC is a pain, but we provide a better API
 
-We agree, using directly the JDBC API is tedious. Particularly in Java. You have to deal everywhere with checked exceptions and iterate over and over around the ResultSet to transform this raw dataset into your own data structure.
+We agree that using the JDBC API directly is tedious, particularly in Java. You have to deal with checked exceptions everywhere and iterate over and over around the ResultSet to transform this raw dataset into your own data structure.
 
-But we provide a simpler API for JDBC, using Scala you don’t need to bother with exceptions, and transforming data is really easy with a functional language; in fact it is the point of the Play Scala SQL access layer to provide several API to effectively transform JDBC data into other Scala structures.
+We provide a simpler API for JDBC; using Scala you don’t need to bother with exceptions, and transforming data is really easy with a functional language. In fact, the goal of the Play Scala SQL access layer is to provide several APIs to effectively transform JDBC data into other Scala structures.
 
-#### You don’t need another DSL to access relational Database
+#### You don’t need another DSL to access relational databases
 
-SQL is already the best DSL to access relational Databases. We don’t need to invent something new. Moreover the SQL syntax and features can differ from one database vendor to another. 
+SQL is already the best DSL for accessing relational databases. We don’t need to invent something new. Moreover the SQL syntax and features can differ from one database vendor to another. 
 
-If you try to abstract this point with another proprietary SQL like DSL you will have to deal with several ‘dialects’ dedicated for each vendor (like Hibernate ones), and limit yourself of using interesting features of a particular Database.
+If you try to abstract this point with another proprietary SQL like DSL you will have to deal with several ‘dialects’ dedicated for each vendor (like Hibernate ones), and limit yourself by not using a particular database’s interesting features.
 
-Sometimes we will provide you with prefilled SQL statements. But the idea is not to hide you the fact that we use SQL under the hood. Just save a bunch of characters to type for trivial queries, and you can always fallback to plain old SQL.
+Play will sometimes provide you with pre-filled SQL statements, but the idea is not to hide the fact that we use SQL under the hood. Play just saves typing a bunch of characters for trivial queries, and you can always fall back to plain old SQL.
 
 #### A type safe DSL to generate SQL is a mistake
 
-Some argue that a type safe DSL is better since all your queries are checked by the compiler. Unfortunately the compiler check your queries based on a MetaModel definition that you often write yourself by ‘mapping’ your data structure to the database schema. 
+Some argue that a type safe DSL is better since all your queries are checked by the compiler. Unfortunately the compiler checks your queries based on a meta-model definition that you often write yourself by ‘mapping’ your data structure to the database schema. 
 
-And there are no guarantees at all that this MetaModel is correct. Even if the compiler says that your code and your queries are correctly typed, it can still miserably fail at runtime because of a mismatch in your actual database definition.
+There are no guarantees that this meta-model is correct. Even if the compiler says that your code and your queries are correctly typed, it can still miserably fail at runtime because of a mismatch in your actual database definition.
 
 #### Take Control of your SQL code
 
-Object Relationnal Mapper work well for trivial cases. But when you have to deal with complex schemas or existing databases, you will spend most of your time to fighting with your ORM to make it generate the SQL queries you want.
+Object Relational Mapping work well for trivial cases, but when you have to deal with complex schemas or existing databases, you will spend most of your time to fighting with your ORM to make it generate the SQL queries you want.
 
-Writing yourself SQL queries can be tedious for a simple ‘Hello World’ application, but for any real life application, you will eventually save time and simplify your code by taking the full control of your SQL code.
+Writing yourself SQL queries can be tedious for a simple ‘Hello World’ application, but for any real-life application, you will eventually save time and simplify your code by taking the full control of your SQL code.
 
 ## Executing SQL queries
 
 To start you need to learn how to execute SQL queries.
 
-Well, import `anorm._`, and then simply use the `SQL` object to create queries. Of course you need a `Connection` to run a query, so you can retrieve one from the `play.api.db.DB` helper:
+First, import `anorm._`, and then simply use the `SQL` object to create queries. You need a `Connection` to run a query, and you can retrieve one from the `play.api.db.DB` helper:
 
 ```
 import anorm._ 
@@ -61,15 +61,15 @@ DB.withConnection { implicit c =>
 } 
 ```
 
-The `execute()` method returns a Boolean value indicating if the execution was succesful.
+The `execute()` method returns a Boolean value indicating whether the execution was successful.
 
-To execute an update query, you can use `executeUpdate()` that returns the number of rows updated.
+To execute an update, you can use `executeUpdate()`, which returns the number of rows updated.
 
 ```
 val result: Int = SQL("delete from City where id = 99").executeUpdate()
 ```
 
-Since Scala supports multiline String, feel free to use them for complex SQL statements:
+Since Scala supports multi-line strings, feel free to use them for complex SQL statements:
 
 ```
 val sqlQuery = SQL(
@@ -81,7 +81,7 @@ val sqlQuery = SQL(
 )
 ```
 
-If your SQL query needs dynamic parameters, you can declare placeholders like `{name}` in the query String, and assign them later to any value:
+If your SQL query needs dynamic parameters, you can declare placeholders like `{name}` in the query string, and later assign them a value:
 
 ```
 SQL(
@@ -95,9 +95,9 @@ SQL(
 
 ## Retrieving data using the Stream API
 
-The first way to access data coming from a Select query, is to use the Stream API.
+The first way to access the results of a select query is to use the Stream API.
 
-When you call `apply()` on any SQL statement, you will receive a lazy `Stream` of `Row`, where each row can be seen as a dictionary:
+When you call `apply()` on any SQL statement, you will receive a lazy `Stream` of `Row` instances, where each row can be seen as a dictionary:
 
 ```
 // Create an SQL query
@@ -109,7 +109,7 @@ val countries = selectCountries().map(row =>
 ).toList
 ```
 
-In the following example we will count the number of Country in the database. So the resultSet will be a single row with a single column:
+In the following example we will count the number of `Country` entries in the database, so result set will be a single row with a single column:
 
 ```
 // First retrieve the first row
@@ -121,7 +121,7 @@ val countryCount = firstRow[Long]("c")
 
 ## Using Pattern Matching
 
-You can also use Pattern Matching to match and extract the Row content. In this case the column name doesn’t matter. Only the order and the type of the parameters is used to match.
+You can also use Pattern Matching to match and extract the `Row` content. In this case the column name doesn’t matter. Only the order and the type of the parameters is used to match.
 
 The following example transform each row to the correct Scala type:
 
@@ -137,13 +137,13 @@ val countries = SQL("Select name,population from Country")().collect {
 }
 ```
 
-Note that since `collect(…)` ignore the cases where the partial function isn’t defined, it allow your code to safely ignore rows that you don’t expect.
+Note that since `collect(…)` ignores the cases where the partial function isn’t defined, it allows your code to safely ignore rows that you don’t expect.
 
 ## Dealing with Nullable columns
 
 If a column can contain `Null` values in the database schema, you need to manipulate it as an `Option` type.
 
-For example, the `indepYear` of the `Country` table being nullable, you need to match it as `Option[Int]`:
+For example, the `indepYear` of the `Country` table is nullable, so you need to match it as `Option[Int]`:
 
 ```
 SQL("Select name,indepYear from Country")().collect {
@@ -151,7 +151,7 @@ SQL("Select name,indepYear from Country")().collect {
 }
 ```
 
-If you try to match this column as `Int` it won’t be able to parse `Null` cases. If you try to retrieve the column content as `Int` directly from the dictionnary:
+If you try to match this column as `Int` it won’t be able to parse `Null` cases. Suppose you try to retrieve the column content as `Int` directly from the dictionary:
 
 ```
 SQL("Select name,indepYear from Country")().map { row =>
@@ -159,7 +159,7 @@ SQL("Select name,indepYear from Country")().map { row =>
 }
 ```
 
-It will produce an `UnexpectedNullableFound(COUNTRY.INDEPYEAR)` exception if it encounter a null value. So you need to map it properly to an `Option[Int]`, as:
+This will produce an `UnexpectedNullableFound(COUNTRY.INDEPYEAR)` exception if it encounters a null value, so you need to map it properly to an `Option[Int]`, as:
 
 ```
 SQL("Select name,indepYear from Country")().map { row =>
@@ -167,17 +167,17 @@ SQL("Select name,indepYear from Country")().map { row =>
 }
 ```
 
-This rule is also true for the parser API we will just see.
+This is also true for the parser API, as we will see next.
 
 ## Using the Parser API
 
-You can use the parser API to create generic and reusable parsers able to parse the result of any Select query.
+You can use the parser API to create generic and reusable parsers that can parse the result of any select query.
 
-> **Note:** It is really useful since most queries in a Web application will return similar set of data. For example if you have defined a parser able to parse a `Country` from a result set, and another `Language` parser, you can then easily compose them to parse both Country and Language from a join query.
+> **Note:** This is really useful, since most queries in a web application will return similar data sets. For example, if you have defined a parser able to parse a `Country` from a result set, and another `Language` parser, you can then easily compose them to parse both Country and Language from a join query.
 >
 > First you need to `import anorm.SqlParser._`
 
-First you need a `RowParser`, ie. a parser able to parse one row to a Scala value. For example we can define a parser to transforn a single column result set row, to as Scala `Long`:
+First you need a `RowParser`, i.e. a parser able to parse one row to a Scala value. For example we can define a parser to transform a single column result set row, to as Scala `Long`:
 
 ```
 val rowParser = scalar[Long]
@@ -189,7 +189,7 @@ Then we have to transform it into a `ResultSetParser`. Here we will create a par
 val rsParser = scalar[Long].single
 ```
 
-So this parser will parse a result set to return a `Long`. It is useful to parse to result produced by a simple SQL **select count** query:
+So this parser will parse a result set to return a `Long`. It is useful to parse to result produced by a simple SQL `select count` query:
 
 ```
 val count: Long = SQL("select count(*) from Country").as(scalar[Long].single)
@@ -197,7 +197,7 @@ val count: Long = SQL("select count(*) from Country").as(scalar[Long].single)
 
 Let’s write a more complicated parser:
 
-`str("name") ~ int("population")`, will create a `RowParser` able to parse a row containing a String **name** column and a Integer **population** column. Then we can create a `ResultSetParser` that will parse as many rows of this kind as it can using `*`: 
+`str("name") ~ int("population")`, will create a `RowParser` able to parse a row containing a String `name` column and an Integer `population` column. Then we can create a `ResultSetParser` that will parse as many rows of this kind as it can, using `*`: 
 
 ```
 val populations:List[String~Int] = {
@@ -205,7 +205,7 @@ val populations:List[String~Int] = {
 }
 ```
 
-As you see, the result type of this query is a `List[String~Int]`, so a list of country name and population items.
+As you see, this query’s result type is `List[String~Int]` - a list of country name and population items.
 
 You can also rewrite the same code as:
 
@@ -215,15 +215,15 @@ val result:List[String~Int] = {
 }
 ```
 
-Now what about the `String~Int` type? It is an **anorm** type that it is not really convenient to use outside of your database access code. You could want have a simple tuple `(String,Int)` instead. You can use the `map` function on a `RowParser` to transform its result to a more convenient type:
+Now what about the `String~Int` type? This is an **Anorm** type that is not really convenient to use outside of your database access code. You would want have a simple tuple `(String, Int)` instead. You can use the `map` function on a `RowParser` to transform its result to a more convenient type:
 
 ```
 str("name") ~ int("population") map { case n~p => (n,p) }
 ```
 
-> **Note:** We create a tuple `(String,Int)` here but nothing prevent you to transform the `RowParser` result to any other type, like a custom case class.
+> **Note:** We created a tuple `(String,Int)` here, but there is nothing stoping you from transforming the `RowParser` result to any other type, such as a custom case class.
 
-Now because transforming `A~B~C` types to `(A,B,C)` is a common task, we provide a `flatten` function that do exatcly that. So you finally write:
+Now, because transforming `A~B~C` types to `(A,B,C)` is a common task, we provide a `flatten` function that does exactly that. So you finally write:
 
 ```
 val result:List[(String,Int)] = {
@@ -241,7 +241,7 @@ select c.name, l.language from Country c
     where c.code = 'FRA'
 ```
 
-Let's start by parsing all rows as a `List[(String,String)]` (a list of name,language tuple):
+Let’s start by parsing all rows as a `List[(String,String)]` (a list of name,language tuple):
 
 ```
 var p: ResultSetParser[List[(String,String)] = {
@@ -253,16 +253,16 @@ Now we get this kind of result:
 
 ```
 List(
-  (France,Arabic), 
-  (France,French), 
-  (France,Italian), 
-  (France,Portuguese), 
-  (France,Spanish), 
-  (France,Turkish)
+  ("France", "Arabic"), 
+  ("France", "French"), 
+  ("France", "Italian"), 
+  ("France", "Portuguese"), 
+  ("France", "Spanish"), 
+  ("France", "Turkish")
 )
 ```
 
-We can then use the Scala collection API, to transform it the the expected result:
+We can then use the Scala collection API, to transform it to the expected result:
 
 ```
 case class SpokenLanguages(country:String, languages:Seq[String])
@@ -272,7 +272,7 @@ languages.headOption.map { f =>
 }
 ```
 
-Finally we get this convenient function:
+Finally, we get this convenient function:
 
 ```
 case class SpokenLanguages(country:String, languages:Seq[String])
@@ -294,7 +294,7 @@ def spokenLanguages(countryCode: String): Option[SpokenLanguages] = {
 }
 ```
 
-Finally, let’s complicate our example to separate the official language and the other ones:
+To continue, let’s complicate our example to separate the official language from the others:
 
 ```
 case class SpokenLanguages(

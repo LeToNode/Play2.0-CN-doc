@@ -1,10 +1,10 @@
 # Using the form template helpers
 
-Play provides several helpers for rendering form fields in Html templates.
+Play provides several helpers for rendering form fields in HTML templates.
 
 ## Create a `<form>` tag
     
-The first thing is to be able to create the `<form>` tag. It is a pretty simple helper that has no more value than setting automatically the `action` and `method` tag parameters according to the reverse route you pass in:
+The first thing is to be able to create the `<form>` tag. It is a pretty simple helper that has no more value than automatically setting the `action` and `method` tag parameters according to the reverse route you pass in:
     
 ```
 @helper.form(action = routes.Application.submit) {
@@ -22,7 +22,7 @@ You can also pass an extra set of parameters that will be added to the generated
 
 ## Rendering an `<input>` element
 
-You can find several input helpers in the `views.html.helper` package. You feed them with a form field, and they display the corresponding Html input with filled value, constraints and errors:
+You can find several input helpers in the `views.html.helper` package. You feed them with a form field, and they display the corresponding HTML input, setting the value, constraints and errors:
 
 ```
 @(myForm: Form[User])
@@ -42,11 +42,11 @@ As for the `form` helper, you can specify an extra set of parameters that will b
 @helper.inputText(myForm("username"), 'id -> "username", 'size -> 30)
 ```
 
-> **Note:** All extra parameters will be added to the generated Html, unless they start with the **\_** character. Arguments starting with **\_** are reserved for field constructor argument (we will see that shortly).
+> **Note:** All extra parameters will be added to the generated Html, unless they start with the **\_** character. Arguments starting with **\_** are reserved for field constructor arguments (we will see that shortly).
 
-## Handling Html input creation yourself
+## Handling HTML input creation yourself
 
-There is also a more generic `input` helper that lets you draw the desired Html result:
+There is also a more generic `input` helper that lets you code the desired HTML result:
 
 ```
 @helper.input(myForm("username")) { (id, name, value, args) =>
@@ -56,9 +56,9 @@ There is also a more generic `input` helper that lets you draw the desired Html 
 
 ## Field constructors
 
-A field rendering is not only composed of the `<input>` tag, but it also needs a `<label>` and a bunch of other tags used by your CSS framework to decorate the field.
+A field rendering is not only composed of the `<input>` tag, but it also needs a `<label>` and possibly other tags used by your CSS framework to decorate the field.
     
-All input helpers take an implicit `FieldConstructor` that handles this part. The default one (used if there are no other field constructors available in the scope), generates Html like:
+All input helpers take an implicit `FieldConstructor` that handles this part. The default one (used if there are no other field constructors available in the scope), generates HTML like:
 
 ```
 <dl class="error" id="username_field">
@@ -124,7 +124,7 @@ Often you will need to write your own field constructor. Start by writing a temp
 </div>
 ```
 
-> **Note:** This is just a sample. You can make it as complicated as you need it. You also have access to the original field using `@elements.field`.
+> **Note:** This is just a sample. You can make it as complicated as you need. You also have access to the original field using `@elements.field`.
 
 Now create a `FieldConstructor` using this template function:
 
@@ -156,7 +156,7 @@ It will then use your field constructor to render the input text.
 
 ## Handling repeated values
 
-The last helper makes it easier to generate inputs for repeated values. Let's say you have this kind of form definition:
+The last helper makes it easier to generate inputs for repeated values. Let’s say you have this kind of form definition:
 
 ```
 val myForm = Form(
@@ -167,7 +167,7 @@ val myForm = Form(
 )
 ```
 
-Now you have to generate as many inputs for the **emails** field as the form contains. Just use the `repeat` helper for that:
+Now you have to generate as many inputs for the `emails` field as the form contains. Just use the `repeat` helper for that:
 
 ```
 @inputText(myForm("name"))
@@ -181,7 +181,7 @@ Now you have to generate as many inputs for the **emails** field as the form con
 
 The `min` parameter allows you to display a minimum number of fields even if the corresponding form data are empty.
 
-> **Next:** [[Working with Json| ScalaJson]]
+> **Next:** [[Working with JSON| ScalaJson]]
 
 
 

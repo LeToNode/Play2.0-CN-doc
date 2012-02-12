@@ -134,7 +134,7 @@ def index = Authenticated { user =>
 
 ## Another way to create the Authenticated action
 
-Let's see how to write the previous example without wrapping the whole action and without authenticating the body parser:
+Let’s see how to write the previous example without wrapping the whole action and without authenticating the body parser:
 
 ```
 def Authenticated(f: (User, Request[AnyContent]) => Result) = {
@@ -166,7 +166,7 @@ def Authenticated(f: User => Request[AnyContent] => Result) = {
 }
 ```
 
-And now:
+Then you can do this:
 
 ```
 def index = Authenticated { user => implicit request =>
@@ -174,7 +174,7 @@ def index = Authenticated { user => implicit request =>
 }
 ```
 
-Another (probably simpler) way is to define our own subclass of `Request` as `AuthenticatedRequest` (so we are merging both parameters into a single one):
+Another (probably simpler) way is to define our own subclass of `Request` as `AuthenticatedRequest` (so we are merging both parameters into a single parameter):
 
 ```
 class AuthenticatedRequest(
@@ -198,7 +198,7 @@ def index = Authenticated { implicit request =>
 }
 ```
 
-We can of course extend this last example and make it more generic by allowing to specify a body parser:
+We can of course extend this last example and make it more generic by making it possible to specify a body parser:
 
 ```
 class AuthenticatedRequest[A](

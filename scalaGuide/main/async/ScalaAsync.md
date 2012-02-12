@@ -1,14 +1,14 @@
 # Handling asynchronous results
 
-## Why asynchonous results?
+## Why asynchronous results?
 
-Until now we were able to compute the result to send to the Web client directly. But it is not always the case: the result can depend of an expensive computation or of a long Web service call.
+Until now, we were able to generate the result to send to the web client directly. However, this is not always the case: the result might depend on an expensive computation or of a long web service call.
 
-Because of the way Play 2.0 works, the action code must be as fast as possible (ie. non blocking). So what should we return as result if we are not yet able to compute it? The response is a promise of result! 
+Because of the way Play 2.0 works, the action code must be as fast as possible (ie. non blocking). So what should we return as result if we are not yet able to generate it? The response is a promise of result! 
 
-A `Promise[Result]` will eventually be redeemed with a value of type `Result`. By giving a `Promise[Result]` instead if a classical `Result`, we are able to compute the result quickly without blocking anything. And Play will serve this result as soon as the promise is redeemed. 
+A `Promise[Result]` will eventually be redeemed with a value of type `Result`. By giving a `Promise[Result]` instead if a normal `Result`, we are able to quickly generate the result without blocking. Then, Play will serve this result as soon as the promise is redeemed. 
 
-The Web client will be blocked while waiting for the response but nothing will be blocked on the server, and the resources can be used to serve other clients.
+The web client will be blocked while waiting for the response, but nothing will be blocked on the server, and server resources can be used to serve other clients.
 
 ## How to create a `Promise[Result]`
 
@@ -21,7 +21,7 @@ val promiseOfResult: Promise[Result] = promiseOfPIValue.map { pi =>
 }
 ```
 
-All Play 2.0 asynchronous API will give you a `Promise`. It is the case when you are calling external Web service using the `play.api.libs.WS` API, or if you are using Akka to schedule asynchonous tasks or to communicate with Actors using `play.api.libs.Akka`.
+All of Play 2.0’s asynchronous API calls give you a `Promise`. This is the case whether you are calling an external web service using the `play.api.libs.WS` API, or using Akka to schedule asynchonous tasks or to communicate with actors using `play.api.libs.Akka`.
 
 A simple way to execute a block of code asynchronously and to get a `Promise` is to use the `play.api.libs.Akka` helpers:
 
@@ -31,11 +31,11 @@ val promiseOfInt: Promise[Int] = Akka.future {
 }
 ```
 
-> **Note:** Here the intensive computation will just be run on another thread. It is also possible to run it remotly on a cluster of backend servers using Akka remote.
+> **Note:** Here, the intensive computation will just be run on another thread. It is also possible to run it remotely on a cluster of backend servers using Akka remote.
 
 ## AsyncResult
 
-While we were using `SimpleResult` until now, to send an asynchronous result we need an `AsyncResult` wrapping the actual `SimpleResult`:
+While we were using `SimpleResult` until now, to send an asynchronous result, we need an `AsyncResult` to wrap the actual `SimpleResult`:
 
 ```
 def index = Action {
@@ -46,11 +46,11 @@ def index = Action {
 }
 ```
 
-> **Note:** `Async { }` is an helper method building an `AsyncResult` from a `Promise[Result]`.
+> **Note:** `Async { }` is an helper method that builds an `AsyncResult` from a `Promise[Result]`.
 
-## Handling timeout
+## Handling time-outs
 
-It is often useful to handle timeout properly to avoid to let the Web browser blocked waiting if something goes wrong. You can easily compose promise with promise timeout to handle these cases:
+It is often useful to handle time-outs properly, to avoid having the web browser block and wait if something goes wrong. You can easily compose a promise with a promise timeout to handle these cases:
 
 ```
 def index = Action {

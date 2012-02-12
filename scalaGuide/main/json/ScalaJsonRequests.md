@@ -1,10 +1,10 @@
-# Handling and serving Json requests
+# Handling and serving JSON requests
 
-## Handling a Json request
+## Handling a JSON request
 
-A Json request is an HTTP request using a valid Json payload as request body. It must specify the `text/json` or `application/json` mime type in its `Content-Type` header.
+A JSON request is an HTTP request using a valid JSON payload as request body. It must specify the `text/json` or `application/json` mime type in its `Content-Type` header.
 
-By default an `Action` uses a **any content** body parser. Then you can ask to retrieve the body as Json (actually as a `JsValue`):
+By default an `Action` uses an **any content** body parser, which lets you retrieve the body as JSON (actually as a `JsValue`):
 
 ```
 def sayHello = Action { request =>
@@ -20,7 +20,7 @@ def sayHello = Action { request =>
 }
 ```
 
-Of course it's way better (and simpler) to specify our own `BodyParser` to ask Play to parser the content body directly as Json:
+It’s way better (and simpler) to specify our own `BodyParser` to ask Play to parser the content body directly as JSON:
 
 ```
 def sayHello = Action(parse.json) { request =>
@@ -32,9 +32,9 @@ def sayHello = Action(parse.json) { request =>
 }
 ```
 
-> **Note:** When using a json body parser, the `request.body` value is directly a valid `JsValue`. 
+> **Note:** When using a JSON body parser, the `request.body` value is directly a valid `JsValue`. 
 
-You can test it with **cUrl** from a command line:
+You can test it with **cURL** from the command line:
 
 ```
 curl 
@@ -54,9 +54,9 @@ Content-Length: 15
 Hello Guillaume
 ```
 
-## Serving a Json response
+## Serving a JSON response
 
-In our previous example we handle a Json request, but we reply with a `text/plain` response. Let's change that to send back a valid Json HTTP response:
+In our previous example we handle a JSON request, but we reply with a `text/plain` response. Let’s change that to send back a valid JSON HTTP response:
 
 ```
 def sayHello = Action(parse.json) { request =>

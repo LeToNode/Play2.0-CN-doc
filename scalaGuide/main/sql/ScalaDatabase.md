@@ -2,9 +2,9 @@
 
 ## Configuring JDBC connection pools
 
-Play 2.0 provides a plugin for managing JDBC connection pools. You can configure as many databases you need.
+Play 2.0 provides a plug-in for managing JDBC connection pools. You can configure as many databases you need.
 
-To enable the database plugin, configure a connection pool in the `conf/application.conf` file. By convention the default JDBC data source must be called `default`:
+To enable the database plug-in, configure a connection pool in the `conf/application.conf` file. By convention, the default JDBC data source must be called `default`:
 
 ```properties
 # Default database configuration
@@ -46,7 +46,7 @@ There is several ways to retrieve a JDBC connection. The first is the most simpl
 val connection = DB.getConnection()
 ```
 
-But of course you need to call `close()` at some point on the opened connection to put it back to the connection pool. Another way is to let Play manage the connection close for you:
+But of course you need to call `close()` at some point on the opened connection to return it to the connection pool. Another way is to let Play manage closing the connection for you:
 
 ```
 DB.withConnection { conn =>
@@ -56,9 +56,9 @@ DB.withConnection { conn =>
 
 The connection will be automatically closed at the end of the block.
 
-> **Tip:** Not only that but all `Statement` and `ResultSet` created with this connection will be closed as well.
+> **Tip:** Each `Statement` and `ResultSet` created with this connection will be closed as well.
 
-A variant is to set the connection autocommit to `false` automatically and to manage a transaction for the block:
+A variant is to set the connection auto-commit to `false` automatically and to manage a transaction for the block:
 
 ```
 DB.withTransaction { conn =>

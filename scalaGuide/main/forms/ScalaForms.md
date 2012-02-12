@@ -31,7 +31,7 @@ val (user, password) = loginForm.bindFromRequest.get
 
 ## Constructing complex objects
 
-A form can use any functions to construct and deconstruct the value. So you can, for example, define a form that wraps an existing case class:
+A form can use functions to construct and deconstruct the value. So you can, for example, define a form that wraps an existing case class:
 
 ```scala
 import play.api.data._
@@ -50,11 +50,11 @@ val anyData = Map("email" -> "bob@gmail.com", "age" -> "18")
 val user: User = userForm.bind(anyData).get
 ```
 
-> **Note:** The difference between using `tuple` and `mapping` is that when you are using `tuple` the construction and deconstruction functions don't need to be specified (we know how to construct and deconstruct a tuple right?). 
+> **Note:** The difference between using `tuple` and `mapping` is that when you are using `tuple` the construction and deconstruction functions don’t need to be specified (we know how to construct and deconstruct a tuple, right?). 
 >
-> The `mapping` method just let you define your custom functions. And when you want to construct and deconstruct a case class, you can just use its default `apply` and `unapply` functions as they do exactly that!
+> The `mapping` method just let you define your custom functions. When you want to construct and deconstruct a case class, you can just use its default `apply` and `unapply` functions, as they do exactly that!
 
-Of course often the `Form` signature doesn't match exactly the case class. Let's take an example a form that contain an additional checkbox field used to accept the terms and services. We don't need to fill this in our User value right? It's just a dummy field that serve for form validation but which doesn't carry any useful information once validated.
+Of course often the `Form` signature doesn’t match the case class exactly. Let’s use the example a form that contains an additional checkbox field, used to accept terms of service. We don’t need to add this data to our `User` value. It’s just a dummy field that is used for form validation but which doesn’t carry any useful information once validated.
 
 As we can define our own construction and deconstruction functions, it is easy to handle it:
 
@@ -71,11 +71,11 @@ val userForm = Form(
 )
 ```
 
-> **Note:** The deconstruction function is used when we fill a form with an existing `User` value. It is useful if we want the load a user from the database and prepare a form to update it.
+> **Note:** The deconstruction function is used when we fill a form with an existing `User` value. This is useful if we want the load a user from the database and prepare a form to update it.
 
 ## Defining constraints
 
-For each mapping you can also define additional validation constraints that will be checked during the binding phase:
+For each mapping, you can also define additional validation constraints that will be checked during the binding phase:
 
 ```scala
 import play.api.data._
@@ -101,7 +101,7 @@ val userForm = Form(
 > )
 > ```
 >
-> That constructs the same mappings with additional constraints
+> This constructs the same mappings, with additional constraints.
 
 You can also define ad-hoc constraints on the fields:
 
@@ -118,7 +118,7 @@ val loginForm = Form(
 
 ## Handling binding failure
 
-Of course if you can define constraints, then you need to be able to handle the binding errors. You can use the `fold` operation for that:
+If you can define constraints, then you need to be able to handle the binding errors. You can use the `fold` operation for this:
 
 ```scala
 loginForm.bindFromRequest.fold(
@@ -129,7 +129,7 @@ loginForm.bindFromRequest.fold(
 
 ## Fill a form with initial default values
 
-Sometimes you’ll want to fill a form with existing values, typically for editing:
+Sometimes you’ll want to populate a form with existing values, typically for editing data:
 
 ```scala
 val filledForm = userForm.fill(User("Bob", 18))
@@ -154,7 +154,7 @@ val userForm = Form(
 )
 ```
 
-> **Note:** When you are using nested data this way, the form data sent by the browser need to be written as `address.street`, `address.city`, etc.
+When you are using nested data this way, the form values sent by the browser must be named like `address.street`, `address.city`, etc.
 
 ## Repeated values
 
@@ -171,7 +171,7 @@ val userForm = Form(
 )
 ```
 
-> **Note:** When you are using repeated data this way, the form data sent by the browser need to be written as `emails[0]`, `emails[1]`, `emails[2]`, etc.
+When you are using repeated data like this, the form values sent by the browser must be named `emails[0]`, `emails[1]`, `emails[2]`, etc.
 
 ## Optional values
 
@@ -190,7 +190,7 @@ val userForm = Form(
 
 > **Note:** The email field will be ignored and set to `None` if the field `email` is missing in the request payload or if it contains a blank value.
 
-Now you can mix optional, nested and repeated mappings any way you want to created complex forms.
+Now you can mix optional, nested and repeated mappings any way you want to create complex forms.
 
 > **Next:** [[Using the form template helpers | ScalaFormHelpers]]
 

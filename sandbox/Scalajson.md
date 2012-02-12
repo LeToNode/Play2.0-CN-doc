@@ -1,12 +1,12 @@
 # Working with JSON
 
-The recommend way of dealing with JSON is using Play's typeclass based JSON library, located at ```play.api.libs.json```. This library is built on top of [Jerkson](https://github.com/codahale/jerkson/) (which is a Scala wrapper around the super-fast Java based JSON library, [Jackson](http://jackson.codehaus.org/)). 
+The recommend way of dealing with JSON is using Play’s type class-based JSON library, located at ```play.api.libs.json```. This library is built on top of [Jerkson](https://github.com/codahale/jerkson/), which is a Scala wrapper around the super-fast Java-based JSON library, [Jackson](http://jackson.codehaus.org/).
 
-The benefit of this approach is that both the java and the scala side of Play can share the same underlying library (Jackson), while scala users can enjoy the extra typesafety that play's JSON support brings to the table.
+The benefit of this approach is that both the Java and the Scala side of Play can share the same underlying library (Jackson), while Scala users can enjoy the extra type safety that Play’s JSON support brings to the table.
 
 # How to parse JSON and marshal data to domain objects
 
-`play.api.libs.json` package contains 7 JSON data types: 
+`play.api.libs.json` package contains seven JSON data types: 
 
 * ```JsOBject```
 * ```JsNull```
@@ -18,9 +18,7 @@ The benefit of this approach is that both the java and the scala side of Play ca
 
 All of them inherit from the generic JSON value, ```JsValue```.
 
-Using these one can build a typesafe JSON deserializer and encapsulate the whole logic like this
-
-For example:
+Using these one can build a type safe JSON deserializer and encapsulate the whole logic like this. For example:
 
 ```scala
 case class User(id: Long, name: String, friends: List[User])
@@ -36,27 +34,34 @@ case class User(id: Long, name: String, friends: List[User])
   }
 ```
 
-_(note: Format defines two methods: ```reads``` and ```writes``` which are responsible for marshaling to and from JsValue.)_
+> **Note:** `Format` defines two methods: ```reads``` and ```writes```, which are responsible for marshalling to and from `JsValue`.
 
-given this, one can marshall an incoming JSON string into a User case class like this:  
+Given this, one can marshall an incoming JSON string into a `User` case class like this:  
 
 ```scala
 val data = play.api.libs.json.parse(incomingJSONstring).as[User]
 ```
 
-or if the data is coming from a request.body:
+Alternatively, if the data is coming from a `request.body`:
 
 ```scala
-val user = request.body.asJson.map(_.as[User]).getOrElse(throw new RuntimeException("could not create user"))
+val user = request.body.asJson.map(_.as[User]).getOrElse(
+  throw new RuntimeException("could not create user")
+)
 ```
 
-
-it's also possible to pattern match on ```JsValue``` in cases where the underlying JSON type is not homogenous (say a JSON Map with different JSON types) or if one wants to manage the object creation.
+It’s also possible to pattern match on ```JsValue``` in cases where the underlying JSON type is not homogenous (say a JSON Map with different JSON types) or if one wants to manage object creation.
 
 ```scala
 import play.api.libs.json._
 
- val data = Map("newspaper" -> Map("url"->"http://nytimes.com","attributes"-> Map("name"->"nytimes", "country"->"US","id"->25), "links"->List("http://link1","http://link2")))
+val data = Map(
+  "newspaper" -> Map(
+    "url" -> "http://nytimes.com",
+    "attributes" -> Map("name" -> "nytimes", "country" -> "US", "id" -> 25),
+    "links" -> List("http://link1", "http://link2")
+  )
+)
 
 case class Attributes(name: String, id: Int, links: List[String])
 
@@ -68,15 +73,13 @@ println(Attributes( (attributes \ "name") match {case JsString(name)=>name;case 
    
 ```
 
-_(note: \\\ means lookup in the current object and all descendants, \ means lookup corresponding property only)_
+> **Note:** `\\\` means look-up in the current object and all descendants, `\` means only look-up the corresponding property.
 
  
 
-# How to unmarshal from domain objects to JSON
+# How to unmarshall from domain objects to JSON
 
-Of course, parsing JSON is just half of the story, since in most situations we would like to return JSON as well.
-
-let's revisit the previous example:
+Parsing JSON is just half of the story, since in most situations we would like to return JSON as well. Let’s revisit the previous example:
 
 ```scala
 import play.api.libs.json._
@@ -95,9 +98,9 @@ case class User(id: Long, name: String, friends: List[User])
   }
 ```
 
-_(Note: the main building block is ```JsObject``` which takes a ```Seq[String,JsValue]```)_
+> **Note:** The main building block is ```JsObject```, which takes a ```Seq[String,JsValue]```.
 
-then
+Then:
 
 ```scala
 import play.api.libs.json._
@@ -113,7 +116,8 @@ object MyController extends Controller{
 
 }
 ```
-or one can build an unnamed JsObject structure and return it:
+
+Alternatively, one can build an unnamed `JsObject` structure and return it:
 
 ```scala
 import play.api.libs.json._
@@ -129,7 +133,7 @@ object MyController extends Controller{
 }
 ```
 
-finally, it is also possible to unmarshal standard and typed datastructures directly:
+Finally, it’s also possible to unmarshall standard and typed data structures directly:
 
 ```scala
 import play.api.libs.json._
@@ -153,14 +157,15 @@ object MyController extends Controller{
 }
 ```
 
-The benefit of the typeclass based solution is that it's significantly increasing typesafety albeit with the price of maintaing some extra Mapping or type conversion into JsValue which is necessary to unmarshal data from domain objects to JSON.
+The benefit of the type class-based solution is that it significantly increases type safety, albeit at the cost of maintaing the extra mapping or type conversion to `JsValue` that is necessary to unmarshall data from domain objects to JSON.
 
 
 # Other options
 
-while the typeclass based solution described above is the one that's recommended, there is nothing stopping users from using any other JSON libraries.
+While the type class-based solution described above is the one that’s recommended, there is nothing stopping you from using other JSON libraries.
 
-For example, here is a small snippet which demonstrates how to marshal a plain scala object into JSON and send it over the wire using the bundled, reflection based [Jerkson](https://github.com/codahale/jerkson/) library:
+For example, here is a small snippet that demonstrates how to marshall a plain Scala object into JSON and send it over the wire using the bundled, reflection-based [Jerkson](https://github.com/codahale/jerkson/) library:
+
 ```scala
 object MyController extends Controller{
 
@@ -174,4 +179,4 @@ object MyController extends Controller{
 }
 ```
 
-> **Next:** [[Handling and serving Json requests | ScalaJsonRequests]]
+> **Next:** [[Handling and serving JSON requests | ScalaJsonRequests]]

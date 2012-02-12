@@ -2,7 +2,7 @@
 
 ## A type safe template engine based on Scala
 
-Play 2.0 comes with a new and really powerful Scala-based template engine. This new template engine’s design was inspired by ASP.NET Razor, specifically it is:
+Play 2.0 comes with a new and really powerful Scala-based template engine. This new template engine’s design was inspired by ASP.NET Razor. Specifically it is:
 
 - **compact, expressive, and fluid**: it minimizes the number of characters and keystrokes required in a file, and enables a fast, fluid coding workflow. Unlike most template syntaxes, you do not need to interrupt your coding to explicitly denote server blocks within your HTML. The parser is smart enough to infer this from your code. This enables a really compact and expressive syntax which is clean, fast and fun to type.
 - **easy to learn**: it enables you to quickly be productive with a minimum of concepts. You use all your existing Scala language and HTML skills.
@@ -179,7 +179,7 @@ Note that you can also declare reusable pure Scala blocks:
 
 > **Note:** Declaring Scala block this way in a template can be sometime useful but keep in mind that a template is not the best place to write complex logic. It is often better to externalize these kind of code in a pure scala source file (that you can store under the `views/` package as well if your want).
 
-By convention a reusable block defined with a name starting with **implicit** will be marked as `implicit`:
+By convention, a reusable block defined with a name starting with **implicit** will be marked as `implicit`:
 
 ```
 @implicitFieldConstructor = @{ MyFieldConstructor() }
@@ -232,7 +232,7 @@ You can put a comment on the first line to document your template into the Scala
 
 ## Escaping
 
-By default the dynamic content parts are escaped following the template type (e.g. HTML or XML) rules. If you want to output a raw content fragment, wrap it in the template content type. 
+By default, the dynamic content parts are escaped according the template type (e.g. HTML or XML) rules. If you want to output a raw content fragment, wrap it in the template content type. 
 
 For example to output raw HTML:
 

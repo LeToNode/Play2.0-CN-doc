@@ -1,6 +1,6 @@
 # Scala templates common use cases
 
-Templates, being simple functions, can be composed in any way you want. Below are a few examples of some common scenarios:
+Templates, being simple functions, can be composed in any way you want. Below are examples of some common scenarios.
 
 ## Layout
 
@@ -74,7 +74,7 @@ Alternatively, we can declare the sidebar block separately:
 ```
 
 
-## Tags (they are just functions right?)
+## Tags (they are just functions, right?)
 
 Let’s write a simple `views/tags/notice.scala.html` tag that displays an HTML notice:
 

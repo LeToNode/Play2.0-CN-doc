@@ -2,9 +2,9 @@
 
 ## Standard responses and Content-Length header
 
-Since HTTP 1.1 to be able to keep a single connection open to serve several HTTP requests and responses, the server must send the appropriate `Content-Length` HTTP header along the response. 
+Since HTTP 1.1, to keep a single connection open to serve several HTTP requests and responses, the server must send the appropriate `Content-Length` HTTP header along with the response. 
 
-By default when you are sending back a simple result as:
+By default, you are not specifying a `Content-Length` header when you send back a simple result, such as:
 
 ```
 def index = Action {
@@ -12,11 +12,11 @@ def index = Action {
 }
 ```
 
-You are not specifying any Content-Length header. Of course because the content you are sending is well known, Play is able to compute the content size for you and to generate the appropriate header.
+Of course, because the content you are sending is well-known, Play is able to compute the content size for you and to generate the appropriate header.
 
-> **Note** that for text based contents it is not as simple as it looks like since the Content-Length header must be computed according the charset used to translate characters to bytes.
+> **Note** that for text-based content it is not as simple as it looks, since the `Content-Length` header must be computed according the character encoding used to translate characters to bytes.
 
-Actually we have seen previously that the response body is specified using an `Enumerator`:
+Actually, we previously saw that the response body is specified using an `Enumerator`:
 
 ```
 def index = Action {
@@ -27,20 +27,20 @@ def index = Action {
 }
 ```
 
-So to be able to compute the `Content-Length` header properly, Play must consume the whole enumerator and load its content into memory. 
+This means that to compute the `Content-Length` header properly, Play must consume the whole enumerator and load its content into memory. 
 
-## Sending large data
+## Sending large amounts of data
 
-If it's not a problem to load the whole content into memory for simple Enumerators what about large data set? Let's say we want to send back a large file to the Web client.
+If it’s not a problem to load the whole content into memory for simple Enumerators, what about large data sets? Let’s say we want to return a large file to the web client.
 
-Let's first see how to create an `Enumerator[Array[Byte]]` enumerating the file content:
+Let’s first see how to create an `Enumerator[Array[Byte]]` enumerating the file content:
 
 ```
 val file = new java.io.File("/tmp/fileToServe.pdf")
 val fileContent: Enumerator[Array[Byte]] = Enumerator.enumerateFile(file)
 ```
 
-Now it looks simple right? Let's just use this enumerator to specify the response body:
+Now it looks simple right? Let’s just use this enumerator to specify the response body:
 
 ```
 def index = Action {
@@ -55,9 +55,9 @@ def index = Action {
 }
 ```
 
-Actually we have a problem here. As we don't specify the `Content-Length` header, Play will have to compute it itself, and there is no other way that trying to consume the whole enumerator content and load it into memory to compute the response size.
+Actually we have a problem here. As we don’t specify the `Content-Length` header, Play will have to compute it itself, and the only way to do this is to consume the whole enumerator content and load it into memory, and then compute the response size.
 
-That's a problem for large files that we don't want to load completely into memory. So to avoid that, we just have to specify the `Content-Length` header ourself. 
+That’s a problem for large files that we don’t want to load completely into memory. So to avoid that, we just have to specify the `Content-Length` header ourself.
 
 ```
 def index = Action {
@@ -72,11 +72,11 @@ def index = Action {
 }
 ```
 
-This way Play will just consume the body enumerator in a lazy way, copying each chunk of data to the HTTP response as soon as they are available.
+This way Play will consume the body enumerator in a lazy way, copying each chunk of data to the HTTP response as soon as it is available.
 
 ## Serving files
 
-Of course we provide easy to use helpers to this common task of serving a local file:
+Of course, Play provides easy-to-use helpers for common task of serving a local file:
 
 ```
 def index = Action {
@@ -84,7 +84,7 @@ def index = Action {
 }
 ```
 
-Additionally this helper will also compute the `Content-Type` header from the file name. And it will also add the `Content-Disposition` header to specify how the Web browser should handle this response. The default is to ask the Web browser to download this file by using `Content-Disposition: attachment; filename=fileToServe.pdf`.
+This helper will also compute the `Content-Type` header from the file name, and add the `Content-Disposition` header to specify how the web browser should handle this response. The default is to ask the web browser to download this file by adding the header `Content-Disposition: attachment; filename=fileToServe.pdf` to the HTTP response.
 
 You also provide your own file name:
 
@@ -108,30 +108,30 @@ def index = Action {
 }
 ```
 
-Now you don't have to specify a file name since the Web browser will not try to download it, but will just display the file content in the Web browser window (it is useful for content types supported natively by a Web browser like Html, images, etc.).
+Now you don't have to specify a file name since the web browser will not try to download it, but will just display the file content in the web browser window. This is useful for content types supported natively by the web browser, such as text, HTML or images.
 
 ## Chunked responses
 
-For now it works well with streaming file content since we are able to compute the content lenght before streaming it. But what about content dynamically computed with no content size available?
+For now, it works well with streaming file content since we are able to compute the content length before streaming it. But what about dynamically computed content, with no content size available?
 
 For this kind of response we have to use **Chunked transfer encoding**. 
 
-> **Chunked transfer encoding** is a data transfer mechanism in version 1.1 of the Hypertext Transfer Protocol (HTTP) in which a web server serves content in a series of chunks. It uses the Transfer-Encoding HTTP response header in place of the Content-Length header, which the protocol would otherwise require. Because the Content-Length header is not used, the server does not need to know the length of the content before it starts transmitting a response to the client (usually a web browser). Web servers can begin transmitting responses with dynamically-generated content before knowing the total size of that content.
+> **Chunked transfer encoding** is a data transfer mechanism in version 1.1 of the Hypertext Transfer Protocol (HTTP) in which a web server serves content in a series of chunks. It uses the `Transfer-Encoding` HTTP response header instead of the `Content-Length` header, which the protocol would otherwise require. Because the `Content-Length` header is not used, the server does not need to know the length of the content before it starts transmitting a response to the client (usually a web browser). Web servers can begin transmitting responses with dynamically-generated content before knowing the total size of that content.
 > 
-> The size of each chunk is sent right before the chunk itself so that a client can tell when it has finished receiving data for that chunk. The data transfer is terminated by a final chunk of length zero.
+> The size of each chunk is sent right before the chunk itself, so that a client can tell when it has finished receiving data for that chunk. Data transfer is terminated by a final chunk of length zero.
 >
 > [[http://en.wikipedia.org/wiki/Chunked_transfer_encoding]]
 
-The advantage is that we can serve the data **live** meaning that we send chunks of data as soon as they are available. The drawback is that since the Web browser doesn't know the content size, it is not able to display a proper download progress bar.
+The advantage is that we can serve the data **live**, meaning that we send chunks of data as soon as they are available. The drawback is that since the web browser doesn’t know the content size, it is not able to display a proper download progress bar.
 
-Let's say that we have a service somewhere a dynamic `InputStream` computing some data. First we have to create an `Enumerator` for this stream:
+Let’s say that we have a service somewhere that provides a dynamic `InputStream` computing some data. First we have to create an `Enumerator` for this stream:
 
 ```
 val data = getDataStream
 val dataContent: Enumerator[Array[Byte]] = Enumerator.enumerateStream(data)
 ```
 
-Now we can stream these data using a `ChunkedResult`:
+We can now stream these data using a `ChunkedResult`:
 
 ```
 def index = Action {
@@ -146,7 +146,7 @@ def index = Action {
 }
 ```
 
-Of course, as always there are helper availables to do that:
+As always, there are helpers available to do this:
 
 ```
 def index = Action {
@@ -158,7 +158,7 @@ def index = Action {
 }
 ```
 
-Of course we can use any `Enumerator` to specify the chunked data:
+Of course, we can use any `Enumerator` to specify the chunked data:
 
 ```
 def index = Action {
@@ -187,6 +187,6 @@ bar
 
 ```
 
-We get 3 chunks and one final empty chunk that close the response.
+We get three chunks followed by one final empty chunk that closes the response.
 
 > **Next:** [[Comet sockets | ScalaComet]]

@@ -1,10 +1,10 @@
-# Handling and serving Xml requests
+# Handling and serving XML requests
 
-## Handling an Xml request
+## Handling an XML request
 
-An Xml request is an HTTP request using a valid Xml payload as request body. It must specify the `text/xml` mime type in its `Content-Type` header.
+An XML request is an HTTP request using a valid XML payload as the request body. It must specify the `text/xml` MIME type in its `Content-Type` header.
 
-By default an `Action` uses a **any content** body parser. Then you can ask to retrieve the body as Xml (actually as a `NodeSeq`):
+By default an `Action` uses a **any content** body parser, which lets you retrieve the body as XML (actually as a `NodeSeq`):
 
 ```
 def sayHello = Action { request =>
@@ -20,7 +20,7 @@ def sayHello = Action { request =>
 }
 ```
 
-Of course it's way better (and simpler) to specify our own `BodyParser` to ask Play to parser the content body directly as Xml:
+It’s way better (and simpler) to specify our own `BodyParser` to ask Play to parse the content body directly as XML:
 
 ```
 def sayHello = Action(parse.xml) { request =>
@@ -32,9 +32,9 @@ def sayHello = Action(parse.xml) { request =>
 }
 ```
 
-> **Note:** When using a xml body parser, the `request.body` value is directly a valid `NodeSeq`. 
+> **Note:** When using an XML body parser, the `request.body` value is directly a valid `NodeSeq`. 
 
-You can test it with **cUrl** from a command line:
+You can test it with **cURL** from a command line:
 
 ```
 curl 
@@ -54,9 +54,9 @@ Content-Length: 15
 Hello Guillaume
 ```
 
-## Serving an Xml response
+## Serving an XML response
 
-In our previous example we handle an Xml request, but we reply with a `text/plain` response. Let'as change that to send back a valid Xml HTTP response:
+In our previous example we handle an XML request, but we reply with a `text/plain` response. Let’s change that to send back a valid XML HTTP response:
 
 ```
 def sayHello = Action(parse.xml) { request =>
