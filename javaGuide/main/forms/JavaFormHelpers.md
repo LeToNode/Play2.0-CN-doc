@@ -56,7 +56,7 @@ There is also a more generic `input` helper that let you draw the desired Html r
 
 ## Field constructors
 
-An field rendering is not only composed of the `<input>` tag, but it also needs a `<label>` and a bunch of other tags used by your CSS framework to decorate the field.
+A field rendering is not only composed of the `<input>` tag, but it also needs a `<label>` and a bunch of other tags used by your CSS framework to decorate the field.
     
 All input helper take an implicit `FieldConstructor` that handle this part. The default one (used if there is no other field constructors available in the scope), generates Html like:
 
