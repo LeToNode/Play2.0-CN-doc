@@ -47,7 +47,7 @@ If you have an existing Play 2.0 application that you are upgrading from Play 2.
 ```
 resolvers ++= Seq(
   ...
-  Resolver.url("Local Repository", url("file:///<projdir>/Play20/repository")),
+  Resolver.file("Local Repository", file("<projdir>/Play20/repository/local"))(Resolver.ivyStylePatterns),
   ...
 )
 
