@@ -105,9 +105,3 @@ Usually using Etag is enough to have proper caching. However if you want to spec
 # ~~~~~
 "assets.cache./public/stylesheets/bootstrap.min.css"="max-age=3600"
 ```
-
-## To go further
-
-- [[Using CoffeeScript|AssetsCoffeeScript]]
-- [[Using LESS CSS|AssetsLess]]
-- [[Using Google Closure Compiler|AssetsGoogleClosureCompiler]]

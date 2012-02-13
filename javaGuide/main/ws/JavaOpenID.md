@@ -27,10 +27,15 @@ The OpenID of a user gives you his identity. The protocol also support getting [
 You may request from the OpenID server *optional* attributes and/or *required* attributes. Asking for required attributes means the user can not login to your service if he doesn't provides them.
 
 Extended attributes are requested in the redirect URL:
+
 ```
 Map<String, String> attributes = new HashMap<String, String>();
 attributes.put("email", "http://schema.openid.net/contact/email");
-OpenID.redirectURL(openid, routes.Application.openIDCallback.absoluteURL(), attributes);
+OpenID.redirectURL(
+  openid, 
+  routes.Application.openIDCallback.absoluteURL(), 
+  attributes
+);
 ```
 
 Attributes will then be available in the `UserInfo` provided by the OpenID server.

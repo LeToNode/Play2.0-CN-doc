@@ -48,9 +48,3 @@ The Play console and all development features like live reloading are implemente
 ```
 addSbtPlugin("play" % "sbt-plugin" % "2.0")
 ```
-
-## To go further:
-
-- [[Read about sbt settings|SBTSettings]]
-- [[Manage application dependencies|SBTDependencies]]
-- [[Working with sub-projects|SBTSubProjects]]

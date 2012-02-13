@@ -10,8 +10,6 @@ In the meantime, technology and the Web have continued to evolve. The Web has be
 
 That's why we created Play 2.0, a new Web framework for a new era.
 
-## Philosophy
-
 ## Built for asynchronism
 
 Today's web applications are integrating more concurrent realtime data, so web frameworks need to support a full asynchronous HTTP programming model. Play was initially designed to handle classic Web applications with many short lived requests. But now, the event model is the way to go for persistent connections - though comet, long-polling and WebSockets.

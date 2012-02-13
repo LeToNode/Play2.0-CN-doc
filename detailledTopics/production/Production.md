@@ -55,10 +55,3 @@ If you don’t have Play installed on the server, you can use sbt to do the same
 ```bash
 $ sbt clean compile stage
 ```
-
-# To go further
-
-- [[Creating a standalone version of your application | ProductionDist]]
-- [[Additional configuration | ProductionConfiguration]]
-- [[Deploying to Heroku | ProductionHeroku]]
-- [[Set-up a front-end HTTP server | HTTPServer]]
