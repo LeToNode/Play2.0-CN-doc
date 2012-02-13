@@ -45,11 +45,13 @@ At one point you need to delegate to the wrapped action using `delegate.call(...
 You also mix with several actions:
 
 ```
-@With(Secured.class, Cached.class)
+@With(Authenticated.class, Cached.class)
 public static Result index() {
   return ok("It works!");
 }
 ```
+> **Note:**  ```play.mvc.Security.Authenticated``` and ```play.cache.Cached``` annotations and the corresponding predefined Actions are shipped with Play. You might want to consult with the relevant Javadoc pages for more information
+
 
 ## Defining custom action annotations
 
@@ -93,7 +95,7 @@ public static class VerboseAction extends Action<Verbose> {
 You can also put any action composition annotation directly on the `Controller` class. In this case it will be applied to all actions methods defined by this controller.
 
 ```
-@Secured
+@Authenticated
 public Admin extends Controller {
     
   ...
