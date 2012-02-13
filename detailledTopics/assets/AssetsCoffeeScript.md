@@ -23,7 +23,7 @@ app
        └ main.coffee   
 ```
 
-Two JavaScript files will be compiled: `public/javascripts/main.js` and `public/javascripts/main.min.js`. The first one is a readable file useful in development, and the second one a minified file that you can use in production. You can use either one or the other in your template:
+Two JavaScript files will be compiled: `public/javascripts/main.js` and `public/javascripts/main.min.js`. The first one is a readable file useful in development, and the second one a minified file that you can use in production. You can use either one in your template:
 
 ```html
 <script src="@routes.Assets.at("javascripts/main.js")">
@@ -35,10 +35,10 @@ Two JavaScript files will be compiled: `public/javascripts/main.js` and `public/
 
 ## Options
 
-CoffeeScript compilation can be configured in your project's Build.scala. The only option currently supported is the *bare* mode.
+CoffeeScript compilation can be configured in your project’s `Build.scala` file. The only option currently supported is *bare* mode.
 
 ```
 coffeeScriptOptions := Seq("bare")
 ```
 
-By default, the Javascript code is generated inside a top-level function safety wrapper, preventing from polluting the global scope. The `bare` option removes this function wrapper.
+By default, the JavaScript code is generated inside a top-level function safety wrapper, preventing it from polluting the global scope. The `bare` option removes this function wrapper.

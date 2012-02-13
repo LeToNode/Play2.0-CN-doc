@@ -16,7 +16,7 @@ LESS sources are compiled automatically during a `compile` command, or when you 
 
 You can split your LESS source into several libraries, and use the LESS `import` feature. 
 
-To prevent library files from being compiled individually (or imported) we need them to be skipped by the compiler. To do this, partial source files must be prefixed with the underscore (`_`) character, for example: `_myLibrary.less`. To configure this behavior, see the Configuration section at the end of this page.
+To prevent library files from being compiled individually (or imported) we need them to be skipped by the compiler. To do this, partial source files must be prefixed with the underscore (`_`) character, for example: `_myLibrary.less`. To configure this behavior, see the _Configuration_ section at the end of this page.
 
 ## Layout
 
@@ -57,9 +57,10 @@ The resulting CSS file will be compiled as `public/stylesheets/main.css`, and yo
 
 The default behavior of compiling every file that is not prepended by an underscore may not fit every project; for example if you include a library that has not been designed that way.
 
--This can be configured in `project/Build.scala` by overriding the `lessEntryPoints` key. This key holds a `PathFinder`.
+This can be configured in `project/Build.scala` by overriding the `lessEntryPoints` key. This key holds a `PathFinder`.
 
 For example, to compile `app/assets/stylesheets/main.less` and nothing else:
+
 ```
  val main = PlayProject(appName, appVersion, mainLang = SCALA).settings(
    lessEntryPoints <<= baseDirectory(_ / "app" / "assets" / "stylesheets" ** "main.less")
