@@ -2,7 +2,7 @@
 
 ## Enumerators
 
-If an iteratee represents the consumer, or sink, of input, an `Enumerator` is the source that pushes input into a given iteratee. As the name tells, it enumerates some input into the iteratee and eventually returns a new state of that iteratee. This can be easily seen looking at the `Enumerator`'s signature:
+If an iteratee represents the consumer, or sink, of input, an `Enumerator` is the source that pushes input into a given iteratee. As the name suggests, it enumerates some input into the iteratee and eventually returns the new state of that iteratee. This can be easily seen looking at the `Enumerator`’s signature:
 
 ```scala
 trait Enumerator[E] {
@@ -14,9 +14,10 @@ trait Enumerator[E] {
 
 }
 ```
-An `Enumerator[E]` takes an `Iteratee[E, A]` which is any iteratee that consumes `Input[E]` and returns a `Promise[Iteratee[E,A]]` which eventually gives a new state of the iteratee.
 
-We can go ahead and manually implement `Enumerator`s by consequently calling the iteratee's fold method, or use one of the provided `Enumerator` creation methods. For instance we can create an `Enumerator[String]` that pushs a list of strings into an iteratee, like the following:
+An `Enumerator[E]` takes an `Iteratee[E,A]` which is any iteratee that consumes `Input[E]` and returns a `Promise[Iteratee[E,A]]` which eventually gives the new state of the iteratee.
+
+We can go ahead and manually implement `Enumerator` instances by consequently calling the iteratee’s fold method, or use one of the provided `Enumerator` creation methods. For instance we can create an `Enumerator[String]` that pushes a list of strings into an iteratee, like the following:
 
 ```scala
 val enumerateUsers: Enumerator[String] = {
@@ -31,7 +32,7 @@ val consume = Iteratee.consume[String]()
 val newIteratee: Promise[Iteratee[String,String]] = enumerateUsers(consume) 
 ```
 
-To terminate the iteratee and extract the computed result we pass `Input.EOF`. An `Iteratee` carries a method `run` that does just this. It pushs an `Input.EOF` and returns a `Promise[A]` ignoring left input if any.
+To terminate the iteratee and extract the computed result we pass `Input.EOF`. An `Iteratee` carries a `run` method that does just this. It pushes an `Input.EOF` and returns a `Promise[A]`, ignoring left input if any.
 
 ```scala
 // We use flatMap since newIteratee is a promise, 
@@ -44,7 +45,7 @@ eventuallyResult.onRedeem(s => println(s))
 // Prints "GuillaumeSadekPeterErwan"
 ```
 
-You might notice here that an `Iteratee` will eventually produce a result (returning a promise when calling fold and passing appropriate calbacks), and a `Promise` eventually produces a result. Then a `Promise[Iteratee[E,A]]` can be viewed as `Iteratee[E,A]`. Indeed this is what `Iteratee.flatten` does, Let's apply it to the previous example:
+You might notice here that an `Iteratee` will eventually produce a result (returning a promise when calling fold and passing appropriate calbacks), and a `Promise` eventually produces a result. Then a `Promise[Iteratee[E,A]]` can be viewed as `Iteratee[E,A]`. Indeed this is what `Iteratee.flatten` does, Let’s apply it to the previous example:
 
 ```scala
 //Apply the enumerator and flatten then run the resulting iteratee
@@ -58,14 +59,15 @@ eventuallyResult.onRedeem(s => println(s))
 // Prints "GuillaumeSadekPeterErwan"
 ```
 
-An `Enumerator` has some symbolic methods that can act as operators, this can be useful in some contexts for saving some parentheses, like the `|>>` method which does exactly like apply:
+An `Enumerator` has some symbolic methods that can act as operators, which can be useful in some contexts for saving some parentheses. For example, the `|>>` method works exactly like apply:
 
 ```scala
 val eventuallyResult: Promise[String] = {
   Iteratee.flatten(enumerateUsers |>> consume).run
 }
 ```
-Since an `Enumerator` pushes some input into an iteratee and eventually return a new state of the iteratee, we can go on pushing more input into the returned iteratee using another `Enumerator`. This can be done either by using the `flatMap` function on `Promise`s or more simply by combining `Enumerator`s using the `andThen` method like the following:
+
+Since an `Enumerator` pushes some input into an iteratee and eventually return a new state of the iteratee, we can go on pushing more input into the returned iteratee using another `Enumerator`. This can be done either by using the `flatMap` function on `Promise`s or more simply by combining `Enumerator` instancess using the `andThen` method, as follows:
 
 ```scala
 val colorsEnumerators = Enumerator("Red","Blue","Green")
@@ -152,7 +154,7 @@ One more interesting method is the `interleave` or `>-` method which as the name
 
 Now that we have several interesting ways of creating `Enumerator`s, we can use these together with composition methods `andThen` / `>>>` and `interleave` / `>-` to compose `Enumerator`s on demand.
 
-Indeed one interesting way of organizing a streamful application is by creating primitive `Enumerator`s and then composing a collection of them. Let's imagine doing an application for monitoring systems:
+Indeed one interesting way of organizing a streamful application is by creating primitive `Enumerator`s and then composing a collection of them. Let’s imagine doing an application for monitoring systems:
 
 ```scala
 object AvailableStreams {
