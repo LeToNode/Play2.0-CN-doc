@@ -18,7 +18,7 @@ You then need to import the application into your Workspace with the **File/Impo
 
 [[images/eclipse.png]] 
 
-You can use the Connect JPDA launcher using **Debug As** to start a debugging session at any time. Stopping the debugging session will not stop the server.
+You can also start your application with `play debug run` and then you can use the Connect JPDA launcher using **Debug As** to start a debugging session at any time. Stopping the debugging session will not stop the server.
 
 If you make any important changes to your application, such as changing the classpath, use `eclipsify` again to regenerate the configuration files.
 
