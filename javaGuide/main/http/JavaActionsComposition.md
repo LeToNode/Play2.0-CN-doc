@@ -50,6 +50,7 @@ public static Result index() {
   return ok("It works!");
 }
 ```
+
 > **Note:**  ```play.mvc.Security.Authenticated``` and ```play.cache.Cached``` annotations and the corresponding predefined Actions are shipped with Play. You might want to consult with the relevant Javadoc pages for more information
 
 
