@@ -1,6 +1,6 @@
 # Working with public assets
 
-This section covers distribution of your application static resources such as javascript, css and images.
+This section covers serving your application’s static resources such as JavaScript, CSS and images.
 
 Serving a public resource in Play 2.0 is the same as serving any other HTTP request. It uses the same routing as regular resources: using the controller/action path to distribute CSS, JavaScript or image files to the client.
 
@@ -17,9 +17,9 @@ public
 
 If you follow this structure it will be simpler to get started, but nothing stops you to modifying it once you understand how it works.
 
-## How public assets are packaged?
+## How are public assets packaged?
 
-During the build process, the contents of the `public` folder is processed and added to the application classpath. When you package your application, these files are packaged into the application JAR file (under the `public/` path).
+During the build process, the contents of the `public` folder are processed and added to the application classpath. When you package your application, these files are packaged into the application JAR file (under the `public/` path).
 
 ## The Assets controller
 
@@ -51,44 +51,45 @@ The router will invoke the `Assets.at` action with the following parameters:
 controllers.Assets.at("public", "javascripts/jquery.js")
 ```
 
-This action will look up the file and serve it if it exists.
+This action will look-up the file and serve it, if it exists.
 
 ## Reverse routing for public assets
 
-Like any controller mapped in the routes file, a reverse controller is created in `controllers.routes.Assets`. You use this to reverse the URL needed to fetch a public resource. For example from a template:
+As for any controller mapped in the routes file, a reverse controller is created in `controllers.routes.Assets`. You use this to reverse the URL needed to fetch a public resource. For example, from a template:
 
 ```html
 <script src="@routes.Assets.at("javascripts/jquery.js")"></script>
 ```
 
-Will produce the following result:
+This will produce the following result:
 
 ```html
 <script src="/assets/javascripts/jquery.js"></script>
 ```
 
-Note that we don’t specify the first `folder` parameter when we reverse the route. This is because our routes file defines a single mapping for the `Assets.at` action, where the `folder` parameter is fixed. So it doesn't need to be specified explicitly.
+Note that we don’t specify the first `folder` parameter when we reverse the route. This is because our routes file defines a single mapping for the `Assets.at` action, where the `folder` parameter is fixed. So it doesn’t need to be specified explicitly.
 
-However if you define two mappings for the `Assets.at` action, like:
+However, if you define two mappings for the `Assets.at` action, like this:
 
 ```
 GET  /javascripts/*file        Assets.at("public/javascripts", file)
 GET  /images/*file             Assets.at("public/images", file)
 ```
 
-… you will need to specify both parameters when using the reverse router:
+Then you will need to specify both parameters when using the reverse router:
 
 ```html
 <script src="@routes.Assets.at("public/javascripts", "jquery.js")"></script>
 <image src="@routes.Assets.at("public/images", "logo.png")">
 ```
+
 ## Etag support
 
-The `Assets` controller automatically manages **ETag** HTTP Headers. The ETag value is generated from the resource name and the file last modification date (if the resource file is embedded into a file, the jar file last modification date is used).
+The `Assets` controller automatically manages **ETag** HTTP Headers. The ETag value is generated from the resource name and the file’s last modification date. (If the resource file is embedded into a file, the JAR file’s last modification date is used.)
 
-When a Web browser makes a request specifying this **Etag**, the server can respond with **304 NotModified**.
+When a web browser makes a request specifying this **Etag**, the server can respond with **304 NotModified**.
 
-## GZip support
+## Gzip support
 
 If a resource with the same name but using a `.gz` suffix is found, the `Assets` controller will serve this one by adding the proper HTTP header:
 
@@ -98,7 +99,7 @@ Content-Encoding: gzip
 
 ## Additional `Cache-Control` directive
 
-Usually using Etag is enough to have proper caching. However if you want to specify a custom `Cache-Control` header for a particular resource, you can specify it in your `application.conf` file. For example:
+Usually, using Etag is enough to have proper caching. However if you want to specify a custom `Cache-Control` header for a particular resource, you can specify it in your `application.conf` file. For example:
 
 ```
 # Assets configuration

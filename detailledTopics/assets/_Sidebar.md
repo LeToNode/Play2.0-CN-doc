@@ -27,7 +27,7 @@
 - [[Configuration | Configuration]]
 - [[Deploying your application | Production]]
 
-### Additional documentations
+### Additional documentation
 
 - [[Scala|http://docs.scala-lang.org/]]
 - [[Akka|http://akka.io/docs/]]

@@ -1,4 +1,4 @@
-# Detailled topics
+# Detailed topics
 
 1. [[The Build system | Build]]
     1. [[About sbt settings | SBTSettings]]
