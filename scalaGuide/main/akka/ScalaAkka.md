@@ -10,7 +10,7 @@ A Play application defines a special actor system to be used by the application.
 
 > **Note:** Nothing prevents you from using another actor system from within a Play application. The provided default is convenient if you only need to start a few actors without bothering to set-up your own actor system.
 
-You can access the default application actor system using the `play.api.libs.Akka` helper:
+You can access the default application actor system using the `play.libs.Akka` helper:
 
 ```
 val myActor = Akka.system.actorOf(Props[MyActor], name = "myactor")
@@ -29,7 +29,7 @@ akka.debug.receive = on
 
 ## Converting Akka `Future` to Play `Promise`
 
-When you interact asynchronously with an Akka actor we will get `Future` object. You can easily convert it to a Play `Promise` using the implicit conversion provided in `play.api.libs.Akka._`:
+When you interact asynchronously with an Akka actor we will get `Future` object. You can easily convert it to a Play `Promise` using the implicit conversion provided in `play.libs.Akka._`:
 
 ```
 def index = Action {
