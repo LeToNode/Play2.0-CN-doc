@@ -39,8 +39,10 @@ In `project/plugins.sbt`, add:
 resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/"
 
 // Use the Play sbt plugin for Play projects
-addSbtPlugin("play" % "sbt-plugin" % "%PLAY_VERSION%")
+addSbtPlugin("play" % "sbt-plugin" % "2.0")
 ```
+
+> **Note:** Replace `2.0` here by the exact version you want to use. If you want to use a snapshot version, you will have to specify this additional resolver: `Resolver.url("Play Snapshots", url("http://repo.typesafe.com/typesafe/ivy-snapshots/"))(Resolver.ivyStylePatterns)`
 
 In `project/Build.scala`:
 
