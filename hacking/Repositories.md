@@ -10,7 +10,7 @@ To enable it in your sbt build, you must add a proper resolver (typically in `pl
 
 ```
 // The Typesafe repository
-resolvers += "Typesafe" at "http://repo.typesafe.com/typesafe/releases/"
+resolvers += "Typesafe Releases" at "http://repo.typesafe.com/typesafe/releases/"
 ```
 
 ## Accessing snapshots
@@ -19,6 +19,6 @@ Snapshots are published daily from our [[Continuous Server|CIServer]] to the Typ
 
 ```
 // The Typesafe snapshots repository
-resolvers += "Snapshots" at "http://repo.typesafe.com/typesafe/snapshots/"
+resolvers += "Typesafe Snapshots" at "http://repo.typesafe.com/typesafe/snapshots/"
 ```
 
