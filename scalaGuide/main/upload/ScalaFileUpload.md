@@ -21,7 +21,7 @@ Start by writing an HTML form:
 Now define the `upload` action using a `multipartFormData` body parser:
 
 ```
-def upload = Action(parse.mutipartFormData) { request =>
+def upload = Action(parse.multipartFormData) { request =>
   request.body.file("picture").map { picture =>
     val filename = picture.filename 
     val contentType = picture.contentType
