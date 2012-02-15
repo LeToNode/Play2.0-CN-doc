@@ -365,7 +365,7 @@ db.default.url="jdbc:h2:mem:play"
 
 For now we will use a simple in memory database using **H2**. No need to restart the server, refreshing the browser is enough to set up the database.
 
-We will use **EBean** in this tutorial to query the database. So you need enable it in the `application.conf` file as well:
+We will use **EBean** in this tutorial to query the database. So you'll have to enable it in the `application.conf` file as well:
 
 ```
 ebean.default="models.*"
@@ -436,7 +436,7 @@ public static Result deleteTask(Long id) {
 
 ## Deploying to Heroku
 
-All features are completed. It's time to deploy our application in production. Let's deploy it to heroku. First you need to create a `Procfile` for Heroku. Create the `Procfile` in the root application directory:
+All features are completed. It's time to deploy our application in production. Let's deploy it to heroku. First you have to create a `Procfile` for Heroku in the root application directory:
 
 ```
 web: target/start -Dhttp.port=${PORT} -DapplyEvolutions.default=true -Ddb.default.url=${DATABASE_URL} -Ddb.default.driver=org.postgresql.Driver
@@ -444,7 +444,7 @@ web: target/start -Dhttp.port=${PORT} -DapplyEvolutions.default=true -Ddb.defaul
 
 > **Note:** Read more about [[Deploying to Heroku|ProductionHeroku]].
 
-Using system properties we override the application configuration when running on Heroku. But since heroku provides an PostgreSQL database we need to add the required driver to our application dependencies. 
+Using system properties we override the application configuration when running on Heroku. But since heroku provides a PostgreSQL database we'll have to add the required driver to our application dependencies. 
 
 Specify it into the `project/Build.scala` file:
 
@@ -474,7 +474,7 @@ http://warm-1289.herokuapp.com/ | git@heroku.com:warm-1289.git
 Git remote heroku added
 ```
 
-And then deploying it using simple `git push heroku master`:
+And then deploy it using a simple `git push heroku master`:
 
 ```
 $ git push heroku master
