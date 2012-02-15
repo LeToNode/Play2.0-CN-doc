@@ -123,11 +123,11 @@ public static Result index() {
 }
 ```
 
-With this change the **index** action will now respond with a simple `text/plain` **Hello world** response. To test this change, just refresh the home page in your browser:
+With this change the **index** action will now respond with a simple `text/plain` **Hello world** response. To see this change, just refresh the home page in your browser:
 
 [[images/hello.png]]
 
-There is now need to compile the code yourself or restart the server to see the modification. It is automatically reloaded when a change is detected. But what happen when you make a mistake in your code?
+There is no need to compile the code yourself or restart the server to see the modification. It is automatically reloaded when a change is detected. But what happens when you make a mistake in your code?
 
 Let's try:
 
@@ -141,7 +141,7 @@ Now reload the home page in your browser:
 
 [[images/error.png]]
 
-As you see errors are beautiful displayed directly in your browser.
+As you see errors are beautifully displayed directly in your browser.
 
 ## Preparing the application
 
@@ -234,7 +234,7 @@ public class Task {
 }
 ```
 
-We have also created a bunch of static methods to manage `Task` operations. For now we wrote dummy implementation for each operation, but later in this tutorial we will write implementations able to store the tasks into a relational database.
+We have also created a bunch of static methods to manage `Task` operations. For now we wrote dummy implementation for each operation, but later in this tutorial we will write implementations that will store the tasks into a relational database.
 
 ## The application template
 
@@ -279,13 +279,13 @@ We changed the template signature to take 2 parameters:
 - A list of tasks to display
 - A task form
 
-We also imported `helper._` that give us the form creation helpers, typically the `form` function that create HTML `<form>` with filled `action` and `method` attributes, and the `inputText` function that create the HTML imput given a form field.
+We also imported `helper._` that give us the form creation helpers, typically the `form` function that creates the HTML `<form>` with filled `action` and `method` attributes, and the `inputText` function that creates the HTML imput given a form field.
     
 > **Note:** Read more about the [[Templating system|JavaTemplates]] and [[Forms helper|JavaFormHelpers]].
 
 ## The task form
 
-A `Form` object encapsulate an HTML form definition, including validation constraints. Let's create a form for our `Task` class. Add this to your `Application` controller:
+A `Form` object encapsulates an HTML form definition, including validation constraints. Let's create a form for our `Task` class. Add this to your `Application` controller:
 
 ```
 static Form<Task> taskForm = form(Task.class);
@@ -350,7 +350,7 @@ public static Result newTask() {
 }
 ```
 
-We use `bindFromRequest` to create a new form filled with the request data. If there is any errors in the form, we redisplay it (here we use **400 Bad Request** instead of **200 OK**). If there are no errors, we create the task and then redirect to the tasks list.
+We use `bindFromRequest` to create a new form filled with the request data. If there are any errors in the form, we redisplay it (here we use **400 Bad Request** instead of **200 OK**). If there are no errors, we create the task and then redirect to the tasks list.
 
 > **Note:** Read more about the [[Form submissions|JavaForms]].
 
@@ -399,7 +399,7 @@ public class Task extends Model {
   ...
 ```
 
-We made the `Task` class extends the `play.db.ebean.Model` super class to have access to Play built-in Ebean helper. We also added proper persistence annotations, and created a `find` helper to initiate queries.
+We made the `Task` class extend the `play.db.ebean.Model` super class to have access to Play built-in Ebean helper. We also added proper persistence annotations, and created a `find` helper to initiate queries.
 
 Let's implement the CRUD operations:
 
