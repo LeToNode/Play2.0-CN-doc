@@ -42,7 +42,12 @@ resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/release
 addSbtPlugin("play" % "sbt-plugin" % "2.0")
 ```
 
-> **Note:** Replace `2.0` here by the exact version you want to use. If you want to use a snapshot version, you will have to specify this additional resolver: `Resolver.url("Play Snapshots", url("http://repo.typesafe.com/typesafe/ivy-snapshots/"))(Resolver.ivyStylePatterns)`
+Be sure to replace `2.0` here by the exact version you want to use. If you want to use a snapshot version, you will have to specify this additional resolver: 
+
+```
+// Play snapshots repository
+Resolver.url("Play Snapshots", url("http://repo.typesafe.com/typesafe/ivy-snapshots/"))(Resolver.ivyStylePatterns)
+```
 
 In `project/Build.scala`:
 
