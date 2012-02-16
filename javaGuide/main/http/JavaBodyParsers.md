@@ -39,7 +39,7 @@ Some parsers can provide a most specific type than `Http.RequestBody` (ie. a sub
 
 ```
 @BodyParser.Of(BodyLengthParser.class)
-pulic static Result index() {
+public static Result index() {
   BodyLength body = request().body().as(BodyLength.class);
   ok("Request body length: " + body.getLength());
 }
@@ -59,7 +59,7 @@ If you don't specify your own body parser, Play will use the default one guessin
 Example:
 
 ```
-pulic static Result save() {
+public static Result save() {
   RequestBody body = request().body();
   String textBody = body.asText();
   
@@ -87,7 +87,7 @@ You can also specify a maximum content length via the `@BodyParser.Of` annotatio
 ```
 // Accept only 10KB of data.
 @BodyParser.Of(value = BodyParser.Text.class, maxLength = 10 * 1024)
-pulic static Result index() {
+public static Result index() {
   if(request().body().isMaxSizeExcedeed()) {
     return badRequest("Too much data!");
   } else {
