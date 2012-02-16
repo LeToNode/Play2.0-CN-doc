@@ -65,7 +65,7 @@ val data = parse(jsonMap)
 
 case class Attributes(name: String, id: Int, links: List[String])
 
-val attributes = (data \\\ "attributes") 
+val attributes = (data \ "attributes") 
 
 println(Attributes( (attributes \ "name") match {case JsString(name)=>name;case _ => ""},
                     (attributes \ "id") match {case JsNumber(id)=>id;case _ => 0},
