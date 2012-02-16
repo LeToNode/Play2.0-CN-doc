@@ -75,7 +75,7 @@ println(Attributes( (attributes \ "name") match {case JsString(name)=>name;case 
    
 ```
 
-> **Note:** `\\\` means look-up in the current object and all descendants, `\` means only look-up the corresponding property.
+> **Note:** `\\` means look-up in the current object and all descendants, `\` means only look-up the corresponding property.
 
  
 
