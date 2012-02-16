@@ -190,7 +190,7 @@ You can then reverse the URL to the `hello` action method, by using the `control
 ```scala
 // Redirect to /hello/Bob
 def helloBob = Action {
-    Redirect(controllers.routes.Application.hello("Bob"))    
+    Redirect(routes.Application.hello("Bob"))    
 }
 ```
 
