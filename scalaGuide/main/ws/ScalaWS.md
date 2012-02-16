@@ -27,7 +27,7 @@ The call is asynchronous and you need to manipulate it as a `Promise[ws.Response
 ```
 def feedTitle(feedUrl: String) = Action {
   WS.url(feedUrl).get().map { response =>
-    Ok("Feed title: + (response.json / "title").as[String])
+    Ok("Feed title: " + (response.json / "title").as[String])
   }  
 }
 ```
