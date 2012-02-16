@@ -36,7 +36,7 @@ Action { request =>
 }
 ```
 
-It often useful to mark the `request` parameter as `implicit` so it can be implicitely used by other API that need it:
+It is often useful to mark the `request` parameter as `implicit` so it can be implicitely used by other API that need it:
 
 ```
 Action { implicit request =>
