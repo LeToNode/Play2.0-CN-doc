@@ -15,7 +15,7 @@ The first thing is to be able to create the `<form>` tag. It is a pretty simple 
 You can also pass an extra set of parameters that will be added to the generated Html:
 
 ```
-@helper.form(action = routes.Application.submit, 'id -> "myForm") {
+@helper.form(action = routes.Application.submit, id -> "myForm") {
     
 }
 ```
