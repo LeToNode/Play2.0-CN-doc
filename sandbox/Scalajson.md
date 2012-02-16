@@ -59,10 +59,8 @@ import Json._
 val jsonMap = com.codahale.jerkson.Json.generate(Map(
   "newspaper" -> Map(
     "url" -> "http://nytimes.com",
-    "attributes" -> Map("name" -> "nytimes", "country" -> "US", "id" -> 25),
-    "links" -> List("http://link1", "http://link2")
-  )
-))
+    "attributes" -> Map("name" -> "nytimes", "country" -> "US", "id" -> 25, "links" -> List("http://link1", "http://link2"))
+)))
 val data = parse(jsonMap)
 
 case class Attributes(name: String, id: Int, links: List[String])
