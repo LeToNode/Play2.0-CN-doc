@@ -68,8 +68,8 @@ case class Attributes(name: String, id: Int, links: List[String])
 val attributes = (data \ "attributes") 
 
 println(Attributes( (attributes \ "name") match {case JsString(name)=>name;case _ => ""},
-                    (attributes \ "id") match {case JsNumber(id)=>id;case _ => 0},
-                    (attributes \ "links") match {case JsArray(links)=>links;case _ => Nil}))
+                    (attributes \ "id") match {case JsNumber(id)=>id.toInt;case _ => 0},
+                    (attributes \ "links") match {case JsArray(links)=>links.map(_.toString);case _ => Nil}))
    
 ```
 
