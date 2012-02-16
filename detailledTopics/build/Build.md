@@ -1,6 +1,6 @@
 # The Build System
 
-The Play 2.0 build system is based on [[sbt|http://www.scala-sbt.org/]], a minimally intrusive build tool for Scala and Java projects.
+The Play 2.0 build system is based on [[sbt|http://www.scala-sbt.org/]], a minimally non-intrusive build tool for Scala and Java projects.
 
 ## The `/project` directory
 
@@ -43,7 +43,7 @@ It is written this way to make it easy to define standard options like applicati
 
 ## Play plugin for sbt
 
-The Play console and all development features like live reloading are implemented via am sbt plugin. It is registred in the `plugins.sbt` file:
+The Play console and all development features like live reloading are implemented via a sbt plugin. It is registred in the `plugins.sbt` file:
 
 ```
 addSbtPlugin("play" % "sbt-plugin" % "2.0")
