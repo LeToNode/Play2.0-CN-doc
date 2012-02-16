@@ -28,7 +28,7 @@ Action {
 
 This is the simplest way to create an Action, but here we don't get any reference to the incoming request. It is often really useful to access the HTTP request calling this Action. 
 
-So there is another Action builder that takes as argument an function `Request => Result`:
+So there is another Action builder that takes as an argument a function `Request => Result`:
 
 ```
 Action { request =>
