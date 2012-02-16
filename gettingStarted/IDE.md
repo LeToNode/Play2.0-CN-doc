@@ -14,7 +14,7 @@ Play provides a command to simplify Eclipse configuration. To transform a Play a
 [My first application] $ eclipsify
 ```
 
-You then need to import the application into your Workspace with the **File/Import/General/Existing project…** menu.
+You then need to import the application into your Workspace with the **File/Import/General/Existing project…** menu (compile your project first).
 
 [[images/eclipse.png]] 
 
