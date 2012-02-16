@@ -44,7 +44,7 @@ Action { implicit request =>
 }
 ```
 
-The last way of creating a Action value is to specify an additional `BodyParser` argument:
+The last way of creating an Action value is to specify an additional `BodyParser` argument:
 
 ```
 Action(parse.json) { implicit request =>
@@ -52,7 +52,7 @@ Action(parse.json) { implicit request =>
 }
 ```
 
-Body parsers will be covered later in this manual but for now you just need to know that the other way of creating Action values use a default **Any content body parser**.
+Body parsers will be covered later in this manual.  For now you just need to know that the other ways of creating Action values use a default **Any content body parser**.
 
 ## Controllers are action generators
 
