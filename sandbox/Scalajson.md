@@ -54,14 +54,15 @@ It’s also possible to pattern match on ```JsValue``` in cases where the underl
 
 ```scala
 import play.api.libs.json._
+import Json._
 
-val data = Map(
+val data = parse(com.codahale.jerkson.Json.generate(Map(
   "newspaper" -> Map(
     "url" -> "http://nytimes.com",
     "attributes" -> Map("name" -> "nytimes", "country" -> "US", "id" -> 25),
     "links" -> List("http://link1", "http://link2")
   )
-)
+)))
 
 case class Attributes(name: String, id: Int, links: List[String])
 
