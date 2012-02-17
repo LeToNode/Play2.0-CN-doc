@@ -52,7 +52,7 @@ Note that this will replace the whole session. If you need to add an element to 
 
 ```
 Ok("Hello World!").withSession(
-  session ++ ("saidHello" -> "yes")
+  session + ("saidHello" -> "yes")
 )
 ```
 
