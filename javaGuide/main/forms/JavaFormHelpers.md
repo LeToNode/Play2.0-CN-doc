@@ -92,7 +92,7 @@ To use it, just import it in the current scope:
 @import helper.twitterBootstrap._
 ```
 
-It generates Html likes:
+It generates Html like the following:
 
 ```
 <div class="clearfix error" id="username_field">
