@@ -9,7 +9,7 @@ To enable the database plugin, configure a connection pool in the `conf/applicat
 ```properties
 # Default database configuration
 db.default.driver=org.h2.Driver
-db.default.url=jdbc:h2:mem:play
+db.default.url="jdbc:h2:mem:play"
 ```
 
 To configure several data sources:
@@ -17,11 +17,11 @@ To configure several data sources:
 ```properties
 # Orders database
 db.orders.driver=org.h2.Driver
-db.orders.url=jdbc:h2:mem:orders
+db.orders.url="jdbc:h2:mem:orders"
 
 # Customers database
 db.customers.driver=org.h2.Driver
-db.customers.url=jdbc:h2:mem:customers
+db.customers.url="jdbc:h2:mem:customers"
 ```
 
 If something isn’t properly configured you will be notified directly in your browser:
