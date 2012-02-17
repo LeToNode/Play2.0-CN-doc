@@ -1,6 +1,6 @@
 # Using the form template helpers
 
-Play provide several helper to help to render form fields in Html templates
+Play provide several helpers to help you render form fields in Html templates
 
 ## Create a `<form>` tag
     
