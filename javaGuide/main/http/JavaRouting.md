@@ -103,7 +103,7 @@ Or:
 ```
 # Extract the page parameter from the query string.
 # i.e. http://myserver.com/?page=index
-GET   /page                 controllers.Application.show(page)
+GET   /                     controllers.Application.show(page)
 ```
 
 And the corresponding, `show` method definition in the `controllers.Application` controller:
