@@ -94,6 +94,7 @@ If the action method defines some parameters, all these parameter values will be
 
 ```
 # Extract the page parameter from the path.
+# i.e. http://myserver.com/index
 GET   /:page                controllers.Application.show(page)
 ```
 
@@ -101,6 +102,7 @@ Or:
 
 ```
 # Extract the page parameter from the query string.
+# i.e. http://myserver.com/?page=index
 GET   /page                 controllers.Application.show(page)
 ```
 
