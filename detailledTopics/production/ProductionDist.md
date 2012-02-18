@@ -14,7 +14,7 @@ In the Play console, simply type `dist`:
 
 [[images/dist.png]]
 
-> one can easily use an external application.conf by using a special system property called ```conf.file```, so assuming your production ```application.conf``` stored under your home directory, the following command should create a play distribution using the custom ```application.conf```:_ 
+> one can easily use an external application.conf by using a special system property called ```conf.file```, so assuming your production ```application.conf``` is stored under your home directory, the following command should create a play distribution using the custom ```application.conf```:_ 
 > ```bash
 >  $ play -Dconfig.file=/home/peter/prod/application.conf dist 
 > ```
