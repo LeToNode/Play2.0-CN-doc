@@ -6,7 +6,7 @@ The default implementation of the Cache api use [[EHCache| http://ehcache.org/]]
 
 The cache api is provided by the `play.cache.Cache` object. It requires to have at least a cache plugin registered.
 
-> **Note:** The API is voluntary minimal to allow several implementation tu be plugged. If you need a more specific API, use the one provided by your Cache plugin.
+> **Note:** The API is voluntary minimal to allow several implementation to be plugged. If you need a more specific API, use the one provided by your Cache plugin.
 
 Using this simple API you can either store data in cache:
 
