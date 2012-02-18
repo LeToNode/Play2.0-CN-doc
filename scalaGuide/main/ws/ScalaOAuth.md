@@ -71,3 +71,4 @@ object Twitter extends Controller {
   }
 }
 ```
+> **Next:** [[Integrating with Akka| ScalaAkka]]
