@@ -48,7 +48,7 @@ Before providing some concrete examples of iteratees, let's clarify two importan
 - `Input[E]` represents a chunk of input that can be either an `El[E]` containing some actual input, an `Empty` chunk or an `EOF` representing the end of the stream.
 For example, `Input[String]` can be `El("Hello!")`, Empty, or EOF
 
-- `Promise[A]` represents, as its name tells, a promise of value of type `A`. This means that it will eventually be redeemed with a value of type `A` and you can schedule a callback, among other things you can do, if you are interested in that value. A promise is a very nice primitive for synchronization and composing async calls, and is explained further at the [PromiseScala] section.
+- `Promise[A]` represents, as its name tells, a promise of value of type `A`. This means that it will eventually be redeemed with a value of type `A` and you can schedule a callback, among other things you can do, if you are interested in that value. A promise is a very nice primitive for synchronization and composing async calls, and is explained further at the [[PromiseScala | ScalaAsync]] section.
 
 ### Some primitive iteratees:
 
