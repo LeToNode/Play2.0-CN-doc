@@ -32,4 +32,4 @@ def feedTitle(feedUrl: String) = Action {
 }
 ```
 
-> **Next:** [[Integrating with Akka | ScalaAkka]]
+> **Next:** [[OpenID Support in Play | ScalaOpenID]]
