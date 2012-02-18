@@ -27,10 +27,15 @@ case class User(id: Long, name: String, friends: List[User])
     def reads(json: JsValue): User = User(
       (json \ "id").as[Long],
       (json \ "name").as[String],
-      (json \ "friends").asOpt[List[User]].getOrElse(List()))
-    //unmarshaling to JSValue is covered in the next paragraph
-    def writes(u: User): JsValue = JsUndefined("TODO")  
+      (json \ "friends").asOpt[List[User]].getOrElse(List())
+    )
 
+    //unmarshaling to JSValue is covered in the next paragraph
+    def writes(u: User): JsValue = JsObject(Seq(
+        "id" -> JsNumber(u.id),
+        "name" -> JsString(u.name),
+        "friends" -> JsArray(u.friends.map(toJson(_)))
+    ))  
   }
 ```
 
