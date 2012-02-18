@@ -42,3 +42,5 @@ coffeeScriptOptions := Seq("bare")
 ```
 
 By default, the JavaScript code is generated inside a top-level function safety wrapper, preventing it from polluting the global scope. The `bare` option removes this function wrapper.
+
+> **Next:** [[Using LESS CSS | AssetsLess]]
