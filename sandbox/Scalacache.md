@@ -13,3 +13,5 @@ To implement a different caching solution, use the following steps.
 1. In ```application.conf```, set ```ehcacheplugin=disabled```.
 2. Implement the ```play.api.CacheAPI``` interface.
 3. Implement ```play.api.Plugin```.
+
+> **Next:** [[Calling WebServices | ScalaWS]]
