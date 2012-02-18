@@ -66,3 +66,5 @@ For example, to compile `app/assets/stylesheets/main.less` and nothing else:
    lessEntryPoints <<= baseDirectory(_ / "app" / "assets" / "stylesheets" ** "main.less")
  )
 ```
+
+> **Next:** [[Using Google Closure Compiler | AssetsGoogleClosureCompiler]]
