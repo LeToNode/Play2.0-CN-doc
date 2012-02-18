@@ -1,6 +1,6 @@
 # Starting your application in production mode
 
-There is several way to deploy a Play application in production mode. Let's start by using the simplest way, using a local Play installation.
+There are several ways to deploy a Play application in production mode. Let's start by using the simplest way, using a local Play installation.
 
 ## Using the start command
 
