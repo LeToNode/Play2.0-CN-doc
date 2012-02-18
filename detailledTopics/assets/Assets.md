@@ -106,3 +106,5 @@ Usually, using Etag is enough to have proper caching. However if you want to spe
 # ~~~~~
 "assets.cache./public/stylesheets/bootstrap.min.css"="max-age=3600"
 ```
+
+> **Next:** [[Using CoffeeScript | AssetsCoffeeScript]]
