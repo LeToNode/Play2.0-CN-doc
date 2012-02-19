@@ -2,7 +2,7 @@
 
 ## Changing the default Content-Type
 
-The result Content-Type is automatically inferred from the Java value you specify as body.
+The result content type is automatically inferred from the Java value you specify as body.
 
 For example:
 
@@ -24,7 +24,7 @@ This is pretty useful, but sometimes you want to change it. Just use the `as(new
 Result htmlResult = ok("<h1>Hello World!</h1>").as("text/html");
 ```
 
-You can also for the content type on the HTTP response such as:
+You can also set the content type on the HTTP response:
 
 ```
 public static Result index() {
@@ -33,9 +33,9 @@ public static Result index() {
 }
 ```
 
-## Setting HTTP headers
+## Setting HTTP response headers
 
-You can also add (or update) any HTTP header to the HTTP response:
+You can add (or update) any HTTP response header:
 
 ```
 public static Result index() {
@@ -46,13 +46,13 @@ public static Result index() {
 }
 ```
 
-Note that setting an HTTP header will automatically discard the previous value if it was existing.
+Note that setting an HTTP header will automatically discard any previous value.
 
 ## Setting and discarding cookies
 
-Cookies are just a special form of HTTP headers but we provide a set of helpers to make it easier.
+Cookies are just a special form of HTTP headers, but Play provides a set of helpers to make it easier.
 
-You can easily add a Cookie to the HTTP response using:
+You can easily add a Cookie to the HTTP response:
 
 ```
 response().setCookie("theme", "blue");
@@ -64,13 +64,13 @@ Also, to discard a Cookie previously stored on the Web browser:
 response().discardCookies("theme");
 ```
 
-## Changing the charset for text based HTTP result.
+## Specifying the character encoding for text results
 
-For text based HTTP response it is very important to handle the charset correctly. Play handles that for you and uses `utf-8` by default.
+For a text-based HTTP response it is very important to handle the character encoding correctly. Play handles that for you and uses `utf-8` by default.
 
-The charset is used to both convert the text response to the corresponding bytes to send over the network socket, and to alterate the Content-Type header with the proper `;charset=xxx` extension.
+The encoding is used to both convert the text response to the corresponding bytes to send over the network socket, and to add the proper `;charset=xxx` extension to the `Content-Type` header.
 
-The charset can be specified when you are generating the `Result` value:
+The encoding can be specified when you are generating the `Result` value:
 
 ```
 public static Result index() {

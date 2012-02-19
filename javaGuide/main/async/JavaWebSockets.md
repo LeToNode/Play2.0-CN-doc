@@ -2,9 +2,9 @@
 
 ## Using WebSockets instead of Comet sockets
 
-A Comet socket is a kind of hack allowing to send live events to the web browser. Also it supports only one way communication from the server to the client. Top push events to the server the Web browser can make Ajax requests.
+A Comet socket is a kind of hack for sending live events to the web browser. Also, Comet only supports one-way communication from the server to the client. To push events to the server, the web browser can make Ajax requests.
 
-Modern Web browser support natively two way live communication via WebSockets.
+Modern web browsers natively support two-way live communication via WebSockets.
 
 >WebSocket is a web technology providing for bi-directional, full-duplex communications channels, over a single Transmission Control Protocol (TCP) socket. The WebSocket API is being standardized by the W3C, and the WebSocket protocol has been standardized by the IETF as RFC 6455.
 >
@@ -14,9 +14,9 @@ Modern Web browser support natively two way live communication via WebSockets.
 
 ## Handling WebSockets
 
-Until now we were using a simple action methid to handle standard HTTP requests and sending back standard HTTP result. But WebSockets are a totally different beast and can't be handled via standard actions.
+Until now we were using a simple action method to handle standard HTTP requests and send back standard HTTP results. WebSockets are a totally different beast, and can’t be handled via standard actions.
 
-So to handle a WebSocket your method must return a `WebSocket` instead of an `Result`:
+To handle a WebSocket your method must return a `WebSocket` instead of a `Result`:
 
 ```
 public static WebSocket<String> index() {
@@ -53,15 +53,15 @@ public static WebSocket<String> index() {
 }
 ```
 
-A WebSocket has access to the request headers (from the HTTP request which initiate the WebSocket connection) allowing you to retrieve standard headers and session data. But it doesn't have access to any request body, nor to the HTTP response.
+A WebSocket has access to the request headers (from the HTTP request that initiates the WebSocket connection) allowing you to retrieve standard headers and session data. But it doesn't have access to any request body, nor to the HTTP response.
 
-When the `WebSocket` is ready you get both `in` and `out` channel. 
+When the `WebSocket` is ready, you get both `in` and `out` channels.
 
-It this example we print each message to console. And we send a single **Hello!** message.
+It this example, we print each message to console and we send a single **Hello!** message.
 
-> **Tip:** You can test websocket on [[http://websocket.org/echo.html]]. Just set `ws://localhost:9000` as location.
+> **Tip:** You can test your WebSocket controller on [[http://websocket.org/echo.html]]. Just set the location to `ws://localhost:9000`.
 
-Let's write another example that discard totally the input data and that close the socket just after sending the **Hello!** message:
+Let’s write another example that totally discards the input data and closes the socket just after sending the **Hello!** message:
 
 ```
 public static WebSocket<String> index() {

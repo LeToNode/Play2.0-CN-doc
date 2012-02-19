@@ -2,11 +2,11 @@
 
 ## What is a body parser?
 
-An HTTP request (at least for those using the POST and PUT operations) contains a body. This body can be formatted with any format specified in the Content-Type header. A **body parser** transforms this request body into a Java value. 
+An HTTP PUT or POST request contains a body. This body can use any format, specified in the `Content-Type` request header. In Play, a **body parser** transforms this request body into a Java value. 
 
-> **Note:** You can't write `BodyParser` implementation directly using Java. Because a Play `BodyParser` must handle the body content incrementaly using an `Iteratee[Array[Byte], A]` it must be implemented in Scala.
+> **Note:** You can't write a `BodyParser` implementation directly using Java. Because a Play `BodyParser` must handle the body content incrementally using an `Iteratee[Array[Byte], A]`, it must be implemented in Scala.
 >
-> However Play provides default `BodyParser`s that should fit most use cases (parsing Json, Xml, Text, uploading files). And you can reuse these default parsers to create your own directly in Java; for example you can provide an RDF parsers based on the Text one.
+> However Play provides default `BodyParser` implementations that should fit most use cases (parsing JSON, XML, text, uploading files). You can reuse these default parsers to create your own directly in Java; for example you could provide an RDF parser based on the text parser.
 
 ## The `BodyParser` Java API
 
@@ -31,11 +31,11 @@ public static Result index() {
 
 ## The `Http.RequestBody` API
 
-As we just said all body parsers in the Java API will give you a `play.mvc.Http.RequestBody` value. From this body object you can retrieve the request body content in the most appropriate Java type.
+As we said above, all body parsers in the Java API will give you a `play.mvc.Http.RequestBody` value. From this body object you can retrieve the request body content in the most appropriate Java type.
 
-> **Note:** The `RequestBody` methods like `asText()` or `asJson()` will return null if the parser used to compute this request body doesn't support this content type. For example in an action method annotated with `@BodyParser.Of(BodyParser.Json.class)`, calling `asXml()` on the generated body will retun null.
+> **Note:** The `RequestBody` methods, such as `asText()` or `asJson()`, will return `null` if the parser used to compute this request body doesn't support this content type. For example in an action method annotated with `@BodyParser.Of(BodyParser.Json.class)`, calling `asXml()` on the generated body will return `null`.
 
-Some parsers can provide a most specific type than `Http.RequestBody` (ie. a subclass of `Http.RequestBody`). You can automatically cast the request body into another type using the `as(...)` helper method:
+Some parsers can provide a most specific type than `Http.RequestBody` (i.e. a subclass of `Http.RequestBody`). You can automatically cast the request body into another type using the `as(...)` helper method:
 
 ```
 @BodyParser.Of(BodyLengthParser.class)
@@ -47,7 +47,7 @@ public static Result index() {
 
 ## Default body parser: AnyContent
 
-If you don't specify your own body parser, Play will use the default one guessing the most appropriate content type from the `Content-Type` header:
+If you don't specify your own body parser, Play will use the default, guessing the most appropriate content type from the `Content-Type` header:
 
 - **text/plain**: `String`, accessible via `asText()`
 - **application/json**: `JsonNode`, accessible via `asJson()`
@@ -56,7 +56,7 @@ If you don't specify your own body parser, Play will use the default one guessin
 - **multipart/form-data**: `Http.MultipartFormData`, accessible via `asMultipartFormData()`
 - Any other content type: `Http.RawBuffer`, accessible via `asRaw()`
 
-Example:
+For example:
 
 ```
 public static Result save() {
@@ -73,9 +73,9 @@ public static Result save() {
 
 ## Max content length
 
-Text based body parsers (such as **text**, **json**, **xml** or **formUrlEncoded**) use a max content length because they have to load all the content into memory. 
+Text based body parsers (such as **text**, **json**, **xml** or **formUrlEncoded**) have a maximum content length because they have to load all the content into memory. 
 
-There is a default content length (the default is 100KB). 
+There is a default content length (the default is 100 KB). 
 
 > **Tip:** The default content size can be defined in `application.conf`:
 > 
@@ -96,4 +96,4 @@ public static Result index() {
 }
 ```
 
-> **Next:** [[Actions composition | JavaActionsComposition]]
+> **Next:** [[Action composition | JavaActionsComposition]]

@@ -2,9 +2,9 @@
 
 ## The built-in HTTP router
 
-The router is the component in charge of translating each incoming HTTP request to an action call (a static, public method of a controller).
+The router is the component that translates each incoming HTTP request to an action call (a static, public method in a controller class).
 
-An HTTP request is seen as an event by the MVC framework. The event contains two major pieces of information:
+An HTTP request is seen as an event by the MVC framework. This event contains two major pieces of information:
 
 - the request path (such as `/clients/1542`, `/photos/list`), including the query string.
 - the HTTP method (GET, POST, ...).
@@ -27,7 +27,7 @@ GET   /clients/:id          controllers.Clients.show(id: Long)
 
 Each route starts with the HTTP method, followed by the URI pattern. The last element of a route is the call definition.
 
-You can also add comments to the route file, with the `#` character.
+You can also add comments to the route file, with the `#` character:
 
 ```
 # Display a client.
@@ -52,7 +52,7 @@ GET   /clients              controllers.Clients.list()
 
 ### Dynamic parts 
 
-But if you want to define a route that, say, retrieves a client by id, you need to add a dynamic part:
+If you want to define a route that, say, retrieves a client by id, you need to add a dynamic part:
 
 ```
 GET   /clients/:id          controllers.Clients.show(id: Long)  
@@ -60,7 +60,7 @@ GET   /clients/:id          controllers.Clients.show(id: Long)
 
 > Note that a URI pattern may have more than one dynamic part.
 
-The default matching strategy for a dynamic part is defined by the regular expression `[^/]+`, meaning that any dynamic part defined as `:id` will match exactly one URI part.
+The default matching strategy for a dynamic part is defined by the regular expression `[^/]+`, meaning that any dynamic part defined as `:id` will match exactly one URI path segment.
 
 ### Dynamic parts spanning several /
 
@@ -70,11 +70,11 @@ If you want a dynamic part to capture more than one URI path segment, separated 
 GET   /files/*name          controllers.Application.download(name)  
 ```
 
-Here for a request like `GET /files/images/logo.png`, the `name` dynamic part will capture the `images/logo.png` value.
+Here, for a request like `GET /files/images/logo.png`, the `name` dynamic part will capture the `images/logo.png` value.
 
 ### Dynamic parts with custom regular expressions
 
-You can also define your own regular expression for the dynamic parts, using the `$id<regex>` syntax:
+You can also define your own regular expression for a dynamic part, using the `$id<regex>` syntax:
     
 ```
 GET   /clients/$id<[0-9]+>  controllers.Clients.show(id: Long)  
@@ -90,7 +90,7 @@ If the method does not define any parameters, just give the fully-qualified meth
 GET   /                     controllers.Application.homePage()
 ```
 
-If the action method defines some parameters, all these parameter values will be searched for in the request URI, either extracted from the URI path itself, or from the query string.
+If the action method defines parameters, the corresponding parameter values will be searched for in the request URI, either extracted from the URI path itself, or from the query string.
 
 ```
 # Extract the page parameter from the path.
@@ -106,7 +106,7 @@ Or:
 GET   /                     controllers.Application.show(page)
 ```
 
-And the corresponding, `show` method definition in the `controllers.Application` controller:
+Here is the corresponding `show` method definition in the `controllers.Application` controller:
 
 ```java
 public static Result show(String page) {
@@ -118,13 +118,13 @@ public static Result show(String page) {
 
 ### Parameter types
 
-For parameters of type `String`, typing the parameter is optional. If you want Play to transform the incoming parameter into a specific Scala type, you can explicitly type the parameter:
+For parameters of type `String`, the parameter type is optional. If you want Play to transform the incoming parameter into a specific Scala type, you can add an explicit type:
 
 ```
 GET   /client/:id           controllers.Clients.show(id: Long)
 ```
 
-And do the same on the corresponding `show` method definition in the `controllers.Clients` controller:
+Then use the same type for the corresponding action method parameter in the controller:
 
 ```java
 public static Result show(Long id) {
@@ -133,7 +133,7 @@ public static Result show(Long id) {
 }
 ```
 
-> **Note:** The parameter types are specified using a suffix syntax. Also The generic types are specified using the `[]` symbols instead of the standard `<>` java ones, such as `List[String]`. But this is exactly the same.
+> **Note:** The parameter types are specified using a suffix syntax. Also The generic types are specified using the `[]` symbols instead of `<>`, as in Java. For example, `List[String]` is the same type as the Java `List<String>`.
 
 ### Parameters with fixed values
 

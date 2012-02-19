@@ -2,9 +2,9 @@
 
 ## Using chunked responses to create Comet sockets
 
-An useful usage of **Chunked responses** is to create Comet sockets. A Comet socket is just a chunked `text/html` response containing only `<script>` elements. At each chunk we write a `<script>` tag that is immediately executed by the Web browser. This way we can send events live to the Web browser from the server: for each message, wrap it into a `<script>` tag that call a javascript callback function, and write it to the chunked response.
+An useful usage of **Chunked responses** is to create Comet sockets. A Comet socket is just a chunked `text/html` response containing only `<script>` elements. For each chunk, we write a `<script>` tag containing JavaScript that is immediately executed by the web browser. This way we can send events live to the web browser from the server: for each message, wrap it into a `<script>` tag that calls a JavaScript callback function, and write it to the chunked response.
     
-Let's write to write a first prove of concept: create an enumerator generating `<script>` tags calling the browser `console.log` function:
+Let’s write a first proof-of-concept: create an enumerator generating `<script>` tags calling the browser `console.log` function:
     
 ```
 public static Result index() {
@@ -15,7 +15,7 @@ public static Result index() {
     public void onReady(Chunks.Out<String> out) {
       out.write("<script>console.log('kiki')</script>");
       out.write("<script>console.log('foo')</script>");
-      out.write("<script>console.log('bar')</script>")'
+      out.write("<script>console.log('bar')</script>");
       out.close();
     }
     
@@ -27,15 +27,15 @@ public static Result index() {
 }
 ```
 
-If you run this action from a web browser, you will see the 3 events logged into the browser console.
+If you run this action from a web browser, you will see the three events logged in the browser console.
 
 ## Using the `play.libs.Comet` helper
 
-We provide a Comet helper to handle these comet chunked streams that do almost the same stuff that we just wrote.
+We provide a Comet helper to handle these comet chunked streams that does almost the same as what we just wrote.
 
-> **Note:** Actually it does more, like pushing an initial blank buffer data for browser compatibility, and it supports both String and Json messages.
+> **Note:** Actually it does more, such as pushing an initial blank buffer data for browser compatibility, and supporting both String and JSON messages.
 
-Let's just rewrite the previous example to use it:
+Let’s just rewrite the previous example to use it:
 
 ```
 public static Result index() {

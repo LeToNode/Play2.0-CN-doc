@@ -34,13 +34,13 @@ public static Result index(String name) {
 }
 ```
 
-These parameters will be resolved by the `Router` and will be filled with values coming from the request URL. The parameters can either be extracted from the URL path, or coming from the URL query string.
+These parameters will be resolved by the `Router` and will be filled with values from the request URL. The parameter values can be extracted from either the URL path or the URL query string.
 
 ## Results
 
-For now we are just interested by simple results: An HTTP result with a status code, a set of HTTP headers and a body to be sent to the Web client.
+Let’s start with simple results: an HTTP result with a status code, a set of HTTP headers and a body to be sent to the web client.
 
-These results are defined by `play.mvc.Result`, and the `play.mvc.Results` class provides several helper to produce HTTP classical results, such as the `ok` method we just used in the previous section:
+These results are defined by `play.mvc.Result`, and the `play.mvc.Results` class provides several helpers to produce standard HTTP results, such as the `ok` method we used in the previous section:
 
 ```
 public static Result index() {
@@ -48,7 +48,7 @@ public static Result index() {
 }
 ```
 
-Here are several examples to create various results:
+Here are several examples that create various results:
 
 ```
 Result ok = ok("Hello world!");
@@ -59,11 +59,11 @@ Result oops = internalServerError("Oops");
 Result anyStatus = status(488, "Strange response type");
 ```
 
-All this helpers can be found in the `play.mvc.Results` class.
+All of these helpers can be found in the `play.mvc.Results` class.
 
 ## Redirects are simple results too
 
-Redirecting the browser to a new URL is just another kind of simple result. However these result types doesn't take any response body.
+Redirecting the browser to a new URL is just another kind of simple result. However, these result types don't have a response body.
 
 There are several helpers available to create redirect results:
 

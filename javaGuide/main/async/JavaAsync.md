@@ -1,14 +1,14 @@
 # Handling asynchronous results
 
-## Why asynchonous results?
+## Why asynchronous results?
 
-Until now we were able to compute the result to send to the Web client directly. But it is not always the case: the result can depend of an expensive computation or of a long Web service call.
+Until now, we were able to compute the result to send to the web client directly. This is not always the case: the result may depend of an expensive computation or on a long web service call.
 
-Because of the way Play 2.0 works, the action code must be as fast as possible (ie. non blocking). So what should we return as result if we are not yet able to compute it? The response is a promise of result! 
+Because of the way Play 2.0 works, action code must be as fast as possible (i.e. non blocking). So what should we return as result if we are not yet able to compute it? The response should be a promise of a result!
 
-A `Promise<Result>` will eventually be redeemed with a value of type `Result`. By giving a `Promise<Result>` instead if a classical `Result`, we are able to compute the result quickly without blocking anything. And Play will serve this result as soon as the promise is redeemed. 
+A `Promise<Result>` will eventually be redeemed with a value of type `Result`. By giving a `Promise<Result>` instead if a normal `Result`, we are able to compute the result quickly without blocking anything. Play will then serve this result as soon as the promise is redeemed. 
 
-The Web client will be blocked while waiting for the response but nothing will be blocked on the server, and the resources can be used to serve other clients.
+The web client will be blocked while waiting for the response but nothing will be blocked on the server, and server resources can be used to serve other clients.
 
 ## How to create a `Promise<Result>`
 
@@ -25,9 +25,9 @@ Promise<Result> promiseOfResult = promiseOfPIValue.map(
 );
 ```
 
-> **Note:** Writing functional composition in Java is really verbose for now. But it should be better when Java will support [[lambda notation| http://mail.openjdk.java.net/pipermail/lambda-dev/2011-September/003936.html]].
+> **Note:** Writing functional composition in Java is really verbose for at the moment, but it should be better when Java supports [[lambda notation| http://mail.openjdk.java.net/pipermail/lambda-dev/2011-September/003936.html]].
 
-All Play 2.0 asynchronous API will give you a `Promise`. It is the case when you are calling external Web service using the `play.libs.WS` API, or if you are using Akka to schedule asynchonous tasks or to communicate with Actors using `play.libs.Akka`.
+Play 2.0 asynchronous API methods give you a `Promise`. This is the case when you are calling an external web service using the `play.libs.WS` API, or if you are using Akka to schedule asynchronous tasks or to communicate with Actors using `play.libs.Akka`.
 
 A simple way to execute a block of code asynchronously and to get a `Promise` is to use the `play.libs.Akka` helpers:
 
@@ -41,11 +41,11 @@ Promise<Integer> promiseOfInt = Akka.future(
 );
 ```
 
-> **Note:** Here the intensive computation will just be run on another thread. It is also possible to run it remotly on a cluster of backend servers using Akka remote.
+> **Note:** Here, the intensive computation will just be run on another thread. It is also possible to run it remotely on a cluster of backend servers using Akka remote.
 
 ## AsyncResult
 
-While we were using `Results.Status` until now, to send an asynchronous result we need an `Results.AsyncResult` wrapping the actual result:
+While we were using `Results.Status` until now, to send an asynchronous result we need an `Results.AsyncResult` that wraps the actual result:
 
 ```
 public static Result index() {

@@ -1,10 +1,10 @@
-# Actions composition
+# Action composition
 
-This chapter introduce several ways of defining generic functionalities for actions.
+This chapter introduces several ways to define generic action functionality.
 
 ## Reminder about actions
 
-Previously we said that an action was a Java method returning a `play.mvc.Result` value. Actually, Play manages internally actions as functions. Because Java doesn't support first class functions, an action provided by the Java API is an instance of `play.mvc.Action`:
+Previously, we said that an action is a Java method that returns a `play.mvc.Result` value. Actually, Play manages internally actions as functions. Because Java doesn't support first class functions, an action provided by the Java API is an instance of `play.mvc.Action`:
 
 ```
 public abstract class Action {
@@ -14,7 +14,7 @@ public abstract class Action {
 }
 ```
 
-Play build a root action for you which is just calling the proper action method. It allows for more complicated action composition.
+Play builds a root action for you that just calls the proper action method. This allows for more complicated action composition.
 
 ## Composing actions
 
@@ -36,7 +36,6 @@ public static class VerboseAction extends Action.Simple {
     Logger.info("Calling action for " + ctx);
     return delegate.call(ctx);
   }
-
 }
 ```
 
@@ -51,12 +50,12 @@ public static Result index() {
 }
 ```
 
-> **Note:**  ```play.mvc.Security.Authenticated``` and ```play.cache.Cached``` annotations and the corresponding predefined Actions are shipped with Play. You might want to consult with the relevant Javadoc pages for more information
+> **Note:**  ```play.mvc.Security.Authenticated``` and ```play.cache.Cached``` annotations and the corresponding predefined Actions are shipped with Play. See the relevant API documentation for more information.
 
 
 ## Defining custom action annotations
 
-You can also mark action composition with your own annotation, that you need to annotate itself using `@With`:
+You can also mark action composition with your own annotation, which must itself be annotated using `@With`:
 
 ```
 @With(VerboseAction.class)
@@ -76,7 +75,7 @@ public static Result index() {
 }
 ```
 
-Your `Action` definition retrieve the annotation as configuration:
+Your `Action` definition retrieves the annotation as configuration:
 
 ```
 public static class VerboseAction extends Action<Verbose> {
@@ -87,19 +86,18 @@ public static class VerboseAction extends Action<Verbose> {
     }
     return delegate.call(ctx);
   }
-
 }
 ```
 
 ## Annotating controllers
 
-You can also put any action composition annotation directly on the `Controller` class. In this case it will be applied to all actions methods defined by this controller.
+You can also put any action composition annotation directly on the `Controller` class. In this case it will be applied to all action methods defined by this controller.
 
 ```
 @Authenticated
 public Admin extends Controller {
     
-  ...
+  …
     
 }
 ```
