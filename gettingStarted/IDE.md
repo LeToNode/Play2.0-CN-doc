@@ -20,8 +20,7 @@ You then need to import the application into your Workspace with the **File/Impo
 
 You can also start your application with `play debug run` and then you can use the Connect JPDA launcher using **Debug As** to start a debugging session at any time. Stopping the debugging session will not stop the server.
 
-> Workaround about Play 2.0 RC2 and Scala IDE : run your application using `~ run` to enable direct compilation on file
-change. This way scala templates files are auto discovered when you create new template in 'view' and auto compiled when file change. If you use normal 'run' then you have to hit Refresh on you browser each time. Play team will check this issue with Scala IDE team.  (source : http://bit.ly/wCyR5j)
+> Workaround Scala Template with Play 2.0 RC2 and Scala IDE : run your application using `~ run` to enable direct compilation on file change. This way scala templates files are auto discovered when you create new template in `view` and auto compiled when file change. If you use normal `run` then you have to hit `Refresh` on you browser each time. Play team will check this issue with Scala IDE team.  (source : http://bit.ly/wCyR5j)
 
 If you make any important changes to your application, such as changing the classpath, use `eclipsify` again to regenerate the configuration files.
 
