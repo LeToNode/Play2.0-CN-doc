@@ -36,7 +36,7 @@ Action { request =>
 }
 ```
 
-It is often useful to mark the `request` parameter as `implicit` so it can be implicitely used by other API that need it:
+It is often useful to mark the `request` parameter as `implicit` so it can be implicitely used by other APIs that need it:
 
 ```
 Action { implicit request =>
@@ -52,7 +52,7 @@ Action(parse.json) { implicit request =>
 }
 ```
 
-Body parsers will be covered later in this manual.  For now you just need to know that the other ways of creating Action values use a default **Any content body parser**.
+Body parsers will be covered later in this manual.  For now you just need to know that the other methods of creating Action values use a default **Any content body parser**.
 
 ## Controllers are action generators
 
@@ -118,11 +118,11 @@ val oops = InternalServerError("Oops")
 val anyStatus = Status(488)("Strange response type")
 ```
 
-All this helpers can be found in the `play.api.mvc.Results` trait and companion object.
+All of these helpers can be found in the `play.api.mvc.Results` trait and companion object.
 
 ## Redirects are simple results too
 
-Redirecting the browser to a new URL is just another kind of simple result. However these result types doesn't take any response body.
+Redirecting the browser to a new URL is just another kind of simple result. However these result types don't take a response body.
 
 There are several helpers available to create redirect results:
 
@@ -132,7 +132,7 @@ def index = Action {
 }
 ```
 
-The default is to use a `303 SEE_OTHER` response type, but you can also specify a more specific status code:
+The default is to use a `303 SEE_OTHER` response type, but you can also specify a more specific status code if you need:
 
 ```
 def index = Action {
