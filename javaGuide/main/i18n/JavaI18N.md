@@ -14,7 +14,7 @@ application.langs=en,en-US,fr
 
 You can externalize messages in the `conf/messages.xxx` files. 
 
-The default `conf/messages` file match all languages. Additionnally you specify by language messages file like `conf/messages.fr` or `conf/messages.en_US`.
+The default `conf/messages` file match all languages. Additionnally you specify by language messages file like `conf/messages.fr` or `conf/messages.en-US`.
 
 Then you can retrieve messages using the `play.api.i18n.Messages` object:
 
