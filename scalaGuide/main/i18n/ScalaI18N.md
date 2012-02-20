@@ -2,19 +2,19 @@
 
 ## Specifying languages supported by your application
 
-A valid language code is specified by a valid **ISO 639-2 language code**, optionally followed by a valid **ISO 3166-1 alpha-2 country code**, such as `fr` or `en_US`.
+A valid language code is specified by a valid **ISO 639-2 language code**, optionally followed by a valid **ISO 3166-1 alpha-2 country code**, such as `fr` or `en-US`.
 
 To start you need to specify the languages supported by your application in the `conf/application.conf` file:
 
 ```
-application.langs=en,en_US,fr
+application.langs=en,en-US,fr
 ```
 
 ## Externalizing messages
 
 You can externalize messages in the `conf/messages.xxx` files.
 
-The default `conf/messages` file matches all languages. Additionally you can specify language-specific message files such as `conf/messages.fr` or `conf/messages.en_US`.
+The default `conf/messages` file matches all languages. Additionally you can specify language-specific message files such as `conf/messages.fr` or `conf/messages.en-US`.
 
 You can then retrieve messages using the `play.api.i18n.Messages` object:
 
