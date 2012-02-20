@@ -2,33 +2,33 @@
 
 ## A type safe template engine based on Scala
 
-Play 2.0 comes with a new and really powerful Scala-based template engine. This new template engine’s design was inspired by ASP.NET Razor, specifically it is:
+Play 2.0 comes with a new and really powerful Scala-based template engine, whose design was inspired by ASP.NET Razor. Specifically it is:
 
 - **compact, expressive, and fluid**: it minimizes the number of characters and keystrokes required in a file, and enables a fast, fluid coding workflow. Unlike most template syntaxes, you do not need to interrupt your coding to explicitly denote server blocks within your HTML. The parser is smart enough to infer this from your code. This enables a really compact and expressive syntax which is clean, fast and fun to type.
-- **easy to learn**: it enables you to quickly be productive with a minimum of concepts. You use all your existing Scala language and HTML skills.
-- **not a new language**: we consciously chose not to create a new language. Instead we wanted to enable developers to use their existing Scala language skills, and deliver a template markup syntax that enables an awesome HTML construction workflow with your language of choice.
+- **easy to learn**: it allows you to quickly become productive, with a minimum of concepts. You use all your existing HTML skills.
+- **not a new language**: we consciously chose not to create a new language. Instead we wanted to enable Scala developers to use their existing Scala language skills, and deliver a template markup syntax that enables an awesome HTML construction workflow.
 - **editable in any text editor**: it doesn’t require a specific tool and enables you to be productive in any plain old text editor.
 
-> **Note:** Even if the template engine uses Scala as expression language it is not a problem for a Java developer. You can almost use it as the language was Java. 
+> **Note:** Even though the template engine uses Scala as expression language, this is not a problem for Java developers. You can almost use it as if the language were Java. 
 > 
-> Remember that a template is not a place to write complex logic. You don't have to write complicated Scala code here. Most of the time you will access data from your model object such as:
+> Remember that a template is not a place to write complex logic. You don't have to write complicated Scala code here. Most of the time you will just access data from your model objects, as follows:
 >
 > ```
 > myUser.getProfile().getUsername()
 > ```
-> The parameter types are specified using a suffix syntax. Also The generic types are specified using the `[]` symbols instead of the standard `<>` java ones, such as `List[String]`. But this is exactly the same.
+> Parameter types are specified using a suffix syntax. Generic types are specified using the `[]` symbols instead of the usual `<>` Java syntax. For example, you write `List[String]`, which is the same as `List<String>` in Java.
 
-Templates are compiled, so you will see any errors right in your browser:
+Templates are compiled, so you will see any errors in your browser:
 
 [[images/templatesError.png]]
 
 ## Overview
 
-A Play Scala template is a simple text file, that contains small blocks of Scala code. They can generate any text-based format, such as HTML, XML or CSV.
+A Play Scala template is a simple text file that contains small blocks of Scala code. Templates can generate any text-based format, such as HTML, XML or CSV.
 
-The template system has been designed to feel comfortable to those used to working with HTML, allowing web designers to easily work with the templates.
+The template system has been designed to feel comfortable to those used to working with HTML, allowing front-end developers to easily work with the templates.
 
-Templates are compiled as standard Scala functions, following a simple naming convention: If you create a `views/Application/index.scala.html` template file, it will generate a `views.html.Application.index` class that have a `render()` method.
+Templates are compiled as standard Scala functions, following a simple naming convention. If you create a `views/Application/index.scala.html` template file, it will generate a `views.html.Application.index` class that has a `render()` method.
 
 For example, here is a simple template:
 
@@ -44,7 +44,7 @@ For example, here is a simple template:
 </ul>
 ```
 
-You can then call this from any Java code as you would call a function:
+You can then call this from any Java code as you would normally call a method on a class:
 
 ```java
 Content html = views.html.Application.index.render(customer, orders);
@@ -52,7 +52,7 @@ Content html = views.html.Application.index.render(customer, orders);
 
 ## Syntax: the magic ‘@’ character
 
-The Scala template uses `@` as the single special character. Every time this character is encountered, it indicates the begining of a dynamic statement. It does not require you to explicitly close the code-block - this will be inferred from your code:
+The Scala template uses `@` as the single special character. Every time this character is encountered, it indicates the beginning of a dynamic statement. You are not required to explicitly close the code block - the end of the dynamic statement will be inferred from your code:
 
 ```
 Hello @customer.getName()!
