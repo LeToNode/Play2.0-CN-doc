@@ -4,7 +4,7 @@ A complex project is not necessarily composed of a single Play application. You 
 
 ## Adding a simple library sub-project
 
-You can make your application depend on a simple library project. Just add another sbt project definition in your `project/Build.scala` build file:
+You can make your application depend on a simple library project. Just add another sbt project definition in your `project/Build.scala` build file.  Sub-projects do not have their own build file, but share the parent project's build file.
 
 ```
 import sbt._
@@ -62,7 +62,7 @@ When you run your Play application in dev mode, the dependent projects are autom
 
 As a Play application is just a standard sbt project with a default configuration, it can depend on another Play application. 
 
-The configuration is very close to the previous one. Simply configure your sub-project as a `PlayProject`:
+The configuration is very close to the previous one. Simply configure your sub-project as a `PlayProject`.  As before, sub-projects do not have their own build file, but share the parent project's build file.
 
 ```
 import sbt._
@@ -95,4 +95,3 @@ object ApplicationBuild extends Build {
 ```
 
 Here we define a complete project split in two main parts: the website and the admin area. Moreover these two parts depend themselves on a common module.
-
