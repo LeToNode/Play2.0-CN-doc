@@ -6,7 +6,7 @@ Until now, we were able to compute the result to send to the web client directly
 
 Because of the way Play 2.0 works, action code must be as fast as possible (i.e. non blocking). So what should we return as result if we are not yet able to compute it? The response should be a promise of a result!
 
-A `Promise<Result>` will eventually be redeemed with a value of type `Result`. By giving a `Promise<Result>` instead if a normal `Result`, we are able to compute the result quickly without blocking anything. Play will then serve this result as soon as the promise is redeemed. 
+A `Promise<Result>` will eventually be redeemed with a value of type `Result`. By giving a `Promise<Result>` instead of a normal `Result`, we are able to compute the result quickly without blocking anything. Play will then serve this result as soon as the promise is redeemed. 
 
 The web client will be blocked while waiting for the response but nothing will be blocked on the server, and server resources can be used to serve other clients.
 
