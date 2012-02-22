@@ -7,7 +7,7 @@
 Heroku requires a special file in the application root called `Procfile`. Create a simple text file with the following content:
 
 ```txt
-web: target/start -Dhttp.port=${PORT}
+web: target/start -Dhttp.port=${PORT} ${JAVA_OPTS}
 ```
 
 ## Store your application in git
