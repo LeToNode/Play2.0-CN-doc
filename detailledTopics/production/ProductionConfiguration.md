@@ -56,7 +56,7 @@ $ start -Dconfig.url=http://conf.mycompany.com/conf/prod.conf
 > include "application.conf"
 > 
 > key.to.override=blah
-```
+> ```
 
 ## Overriding specific configuration keys
 
