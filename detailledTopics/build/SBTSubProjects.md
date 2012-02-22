@@ -2,9 +2,11 @@
 
 A complex project is not necessarily composed of a single Play application. You may want to split a large project into several smaller applications, or even extract some logic into a standard Java or Scala library that has nothing to do with a Play application.
 
+It will be helpful to read the [SBT documentation on multi-project builds](https://github.com/harrah/xsbt/wiki/Getting-Started-Multi-Project).  Sub-projects do not have their own build file, but share the parent project's build file.
+
 ## Adding a simple library sub-project
 
-You can make your application depend on a simple library project. Just add another sbt project definition in your `project/Build.scala` build file.  Sub-projects do not have their own build file, but share the parent project's build file.
+You can make your application depend on a simple library project. Just add another sbt project definition in your `project/Build.scala` build file:
 
 ```
 import sbt._
@@ -62,7 +64,7 @@ When you run your Play application in dev mode, the dependent projects are autom
 
 As a Play application is just a standard sbt project with a default configuration, it can depend on another Play application. 
 
-The configuration is very close to the previous one. Simply configure your sub-project as a `PlayProject`.  As before, sub-projects do not have their own build file, but share the parent project's build file.
+The configuration is very close to the previous one. Simply configure your sub-project as a `PlayProject`:
 
 ```
 import sbt._
