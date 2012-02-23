@@ -26,7 +26,7 @@ Action {
 }
 ```
 
-This is the simplest way to create an Action, but here we don't get any reference to the incoming request. It is often really useful to access the HTTP request calling this Action. 
+This is the simplest way to create an Action, but we don't get a reference to the incoming request. It is often useful to access the HTTP request calling this Action. 
 
 So there is another Action builder that takes as an argument a function `Request => Result`:
 
@@ -84,7 +84,7 @@ def hello(name: String) = Action {
 
 ## Simple results
 
-For now we are just interested by simple results: An HTTP result with a status code, a set of HTTP headers and a body to be sent to the web client.
+For now we are just interested in simple results: An HTTP result with a status code, a set of HTTP headers and a body to be sent to the web client.
 
 These results are defined by `play.api.mvc.SimpleResult`:
 
@@ -97,7 +97,7 @@ def index = Action {
 }
 ```
 
-Of course there are several helpers available to create common results such as the `Ok` result we just used in the previous section:
+Of course there are several helpers available to create common results such as the `Ok` result in the sample above:
 
 ```
 def index = Action {
@@ -105,7 +105,7 @@ def index = Action {
 }
 ```
 
-That is exactly the same as before.
+This produces exactly the same result as before.
 
 Here are several examples to create various results:
 
@@ -122,7 +122,7 @@ All of these helpers can be found in the `play.api.mvc.Results` trait and compan
 
 ## Redirects are simple results too
 
-Redirecting the browser to a new URL is just another kind of simple result. However these result types don't take a response body.
+Redirecting the browser to a new URL is just another kind of simple result. However, these result types don't take a response body.
 
 There are several helpers available to create redirect results:
 
@@ -132,7 +132,7 @@ def index = Action {
 }
 ```
 
-The default is to use a `303 SEE_OTHER` response type, but you can also specify a more specific status code if you need:
+The default is to use a `303 SEE_OTHER` response type, but you can also set a more specific status code if you need one:
 
 ```
 def index = Action {
