@@ -45,7 +45,7 @@ You may also access the cache from a View.
 
 ```
 @cache.Cache.getOrElse("cached-content", 3600) {
-  <div>I’m cached for an hour</div>
+     <div>I'm cached for an hour</div>
 }
 ```
 
