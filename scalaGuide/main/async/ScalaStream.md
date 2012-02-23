@@ -37,7 +37,7 @@ Let’s first see how to create an `Enumerator[Array[Byte]]` enumerating the fil
 
 ```
 val file = new java.io.File("/tmp/fileToServe.pdf")
-val fileContent: Enumerator[Array[Byte]] = Enumerator.enumerateFile(file)
+val fileContent: Enumerator[Array[Byte]] = Enumerator.fromFile(file)
 ```
 
 Now it looks simple right? Let’s just use this enumerator to specify the response body:
@@ -46,7 +46,7 @@ Now it looks simple right? Let’s just use this enumerator to specify the respo
 def index = Action {
 
   val file = new java.io.File("/tmp/fileToServe.pdf")
-  val fileContent: Enumerator[Array[Byte]] = Enumerator.enumerateFile(file)    
+  val fileContent: Enumerator[Array[Byte]] = Enumerator.fromFile(file)    
     
   SimpleResult(
     header= ResponseHeader(200),
@@ -63,7 +63,7 @@ That’s a problem for large files that we don’t want to load completely into 
 def index = Action {
 
   val file = new java.io.File("/tmp/fileToServe.pdf")
-  val fileContent: Enumerator[Array[Byte]] = Enumerator.enumerateFile(file)    
+  val fileContent: Enumerator[Array[Byte]] = Enumerator.fromFile(file)    
     
   SimpleResult(
     header= ResponseHeader(200, Map(CONTENT_LENGTH -> file.length.toString)),
@@ -128,7 +128,7 @@ Let’s say that we have a service somewhere that provides a dynamic `InputStrea
 
 ```
 val data = getDataStream
-val dataContent: Enumerator[Array[Byte]] = Enumerator.enumerateStream(data)
+val dataContent: Enumerator[Array[Byte]] = Enumerator.fromStream(data)
 ```
 
 We can now stream these data using a `ChunkedResult`:
@@ -137,7 +137,7 @@ We can now stream these data using a `ChunkedResult`:
 def index = Action {
 
   val data = getDataStream
-  val dataContent: Enumerator[Array[Byte]] = Enumerator.enumerateStream(data)
+  val dataContent: Enumerator[Array[Byte]] = Enumerator.fromStream(data)
   
   ChunkedResult(
     header= ResponseHeader(200),
@@ -152,7 +152,7 @@ As always, there are helpers available to do this:
 def index = Action {
 
   val data = getDataStream
-  val dataContent: Enumerator[Array[Byte]] = Enumerator.enumerateStream(data)
+  val dataContent: Enumerator[Array[Byte]] = Enumerator.fromStream(data)
   
   Ok.stream(dataContent)
 }
