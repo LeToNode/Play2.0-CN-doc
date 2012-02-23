@@ -23,7 +23,7 @@ val promiseOfResult: Promise[Result] = promiseOfPIValue.map { pi =>
 
 All of Play 2.0’s asynchronous API calls give you a `Promise`. This is the case whether you are calling an external web service using the `play.api.libs.WS` API, or using Akka to schedule asynchonous tasks or to communicate with actors using `play.api.libs.Akka`.
 
-A simple way to execute a block of code asynchronously and to get a `Promise` is to use the `play.api.libs.Akka` helpers:
+A simple way to execute a block of code asynchronously and to get a `Promise` is to use the `play.api.libs.concurrent.Akka` helpers:
 
 ```
 val promiseOfInt: Promise[Int] = Akka.future {
