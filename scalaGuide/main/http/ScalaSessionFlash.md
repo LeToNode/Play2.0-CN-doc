@@ -26,7 +26,7 @@ def index = Action { request =>
 }
 ```
 
-Alternatively you can retrieve the Session implicitely from a request:
+Alternatively you can retrieve the Session implicitly from a request:
 
 ```
 def index = Action { implicit request =>
