@@ -60,7 +60,7 @@ Hello Guillaume
 
 ## Serving a Xml response
 
-In our previous example we handle a Json request, but we reply with a `text/xml` response. Let'as change that to send back a valid Xml HTTP response:
+In our previous example, we handle an XML request, but we reply with a `text/xml` response. Let's change it and send back a valid Xml HTTP response:
 
 ```
 @BodyParser.Of(Xml.class)
