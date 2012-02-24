@@ -78,7 +78,7 @@ public static Result index() {
 Your `Action` definition retrieves the annotation as configuration:
 
 ```
-public static class VerboseAction extends Action<Verbose> {
+public class VerboseAction extends Action<Verbose> {
 
   public Result call(Http.Context ctx) {
     if(configuration.value) {
