@@ -2,64 +2,64 @@
 
 > Play 2.0 is a high-productivity Java and Scala web application framework that integrates the components and APIs you need for modern web application development. 
 >
-> Play is based on a lightweight, stateless, web-friendly architecture and features predictable and minimal resource consumption (CPU, memory, threads) for highly-scalable applications - thanks to its reactive model, based on Iteratee IO.
+> Play is based on a lightweight, stateless, web-friendly architecture and features predictable and minimal resource consumption (CPU, memory, threads) for highly-scalable applications thanks to its reactive model, based on Iteratee IO.
 
 ## About
 
-- [[Play 2.0 a Web framework for a new era | Philosophy]]
-- [[Architecture overview | Architecture]]
+1. [[Play 2.0 a Web framework for a new era | Philosophy]]
+1. [[Architecture overview | Architecture]]
 
 ## Getting started
 
-- [[Installing Play 2.0 | Installing]]
-- [[Creating a new application | NewApplication]]
-- [[Anatomy of a Play 2.0 application | Anatomy]]
-- [[Using the Play 2.0 console | PlayConsole ]]
-- [[Setting-up your preferred IDE | IDE]]
-- [[Sample applications | Samples]]
+1. [[Installing Play 2.0 | Installing]]
+1. [[Creating a new application | NewApplication]]
+1. [[Anatomy of a Play 2.0 application | Anatomy]]
+1. [[Using the Play 2.0 console | PlayConsole ]]
+1. [[Setting-up your preferred IDE | IDE]]
+1. [[Sample applications | Samples]]
 
 ## Working with Play 2.0
 
-- [[Play 2.0 for Scala developers | ScalaHome]]
-- [[Play 2.0 for Java developers | JavaHome]]
+1. [[Play 2.0 for Scala developers | ScalaHome]]
+1. [[Play 2.0 for Java developers | JavaHome]]
 
 ## Detailed topics
 
-- [[The Build system | Build]]
-    - [[About sbt settings | SBTSettings]]
-    - [[Manage application dependencies | SBTDependencies]]
-    - [[Working with sub-projects | SBTSubProjects]]
-- [[Working with public assets | Assets]]
-    - [[Using CoffeeScript | AssetsCoffeeScript]]
-    - [[Using LESS CSS | AssetsLess]]
-    - [[Using Google Closure Compiler | AssetsGoogleClosureCompiler]]
-- [[Managing database evolutions | Evolutions]]
-- [[Configuration file syntax and features | Configuration]]
-    - [[Configuring the JDBC connection pool | SettingsJDBC]]
-    - [[Configuring the internal Akka system | AkkaCore]]
-    - [[Configuring logging | SettingsLogger]]
-- [[Deploying your application | Production]]
-    - [[Creating a standalone version of your application | ProductionDist]]
-    - [[Additional configuration | ProductionConfiguration]]
-    - [[Deploying to Heroku | ProductionHeroku]]
-    - [[Set-up a front-end HTTP server | HTTPServer]]
+1. [[The Build system | Build]]
+    1. [[About sbt settings | SBTSettings]]
+    1. [[Manage application dependencies | SBTDependencies]]
+    1. [[Working with sub-projects | SBTSubProjects]]
+1. [[Working with public assets | Assets]]
+    1. [[Using CoffeeScript | AssetsCoffeeScript]]
+    1. [[Using LESS CSS | AssetsLess]]
+    1. [[Using Google Closure Compiler | AssetsGoogleClosureCompiler]]
+1. [[Managing database evolutions | Evolutions]]
+1. [[Configuration file syntax and features | Configuration]]
+    1. [[Configuring the JDBC connection pool | SettingsJDBC]]
+    1. [[Configuring the internal Akka system | AkkaCore]]
+    1. [[Configuring logging | SettingsLogger]]
+1. [[Deploying your application | Production]]
+    1. [[Creating a standalone version of your application | ProductionDist]]
+    1. [[Additional configuration | ProductionConfiguration]]
+    1. [[Deploying to Heroku | ProductionHeroku]]
+    1. [[Set-up a front-end HTTP server | HTTPServer]]
 
 ## Additional documentations
 
-- [[Scala|http://docs.scala-lang.org/]]
-- [[Akka|http://akka.io/docs/]]
-- [[sbt|http://www.scala-sbt.org/learn.html]]
-- [[Configuration|https://github.com/typesafehub/config]]
-- [[Logback|http://logback.qos.ch/documentation.html]]
+1. [[Scala|http://docs.scala-lang.org/]]
+1. [[Akka|http://akka.io/docs/]]
+1. [[sbt|http://www.scala-sbt.org/learn.html]]
+1. [[Configuration|https://github.com/typesafehub/config]]
+1. [[Logback|http://logback.qos.ch/documentation.html]]
 
 ## Hacking Play 2.0
 
-- [[Building Play 2.0 from source | BuildingFromSource]]
-- [[CI server at Cloudbees | CIServer]]
-- [[Repositories | Repositories]]
-- [[Issue tracker | Issues]]
-- [[Pull requests | PullRequests]]
-- [[Contributor guidelines | Guidelines]]
+1. [[Building Play 2.0 from source | BuildingFromSource]]
+1. [[CI server at Cloudbees | CIServer]]
+1. [[Repositories | Repositories]]
+1. [[Issue tracker | Issues]]
+1. [[Pull requests | PullRequests]]
+1. [[Contributor guidelines | Guidelines]]
 
 ## Contributing to this documentation
 
@@ -69,5 +69,5 @@
 
 ### To be integrated:
 
-- [[Missing parts | Missing]]
-- [[Tips and tricks | Tips]]
+1. [[Missing parts | Missing]]
+1. [[Tips and tricks | Tips]]

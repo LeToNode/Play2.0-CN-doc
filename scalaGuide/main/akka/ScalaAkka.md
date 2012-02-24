@@ -34,7 +34,7 @@ When you interact asynchronously with an Akka actor we will get `Future` object.
 ```
 def index = Action {
   Async {
-    (myActor ? "hello").mapTo[String].asPromise { response =>
+    (myActor ? "hello").mapTo[String].asPromise.map { response =>
       Ok(response)      
     }    
   }
