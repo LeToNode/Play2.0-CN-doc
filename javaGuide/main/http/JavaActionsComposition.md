@@ -30,7 +30,7 @@ public static Result index() {
 Here is the definition of the `VerboseAction`:
 
 ```
-public static class VerboseAction extends Action.Simple {
+public class VerboseAction extends Action.Simple {
 
   public Result call(Http.Context ctx) throws Throwable {
     Logger.info("Calling action for " + ctx);
