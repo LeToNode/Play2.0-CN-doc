@@ -48,7 +48,7 @@ In this case we can just use a body parser to store the request body content in 
 
 ```
 def upload = Action(parse.temporaryFile) { request =>
-  request.body.moveTo("/tmp/picture")
+  request.body.moveTo(new File("/tmp/picture"))
   Ok("File uploaded")
 }
 ```
