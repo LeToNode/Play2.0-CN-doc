@@ -7,7 +7,7 @@ The standard way of uploading files in a Web application is to use a form with a
 Start by writing an Html form:
 
 ```
-@form(action = @routes.Application.upload, 'enctype -> "multipart/form-data") {
+@form(action = routes.Application.upload, 'enctype -> "multipart/form-data") {
     
     <input type="file" name="picture">
     
