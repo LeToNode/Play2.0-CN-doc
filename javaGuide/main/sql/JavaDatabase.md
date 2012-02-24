@@ -56,4 +56,17 @@ db.default.url="jdbc:h2:mem:play"
 db.default.jndiName=DefaultDS
 ```
 
+## Importing a Database Driver
+Other than h2 for in-memory database, useful mostly in development mode, Play 2.0 does not provide any database driver. Consequently, to deploy in production you will need to add your database driver as a dependency.
+
+For example, if you use MySQL5, you need to add a [[dependency | SBTDependencies]] for the connector:
+```
+val appDependencies = Seq(
+     // Add your project dependencies here,
+     ...
+     "mysql" % "mysql-connector-java" % "5.1.18"
+     ...
+)
+```
+
 > **Next:** [[Using Ebean to access your database | JavaEbean]]
