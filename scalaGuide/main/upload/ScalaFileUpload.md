@@ -23,9 +23,10 @@ Now define the `upload` action using a `multipartFormData` body parser:
 ```
 def upload = Action(parse.multipartFormData) { request =>
   request.body.file("picture").map { picture =>
+    import java.io.File
     val filename = picture.filename 
     val contentType = picture.contentType
-    picture.ref.moveTo("/tmp/picture")
+    picture.ref.moveTo(new File("/tmp/picture"))
     Ok("File uploaded")
   }.getOrElse {
     Redirect(routes.Application.index).flashing(
