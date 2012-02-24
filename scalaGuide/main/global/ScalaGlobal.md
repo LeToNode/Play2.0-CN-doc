@@ -83,8 +83,8 @@ import play.api.mvc.Results.__
 
 object Global extends GlobalSettings {
 
-  override def onBadRequest(request: RequestHeader) = {
-    BadRequest("Don't try to hack the URI!")
+  override def onBadRequest(request: RequestHeader, error: String) = {
+    BadRequest("Bad Request: " + error)
   }  
     
 }
