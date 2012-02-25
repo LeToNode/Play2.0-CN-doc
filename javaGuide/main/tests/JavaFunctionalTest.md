@@ -2,7 +2,7 @@
 
 ## Testing a template
 
-A template being a standard Scala function, you can execute it from your test, and check the result:
+As a template is a standard Scala function, you can execute it from a test and check the result:
 
 ```
 @Test
@@ -30,7 +30,7 @@ public void callIndex() {
 
 ## Testing the router
 
-Instead of calling the `Action` yourself, you can let the `Router` do that:
+Instead of calling the `Action` yourself, you can let the `Router` do it:
 
 ```
 @Test
@@ -42,7 +42,7 @@ public void badRoute() {
 
 ## Starting a real HTTP server
 
-Sometimes you want to test the real HTTP stack from with your test. You can then start a test server:
+Sometimes you want to test the real HTTP stack from with your test. You can do this by starting a test server:
 
 ```
 @Test
@@ -57,7 +57,7 @@ public void testInServer() {
 }
 ```
 
-## Testing from within a Web browser.
+## Testing from within a web browser
 
 If you want to test your application from with a Web browser, you can use [[Selenium WebDriver| http://code.google.com/p/selenium/?redir=1]]. Play will start the WebDriver for your, and wrap it in the convenient API provided by [[FluentLenium|https://github.com/FluentLenium/FluentLenium]].
 

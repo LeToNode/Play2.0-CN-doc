@@ -12,9 +12,9 @@ public class Global extends GlobalSettings {
 }
 ```
 
-## Hooking application start and stop
+## Intercepting application start-up and shutdown
 
-You can override the `onStart` and `onStop` operation to be notified of the events in the application lifecycle;
+You can override the `onStart` and `onStop` operation to be notified of the corresponding application lifecycle events:
 
 ```java
 import play.*;
@@ -36,7 +36,7 @@ public class Global extends GlobalSettings {
 
 ## Providing an application error page
 
-When an exception occurs in your application, the `onError` operation will be called. The default is to use the internal framework error page:
+When an exception occurs in your application, the `onError` operation will be called. The default is to use the internal framework error page. You can override this:
 
 ```java
 import play.*;

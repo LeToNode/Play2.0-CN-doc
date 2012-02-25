@@ -1,14 +1,14 @@
 # Integrating with Akka
 
-[[Akka| http://akka.io/]] uses the Actor Model to raise the abstraction level and provide a better platform to build correct concurrent and scalable applications. For fault-tolerance it adopts the “Let it crash” model which has been used with great success in the telecom industry to build applications that self-heal, systems that never stop. Actors also provide the abstraction for transparent distribution and the basis for truly scalable and fault-tolerant applications.
+[[Akka| http://akka.io/]] uses the Actor Model to raise the abstraction level and provide a better platform to build correct concurrent and scalable applications. For fault-tolerance it adopts the ‘Let it crash’ model, which has been used with great success in the telecoms industry to build applications that self-heal - systems that never stop. Actors also provide the abstraction for transparent distribution and the basis for truly scalable and fault-tolerant applications.
 
 ## The application actor system
 
-Akka 2.0 can work with several containers called `ActorSystems`. An actor system manages the resources it is configured to use in order to run the actors which it contains. 
+Akka 2.0 can work with several containers called `ActorSystems`. An actor system manages the resources it is configured to use in order to run the actors it contains. 
 
-A Play application defines a special actor system to be used by the application. This actor system follows the application lifecycle and restarts automatically when the application restarts.
+A Play application defines a special actor system to be used by the application. This actor system follows the application life-cycle and restarts automatically when the application restarts.
 
-> **Note:** Nothing prevents you from using another actor system from within a Play application. The default one provided is just convenient if you only need to start a few actors without bothering with setting up your own actor system.
+> **Note:** Nothing prevents you from using another actor system from within a Play application. The provided default actor system is just a convenient way to start a few actors without having to set-up your own.
 
 You can access the default application actor system using the `play.libs.Akka` helper:
 
@@ -67,9 +67,9 @@ public static Result index() {
 
 ## Scheduling asynchronous tasks
 
-You can schedule sending messages to actors and executing tasks (functions or Runnable). You will get a Cancellable back that you can call cancel on to cancel the execution of the scheduled operation.
+You can schedule sending messages to actors and executing tasks (functions or `Runnable` instances). You will get a `Cancellable` back that you can call `cancel` on to cancel the execution of the scheduled operation.
 
-For example, to send a message to the testActor every 30 minutes:
+For example, to send a message to the `testActor` every 30 minutes:
 
 ```
 Akka.system().scheduler().schedule(
@@ -80,7 +80,7 @@ Akka.system().scheduler().schedule(
 )
 ```
 
-Or to run a block of code 10 seconds from now:
+Alternatively, to run a block of code ten seconds from now:
 
 ```
 Akka.system().scheduler().scheduleOnce(

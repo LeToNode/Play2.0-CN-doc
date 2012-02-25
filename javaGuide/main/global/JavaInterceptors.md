@@ -2,9 +2,9 @@
 
 ## Overriding onRequest
 
-One another important aspect of  the ```GlobalSettings``` class is that it provides a way to intercept requests and execute some business logic before a request is being dispatched to an Action. 
+One important aspect of  the ```GlobalSettings``` class is that it provides a way to intercept requests and execute business logic before a request is dispatched to an action.
 
-Let's see this in action:
+For example:
 
 ```java
 import play.*;
@@ -20,6 +20,6 @@ public Action onRequest(Request request, Method actionMethod) {
 }
 ```
 
-Of course it's also possible to intercept only a specific Action method. This can be achieved via [[Actions composition | JavaActionsComposition]]
+It’s also possible to intercept a specific action method. This can be achieved via [[Action composition| JavaActionsComposition]].
 
 > **Next:** [[Testing your application | JavaTest]]

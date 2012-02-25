@@ -1,6 +1,6 @@
 # Your first Play application
 
-Let's write a simple todo list application with Play 2.0 and deploy it to the cloud.
+Let’s write a simple task list application with Play 2.0 and deploy it to the cloud.
 
 ## Prerequisites
 
@@ -8,23 +8,23 @@ First of all, make sure that you have a [[working Play installation|Installing]]
 
 As we will use the command line a lot, it’s better to use a Unix-like OS. If you run a Windows system, it will also work fine; you’ll just have to type a few commands in the command prompt.
 
-You will of course need a text editor. If you are accustomed to use a full featured Java IDE like Eclipse or IntelliJ you can of course use it. However with Play you can have fun working with a simple text editor like Textmate, Emacs or VI. This is because the framework manages the compilation and the deployment process itself.
+You will of course need a text editor. If you are used-to a fully-featured Java IDE, such as Eclipse or IntelliJ, you can of course use it. However, with Play you can have fun working with a simple text editor like TextMate, Emacs or vi. This is because the framework manages compilation and the deployment process itself.
 
 ## Project creation
 
-Now that Play is correctly installed, it’s time to create the new application. Creating a Play application is pretty easy and fully managed by the Play command line utility. That allows for standard project layouts between all Play applications.
+Now that Play is correctly installed, it’s time to create the new application. Creating a Play application is pretty easy and fully managed by the Play command line utility. This encourages a standard project layout across all Play applications.
 
-Open a new command line and type:
+Open a new command line and enter:
 
 ```
 $ play new todolist
 ```
 
-It will prompt you for a few question. Choose to create a **simple Java application** project template.
+The Play command will ask you a few questions. Choose to create a **simple Java application** project template.
 
 [[images/new.png]]
 
-The play new command creates a new directory `todolist/` and populates it with a series of files and directories, the most important being:
+The `play new` command creates a new directory `todolist/` and populates it with a series of files and directories. The most important are as follows.
 
 `app/` contains the application’s core, split between models, controllers and views directories. This is the directory where .java source files live.
 
@@ -46,7 +46,7 @@ Once you have an application created, you can run the Play console. Go to the ne
 $ play
 ```
 
-It launches the Play console. There are several things you can do from the Play console, but let's start by running the application. From the console prompt, type `run`:
+It launches the Play console. There are several things you can do from the Play console, but let’s start by running the application. From the console prompt, type `run`:
 
 ```
 [todolist] $ run
@@ -115,7 +115,7 @@ The first line defines the function signature. Here it takes a single `String` p
 
 ## Development workflow
 
-Now let's make some modifications to the new application. In the `Application.java` change the content of the response:
+Now let’s make some modifications to the new application. In the `Application.java` change the content of the response:
 
 ```
 public static Result index() {
@@ -129,7 +129,7 @@ With this change the **index** action will now respond with a simple `text/plain
 
 There is no need to compile the code yourself or restart the server to see the modification. It is automatically reloaded when a change is detected. But what happens when you make a mistake in your code?
 
-Let's try:
+Let’s try:
 
 ```
 public static Result index() {
@@ -145,7 +145,7 @@ As you see errors are beautifully displayed directly in your browser.
 
 ## Preparing the application
 
-For our todo list application, we need a few actions and the corresponding urls. Let's start by defining the **routes**. 
+For our todo list application, we need a few actions and the corresponding urls. Let’s start by defining the **routes**. 
 
 Edit the `conf/routes` file:
 
@@ -165,7 +165,7 @@ Now if your reload in your browser, you will see that Play cannot compile your r
 
 [[images/routes.png]]
 
-This is because they reference non-existing actions methods. So let's add them to the `Application.java` file:
+This is because they reference non-existing actions methods. So let’s add them to the `Application.java` file:
 
 ```
 public class Application extends Controller {
@@ -189,7 +189,7 @@ public class Application extends Controller {
 }
 ```
 
-As you see we use `TODO` as result in our actions implementation. Because we don't want to write the actions implementation yet, we can use the built-in `TODO` result that will return a `503 Not Implemented` response. 
+As you see we use `TODO` as result in our actions implementation. Because we don’t want to write the actions implementation yet, we can use the built-in `TODO` result that will return a `503 Not Implemented` response. 
 
 You can try to access the [[http://localhost:9000/tasks]] to see that:
 
@@ -238,7 +238,7 @@ We have also created a bunch of static methods to manage `Task` operations. For 
 
 ## The application template
 
-Our simple application will use a single Web page containing both the tasks list and the task creation form. Let's modify the `index.scala.html` template for that:
+Our simple application will use a single Web page containing both the tasks list and the task creation form. Let’s modify the `index.scala.html` template for that:
 
 ```
 @(tasks: List[Task], taskForm: Form[Task])
@@ -285,7 +285,7 @@ We also imported `helper._` that give us the form creation helpers, typically th
 
 ## The task form
 
-A `Form` object encapsulates an HTML form definition, including validation constraints. Let's create a form for our `Task` class. Add this to your `Application` controller:
+A `Form` object encapsulates an HTML form definition, including validation constraints. Let’s create a form for our `Task` class. Add this to your `Application` controller:
 
 ```
 static Form<Task> taskForm = form(Task.class);
@@ -293,7 +293,7 @@ static Form<Task> taskForm = form(Task.class);
 
 The type of `taskForm` is then `Form<Task>` since it is a form generating a simple `Task`. You also need to import `play.data.*`.
     
-We can add a constraint to the `Task` type using **JSR-303** annotations. Let's make the `label` field required:
+We can add a constraint to the `Task` type using **JSR-303** annotations. Let’s make the `label` field required:
 
 ```
 package models;
@@ -316,7 +316,7 @@ public class Task {
 
 ## Rendering the first page
 
-Now we have all elements needed to display the application page. Let's write the `tasks` action:
+Now we have all elements needed to display the application page. Let’s write the `tasks` action:
 
 ```
 public static Result tasks() {
@@ -334,7 +334,7 @@ You can now try to access [[http://localhost:9000/tasks]] in your browser:
 
 ## Handling the form submission
 
-For now if we submit the task creation form, we still get the TODO page. Let's write the implementation of the `newTask` action:
+For now if we submit the task creation form, we still get the TODO page. Let’s write the implementation of the `newTask` action:
 
 ```
 public static Result newTask() {
@@ -356,7 +356,7 @@ We use `bindFromRequest` to create a new form filled with the request data. If t
 
 ## Persist the tasks in a database
 
-It's now time to persist the tasks in a database to make the application useful. Let's start by enabling a database in our application. In the `conf/application.conf` file, add:
+It’s now time to persist the tasks in a database to make the application useful. Let’s start by enabling a database in our application. In the `conf/application.conf` file, add:
 
 ```
 db.default.driver=org.h2.Driver
@@ -365,13 +365,13 @@ db.default.url="jdbc:h2:mem:play"
 
 For now we will use a simple in memory database using **H2**. No need to restart the server, refreshing the browser is enough to set up the database.
 
-We will use **EBean** in this tutorial to query the database. So you'll have to enable it in the `application.conf` file as well:
+We will use **EBean** in this tutorial to query the database. So you’ll have to enable it in the `application.conf` file as well:
 
 ```
 ebean.default="models.*"
 ```
 
-By doing this we create an Ebean server connected to the `default` datasource, managing all entities found in the `models` package. Now it's time to transform our `Task` class to a valid EBean entity:
+By doing this we create an Ebean server connected to the `default` datasource, managing all entities found in the `models` package. Now it’s time to transform our `Task` class to a valid EBean entity:
 
 ```
 package models;
@@ -401,7 +401,7 @@ public class Task extends Model {
 
 We made the `Task` class extend the `play.db.ebean.Model` super class to have access to Play built-in Ebean helper. We also added proper persistence annotations, and created a `find` helper to initiate queries.
 
-Let's implement the CRUD operations:
+Let’s implement the CRUD operations:
 
 ```
 public static List<Task> all() {
@@ -436,7 +436,7 @@ public static Result deleteTask(Long id) {
 
 ## Deploying to Heroku
 
-All features are completed. It's time to deploy our application in production. Let's deploy it to heroku. First you have to create a `Procfile` for Heroku in the root application directory:
+All features are completed. It’s time to deploy our application in production. Let’s deploy it to heroku. First you have to create a `Procfile` for Heroku in the root application directory:
 
 ```
 web: target/start -Dhttp.port=${PORT} -DapplyEvolutions.default=true -Ddb.default.url=${DATABASE_URL} -Ddb.default.driver=org.postgresql.Driver
@@ -444,7 +444,7 @@ web: target/start -Dhttp.port=${PORT} -DapplyEvolutions.default=true -Ddb.defaul
 
 > **Note:** Read more about [[Deploying to Heroku|ProductionHeroku]].
 
-Using system properties we override the application configuration when running on Heroku. But since heroku provides a PostgreSQL database we'll have to add the required driver to our application dependencies. 
+Using system properties we override the application configuration when running on Heroku. But since heroku provides a PostgreSQL database we’ll have to add the required driver to our application dependencies. 
 
 Specify it into the `project/Build.scala` file:
 
@@ -456,7 +456,7 @@ val appDependencies = Seq(
 
 > **Note:** Read more about [[Dependencies management|SBTDependencies]].
 
-Heroku uses **git** to deploy your application. Let's initialize the git repository:
+Heroku uses **git** to deploy your application. Let’s initialize the git repository:
 
 ```
 $ git init
@@ -510,7 +510,7 @@ Process       State               Command
 web.1         up for 10s          target/start
 ```
 
-It's started, you can now open it in your browser. 
+It’s started, you can now open it in your browser. 
 
 > Your first application is now up and running in production!
 

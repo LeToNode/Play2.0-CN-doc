@@ -1,10 +1,10 @@
 # Testing your application
 
-Tests source files must be placed in the `test` folder of your application. You can run them from the play console using the `test` and `test-only` tasks.
+Test source files must be placed in your application’s `test` folder. You can run tests from the Play console using the `test` and `test-only` tasks.
 
-## Using specs2
+## Using JUnit
 
-The default way to test a Play 2 application is by using [[JUnit| http://www.junit.org/]].
+The default way to test a Play 2 application is with [[JUnit| http://www.junit.org/]].
 
 ```
 package test;
@@ -27,7 +27,7 @@ public class SimpleTest {
     }
 ```
 
-## Running in a Fake application
+## Running in a fake application
 
 If the code you want to test depends on a running application, you can easily create a `FakeApplication` on the fly:
 
@@ -44,7 +44,7 @@ public void findById() {
 }
 ```
 
-You can also pass (or override) additional configuration to the fake application, or mock any plugin. For example to create a `FakeApplication` using a `default` in memory database:
+You can also pass (or override) additional application configuration, or mock any plugin. For example to create a `FakeApplication` using a `default` in-memory database:
 
 ```
 fakeApplication(inMemoryDatabase())

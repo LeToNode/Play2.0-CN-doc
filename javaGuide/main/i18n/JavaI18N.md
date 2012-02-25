@@ -1,10 +1,10 @@
-# Messages externalisation and i18n 
+# Externalising messages and internationalization
 
 ## Specifying languages supported by your application
 
-A valid language code is specified by a valid **ISO Language Code**, optionally followed by a valid **ISO Country Code**, such as `fr` or `en-US`.
+The specify your application’s languages, you need a valid language code, specified by a valid **ISO Language Code**, optionally followed by a valid **ISO Country Code**. For example, `fr` or `en-US`.
 
-To start you need to specify the language supported by your application in the `conf/application.conf` file:
+To start, you need to specify the languages that your application supports in its `conf/application.conf` file:
 
 ```
 application.langs=en,en-US,fr
@@ -14,27 +14,25 @@ application.langs=en,en-US,fr
 
 You can externalize messages in the `conf/messages.xxx` files. 
 
-The default `conf/messages` file match all languages. Additionnally you specify by language messages file like `conf/messages.fr` or `conf/messages.en-US`.
+The default `conf/messages` file matches all languages. You can specify additional language messages files, such as `conf/messages.fr` or `conf/messages.en-US`.
 
-Then you can retrieve messages using the `play.api.i18n.Messages` object:
+You can retrieve messages for the current language using the `play.api.i18n.Messages` object:
 
 ```
 String title = Messages.get("home.title")
 ```
 
-You can also specify the lang explicitely:
+You can also specify the language explicitly:
 
 ```
 String title = Messages.get(new Lang("fr"), "home.title")
 ```
 
-> **Note:** If you have a `Request` in the scope, it will provide a default `Lang` value corresponding to the preferred language extracted from the `Accept-Language` header and matching one the application supported languages.
+> **Note:** If you have a `Request` in the scope, it will provide a default `Lang` value corresponding to the preferred language extracted from the `Accept-Language` header and matching one the application’s supported languages.
 
-## Messages format
+## Formatting messages
 
-The messages, can be formatted using the `java.text.MessageFormat` library. For example:
-
-Assuming you have message defined like:
+Messages can be formatted using the `java.text.MessageFormat` library. For example, if you have defined a message like this:
 
 ```
 files.summary=The disk {1} contains {0} file(s).
@@ -46,9 +44,9 @@ You can then specify parameters as:
 Messages.get("files.summary", d.files.length, d.name)
 ```
 
-## Retrieving supported language from an HTTP request
+## Retrieving supported languages from an HTTP request
 
-You can retrieve supported language by a specific HTTP request:
+You can retrieve a specific HTTP request’s supported languages:
 
 ```
 public static Result index() {
