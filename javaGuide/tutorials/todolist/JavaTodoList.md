@@ -20,23 +20,19 @@ Open a new command line and enter:
 $ play new todolist
 ```
 
-The Play command will ask you a few questions. Choose to create a **simple Java application** project template.
+The Play tool will ask you a few questions. Choose to create a **simple Java application** project template.
 
 [[images/new.png]]
 
 The `play new` command creates a new directory `todolist/` and populates it with a series of files and directories. The most important are as follows.
 
-`app/` contains the application’s core, split between models, controllers and views directories. This is the directory where .java source files live.
+* `app/` contains the application’s core, split between models, controllers and views directories. This is the directory where .java source files live.
+* `conf/` contains all the application’s configuration files, especially the main `application.conf` file, the `routes` definition files and the `messages` files used for internationalization.
+* `project` contains the build scripts. The build system is based on sbt. But a new play application comes with a default build script that will just works fine for our application.
+* `public/` contains all the publicly available resources, which includes JavaScript, stylesheets and images directories.
+* `test/` contains all the application tests. Tests can be written as JUnit tests.
 
-`conf/` contains all the application’s configuration files, especially the main `application.conf` file, the `routes` definition files and the `messages` files used for internationalization.
-
-`project` contains the build scripts. The build system is based on sbt. But a new play application comes with a default build script that will just works fine for our application.
-
-`public/` contains all the publicly available resources, which includes JavaScript, stylesheets and images directories.
-
-`test/` contains all the application tests. Tests are written either as JUnit tests.
-
-> Because Play uses UTF-8 as single encoding, it’s very important that all text files hosted in these directories are encoded using this charset. Make sure to configure your text editor accordingly.
+> Because Play uses UTF-8 as the single encoding, it’s very important that all text files hosted in these directories use this encoding. Make sure to configure your text editor accordingly.
 
 ## Using the Play console
 
@@ -46,7 +42,7 @@ Once you have an application created, you can run the Play console. Go to the ne
 $ play
 ```
 
-It launches the Play console. There are several things you can do from the Play console, but let’s start by running the application. From the console prompt, type `run`:
+This launches the Play console. There are several things you can do from the Play console, but let’s start by running the application. From the console prompt, type `run`:
 
 ```
 [todolist] $ run
@@ -70,9 +66,9 @@ The main entry point of your application is the `conf/routes` file. This file de
 GET	/       controllers.Application.index()
 ```
 
-That simply tells Play that when the web server receives a GET request for the / path, it must call the `controllers.Application.index()` method. 
+That simply tells Play that when the web server receives a GET request for the `/` path, it must call the `controllers.Application.index()` method. 
 
-Let’s see how the `controllers.Application.index` method looks like. Open the `todolist/app/controllers/Application.java` source file:
+Let’s see what the `controllers.Application.index` method looks like. Open the `todolist/app/controllers/Application.java` source file:
 
 ```
 package controllers;
@@ -91,11 +87,11 @@ public class Application extends Controller {
 }
 ```
 
-You see that `controllers.Application.index()` returns a `Result`. All action methods must return a `Result` that represent the HTTP response to send back to the Web browser.
+You see that `controllers.Application.index()` returns a `Result`. All action methods must return a `Result`, which represents the HTTP response to send back to the web browser.
 
 > **Note:** Read more about [[Actions|JavaActions]].
 
-Here the action returns a **200 OK** response filled with HTML content. The HTML content is provided by a template. Play templates are compiled to standard Java methods, here as `views.html.index.render(String message)`.
+Here, the action returns a **200 OK** response with an HTML response body. The HTML content is provided by a template. Play templates are compiled to standard Java methods, here as `views.html.index.render(String message)`.
 
 This template is defined in the `app/views/index.scala.html` source file:
 
@@ -109,11 +105,11 @@ This template is defined in the `app/views/index.scala.html` source file:
 }
 ```
 
-The first line defines the function signature. Here it takes a single `String` parameter. Then the template content mix HTML (or any text based language) with Scala statements. The Scala statements starts with the special `@` character.
+The first line defines the function signature. Here it takes a single `String` parameter. Then the template content mixes HTML (or any text-based language) with Scala statements. The Scala statements start with the special `@` character.
 
-> **Note:** Even if the template engine uses Scala as expression language it is not a problem for a Java developer. You can almost use it as the language was Java.
+> **Note:** Don’t worry about the template engine using Scala as its expression language. This is not a problem for a Java developer, and you can almost use it as the language was Java.
 
-## Development workflow
+## Development work-flow
 
 Now let’s make some modifications to the new application. In the `Application.java` change the content of the response:
 
@@ -123,13 +119,11 @@ public static Result index() {
 }
 ```
 
-With this change the **index** action will now respond with a simple `text/plain` **Hello world** response. To see this change, just refresh the home page in your browser:
+With this change, the `index` action will now respond with a simple `text/plain` **Hello world** response. To see this change, just refresh the home page in your browser:
 
 [[images/hello.png]]
 
-There is no need to compile the code yourself or restart the server to see the modification. It is automatically reloaded when a change is detected. But what happens when you make a mistake in your code?
-
-Let’s try:
+There is no need to compile the code yourself or restart the server to see the modification. It is automatically reloaded when a change is detected. But what happens when you make a mistake in your code? Let’s try:
 
 ```
 public static Result index() {
@@ -141,11 +135,11 @@ Now reload the home page in your browser:
 
 [[images/error.png]]
 
-As you see errors are beautifully displayed directly in your browser.
+As you can see, errors are beautifully displayed directly in your browser.
 
 ## Preparing the application
 
-For our todo list application, we need a few actions and the corresponding urls. Let’s start by defining the **routes**. 
+For our todo list application, we need a few actions and the corresponding URLs. Let’s start by defining the **routes**. 
 
 Edit the `conf/routes` file:
 
@@ -165,7 +159,7 @@ Now if your reload in your browser, you will see that Play cannot compile your r
 
 [[images/routes.png]]
 
-This is because they reference non-existing actions methods. So let’s add them to the `Application.java` file:
+This is because the routes reference non-existent action methods. So let’s add them to the `Application.java` file:
 
 ```
 public class Application extends Controller {
