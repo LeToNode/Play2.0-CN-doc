@@ -1,10 +1,10 @@
-# Handling and serving Json requests
+# Handling and serving JSON requests
 
-## Handling a Json request
+## Handling a JSON request
 
-A Json request is an HTTP request using a valid Json payload as request body. It must specify the `text/json` or `application/json` mime type in its `Content-Type` header.
+A JSON request is an HTTP request using a valid JSON payload as request body. Its `Content-Type` header must specify the `text/json` or `application/json` MIME type.
 
-By default an action uses a **any content** body parser. Then you can ask to retrieve the body as Json (actually as a jerkson `JsonNode`):
+By default an action uses an **any content** body parser, which you can use to retrieve the body as JSON (actually as a Jerkson `JsonNode`):
 
 ```
 public static index sayHello() {
@@ -22,7 +22,7 @@ public static index sayHello() {
 }
 ```
 
-Of course it's way better (and simpler) to specify our own `BodyParser` to ask Play to parser the content body directly as Json:
+Of course it’s way better (and simpler) to specify our own `BodyParser` to ask Play to parse the content body directly as JSON:
 
 ```
 @BodyParser.Of(Json.class)
@@ -36,9 +36,9 @@ public static index sayHello() {
 }
 ```
 
-> **Note:** This way a 400 HTTP response will be automatically returned for non json request. 
+> **Note:** This way, a 400 HTTP response will be automatically returned for non JSON requests. 
 
-You can test it with **cUrl** from a command line:
+You can test it with **cURL** from a command line:
 
 ```
 curl 
@@ -58,9 +58,9 @@ Content-Length: 15
 Hello Guillaume
 ```
 
-## Serving a Json response
+## Serving a JSON response
 
-In our previous example we handle a Json request, but we reply with a `text/plain` response. Let'as change that to send back a valid Json HTTP response:
+In our previous example we handled a JSON request, but replied with a `text/plain` response. Let’s change that to send back a valid JSON HTTP response:
 
 ```
 @BodyParser.Of(Json.class)

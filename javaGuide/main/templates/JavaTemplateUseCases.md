@@ -1,6 +1,6 @@
-# Templates common use cases
+# Common template use cases
 
-Templates, being simple functions, can be composed in any way you want. Below are a few examples of some common scenarios:
+Templates, being simple functions, can be composed in any way you want. Below are a few examples of some common scenarios.
 
 ## Layout
 
@@ -30,7 +30,7 @@ As you can see, this template takes two parameters: a title and an HTML content 
 }
 ```
 
-> **Note:** We sometimes use named parameters(like `@main(title = "Home")`, sometimes not like `@main("Home")`. It is as you want, choose whatever is clearer in a specific context.
+> **Note:** You can use both named parameters (like `@main(title = "Home")` and positional parameters, like `@main("Home")`. Choose whichever is clearer in a specific context.
 
 Sometimes you need a second page-specific content block for a sidebar or breadcrumb trail, for example. You can do this with an additional parameter:
 
@@ -42,8 +42,8 @@ Sometimes you need a second page-specific content block for a sidebar or breadcr
     <title>@title</title>
   </head>
   <body>
-    <section class="sidebar">@sidebar</section>
     <section class="content">@content</section>
+    <section class="sidebar">@sidebar</section>
   </body>
 </html>
 ```
@@ -116,7 +116,7 @@ And now let’s use it from another template:
 
 ## Includes
 
-Again, there’s nothing special here. You can just call any other template you like (and in fact any other function coming from anywhere at all):
+Again, there’s nothing special here. You can just call any other template you like (or in fact any other function, wherever it is defined):
 
 ```html
 <h1>Home</h1>

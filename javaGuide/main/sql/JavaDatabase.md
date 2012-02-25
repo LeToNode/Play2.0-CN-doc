@@ -24,7 +24,7 @@ db.customers.driver=org.h2.Driver
 db.customers.url="jdbc:h2:mem:customers"
 ```
 
-If something isn’t properly configured you will be notified directly in your browser:
+If something isn’t properly configured, you will be notified directly in your browser:
 
 [[images/dbError.png]]
 
@@ -40,7 +40,7 @@ DataSource ds = DB.getDatasource();
 
 ## Obtaining a JDBC connection
 
-The same way you can retrieve a JDBC connection:
+You can retrieve a JDBC connection the same way:
 
 ```
 Connection connection = DB.getConnection();
@@ -57,9 +57,11 @@ db.default.jndiName=DefaultDS
 ```
 
 ## Importing a Database Driver
-Other than h2 for in-memory database, useful mostly in development mode, Play 2.0 does not provide any database driver. Consequently, to deploy in production you will need to add your database driver as a dependency.
 
-For example, if you use MySQL5, you need to add a [[dependency | SBTDependencies]] for the connector:
+Other than for the h2 in-memory database, useful mostly in development mode, Play 2.0 does not provide any database drivers. Consequently, to deploy in production you will have to add your database driver as an application dependency.
+
+For example, if you use MySQL5, you need to add a [[dependency| SBTDependencies]] for the connector:
+
 ```
 val appDependencies = Seq(
      // Add your project dependencies here,

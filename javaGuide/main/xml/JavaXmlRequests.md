@@ -1,10 +1,10 @@
-# Handling and serving Json requests
+# Handling and serving XML requests
 
-## Handling a Xml request
+## Handling an XML request
 
-A Xml request is an HTTP request using a valid Xml payload as request body. It must specify the `text/xml` mime type in its `Content-Type` header.
+An XML request is an HTTP request using a valid XML payload as request body. It must specify the `text/xml` MIME type in its `Content-Type` header.
 
-By default an action uses a **any content** body parser. Then you can ask to retrieve the body as Xml (actually as a `org.w3c.Document`):
+By default, an action uses an **any content** body parser, which you can use to retrieve the body as XML (actually as a `org.w3c.Document`):
 
 ```
 public static index sayHello() {
@@ -22,7 +22,7 @@ public static index sayHello() {
 }
 ```
 
-Of course it's way better (and simpler) to specify our own `BodyParser` to ask Play to parser the content body directly as Json:
+Of course it’s way better (and simpler) to specify our own `BodyParser` to ask Play to parse the content body directly as XML:
 
 ```
 @BodyParser.Of(Xml.class)
@@ -36,9 +36,9 @@ public static index sayHello() {
 }
 ```
 
-> **Note:** This way a 400 HTTP response will be automatically returned for non xml request. 
+> **Note:** This way, a 400 HTTP response will be automatically returned for non-XML requests.
 
-You can test it with **cUrl** from a command line:
+You can test it with **cURL** on the command line:
 
 ```
 curl 
@@ -58,9 +58,9 @@ Content-Length: 15
 Hello Guillaume
 ```
 
-## Serving a Xml response
+## Serving an XML response
 
-In our previous example, we handle an XML request, but we reply with a `text/xml` response. Let's change it and send back a valid Xml HTTP response:
+In our previous example, we handled an XML request, but replied with a `text/plain` response. Let’s change it to send back a valid XML HTTP response:
 
 ```
 @BodyParser.Of(Xml.class)

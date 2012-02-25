@@ -15,7 +15,7 @@ public class User {
 Form<User> userForm = form(User.class);
 ```
 
-> **Note:** Underlying binding is done using [[Spring data binder| http://static.springsource.org/spring/docs/3.0.7.RELEASE/reference/html/validation.html]].
+> **Note:** The underlying binding is done using [[Spring data binder| http://static.springsource.org/spring/docs/3.0.7.RELEASE/reference/html/validation.html]].
 
 This form can generate a `User` result value from `HashMap<String,String>` data:
 
@@ -79,7 +79,7 @@ if(userForm.hasErrors()) {
 }
 ```
 
-## Fill a form with initial default values
+## Filling a form with initial default values
 
 Sometimes you’ll want to fill a form with existing values, typically for editing:
 

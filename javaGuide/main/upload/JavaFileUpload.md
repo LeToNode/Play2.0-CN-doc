@@ -1,10 +1,10 @@
 # Handling file upload
 
-## Uploading files in a form using multipart/form-data
+## Uploading files in a form using `multipart/form-data`
 
-The standard way of uploading files in a Web application is to use a form with a special `multipart/form-data` encoding. It allows to mix standard form data with file attachment.
+The standard way to upload files in a web application is to use a form with a special `multipart/form-data` encoding, which allows to mix standard form data with file attachments.
 
-Start by writing an Html form:
+Start by writing an HTML form:
 
 ```
 @form(action = routes.Application.upload, 'enctype -> "multipart/form-data") {
@@ -18,13 +18,13 @@ Start by writing an Html form:
 }
 ```
 
-Now let's define the `upload` action:
+Now let’s define the `upload` action:
 
 ```
 public static Result upload() {
   MultipartFormData body = request().body().asMultipartFormData();
   FilePart picture = body.getFile("picture");
-  if(picture != null) {
+  if (picture != null) {
     String fileName = picture.getFilename();
     String contentType = picture.getContentType(); 
     File file = picture.getFile();
@@ -38,7 +38,7 @@ public static Result upload() {
 
 ## Direct file upload
 
-Another way to send files to the server is to use Ajax to upload file asynchronously in a form. In this case the request body with not been encoded as `multipart/form-data`, but will just contain the plain file content.
+Another way to send files to the server is to use Ajax to upload files asynchronously from a form. In this case, the request body will not be encoded as `multipart/form-data`, but will just contain the plain file contents.
 
 ```
 public static Result upload() {

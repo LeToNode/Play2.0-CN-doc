@@ -5,13 +5,13 @@
 Play 2.0 comes with a new and really powerful Scala-based template engine, whose design was inspired by ASP.NET Razor. Specifically it is:
 
 - **compact, expressive, and fluid**: it minimizes the number of characters and keystrokes required in a file, and enables a fast, fluid coding workflow. Unlike most template syntaxes, you do not need to interrupt your coding to explicitly denote server blocks within your HTML. The parser is smart enough to infer this from your code. This enables a really compact and expressive syntax which is clean, fast and fun to type.
-- **easy to learn**: it allows you to quickly become productive, with a minimum of concepts. You use all your existing HTML skills.
+- **easy to learn**: it allows you to quickly become productive, with a minimum of concepts. You use simple Scala constructs and all your existing HTML skills.
 - **not a new language**: we consciously chose not to create a new language. Instead we wanted to enable Scala developers to use their existing Scala language skills, and deliver a template markup syntax that enables an awesome HTML construction workflow.
 - **editable in any text editor**: it doesn’t require a specific tool and enables you to be productive in any plain old text editor.
 
 > **Note:** Even though the template engine uses Scala as expression language, this is not a problem for Java developers. You can almost use it as if the language were Java. 
 > 
-> Remember that a template is not a place to write complex logic. You don't have to write complicated Scala code here. Most of the time you will just access data from your model objects, as follows:
+> Remember that a template is not a place to write complex logic. You don’t have to write complicated Scala code here. Most of the time you will just access data from your model objects, as follows:
 >
 > ```
 > myUser.getProfile().getUsername()
@@ -68,7 +68,7 @@ Hello @(customer.getFirstName() + customer.getLastName())!
                           Dynamic Code
 ```
 
-You can also use curly brackets, to write a multi-statements block:
+You can also use curly brackets, to write a multi-statement block:
 
 ```
 Hello @{val name = customer.getFirstName() + customer.getLastName(); name}!
@@ -84,7 +84,7 @@ My email is bob@@example.com
 
 ## Template parameters
 
-A template is like a function, so it needs parameters, which must be declared on the first line of the template file:
+A template is like a function, so it needs parameters, which must be declared at the top of the template file:
 
 ```scala
 @(customer: models.Customer, orders: List[models.Order])
@@ -104,7 +104,7 @@ Or even several parameter groups:
 
 ## Iterating
 
-You can use the for keyword, in a pretty standard way:
+You can use the `for` keyword, in a pretty standard way:
 
 ```html
 <ul>
@@ -207,7 +207,7 @@ You can put a comment on the first line to document your template into the Scala
 
 ## Escaping
 
-By default the dynamic content parts are escaped following the template type (e.g. HTML or XML) rules. If you want to output a raw content fragment, wrap it in the template content type. 
+By default, dynamic content parts are escaped according to the template type’s (e.g. HTML or XML) rules. If you want to output a raw content fragment, wrap it in the template content type. 
 
 For example to output raw HTML:
 

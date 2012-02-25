@@ -1,24 +1,24 @@
 # The Play cache API
 
-Caching data is a typical optimization in moderner applications. Play provides a global Cache facility for that purpose. An important point about the cache, is that it behaves just as a real cache: The data you just stored may just go missing.
+Caching data is a typical optimization in modern applications, and so Play provides a global cache. An important point about the cache is that it behaves just like a cache should: the data you just stored may just go missing.
 
-For any data stored in the cache, a regeneration strategy needs to be put in place should the data go missing. This phylosophy is one of the fundamentals behind Play! and is typically different from J2EE where the session is expected to hold the value during its lifetime. 
+For any data stored in the cache, a regeneration strategy needs to be put in place in case the data goes missing. This philosophy is one of the fundamentals behind Play, and is different from Java EE, where the session is expected to retain values throughout its lifetime. 
 
-The default implementation of the Cache api uses [[EHCache| http://ehcache.org/]]. You can also provide your own implementation via a plugin.
+The default implementation of the cache API uses [[EHCache| http://ehcache.org/]]. You can also provide your own implementation via a plugin.
 
 ## Accessing the Cache API
 
-The cache api is provided by the `play.cache.Cache` object. It requires to have at least a cache plugin registered.
+The cache API is provided by the `play.cache.Cache` object. This requires a cache plugin to be registered.
 
-> **Note:** The API is voluntary minimal to allow several implementations to be plugged. If you need a more specific API, use the one provided by your Cache plugin.
+> **Note:** The API is intentionally minimal to allow various implementations to be plugged in. If you need a more specific API, use the one provided by your Cache plugin.
 
-Using this simple API you can either store data in cache:
+Using this simple API you can store data in the cache:
 
 ```
 Cache.set("item.key", frontPageNews);
 ```
 
-And then retrive it later:
+You can retrieve the data later:
 
 ```
 News news = Cache.get("item.key");
@@ -28,9 +28,9 @@ News news = Cache.get("item.key");
 
 You can easily create a smart cached action using standard `Action` composition. 
 
-> **Note:** Play HTTP `Result` are safe to cache and reuse later.
+> **Note:** Play HTTP `Result` instances are safe to cache and reuse later.
 
-Play provides a default built-in helper for standard cases:
+Play provides a default built-in helper for the standard case:
 
 ```
 @Cached("homePage")
@@ -39,23 +39,23 @@ public static Result index() {
 }
 ```
 
-## Caching in Templates
+## Caching in templates
 
-You may also access the cache from a View.
+You may also access the cache from a view template.
 
 ```
 @cache.Cache.getOrElse("cached-content", 3600) {
-     <div>I'm cached for an hour</div>
+     <div>I’m cached for an hour</div>
 }
 ```
 
-## Session Cache
+## Session cache
 
-Play provides a global cache facily, the data stored is visible to anybody. How would one restrict visibility to a given user? For instance you may want to cache metrics that only apply to a given user.
+Play provides a global cache, whose data are visible to anybody. How would one restrict visibility to a given user? For instance you may want to cache metrics that only apply to a given user.
 
 
 ```
-// Generate a unique id
+// Generate a unique ID
 String uuid=session("uuid");
 if(uuid==null) {
 	uuid=java.util.UUID.randomUUID().toString();
@@ -71,4 +71,4 @@ if(userNews==null) {
 ```
 
 
-> **Next:** [[Calling WebServices | JavaWS]]
+> **Next:** [[Calling web services | JavaWS]]
