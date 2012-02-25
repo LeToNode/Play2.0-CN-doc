@@ -8,7 +8,7 @@ The benefit of this approach is that both the Java and the Scala side of Play ca
 
 `play.api.libs.json` package contains seven JSON data types: 
 
-* ```JsOBject```
+* ```JsObject```
 * ```JsNull```
 * ```JsUndefined```
 * ```JsBoolean```
