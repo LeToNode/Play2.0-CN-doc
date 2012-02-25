@@ -140,6 +140,13 @@ def index = Action {
 }
 ```
 
-> **Next:** [[HTTP Routing | ScalaRouting]]
+## "TODO" dummy page
 
+You can use an empty `Action` implementation defined as `TODO`: the result is a standard ‘Not implemented yet’ result page:
+
+```
+def index(name:String) = TODO
+```
+
+> **Next:** [[HTTP Routing | ScalaRouting]]
 
