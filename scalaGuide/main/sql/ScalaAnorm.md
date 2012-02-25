@@ -90,7 +90,7 @@ SQL(
     join CountryLanguage l on l.CountryCode = c.Code 
     where c.code = {countryCode};
   """
-).on('countryCode -> "FRA")
+).on("countryCode" -> "FRA")
 ```
 
 ## Retrieving data using the Stream API
