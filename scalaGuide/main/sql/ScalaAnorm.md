@@ -177,7 +177,7 @@ You can use the parser API to create generic and reusable parsers that can parse
 >
 > First you need to `import anorm.SqlParser._`
 
-First you need a `RowParser`, i.e. a parser able to parse one row to a Scala value. For example we can define a parser to transform a single column result set row, to as Scala `Long`:
+First you need a `RowParser`, i.e. a parser able to parse one row to a Scala value. For example we can define a parser to transform a single column result set row, to a Scala `Long`:
 
 ```
 val rowParser = scalar[Long]
