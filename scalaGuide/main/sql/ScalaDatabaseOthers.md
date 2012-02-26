@@ -2,6 +2,12 @@
 
 You can use any **SQL** database access library you like with Play, as can easily retrieve either a `Connection` or a `Datasource` from the `play.api.db.DB` helper.
 
+## ScalaQuery dependency
+
+In your `Build.scala` add this dependency:
+
+<pre><code>"org.scalaquery" % "scalaquery_2.9.0-1" % "0.9.5"</code></pre>
+
 ## Integrating with ScalaQuery
 
 From here you can integrate any JDBC access layer that needs a JDBC data source. For example, to integrate with [[ScalaQuery | https://github.com/szeiger/scala-query]]:
