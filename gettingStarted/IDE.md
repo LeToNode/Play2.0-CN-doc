@@ -73,6 +73,35 @@ Set some breakpoints. Run the web app by executing the task `play` (again I had 
 
 If you make any important changes to your application, such as changing the classpath, use `idea` again to regenerate the configuration files.
 
+
+## Netbeans
+
+### Generate Configuration
+
+Play does not have native Netbeans project generation support at this time.  For now you can generate a Netbeans Scala project with the [Netbeans SBT plugin](https://github.com/remeniuk/sbt-netbeans-plugin).
+
+First edit the plugins.sbt file
+```
+// Comment to get more information during initialization
+logLevel := Level.Warn
+
+resolvers ++= Seq( 
+    DefaultMavenRepository, 
+    "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/", 
+    "remeniuk repo" at "http://remeniuk.github.com/maven" 
+)
+
+addSbtPlugin("play" % "sbt-plugin" % "2.0-RC2") 
+
+libraryDependencies += "org.netbeans" %% "sbt-netbeans-plugin" % "0.1.4"
+```
+
+Now run
+
+```
+$ play netbeans
+```
+
 > **Next:** 
 >
 > - Explore the [[sample applications | Samples]]
