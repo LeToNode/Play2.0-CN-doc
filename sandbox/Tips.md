@@ -19,7 +19,7 @@ mv bootstrap.less ../bootstrap.less`
 * Copy bootstrap's less files into `app/assets/stylesheets/bootstrap`
 * Modify the `project/Build.scala` file to filter out the Bootstrap LESS files we *don't* want to compile:
 
-    * Define a new [BuildPath](https://github.com/harrah/xsbt/wiki/Paths) resolver function
+    * Define a new [BuildPath](https://github.com/harrah/xsbt/wiki/Paths) resolver function:
 ```
     // Only compile the bootstrap bootstrap.less file and any other *.less file in the stylesheets directory
     def customLessEntryPoints(base: File): PathFinder = (
@@ -28,7 +28,9 @@ mv bootstrap.less ../bootstrap.less`
     )
 ```
 
-    * Override the default `lessEntryPoints` setting key with the new function
+        *Note:* this wil only compile `stylesheets/bootstrap/bootstrap.less` and `stylesheets/*.less` files. If you have any other LESS files in other subdirectories under `stylesheets`; adjust the function accordingly.
+
+    * Override the default `lessEntryPoints` setting key with the new function:
 ```
     val main = PlayProject(appName, appVersion, appDependencies, mainLang = JAVA).settings(
         lessEntryPoints <<= baseDirectory(customLessEntryPoints)
