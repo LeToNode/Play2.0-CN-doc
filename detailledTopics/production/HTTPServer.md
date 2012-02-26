@@ -48,7 +48,7 @@ LoadModule proxy_module modules/mod_proxy.so
 <VirtualHost *:80>
   ProxyPreserveHost On
   ServerName www.loadbalancedapp.com
-  ProxyPass  /exclude !
+  ProxyPass  /excluded !
   ProxyPass / http://127.0.0.1:9000/
   ProxyPassReverse / http://127.0.0.1:9000/
 </VirtualHost>
@@ -71,7 +71,7 @@ The host: header will be the original host request header issued by the client. 
 If you don't want this play app to occupy the whole root, add an exclusion directive to the proxy config:
 
 ```
-ProxyPass /exclude !
+ProxyPass /excluded !
 ```
 
 ## Apache as a front proxy to allow transparent upgrade of your application
