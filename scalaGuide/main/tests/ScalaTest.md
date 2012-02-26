@@ -11,6 +11,9 @@ Unit specifications extend the `org.specs2.mutable.Specification` trait and are 
 ```
 import org.specs2.mutable._
 
+import play.api.test._
+import play.api.test.Helpers._
+
 class HelloWorldSpec extends Specification {
 
   "The 'Hello world' string" should {
