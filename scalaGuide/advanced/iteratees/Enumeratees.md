@@ -26,7 +26,7 @@ val toInt: Enumeratee[String,Int] = Enumeratee.map[String]{ s => s.toInt }
 val adaptedIteratee: Iteratee[String,Int] = toInt.transform(sum)
 
 //this works!
-strings >>> adaptedIteratee
+strings >>| adaptedIteratee
 ```
 There is a symbolic alternative to the `transform` method, `&>>` which we can use in our previous example:
 
