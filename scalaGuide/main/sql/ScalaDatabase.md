@@ -42,13 +42,13 @@ val ds = DB.getDatasource()
 
 There is several ways to retrieve a JDBC connection. The first is the most simple:
 
-```
+```scala
 val connection = DB.getConnection()
 ```
 
 But of course you need to call `close()` at some point on the opened connection to return it to the connection pool. Another way is to let Play manage closing the connection for you:
 
-```
+```scala
 DB.withConnection { conn =>
   // do whatever you need with the connection
 }
@@ -60,7 +60,7 @@ The connection will be automatically closed at the end of the block.
 
 A variant is to set the connection auto-commit to `false` automatically and to manage a transaction for the block:
 
-```
+```scala
 DB.withTransaction { conn =>
   // do whatever you need with the connection
 }
@@ -70,7 +70,7 @@ DB.withTransaction { conn =>
 Other than h2 for in-memory database, useful mostly in development mode, Play 2.0 does not provide any database driver. Consequently, to deploy in production you will need to add your database driver as a dependency.
 
 For example, if you use MySQL5, you need to add a [[dependency | SBTDependencies]] for the connector:
-```
+```scala
 val appDependencies = Seq(
      // Add your project dependencies here,
      ...
