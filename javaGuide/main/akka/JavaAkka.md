@@ -57,7 +57,7 @@ A common use case within Akka is to have some computation performed concurrently
 
 ```java
 
-import static akka.dispatch.Futures.future;
+import static play.libs.Akka.future;
 import play.libs.F.*;
 
 public static Result index() {
