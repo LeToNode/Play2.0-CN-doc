@@ -118,7 +118,7 @@ val consumeOneInputAndEventuallyReturnIt = new Iteratee[String,Int] {
 
 As for `Done` there is a built-in way to define an iteratee in the `Cont` state by providing a function that takes `Input[E]` and returns a state of `Iteratee[E,A]` :
 
-```
+```scala
 val consumeOneInputAndEventuallyReturnIt = {
   Cont[String,Int](in => Done(in,Input.Empty))
 }
