@@ -18,13 +18,13 @@ The default `conf/messages` file matches all languages. Additionally you can spe
 
 You can then retrieve messages using the `play.api.i18n.Messages` object:
 
-```
+```scala
 val title = Messages("home.title")
 ```
 
 All internationalization API calls take an implicit `play.api.i18.Lang` argument retrieved from the current scope. You can also specify it explicitly:
 
-```
+```scala
 val title = Messages("home.title")(Lang("fr"))
 ```
 
@@ -40,7 +40,7 @@ files.summary=The disk {1} contains {0} file(s).
 
 You can then specify parameters as:
 
-```
+```scala
 Messages("files.summary", d.files.length, d.name)
 ```
 
@@ -48,7 +48,7 @@ Messages("files.summary", d.files.length, d.name)
 
 You can retrieve the languages supported by a specific HTTP request:
 
-```
+```scala
 def index = Action { request =>
   Ok("Languages: " + request.acceptLanguages.map(_.code).mkString(", "))
 }
