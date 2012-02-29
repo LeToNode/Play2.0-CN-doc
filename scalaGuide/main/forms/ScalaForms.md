@@ -4,7 +4,7 @@
 
 The `play.api.data` package contains several helpers to handle HTTP form data submission and validation. The easiest way to handle a form submission is to define a `play.api.data.Form` structure:
 
-```
+```scala
 import play.api.data._
 import play.api.data.Forms._
 
@@ -18,7 +18,7 @@ val loginForm = Form(
 
 This form can generate a `(String, String)` result value from `Map[String,String]` data:
 
-```
+```scala
 val anyData = Map("email" -> "bob@gmail.com", "password" -> "secret")
 val (user, password) = loginForm.bind(anyData).get
 ```
@@ -58,7 +58,7 @@ Of course often the `Form` signature doesn’t match the case class exactly. Let
 
 As we can define our own construction and deconstruction functions, it is easy to handle it:
 
-```
+```scala
 val userForm = Form(
   mapping(
     "name" -> text,
@@ -94,7 +94,7 @@ val userForm = Form(
 
 > **Note:** That can be also written:
 >
-> ```
+> ```scala
 > mapping(
 >   "name" -> nonEmptyText,
 >   "age" -> number(min=0, max=100)
@@ -160,7 +160,7 @@ When you are using nested data this way, the form values sent by the browser mus
 
 A form mapping can also define repeated values:
 
-```
+```scala
 case class User(name: String, emails: List[String])
 
 val userForm = Form(
@@ -177,7 +177,7 @@ When you are using repeated data like this, the form values sent by the browser 
 
 A form mapping can also define optional values:
 
-```
+```scala
 case class User(name: String, email: Option[String])
 
 val userForm = Form(
