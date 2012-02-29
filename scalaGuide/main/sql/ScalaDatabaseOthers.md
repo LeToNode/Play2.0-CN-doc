@@ -43,7 +43,7 @@ object Task extends Table[(Long, String, Date, Boolean)]("tasks") {
 
 ## Exposing the datasource through JNDI
 
-Some libraries expect to retrieve the `Datasource` reference from JNDI. You can expose any Play managed datasource via JDNI by adding this configuration in `conf/application.conf`:
+Some libraries expect to retrieve the `Datasource` reference from JNDI. You can expose any Play managed datasource via JNDI by adding this configuration in `conf/application.conf`:
 
 ```
 db.default.driver=org.h2.Driver
