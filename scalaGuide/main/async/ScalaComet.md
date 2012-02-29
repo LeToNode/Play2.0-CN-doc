@@ -6,7 +6,7 @@ A good use for **Chunked responses** is to create Comet sockets. A Comet socket 
     
 Let’s write a first proof-of-concept: an enumerator that generates `<script>` tags that each call the browser `console.log` JavaScript function:
     
-```
+```scala
 def comet = Action {
   val events = Enumerator(
      """<script>console.log('kiki')</script>""",
@@ -23,7 +23,7 @@ If you run this action from a web browser, you will see the three events logged 
 
 We can write this in a better way by using `play.api.libs.iteratee.Enumeratee` that is just an adapter to transform an `Enumerator[A]` into another `Enumerator[B]`. Let’s use it to wrap standard messages into the `<script>` tags:
     
-```
+```scala
 import play.api.templates.Html
 
 // Transform a String message into an Html script tag
@@ -47,7 +47,7 @@ We provide a Comet helper to handle these Comet chunked streams that do almost t
 
 Let’s just rewrite the previous example to use it:
 
-```
+```scala
 def comet = Action {
   val events = Enumerator("kiki", "foo", "bar")
   Ok.stream(events &> Comet(callback = "console.log"))
@@ -60,7 +60,7 @@ def comet = Action {
 
 The standard technique to write a Comet socket is to load an infinite chunked comet response in an HTML `iframe` and to specify a callback calling the parent frame:
 
-```
+```scala
 def comet = Action {
   val events = Enumerator("kiki", "foo", "bar")
   Ok.stream(events &> Comet(callback = "parent.cometMessage"))
