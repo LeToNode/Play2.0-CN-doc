@@ -6,7 +6,7 @@ Since HTTP 1.1, to keep a single connection open to serve several HTTP requests 
 
 By default, you are not specifying a `Content-Length` header when you send back a simple result, such as:
 
-```
+```scala
 def index = Action {
   Ok("Hello World")
 }
@@ -18,7 +18,7 @@ Of course, because the content you are sending is well-known, Play is able to co
 
 Actually, we previously saw that the response body is specified using an `Enumerator`:
 
-```
+```scala
 def index = Action {
   SimpleResult(
     header = ResponseHeader(200),
@@ -35,14 +35,14 @@ If it’s not a problem to load the whole content into memory for simple Enumera
 
 Let’s first see how to create an `Enumerator[Array[Byte]]` enumerating the file content:
 
-```
+```scala
 val file = new java.io.File("/tmp/fileToServe.pdf")
 val fileContent: Enumerator[Array[Byte]] = Enumerator.fromFile(file)
 ```
 
 Now it looks simple right? Let’s just use this enumerator to specify the response body:
 
-```
+```scala
 def index = Action {
 
   val file = new java.io.File("/tmp/fileToServe.pdf")
@@ -59,7 +59,7 @@ Actually we have a problem here. As we don’t specify the `Content-Length` head
 
 That’s a problem for large files that we don’t want to load completely into memory. So to avoid that, we just have to specify the `Content-Length` header ourself.
 
-```
+```scala
 def index = Action {
 
   val file = new java.io.File("/tmp/fileToServe.pdf")
@@ -78,7 +78,7 @@ This way Play will consume the body enumerator in a lazy way, copying each chunk
 
 Of course, Play provides easy-to-use helpers for common task of serving a local file:
 
-```
+```scala
 def index = Action {
   Ok.sendFile(new java.io.File("/tmp/fileToServe.pdf"))
 }
@@ -88,7 +88,7 @@ This helper will also compute the `Content-Type` header from the file name, and 
 
 You also provide your own file name:
 
-```
+```scala
 def index = Action {
   Ok.sendFile(
     content = new java.io.File("/tmp/fileToServe.pdf"),
@@ -99,7 +99,7 @@ def index = Action {
 
 If you want to serve this file `inline`:
 
-```
+```scala
 def index = Action {
   Ok.sendFile(
     content = new java.io.File("/tmp/fileToServe.pdf"),
@@ -126,14 +126,14 @@ The advantage is that we can serve the data **live**, meaning that we send chunk
 
 Let’s say that we have a service somewhere that provides a dynamic `InputStream` computing some data. First we have to create an `Enumerator` for this stream:
 
-```
+```scala
 val data = getDataStream
 val dataContent: Enumerator[Array[Byte]] = Enumerator.fromStream(data)
 ```
 
 We can now stream these data using a `ChunkedResult`:
 
-```
+```scala
 def index = Action {
 
   val data = getDataStream
@@ -148,7 +148,7 @@ def index = Action {
 
 As always, there are helpers available to do this:
 
-```
+```scala
 def index = Action {
 
   val data = getDataStream
@@ -160,7 +160,7 @@ def index = Action {
 
 Of course, we can use any `Enumerator` to specify the chunked data:
 
-```
+```scala
 def index = Action {
   Ok.stream(
     Enumerator("kiki", "foo", "bar").andThen(Enumerator.eof)
