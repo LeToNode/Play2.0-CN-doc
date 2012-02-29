@@ -6,7 +6,7 @@ A JSON request is an HTTP request using a valid JSON payload as request body. It
 
 By default an `Action` uses an **any content** body parser, which lets you retrieve the body as JSON (actually as a `JsValue`):
 
-```
+```scala
 def sayHello = Action { request =>
   request.body.asJson.map { json =>
     (json \ "name").asOpt[String].map { name =>
@@ -22,7 +22,7 @@ def sayHello = Action { request =>
 
 It’s way better (and simpler) to specify our own `BodyParser` to ask Play to parser the content body directly as JSON:
 
-```
+```scala
 def sayHello = Action(parse.json) { request =>
   (request.body \ "name").asOpt[String].map { name =>
     Ok("Hello " + name)
@@ -58,7 +58,7 @@ Hello Guillaume
 
 In our previous example we handle a JSON request, but we reply with a `text/plain` response. Let’s change that to send back a valid JSON HTTP response:
 
-```
+```scala
 def sayHello = Action(parse.json) { request =>
   (request.body \ "name").asOpt[String].map { name =>
     Ok(toJson(
