@@ -8,7 +8,7 @@ Let’s start with the simple example of a logging decorator: we want to log eac
 
 The first way is not to define our own Action, but just to provide a helper method building a standard Action:
 
-```
+```scala
 def LoggingAction(f: Request[AnyContent] => Result): Action[AnyContent] = {
   Action { request =>
     Logger.info("Calling action")
@@ -19,7 +19,7 @@ def LoggingAction(f: Request[AnyContent] => Result): Action[AnyContent] = {
 
 That you can use as:
 
-```
+```scala
 def index = LoggingAction { request =>
   Ok("Hello World")    
 }
@@ -27,7 +27,7 @@ def index = LoggingAction { request =>
 
 This is simple but it works only with the default `parse.anyContent` body parser as we don't have a way to specify our own body parser. We can of course define an additional helper method:
 
-```
+```scala
 def LoggingAction[A](bp: BodyParser[A])(f: Request[A] => Result): Action[A] = {
   Action(bp) { request =>
     Logger.info("Calling action")
@@ -38,7 +38,7 @@ def LoggingAction[A](bp: BodyParser[A])(f: Request[A] => Result): Action[A] = {
 
 And then:
 
-```
+```scala
 def index = LoggingAction(parse.text) { request =>
   Ok("Hello World")    
 }
@@ -48,7 +48,7 @@ def index = LoggingAction(parse.text) { request =>
 
 Another way is to define our own `LoggingAction` that would be a wrapper over another `Action`:
 
-```
+```scala
 case class Logging[A](action: Action[A]) extends Action[A] {
   
   def apply(request: Request[A]): Result = {
@@ -62,7 +62,7 @@ case class Logging[A](action: Action[A]) extends Action[A] {
 
 Now you can use it to wrap any other action value:
 
-```
+```scala
 def index = Logging { 
   Action { 
     Ok("Hello World")
@@ -72,7 +72,7 @@ def index = Logging {
 
 Note that it will just re-use the wrapped action body parser as is, so you can of course write:
 
-```
+```scala
 def index = Logging { 
   Action(parse.text) { 
     Ok("Hello World")
@@ -82,7 +82,7 @@ def index = Logging {
 
 > Another way to write the same thing but without defining the `Logging` class, would be:
 > 
-> ```
+> ```scala
 > def Logging[A](action: Action[A]): Action[A] = {
 >   Action(action.parser) { request =>
 >     Logger.info("Calling action")
@@ -95,7 +95,7 @@ def index = Logging {
 
 Let’s look at the more complicated but common example of an authenticated action. The main problem is that we need to pass the authenticated user to the wrapped action and to wrap the original body parser to perform the authentication.
 
-```
+```scala
 def Authenticated[A](action: User => Action[A]): Action[A] = {
   
   // Let's define an helper function to retrieve a User
@@ -122,7 +122,7 @@ def Authenticated[A](action: User => Action[A]): Action[A] = {
 
 You can use it like this:
 
-```
+```scala
 def index = Authenticated { user =>
   Action { request =>
     Ok("Hello " + user.name)      
@@ -136,7 +136,7 @@ def index = Authenticated { user =>
 
 Let’s see how to write the previous example without wrapping the whole action and without authenticating the body parser:
 
-```
+```scala
 def Authenticated(f: (User, Request[AnyContent]) => Result) = {
   Action { request =>
     request.session.get("user").flatMap(u => User.find(u)).map { user =>
@@ -148,7 +148,7 @@ def Authenticated(f: (User, Request[AnyContent]) => Result) = {
 
 To use this:
 
-```
+```scala
 def index = Authenticated { (user, request) =>
    Ok("Hello " + user.name)    
 }
@@ -156,7 +156,7 @@ def index = Authenticated { (user, request) =>
 
 A problem here is that you can't mark the `request` parameter as `implicit` anymore. You can solve that using currying:
 
-```
+```scala
 def Authenticated(f: User => Request[AnyContent] => Result) = {
   Action { request =>
     request.session.get("user").flatMap(u => User.find(u)).map { user =>
@@ -168,7 +168,7 @@ def Authenticated(f: User => Request[AnyContent] => Result) = {
 
 Then you can do this:
 
-```
+```scala
 def index = Authenticated { user => implicit request =>
    Ok("Hello " + user.name)    
 }
@@ -176,7 +176,7 @@ def index = Authenticated { user => implicit request =>
 
 Another (probably simpler) way is to define our own subclass of `Request` as `AuthenticatedRequest` (so we are merging both parameters into a single parameter):
 
-```
+```scala
 case class AuthenticatedRequest(
   val user: User, request: Request[AnyContent]
 ) extends WrappedRequest(request)
@@ -192,7 +192,7 @@ def Authenticated(f: AuthenticatedRequest => Result) = {
 
 And then:
 
-```
+```scala
 def index = Authenticated { implicit request =>
    Ok("Hello " + request.user.name)    
 }
