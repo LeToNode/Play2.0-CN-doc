@@ -35,7 +35,8 @@ When you interact asynchronously with an Akka actor we will get `Future` object.
 import static akka.pattern.Patterns.ask;
 import play.libs.Akka;
 import play.mvc.Result;
-import play.libs.F.*;
+import static play.mvc.Results.async;
+import play.libs.F.Function;
 
 public static Result index() {
   return async(
