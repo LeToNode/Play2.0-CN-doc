@@ -31,10 +31,14 @@ akka.debug.receive = on
 
 When you interact asynchronously with an Akka actor we will get `Future` object. You can easily convert them to play `Promise` using the conversion method provided in `play.libs.Akka.asPromise()`:
 
-```
+```java
+import static akka.pattern.Patterns.ask;
+import play.libs.Akka;
+import play.mvc.Result;
+
 public static Result index() {
   return async(
-    Akka.asPromise(myActor.ask("hello")).map(
+    Akka.asPromise(ask(myActor,"hello", 1000)).map(
       new Function<Object,Result>() {
         public Result apply(Object response) {
           return ok(response.toString());
@@ -49,10 +53,15 @@ public static Result index() {
 
 A common use case within Akka is to have some computation performed concurrently without needing the extra utility of an Actor. If you find yourself creating a pool of Actors for the sole reason of performing a calculation in parallel, there is an easier (and faster) way:
 
-```
+```java
+
+import static akka.dispatch.Futures.future;
+import java.util.concurrent.Callable;
+import play.libs.F.*;
+
 public static Result index() {
   return async(
-    Akka.future(new Callable<Integer>() {
+    future(new Callable<Integer>() {
       public Integer call() {
         return longComputation();
       }   
