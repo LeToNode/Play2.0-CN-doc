@@ -160,7 +160,7 @@ A problem here is that you can't mark the `request` parameter as `implicit` anym
 def Authenticated(f: User => Request[AnyContent] => Result) = {
   Action { request =>
     request.session.get("user").flatMap(u => User.find(u)).map { user =>
-      f(user, request)
+      f(user)(request)
     }.getOrElse(Unauthorized)     
   }
 }
