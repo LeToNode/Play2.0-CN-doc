@@ -22,7 +22,7 @@ Until now, we were using `Action` instances to handle standard HTTP requests and
 
 To handle a WebSocket request, use a `WebSocket` instead of an `Action`:
 
-```
+```scala
 def index = WebSocket.using[String] { request => 
   
   // Log events to the console
@@ -50,7 +50,7 @@ It this example we are creating a simple iteratee that prints each message to co
 
 Let’s write another example that discards the input data and closes the socket just after sending the **Hello!** message:
 
-```
+```scala
 def index = WebSocket.using[String] { request => 
   
   // Just consume and ignore the input
