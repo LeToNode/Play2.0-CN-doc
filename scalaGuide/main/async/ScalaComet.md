@@ -21,9 +21,11 @@ If you run this action from a web browser, you will see the three events logged 
 
 > **Tip:** Writing `events >>> Enumerator.eof` is just another way of writing `events.andThen(Enumerator.eof)`
 
-We can write this in a better way by using an `Enumeratee` that is just an adapter to transform an `Enumerator[A]` into another `Enumerator[B]`. Let’s use it to wrap standard messages into the `<script>` tags:
+We can write this in a better way by using `play.api.libs.iteratee.Enumeratee` that is just an adapter to transform an `Enumerator[A]` into another `Enumerator[B]`. Let’s use it to wrap standard messages into the `<script>` tags:
     
 ```
+import play.api.templates.Html
+
 // Transform a String message into an Html script tag
 val toCometMessage = Enumeratee.map[String] { data => 
     Html("""<script>console.log('""" + data + """')</script>""" 
