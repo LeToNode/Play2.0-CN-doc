@@ -177,14 +177,14 @@ def index = Authenticated { user => implicit request =>
 Another (probably simpler) way is to define our own subclass of `Request` as `AuthenticatedRequest` (so we are merging both parameters into a single parameter):
 
 ```
-class AuthenticatedRequest(
+case class AuthenticatedRequest(
   val user: User, request: Request[AnyContent]
 ) extends WrappedRequest(request)
 
 def Authenticated(f: AuthenticatedRequest => Result) = {
   Action { request =>
     request.session.get("user").flatMap(u => User.find(u)).map { user =>
-      f(new AuthenticatedRequest(user, request))
+      f(AuthenticatedRequest(user, request))
     }.getOrElse(Unauthorized)            
   }
 }
