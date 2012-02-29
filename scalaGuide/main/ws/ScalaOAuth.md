@@ -29,7 +29,7 @@ Now the /access token/ can be passed to any call to access protected data.
 
 ## Example
 
-```
+```scala
 object Twitter extends Controller {
 
   val KEY = ConsumerKey("xxxxx", "xxxxx")
