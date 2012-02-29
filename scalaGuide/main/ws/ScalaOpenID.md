@@ -22,7 +22,7 @@ In any case, when the `Promise` you get is a `Thrown`, you should look at the `T
 
 Here is an example of usage (from a controller):
 
-```
+```scala
 def login = Action {
   Ok(views.html.login())
 }
@@ -66,7 +66,7 @@ You may request *optional* attributes and/or *required* attributes from the Open
 
 Extended attributes are requested in the redirect URL:
 
-```
+```scala
 OpenID.redirectURL(
     openid,
     routes.Application.openIDCallback.absoluteURL(),
