@@ -28,7 +28,7 @@ import play.api.templates.Html
 
 // Transform a String message into an Html script tag
 val toCometMessage = Enumeratee.map[String] { data => 
-    Html("""<script>console.log('""" + data + """')</script>""" 
+    Html("""<script>console.log('""" + data + """')</script>""")
 }
 
 def comet = Action {
