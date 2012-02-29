@@ -177,7 +177,7 @@ Note that you can also declare reusable pure Scala blocks:
 <h1>@title("hello world")</h1>
 ```
 
-> **Note:** Declaring Scala block this way in a template can be sometime useful but keep in mind that a template is not the best place to write complex logic. It is often better to externalize these kind of code in a pure scala source file (that you can store under the `views/` package as well if you want).
+> **Note:** Declaring Scala block this way in a template can be sometimes useful but keep in mind that a template is not the best place to write complex logic. It is often better to externalize these kind of code in a pure scala source file (that you can store under the `views/` package as well if you want).
 
 By convention, a reusable block defined with a name starting with **implicit** will be marked as `implicit`:
 
