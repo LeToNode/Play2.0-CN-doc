@@ -20,7 +20,7 @@ Start by writing an HTML form:
 
 Now define the `upload` action using a `multipartFormData` body parser:
 
-```
+```scala
 def upload = Action(parse.multipartFormData) { request =>
   request.body.file("picture").map { picture =>
     import java.io.File
@@ -46,7 +46,7 @@ Another way to send files to the server is to use Ajax to upload the file asynch
 
 In this case we can just use a body parser to store the request body content in a file. For this example, let’s use the `temporaryFile` body parser:
 
-```
+```scala
 def upload = Action(parse.temporaryFile) { request =>
   request.body.moveTo(new File("/tmp/picture"))
   Ok("File uploaded")
