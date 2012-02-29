@@ -53,7 +53,7 @@ To start you need to learn how to execute SQL queries.
 
 First, import `anorm._`, and then simply use the `SQL` object to create queries. You need a `Connection` to run a query, and you can retrieve one from the `play.api.db.DB` helper:
 
-```
+```scala
 import anorm._ 
 
 DB.withConnection { implicit c =>
@@ -65,13 +65,13 @@ The `execute()` method returns a Boolean value indicating whether the execution 
 
 To execute an update, you can use `executeUpdate()`, which returns the number of rows updated.
 
-```
+```scala
 val result: Int = SQL("delete from City where id = 99").executeUpdate()
 ```
 
 Since Scala supports multi-line strings, feel free to use them for complex SQL statements:
 
-```
+```scala
 val sqlQuery = SQL(
   """
     select * from Country c 
@@ -83,7 +83,7 @@ val sqlQuery = SQL(
 
 If your SQL query needs dynamic parameters, you can declare placeholders like `{name}` in the query string, and later assign them a value:
 
-```
+```scala
 SQL(
   """
     select * from Country c 
@@ -99,7 +99,7 @@ The first way to access the results of a select query is to use the Stream API.
 
 When you call `apply()` on any SQL statement, you will receive a lazy `Stream` of `Row` instances, where each row can be seen as a dictionary:
 
-```
+```scala
 // Create an SQL query
 val selectCountries = SQL("Select * from Country")
  
@@ -111,7 +111,7 @@ val countries = selectCountries().map(row =>
 
 In the following example we will count the number of `Country` entries in the database, so result set will be a single row with a single column:
 
-```
+```scala
 // First retrieve the first row
 val firstRow = SQL("Select count(*) as c from Country").apply().head
  
@@ -125,7 +125,7 @@ You can also use Pattern Matching to match and extract the `Row` content. In thi
 
 The following example transform each row to the correct Scala type:
 
-```
+```scala
 case class SmallCountry(name:String) 
 case class BigCountry(name:String) 
 case class France
@@ -145,7 +145,7 @@ If a column can contain `Null` values in the database schema, you need to manipu
 
 For example, the `indepYear` of the `Country` table is nullable, so you need to match it as `Option[Int]`:
 
-```
+```scala
 SQL("Select name,indepYear from Country")().collect {
   case Row(name:String, Some(year:Int)) => name -> year
 }
@@ -153,7 +153,7 @@ SQL("Select name,indepYear from Country")().collect {
 
 If you try to match this column as `Int` it won’t be able to parse `Null` cases. Suppose you try to retrieve the column content as `Int` directly from the dictionary:
 
-```
+```scala
 SQL("Select name,indepYear from Country")().map { row =>
   row[String]("name") -> row[Int]("indepYear")
 }
@@ -161,7 +161,7 @@ SQL("Select name,indepYear from Country")().map { row =>
 
 This will produce an `UnexpectedNullableFound(COUNTRY.INDEPYEAR)` exception if it encounters a null value, so you need to map it properly to an `Option[Int]`, as:
 
-```
+```scala
 SQL("Select name,indepYear from Country")().map { row =>
   row[String]("name") -> row[Option[Int]]("indepYear")
 }
@@ -179,19 +179,19 @@ You can use the parser API to create generic and reusable parsers that can parse
 
 First you need a `RowParser`, i.e. a parser able to parse one row to a Scala value. For example we can define a parser to transform a single column result set row, to a Scala `Long`:
 
-```
+```scala
 val rowParser = scalar[Long]
 ```
 
 Then we have to transform it into a `ResultSetParser`. Here we will create a parser that parse a single row:
 
-```
+```scala
 val rsParser = scalar[Long].single
 ```
 
 So this parser will parse a result set to return a `Long`. It is useful to parse to result produced by a simple SQL `select count` query:
 
-```
+```scala
 val count: Long = SQL("select count(*) from Country").as(scalar[Long].single)
 ```
 
@@ -199,7 +199,7 @@ Let’s write a more complicated parser:
 
 `str("name") ~ int("population")`, will create a `RowParser` able to parse a row containing a String `name` column and an Integer `population` column. Then we can create a `ResultSetParser` that will parse as many rows of this kind as it can, using `*`: 
 
-```
+```scala
 val populations:List[String~Int] = {
   SQL("select * from Country").as( str("name") ~ int("population") * ) 
 }
@@ -209,7 +209,7 @@ As you see, this query’s result type is `List[String~Int]` - a list of country
 
 You can also rewrite the same code as:
 
-```
+```scala
 val result:List[String~Int] = {
   SQL("select * from Country").as(get[String]("name")~get[Int]("population")*) 
 }
@@ -217,7 +217,7 @@ val result:List[String~Int] = {
 
 Now what about the `String~Int` type? This is an **Anorm** type that is not really convenient to use outside of your database access code. You would want have a simple tuple `(String, Int)` instead. You can use the `map` function on a `RowParser` to transform its result to a more convenient type:
 
-```
+```scala
 str("name") ~ int("population") map { case n~p => (n,p) }
 ```
 
@@ -225,7 +225,7 @@ str("name") ~ int("population") map { case n~p => (n,p) }
 
 Now, because transforming `A~B~C` types to `(A,B,C)` is a common task, we provide a `flatten` function that does exactly that. So you finally write:
 
-```
+```scala
 val result:List[(String,Int)] = {
   SQL("select * from Country").as(
     str("name") ~ int("population") map(flatten) *
@@ -243,7 +243,7 @@ select c.name, l.language from Country c
 
 Let’s start by parsing all rows as a `List[(String,String)]` (a list of name,language tuple):
 
-```
+```scala
 var p: ResultSetParser[List[(String,String)] = {
   str("name") ~ str("language") map(flatten) *
 }
@@ -251,7 +251,7 @@ var p: ResultSetParser[List[(String,String)] = {
 
 Now we get this kind of result:
 
-```
+```scala
 List(
   ("France", "Arabic"), 
   ("France", "French"), 
@@ -264,7 +264,7 @@ List(
 
 We can then use the Scala collection API, to transform it to the expected result:
 
-```
+```scala
 case class SpokenLanguages(country:String, languages:Seq[String])
 
 languages.headOption.map { f =>
@@ -274,7 +274,7 @@ languages.headOption.map { f =>
 
 Finally, we get this convenient function:
 
-```
+```scala
 case class SpokenLanguages(country:String, languages:Seq[String])
 
 def spokenLanguages(countryCode: String): Option[SpokenLanguages] = {
@@ -296,7 +296,7 @@ def spokenLanguages(countryCode: String): Option[SpokenLanguages] = {
 
 To continue, let’s complicate our example to separate the official language from the others:
 
-```
+```scala
 case class SpokenLanguages(
   country:String, 
   officialLanguage: Option[String], 
