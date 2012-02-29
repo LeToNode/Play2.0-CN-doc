@@ -87,8 +87,33 @@ Sometimes you’ll want to fill a form with existing values, typically for editi
 userForm.fill(new User("bob@gmail.com", "secret"))
 ```
 
-> **Next:** [[Using the form template helpers | JavaFormHelpers]]
+## Register a custom DataBinder
 
+In case you want to define a mapping from a custom object to a form field string and vice versa you need to register a new Formatter for the this object.
+For an object like JodaTime's `LocalTime` it could look like this:
+
+```java
+Formatters.register(LocalTime.class, new Formatters.SimpleFormatter<LocalTime>() {
+
+	private Pattern timePattern = Pattern.compile("([012]?\\\\d)(?:[\\\\s:._-]+([0-5]\\\\d))?"); 
+	
+	@Override
+	public LocalTime parse(String input, Locale l) throws ParseException {
+		Matcher m = timePattern.matcher(input);
+		if (!m.find()) throw new ParseException("No valid Input",0);
+		int hour = Integer.valueOf(m.group(1));
+		int min = m.group(2) == null ? 0 : Integer.valueOf(m.group(2));
+		return new LocalTime(hour, min);
+	}
+
+	@Override
+	public String print(LocalTime localTime, Locale l) {
+		return localTime.toString("HH:mm");
+	}
+});
+```
+
+> **Next:** [[Using the form template helpers | JavaFormHelpers]]
 
 
 
