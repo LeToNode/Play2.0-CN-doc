@@ -43,9 +43,9 @@ There are no guarantees that this meta-model is correct. Even if the compiler sa
 
 #### Take Control of your SQL code
 
-Object Relational Mapping work well for trivial cases, but when you have to deal with complex schemas or existing databases, you will spend most of your time to fighting with your ORM to make it generate the SQL queries you want.
+Object Relational Mapping works well for trivial cases, but when you have to deal with complex schemas or existing databases, you will spend most of your time fighting with your ORM to make it generate the SQL queries you want.
 
-Writing yourself SQL queries can be tedious for a simple ‘Hello World’ application, but for any real-life application, you will eventually save time and simplify your code by taking the full control of your SQL code.
+Writing SQL queries yourself can be tedious for a simple ‘Hello World’ application, but for any real-life application, you will eventually save time and simplify your code by taking full control of your SQL code.
 
 ## Executing SQL queries
 
