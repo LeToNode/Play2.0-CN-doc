@@ -21,7 +21,7 @@ Actually, we previously saw that the response body is specified using an `Enumer
 ```
 def index = Action {
   SimpleResult(
-    header= ResponseHeader(200),
+    header = ResponseHeader(200),
     body = Enumerator("Hello World")
   )
 }
@@ -49,7 +49,7 @@ def index = Action {
   val fileContent: Enumerator[Array[Byte]] = Enumerator.fromFile(file)    
     
   SimpleResult(
-    header= ResponseHeader(200),
+    header = ResponseHeader(200),
     body = fileContent
   )
 }
@@ -66,7 +66,7 @@ def index = Action {
   val fileContent: Enumerator[Array[Byte]] = Enumerator.fromFile(file)    
     
   SimpleResult(
-    header= ResponseHeader(200, Map(CONTENT_LENGTH -> file.length.toString)),
+    header = ResponseHeader(200, Map(CONTENT_LENGTH -> file.length.toString)),
     body = fileContent
   )
 }
@@ -140,7 +140,7 @@ def index = Action {
   val dataContent: Enumerator[Array[Byte]] = Enumerator.fromStream(data)
   
   ChunkedResult(
-    header= ResponseHeader(200),
+    header = ResponseHeader(200),
     chunks = dataContent
   )
 }
