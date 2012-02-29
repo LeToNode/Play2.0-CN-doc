@@ -95,7 +95,7 @@ For an object like JodaTime's `LocalTime` it could look like this:
 ```java
 Formatters.register(LocalTime.class, new Formatters.SimpleFormatter<LocalTime>() {
 
-	private Pattern timePattern = Pattern.compile("([012]?\\\\d)(?:[\\\\s:._-]+([0-5]\\\\d))?"); 
+	private Pattern timePattern = Pattern.compile("([012]?\\\\d)(?:[\\\\s:\\\\._\\\\-]+([0-5]\\\\d))?"); 
 	
 	@Override
 	public LocalTime parse(String input, Locale l) throws ParseException {
