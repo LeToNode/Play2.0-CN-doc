@@ -184,7 +184,7 @@ class AuthenticatedRequest(
 def Authenticated(f: AuthenticatedRequest => Result) = {
   Action { request =>
     request.session.get("user").flatMap(u => User.find(u)).map { user =>
-      f(AuthenticatedRequest(user, request))
+      f(new AuthenticatedRequest(user, request))
     }.getOrElse(Unauthorized)            
   }
 }
