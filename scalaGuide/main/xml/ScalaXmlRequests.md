@@ -6,7 +6,7 @@ An XML request is an HTTP request using a valid XML payload as the request body.
 
 By default an `Action` uses a **any content** body parser, which lets you retrieve the body as XML (actually as a `NodeSeq`):
 
-```
+```scala
 def sayHello = Action { request =>
   request.body.asXml.map { xml =>
     (xml \\ "name" headOption).map(_.text).map { name =>
@@ -22,7 +22,7 @@ def sayHello = Action { request =>
 
 It’s way better (and simpler) to specify our own `BodyParser` to ask Play to parse the content body directly as XML:
 
-```
+```scala
 def sayHello = Action(parse.xml) { request =>
   (request.body \\ "name" headOption).map(_.text).map { name =>
     Ok("Hello " + name)
@@ -58,7 +58,7 @@ Hello Guillaume
 
 In our previous example we handle an XML request, but we reply with a `text/plain` response. Let’s change that to send back a valid XML HTTP response:
 
-```
+```scala
 def sayHello = Action(parse.xml) { request =>
   (request.body \\ "name" headOption).map(_.text).map { name =>
     Ok(<message status="OK">Hello {name}</message>)
