@@ -59,6 +59,7 @@ A common use case within Akka is to have some computation performed concurrently
 
 import static play.libs.Akka.future;
 import play.libs.F.*;
+import java.util.concurrent.Callable;
 
 public static Result index() {
   return async(
