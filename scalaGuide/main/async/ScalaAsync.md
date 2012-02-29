@@ -14,7 +14,7 @@ The web client will be blocked while waiting for the response, but nothing will 
 
 To create a `Promise[Result]` we need another promise first: the promise that will give us the actual value we need to compute the result:
 
-```
+```scala
 val promiseOfPIValue: Promise[Double] = computePIAsynchronously()
 val promiseOfResult: Promise[Result] = promiseOfPIValue.map { pi =>
   Ok("PI value computed: " + pi)    
@@ -25,7 +25,7 @@ All of Play 2.0’s asynchronous API calls give you a `Promise`. This is the cas
 
 A simple way to execute a block of code asynchronously and to get a `Promise` is to use the `play.api.libs.concurrent.Akka` helpers:
 
-```
+```scala
 val promiseOfInt: Promise[Int] = Akka.future {
   intensiveComputation()
 }
@@ -37,7 +37,7 @@ val promiseOfInt: Promise[Int] = Akka.future {
 
 While we were using `SimpleResult` until now, to send an asynchronous result, we need an `AsyncResult` to wrap the actual `SimpleResult`:
 
-```
+```scala
 def index = Action {
   val promiseOfInt = Akka.future { intensiveComputation() }
   Async {
@@ -52,7 +52,7 @@ def index = Action {
 
 It is often useful to handle time-outs properly, to avoid having the web browser block and wait if something goes wrong. You can easily compose a promise with a promise timeout to handle these cases:
 
-```
+```scala
 def index = Action {
   val promiseOfInt = Akka.future { intensiveComputation() }
   Async {
