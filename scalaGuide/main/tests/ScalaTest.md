@@ -8,7 +8,7 @@ The default way to test a Play 2 application is by using [[specs2| http://etorre
 
 Unit specifications extend the `org.specs2.mutable.Specification` trait and are using the should/in format:
 
-```
+```scala
 import org.specs2.mutable._
 
 import play.api.test._
@@ -34,7 +34,7 @@ class HelloWorldSpec extends Specification {
 
 If the code you want to test depends of a running application, you can easily create a `FakeApplication` on the fly:
 
-```
+```scala
 "Computer model" should {
 
   "be retrieved by id" in {
@@ -52,7 +52,7 @@ If the code you want to test depends of a running application, you can easily cr
 
 You can also pass (or override) additional configuration to the fake application, or mock any plug-in. For example to create a `FakeApplication` using a `default` in memory database:
 
-```
+```scala
 FakeApplication(additionalConfiguration = inMemoryDatabase())
 ```
 
