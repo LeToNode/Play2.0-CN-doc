@@ -22,7 +22,7 @@ Once the body parser finishes its job and gives back a value of type `A`, the co
 
 Previously we said that an `Action` was a `Request => Result` function. This is not entirely true. Let’s have a more precise look at the `Action` trait:
 
-```
+```scala
 trait Action[A] extends (Request[A] => Result) {
   def parser: BodyParser[A]
 }
@@ -30,7 +30,7 @@ trait Action[A] extends (Request[A] => Result) {
 
 First we see that there is a generic type `A`, and then that an action must define a `BodyParser[A]`. With `Request[A]` being defined as:
 
-```
+```scala
 trait Request[+A] extends RequestHeader {
   def body: A
 }
@@ -55,7 +55,7 @@ This body parser checks the `Content-Type` header and decides what kind of body 
 
 For example:
 
-```
+```scala
 def save = Action { request =>
   val body: AnyContent = request.body
   val textBody: Option[String] = body.asText 
@@ -75,7 +75,7 @@ The body parsers available in Play are defined in `play.api.mvc.BodyParsers.pars
 
 So for example, to define an action expecting a text body (as in the previous example):
 
-```
+```scala
 def save = Action(parse.text) { request => 
    Ok("Got: " + request.body) 
 } 
@@ -85,7 +85,7 @@ Do you see how the code is simpler? This is because the `parse.text` body parser
 
 Alternatively we can use:
 
-```
+```scala
 def save = Action(parse.tolerantText) { request =>
   Ok("Got: " + request.body)
 }
@@ -97,7 +97,7 @@ This one doesn't check the `Content-Type` header and always loads the request bo
 
 Here is another example, which will store the request body in a file:
 
-```
+```scala
 def save = Action(parse.file(to = new File("/tmp/upload"))) { request =>
   Ok("Saved the request content to " + request.body)
 }
@@ -107,7 +107,7 @@ def save = Action(parse.file(to = new File("/tmp/upload"))) { request =>
 
 In the previous example, all request bodies are stored in the same file. This is a bit problematic isn’t it? Let’s write another custom body parser that extract the user name from the request Session, to give a unique file for each user:
 
-```
+```scala
 val storeInUserFile = parse.using { request =>
   request.session.get("username").map { user =>
     file(to = new File("/tmp/" + user + ".upload"))
@@ -119,7 +119,6 @@ val storeInUserFile = parse.using { request =>
 def save = Action(storeInUserFile) { request =>
   Ok("Saved the request content to " + request.body)  
 }
-
 ```
 
 > **Note:** Here we are not really writing our own BodyParser, but just combining existing ones. This is often enough and should cover most use cases. Writing a `BodyParser` from scratch is covered in the advanced topics section.
@@ -130,7 +129,7 @@ Text based body parsers (such as **text**, **json**, **xml** or **formUrlEncoded
 
 There is a default content length (the default is 100KB), but you can also specify it inline:
 
-```
+```scala
 // Accept only 10KB of data.
 def save = Action(parse.text(maxLength = 1024 * 10)) { request =>
   Ok("Got: " + text)
@@ -143,7 +142,7 @@ def save = Action(parse.text(maxLength = 1024 * 10)) { request =>
 
 You can also wrap any body parser with `maxLength`:
 
-```
+```scala
 // Accept only 10KB of data.
 def save = Action(maxLength(1024 * 10, parser = storeInUserFile)) { request =>
   Ok("Saved the request content to " + request.body)  
