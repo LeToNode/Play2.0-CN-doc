@@ -6,13 +6,13 @@ The result content type is automatically inferred from the Scala value that you 
 
 For example:
 
-```
+```scala
 val textResult = Ok("Hello World!")
 ```
 
 Will automatically set the `Content-Type` header to `text/plain`, while:
 
-```
+```scala
 val xmlResult = Ok(<message>Hello World!</message>)
 ```
 
@@ -22,13 +22,13 @@ will set the Content-Type header to `text/xml`.
 
 This is pretty useful, but sometimes you want to change it. Just use the `as(newContentType)` method on a result to create a new similar result with a different `Content-Type` header:
 
-```
+```scala
 val htmlResult = Ok(<h1>Hello World!</h1>).as("text/html")
 ```
 
 or even better, using:
 
-```
+```scala
 val htmlResult = Ok(<h1>Hello World!</h1>).as(HTML)
 ```
 
@@ -38,7 +38,7 @@ val htmlResult = Ok(<h1>Hello World!</h1>).as(HTML)
 
 You can also add (or update) any HTTP header to the result:
 
-```
+```scala
 Ok("Hello World!").withHeaders(
   CACHE_CONTROL -> "max-age=3600", 
   ETAG -> "xx"
@@ -53,7 +53,7 @@ Cookies are just a special form of HTTP headers but we provide a set of helpers 
 
 You can easily add a Cookie to the HTTP response using:
 
-```
+```scala
 Ok("Hello world").withCookies(
   Cookie("theme", "blue")
 )
@@ -61,7 +61,7 @@ Ok("Hello world").withCookies(
 
 Also, to discard a Cookie previously stored on the Web browser:
 
-```
+```scala
 Ok("Hello world").discardingCookies("theme")
 ```
 
@@ -73,7 +73,7 @@ The charset is used to both convert the text response to the corresponding bytes
 
 The charset is handled automatically via the `play.api.mvc.Codec` type class. Just import an implicit instance of `play.api.mvc.Codec` in the current scope to change the charset that will be used by all operations:
 
-```
+```scala
 object Application extends Controller {
     
   implicit val myCustomCharset = Codec.javaSupported("iso-8859-1")
@@ -89,7 +89,7 @@ Here, because there is an implicit charset value in the scope, it will be used b
 
 Now if you are wondering how the `HTML` method works, here it is how it is defined:
 
-```
+```scala
 def HTML(implicit codec: Codec) = {
   "text/html; charset=" + codec.charset
 }
