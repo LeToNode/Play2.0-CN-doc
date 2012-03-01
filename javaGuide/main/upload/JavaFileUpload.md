@@ -29,7 +29,7 @@ public static Result upload() {
     String contentType = picture.getContentType(); 
     File file = picture.getFile();
     return ok("File uploaded");
-  }.getOrElse {
+  } else {
     flash("error", "Missing file");
     return redirect(routes.Application.index());    
   }
