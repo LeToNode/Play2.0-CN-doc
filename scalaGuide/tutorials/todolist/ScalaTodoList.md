@@ -264,7 +264,7 @@ We also imported `helper._` that gives us the form creation helpers, typically t
     
 ## The task form
 
-A `Form` object encapsulates an HTML form definition, including validation constraints. Let’s create a very simple form: we only need a form with a single **label** field. The form will also check that the label provided by the user is not empty:
+A `Form` object encapsulates an HTML form definition, including validation constraints. Let’s create a very simple form in the `Application` controller: we only need a form with a single **label** field. The form will also check that the label provided by the user is not empty:
 
 ```
 import play.api.data._
