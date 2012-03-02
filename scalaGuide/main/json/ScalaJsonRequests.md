@@ -20,7 +20,7 @@ def sayHello = Action { request =>
 }
 ```
 
-It’s way better (and simpler) to specify our own `BodyParser` to ask Play to parser the content body directly as JSON:
+It's better (and simpler) to specify our own `BodyParser` to ask Play to parse the content body directly as JSON:
 
 ```scala
 def sayHello = Action(parse.json) { request =>
