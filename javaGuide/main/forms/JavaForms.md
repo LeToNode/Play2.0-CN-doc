@@ -89,7 +89,7 @@ userForm.fill(new User("bob@gmail.com", "secret"))
 
 ## Register a custom DataBinder
 
-In case you want to define a mapping from a custom object to a form field string and vice versa you need to register a new Formatter for the this object.
+In case you want to define a mapping from a custom object to a form field string and vice versa you need to register a new Formatter for this object.
 For an object like JodaTime's `LocalTime` it could look like this:
 
 ```java
