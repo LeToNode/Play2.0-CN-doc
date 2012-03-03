@@ -75,7 +75,7 @@ List<Task> tasks = find.where()
     .getPage(1);
 ```
 
-## Trasactional actions
+## Transactional actions
 
 By default Ebean will not use transactions. However, you can use any transaction helper provided by Ebean to create a transaction. For example:
 
