@@ -66,7 +66,7 @@ def sayHello = Action(parse.json) { request =>
     ))
   }.getOrElse {
     BadRequest(toJson(
-      Map("status" -> "OK", "message" -> "Missing parameter [name]")
+      Map("status" -> "KO", "message" -> "Missing parameter [name]")
     ))
   }
 }
