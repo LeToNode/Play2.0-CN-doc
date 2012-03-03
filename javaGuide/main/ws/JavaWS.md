@@ -23,16 +23,16 @@ Promise<WS.Response> result = WS.url("http://localhost:9001").post("content");
 The call is made asynchronously and you need to manipulate it as a `Promise<WS.Response>` to get the actual content. You can compose several promises and end up with a `Promise<Result>` that can be handled directly by the Play server:
 
 ```
-public static index feedTitle(String feedUrl) {
-  return async(
-    WS.url(feedUrl).get().map(
-      new Function<WS.Response, Result>() {
-        public Result apply(WS.Response response) {
-          return ok("Feed title: + response.asJson().findPath("title));
-        }
-      }
+public static Result feedTitle(String feedUrl) {
+    return async(
+        WS.url(feedUrl).get().map(
+	    new Function<WS.Response, Result>() {
+	        public Result apply(WS.Response response) {
+	            return ok("Feed title:" + response.asJson().findPath("title"));
+	        }
+	    }
+	)
     );
-  );
 }
 ```
 
