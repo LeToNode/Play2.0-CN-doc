@@ -38,7 +38,7 @@ public class MyController extends Controller {
   public static Result index() {
     return ok(toJson(ImmutableMap.of(
         "peter", "foo",
-        "yay", "value)));
+        "yay", "value")));
    }
 }
 ```
