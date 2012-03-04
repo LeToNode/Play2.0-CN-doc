@@ -10,7 +10,7 @@ Be sure to have the `java` and `javac` commands in the current path (you can che
 
 ## Download the binary package
 
-Download the [[Play 2.0 binary package | http://download.playframework.org/releases/play-2.0.zip]] and extract the archive to a location where you have both read **and write** access. (Running `play` writes some files to directories within the archive, so don't install to `/opt`, `/usr/local` or anywhere else you’d need special permission to write to.)
+Download the [[Play 2.0 binary package | http://download.playframework.org/releases/play-2.0-RC3.zip]] and extract the archive to a location where you have both read **and write** access. (Running `play` writes some files to directories within the archive, so don't install to `/opt`, `/usr/local` or anywhere else you’d need special permission to write to.)
 
 ## Add the play script to your PATH
 
