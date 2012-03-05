@@ -7,7 +7,6 @@
 ## About
 
 1. [[Play 2.0 a Web framework for a new era | Philosophy]]
-1. [[Architecture overview | Architecture]]
 
 ## Getting started
 

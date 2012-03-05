@@ -167,5 +167,3 @@ val limitedFillInMemory: Iteratee[Array[Byte,Int]] = {
 Other `Traversable` methods exist including `Traversable.takeUpTo`, `Traversable.drop`.
 
 Finally, you can compose different `Enumeratee` instances using the `compose` method, which has the symbolic equivalent `><>`. Note that any left input on the `Done` of the composed `Enumeratee` instances will be dropped. However, if you use `composeConcat` aliased `>+>`, any left input will be concatenated. 
-
-> **Next:** [[Promises | Promises]]

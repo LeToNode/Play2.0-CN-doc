@@ -3,7 +3,6 @@
 - [[Iteratees | Iteratees]]
 - [[Enumerators | Enumerators]]
 - [[Enumeratees | Enumeratees]]
-- [[Promises | Promises]]
 
 ### Main concepts
 
