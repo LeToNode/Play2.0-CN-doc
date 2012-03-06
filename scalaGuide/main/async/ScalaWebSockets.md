@@ -46,7 +46,7 @@ When constructing a `WebSocket` this way, we must return both `in` and `out` cha
 
 It this example we are creating a simple iteratee that prints each message to console. To send messages, we create a simple dummy enumerator that will send a single **Hello!** message.
 
-> **Tip:** You can test WebSockets on [[http://websocket.org/echo.html]]. Just set the location to `ws://localhost:9000`.
+> **Tip:** You can test WebSockets on [[http://websocket.org/echo.html]]. 
 
 Let’s write another example that discards the input data and closes the socket just after sending the **Hello!** message:
 
