@@ -284,6 +284,8 @@ The type of `taskForm` is then `Form[String]` since it is a form generating a si
 Now we have all elements needed to display the application page. Let’s write the `tasks` action:
 
 ```
+import models.Task
+
 def tasks = Action {
   Ok(views.html.index(Task.all(), taskForm))
 }
