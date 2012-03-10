@@ -23,9 +23,9 @@ You can specify the `BodyParser` to use for a particular action using the `@Body
 
 ```
 @BodyParser.Of(BodyParser.Json.class)
-pulic static Result index() {
+public static Result index() {
   RequestBody body = request().body();
-  ok("Got json: " + body.asJson());
+  return ok("Got json: " + body.asJson());
 }
 ```
 
