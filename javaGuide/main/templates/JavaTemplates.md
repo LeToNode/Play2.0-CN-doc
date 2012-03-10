@@ -182,6 +182,12 @@ You can import whatever you want at the beginning of your template (or sub-templ
 ...
 ```
 
+To make an absolute resolution, use **_root_** prefix in the import statement.
+
+```scala
+@import _root_.company.product.core._
+```
+
 ## Comments
 
 You can write server side block comments in templates using `@* *@`:
