@@ -121,8 +121,8 @@ for DIR in $CACHED_DIRS ; do
   rm -rf $CACHE_DIR/$DIR
   mkdir -p $CACHE_DIR/$DIR
   cp -r $DIR/.  $CACHE_DIR/$DIR
-echo "-----> Dropping ivy cache from the slug: $DIR" **
-rm -rf $SBT_USER_HOME/.ivy2 **
+echo "-----> Dropping ivy cache from the slug: $DIR"
+rm -rf $SBT_USER_HOME/.ivy2
 done
 ```
 
