@@ -70,3 +70,4 @@
 
 1. [[Missing parts | Missing]]
 1. [[Tips and tricks | Tips]]
+1. [[Documentation Play 2.0]]
