@@ -1,8 +1,8 @@
-# Introducing Play 2.0
+# Introduction à Play 2.0
 
-Since 2007, we have been working on making Java web application development easier. Play started as an internal project at [[Zenexity|http://www.zenexity.com]] and was heavily influenced by our way of doing web projects: focusing on developer productivity, respecting web architecture, and using a fresh approach to packaging conventions from the start - breaking so-called JEE best practices where it made sense.
+Depuis 2007, nous avons travaillé à rendre le développement d'applications web en Java plus facile. Play a commencé comme un projet interne à [[Zenexity|http://www.zenexity.com]] et a été fortement influencé par notre façon de faire des projets web: focalisé sur la productivité des développeurs, respectant l'architecture web et utilisant une approche novatrice tenant compte des conventions de packaging dès le début - rompant avec meilleures pratiques JEE ainsi appelées quand cela avait du sens.
 
-In 2009, we decided to share these ideas with the community as an open source project. The immediate feedback was extremely positive and the project gained a lot of traction. Today - after two years of active development - Play has several versions, an active community of 4,000 people, with a growing number of applications running in production all over the globe.
+En 2009, nous avons décidé de partager ces idées avec la communauté en tant que projet open source. Le retour immédiat a été extrêmement positif et le projet a beaucoup gagné en dynamisme. Aujourd'hui - après deux ans de développement actif - Play possède plusieurs versions, une communauté active de 4000 personnes et un nombre croissant d'applications en production partout dans le monde.
 
 Opening a project to the world certainly means more feedback, but it also means discovering and learning about new use cases, requiring features and un-earthing bugs that we were not specifically considered in the original design and its assumptions. During the two years of work on Play as an open source project we have worked to fix this kind of issues, as well as to integrate new features to support a wider range of scenarios. As the project has grown, we have learned a lot from our community and from our own experience - using Play in more and more complex and varied projects.
 
