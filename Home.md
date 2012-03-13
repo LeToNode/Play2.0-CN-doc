@@ -1,49 +1,49 @@
-# Documentation Play 2.0
+# Play 2.0 documentation
 
-> Play 2.0 est un framework hautement productif pour des applications Web en Java et en Scala qui intègre les composants et les API dont vous avez besoin pour le développement d'une application web moderne.
+> Play 2.0 is a high-productivity Java and Scala web application framework that integrates the components and APIs you need for modern web application development. 
 >
-> Play repose sur une architecture légère, sans état et adaptée au web et offre une consommation minimale et prédictible des ressources (temps processeur, mémoire, processus) pour des applications pouvant être fortement réparties grâce à son modèle réactif, fondé sur Iteratee IO.
+> Play is based on a lightweight, stateless, web-friendly architecture and features predictable and minimal resource consumption (CPU, memory, threads) for highly-scalable applications thanks to its reactive model, based on Iteratee IO.
 
-## A propos
+## About
 
-1. [[Play 2.0 un framework web pour une nouvelle ère | Philosophy]]
+1. [[Play 2.0 a Web framework for a new era | Philosophy]]
 
-## Pour démarrer
+## Getting started
 
-1. [[Installer Play 2.0 | Installing]]
-1. [[Créer une nouvelle application | NewApplication]]
-1. [[Anatomie d'une application Play 2.0 | Anatomy]]
-1. [[Utiliser la console Play 2.0 | PlayConsole ]]
-1. [[Configurer votre IDE préféré | IDE]]
-1. [[Exemples d'application | Samples]]
+1. [[Installing Play 2.0 | Installing]]
+1. [[Creating a new application | NewApplication]]
+1. [[Anatomy of a Play 2.0 application | Anatomy]]
+1. [[Using the Play 2.0 console | PlayConsole ]]
+1. [[Setting-up your preferred IDE | IDE]]
+1. [[Sample applications | Samples]]
 
-## Travailler avec Play 2.0
+## Working with Play 2.0
 
-1. [[Play 2.0 pour les développeurs Scala | ScalaHome]]
-1. [[Play 2.0 pour les développeurs Java | JavaHome]]
+1. [[Play 2.0 for Scala developers | ScalaHome]]
+1. [[Play 2.0 for Java developers | JavaHome]]
 
-## Sujets détaillés
+## Detailed topics
 
-1. [[Le système de construction | Build]]
-    1. [[A propose de la configuration de sbt | SBTSettings]]
-    1. [[Gestion des dépendances de l'application | SBTDependencies]]
-    1. [[Travailler avec des sous-projets | SBTSubProjects]]
-1. [[Travailler avec des composants publics | Assets]]
-    1. [[Utiliser CoffeeScript | AssetsCoffeeScript]]
-    1. [[Utiliser LESS CSS | AssetsLess]]
-    1. [[Utiliser le compilateur Google Closure | AssetsGoogleClosureCompiler]]
-1. [[Gérer les évolutions de base de données | Evolutions]]
-1. [[Syntaxe et fonctionnalités du fichier de configuration | Configuration]]
-    1. [[Configurer le pool de connections JDBC | SettingsJDBC]]
-    1. [[Configurer le système interne Akka | AkkaCore]]
-    1. [[Configurer l'enregistrement des logs | SettingsLogger]]
-1. [[Déployer votre application | Production]]
-    1. [[Créer une version autonome de votre application | ProductionDist]]
-    1. [[Configuration additionnelle | ProductionConfiguration]]
-    1. [[Déployer sur Heroku | ProductionHeroku]]
-    1. [[Configurer un serveur frontal HTTP | HTTPServer]]
+1. [[The Build system | Build]]
+    1. [[About sbt settings | SBTSettings]]
+    1. [[Manage application dependencies | SBTDependencies]]
+    1. [[Working with sub-projects | SBTSubProjects]]
+1. [[Working with public assets | Assets]]
+    1. [[Using CoffeeScript | AssetsCoffeeScript]]
+    1. [[Using LESS CSS | AssetsLess]]
+    1. [[Using Google Closure Compiler | AssetsGoogleClosureCompiler]]
+1. [[Managing database evolutions | Evolutions]]
+1. [[Configuration file syntax and features | Configuration]]
+    1. [[Configuring the JDBC connection pool | SettingsJDBC]]
+    1. [[Configuring the internal Akka system | AkkaCore]]
+    1. [[Configuring logging | SettingsLogger]]
+1. [[Deploying your application | Production]]
+    1. [[Creating a standalone version of your application | ProductionDist]]
+    1. [[Additional configuration | ProductionConfiguration]]
+    1. [[Deploying to Heroku | ProductionHeroku]]
+    1. [[Set-up a front-end HTTP server | HTTPServer]]
 
-## Documentations complémentaires
+## Additional documentations
 
 1. [[Scala|http://docs.scala-lang.org/]]
 1. [[Akka|http://akka.io/docs/]]
@@ -51,22 +51,22 @@
 1. [[Configuration|https://github.com/typesafehub/config]]
 1. [[Logback|http://logback.qos.ch/documentation.html]]
 
-## Hacker Play 2.0
+## Hacking Play 2.0
 
-1. [[Construire Play 2.0 à partir des sources | BuildingFromSource]]
-1. [[Serveur d'intégration continue sur Cloudbees | CIServer]]
-1. [[Dépôts | Repositories]]
-1. [[Gestionnaire de bugs | Issues]]
-1. [[Demande de pull | PullRequests]]
-1. [[Guide pour les contributeurs | Guidelines]]
+1. [[Building Play 2.0 from source | BuildingFromSource]]
+1. [[CI server at Cloudbees | CIServer]]
+1. [[Repositories | Repositories]]
+1. [[Issue tracker | Issues]]
+1. [[Pull requests | PullRequests]]
+1. [[Contributor guidelines | Guidelines]]
 
-## Contribuer à cette documentation
+## Contributing to this documentation
 
-> La documentation est librement éditable sur [[https://github.com/playframework/Play20/wiki]]. Sentez-vous libre de corriger les erreurs directement dans ces pages.
+> The documentation is freely editable on [[https://github.com/playframework/Play20/wiki]]. Feel free to fix mistakes directly in the pages. 
 >
-> Cependant, si vous voulez fournir des documentations complémentaires, merci de créer de nouvelles pages et de les référencer à partir de là. Un membre de l'équipe se chargera de l'intégrer dans la section la plus appropriée.
+> However if you want to provide additional documentation, please create new pages and reference them from here. A member of the core team will take care of integrating it in the most appropriate section.
 
-### A intégrer:
+### To be integrated:
 
-1. [[Parties manquantes | Missing]]
-1. [[Trucs et astuces | Tips]]
+1. [[Missing parts | Missing]]
+1. [[Tips and tricks | Tips]]
