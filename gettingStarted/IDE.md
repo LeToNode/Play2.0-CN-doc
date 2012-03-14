@@ -11,7 +11,7 @@ However, using a modern Java or Scala IDE provides cool productivity features li
 Play provides a command to simplify Eclipse configuration. To transform a Play application into a working Eclipse project, use the `eclipsify` command:
 
 ```
-[My first application] $ eclipsify
+[My first application] $ eclipsify with-source=true
 ```
 
 You then need to import the application into your Workspace with the **File/Import/General/Existing project…** menu (compile your project first).
