@@ -28,6 +28,8 @@ If something isn’t properly configured you will be notified directly in your b
 
 [[images/dbError.png]]
 
+> **Note:** the `db.*.url` property values may have to be enclosed in double quotes in order to compile successfully; e.g. `db.customers.url="jdbc:h2:mem:customers"`.
+
 ## Accessing the JDBC datasource
 
 The `play.api.db` package provides access to the configured data sources:
