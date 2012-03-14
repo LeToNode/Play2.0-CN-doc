@@ -2,7 +2,7 @@
 
 ## About sbt settings
 
-The sbt build script defines settings for your project. You can also define you own custom settings for your project, as described in the [[sbt documentation | https://github.com/harrah/xsbt/wiki]].
+The sbt build script defines settings for your project. You can also define your own custom settings for your project, as described in the [[sbt documentation | https://github.com/harrah/xsbt/wiki]].
 
 To set a basic setting, use the `:=` operator:
 
