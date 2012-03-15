@@ -6,7 +6,7 @@
 
 ## About
 
-1. [[Play 2.0 a Web framework for a new era | Philosophy]]
+1. [[Play 2.0 ，web框架的全新时代 | Philosophy]]
 
 ## Getting started
 
