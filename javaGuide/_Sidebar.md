@@ -1,8 +1,8 @@
-### Main concepts
+### 目录结构
 
-- [[HTTP programming | JavaActions]]
-- [[Asynchronous HTTP programming | JavaAsync]]
-- [[The template engine | JavaTemplates]]
+- [[HTTP 开发| JavaActions]]
+- [[异步HTTP开发 | JavaAsync]]
+- [[模板引擎 | JavaTemplates]]
 - [[HTTP form submission and validation | JavaForms]]
 - [[Working with JSON | JavaJson]]
 - [[Working with XML | JavaXmlRequests]]
