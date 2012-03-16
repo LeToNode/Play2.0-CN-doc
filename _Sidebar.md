@@ -1,4 +1,4 @@
-### Getting started
+### 入门
 
 - [[Installing Play 2.0 | Installing]]
 - [[Creating a new application | NewApplication]]
