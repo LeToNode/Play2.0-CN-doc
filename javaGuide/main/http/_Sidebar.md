@@ -1,8 +1,8 @@
-### HTTP programming
+### HTTP 开发
 
-- [[Actions, Controllers and Results | JavaActions]]
-- [[HTTP routing | JavaRouting]]
-- [[Manipulating the HTTP response | JavaResponse]]
+- [[Action, Controller 和 Result | JavaActions]]
+- [[HTTP 路由 | JavaRouting]]
+- [[操作 HTTP 返回值 | JavaResponse]]
 - [[Session and Flash scopes | JavaSessionFlash]]
 - [[Body parsers | JavaBodyParsers]]
 - [[Actions composition | JavaActionsComposition]]
