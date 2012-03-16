@@ -10,29 +10,29 @@
 
 ## 入门
 
-1. [[Installing Play 2.0 | Installing]]
-1. [[Creating a new application | NewApplication]]
-1. [[Anatomy of a Play 2.0 application | Anatomy]]
-1. [[Using the Play 2.0 console | PlayConsole ]]
-1. [[Setting-up your preferred IDE | IDE]]
-1. [[Sample applications | Samples]]
+1. [[安装 Play 2.0 | Installing]]
+1. [[创建新的应用 | NewApplication]]
+1. [[剖析 Play 2.0 应用 | Anatomy]]
+1. [[使用 Play 2.0 控制台 | PlayConsole ]]
+1. [[使用你最喜欢的IDE | IDE]]
+1. [[示例程序 | Samples]]
 
-## Working with Play 2.0
+## 使用 Play 2.0 进行开发
 
-1. [[Play 2.0 for Scala developers | ScalaHome]]
-1. [[Play 2.0 for Java developers | JavaHome]]
+1. [[使用Scala开发 Play 2.0 应用| ScalaHome]]
+1. [[使用Java开发 Play 2.0 引用 | JavaHome]]
 
-## Detailed topics
+## 主题
 
-1. [[The Build system | Build]]
-    1. [[About sbt settings | SBTSettings]]
-    1. [[Manage application dependencies | SBTDependencies]]
-    1. [[Working with sub-projects | SBTSubProjects]]
-1. [[Working with public assets | Assets]]
-    1. [[Using CoffeeScript | AssetsCoffeeScript]]
-    1. [[Using LESS CSS | AssetsLess]]
-    1. [[Using Google Closure Compiler | AssetsGoogleClosureCompiler]]
-1. [[Managing database evolutions | Evolutions]]
+1. [[构建系统 | Build]]
+    1. [[SBT(系统构建工具)设置 | SBTSettings]]
+    1. [[管理应用依赖 | SBTDependencies]]
+    1. [[使用“子项目”开发 | SBTSubProjects]]
+1. [[使用公共资源 | Assets]]
+    1. [[使用CoffeeScript | AssetsCoffeeScript]]
+    1. [[使用Less CSS | AssetsLess]]
+    1. [[使用 Google Closure 编译 | AssetsGoogleClosureCompiler]]
+1. [[管理数据库演变 | Evolutions]]
 1. [[Configuration file syntax and features | Configuration]]
     1. [[Configuring the JDBC connection pool | SettingsJDBC]]
     1. [[Configuring the internal Akka system | AkkaCore]]
