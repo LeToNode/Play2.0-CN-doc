@@ -1,39 +1,39 @@
 # 安装 Play 2.0
 
-## Prerequisites
+## 前置条件
 
-To run the Play framework, you need [[JDK 6 or later| http://www.oracle.com/technetwork/java/javase/downloads/index.html]]. 
+运行Play Framework，你需要 [[JDK 6 或更高版本 | http://www.oracle.com/technetwork/java/javase/downloads/index.html]]. 
 
-> If you are using MacOS, Java is built-in. If you are using Linux, make sure to use either the Sun JDK or OpenJDK (and not gcj, which is the default Java command on many Linux distros). If you are using Windows, just download and install the latest JDK package.
+> 如果你使用的是Mac系统，Java已经内置了. 如果你使用的是Linux，请确保Java版本为Sun JDK 或 OpenJDK (不能是一些发行版上默认的那种gcj). 如果你使用windows，请直接下载并安装最新的JDK.
 
-Be sure to have the `java` and `javac` commands in the current path (you can check this by typing `java -version` and `javac -version` at the shell prompt). 
+请确保 `java` 和 `javac` 在你的PATH路径下 (你可以通过命令行命令 `java -version` 和 `javac -version` 确认). 
 
-## Download the binary package
+## 下载二进制发行版本
 
-Download the [[Play 2.0 binary package | http://download.playframework.org/releases/]] (take the latest 2.0 RC) and extract the archive to a location where you have both read **and write** access. (Running `play` writes some files to directories within the archive, so don't install to `/opt`, `/usr/local` or anywhere else you’d need special permission to write to.)
+下载 [[Play 2.0 二进制发行版 | http://download.playframework.org/releases/]] (最新的 2.0 版本) ，解压到任一拥有读写权限的目录. (`play`命令会在当前目录下写一些文件，所以请确保不要解压在 `/opt`, `/usr/local`或其他你没有写权限的路径.)
 
-## Add the play script to your PATH
+## 把play命令脚本添加到Path路径
 
-For convenience, you should add the framework installation directory to your system PATH. On UNIX systems, this means doing something like:
+为了使用方便，你可以把play目录添加到系统的PATH路径. 在类Unix系统下，你可以这么做:
 
 ```bash
 export PATH=$PATH:/path/to/play20
 ```
 
-On Windows you’ll need to set it in the global environment variables.
+在window下，你需要设置系统的环境变量.
 
-> If you’re on UNIX, make sure that the `play` script is executable (otherwise do a `chmod a+x play`).
+> 如果你使用Unix类系统，请确保`play`脚本文件有执行权限 (或者直接执行 `chmod a+x play`).
 
-## Check that the play command is available
+## 检查play命令有效
 
-From a shell, launch the `play help` command. 
+从命令行执行 `play help` 命令即可
 
 ```bash
 $ play help
 ```
 
-If everything is properly installed, you should see the basic help:
+如果所以事情都搞定，你可能想要看一下帮助内容:
 
 [[images/play.png]]
 
-> **Next:** [[Creating a new application | NewApplication]]
+> **Next:** [[创建一个新的应用 | NewApplication]]
