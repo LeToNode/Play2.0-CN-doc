@@ -14,7 +14,7 @@
 
 ### 主题
 
-- [[编译系统 | Build]]
+- [[构建系统 | Build]]
 - [[使用公共资源 | Assets]]
 - [[管理数据库演变 | Evolutions]]
 - [[配置 | Configuration]]
