@@ -1,26 +1,26 @@
 ### 入门
 
-- [[Installing Play 2.0 | Installing]]
-- [[Creating a new application | NewApplication]]
-- [[Anatomy of a Play 2.0 application | Anatomy]]
-- [[Using the Play 2.0 console | PlayConsole ]]
-- [[Setting-up your preferred IDE | IDE]]
-- [[Sample applications | Samples]]
+- [[安装 Play 2.0 | Installing]]
+- [[创建一个新的应用 | NewApplication]]
+- [[剖析 Play 2.0 应用 | Anatomy]]
+- [[使用 Play 2.0 控制台 | PlayConsole ]]
+- [[使用你最喜欢的IDE | IDE]]
+- [[示例程序 | Samples]]
 
-### Working with Play 2.0
+### 使用 Play 2.0 进行开发
 
-- [[Play 2.0 for Scala developers | ScalaHome]]
-- [[Play 2.0 for Java developers | JavaHome]]
+- [[使用Scala开发 Play 2.0 | ScalaHome]]
+- [[使用Java 开发 Play 2.0 | JavaHome]]
 
-### Detailed topics
+### 主题
 
-- [[The Build system | Build]]
-- [[Working with public assets | Assets]]
-- [[Managing database evolutions | Evolutions]]
-- [[Configuration | Configuration]]
-- [[Deploying your application | Production]]
+- [[编译系统 | Build]]
+- [[使用公共资源 | Assets]]
+- [[管理数据库演变 | Evolutions]]
+- [[配置 | Configuration]]
+- [[部署应用 | Production]]
 
-### Additional documentation
+### 相关文档
 
 - [[Scala|http://docs.scala-lang.org/]]
 - [[Akka|http://akka.io/docs/]]
