@@ -33,17 +33,17 @@
     1. [[使用Less CSS | AssetsLess]]
     1. [[使用 Google Closure 编译 | AssetsGoogleClosureCompiler]]
 1. [[管理数据库演变 | Evolutions]]
-1. [[Configuration file syntax and features | Configuration]]
-    1. [[Configuring the JDBC connection pool | SettingsJDBC]]
-    1. [[Configuring the internal Akka system | AkkaCore]]
-    1. [[Configuring logging | SettingsLogger]]
-1. [[Deploying your application | Production]]
-    1. [[Creating a standalone version of your application | ProductionDist]]
-    1. [[Additional configuration | ProductionConfiguration]]
-    1. [[Deploying to Heroku | ProductionHeroku]]
-    1. [[Set-up a front-end HTTP server | HTTPServer]]
+1. [[配置文件和功能 | Configuration]]
+    1. [[配置JDBC连接池 | SettingsJDBC]]
+    1. [[配置内置Akka | AkkaCore]]
+    1. [[配置日志 | SettingsLogger]]
+1. [[部署应用 | Production]]
+    1. [[创建一个独立应用 | ProductionDist]]
+    1. [[额外配置 | ProductionConfiguration]]
+    1. [[部署到Heroku | ProductionHeroku]]
+    1. [[配置一个HTTP服务器 | HTTPServer]]
 
-## Additional documentations
+## 相关文档
 
 1. [[Scala|http://docs.scala-lang.org/]]
 1. [[Akka|http://akka.io/docs/]]
@@ -51,22 +51,22 @@
 1. [[Configuration|https://github.com/typesafehub/config]]
 1. [[Logback|http://logback.qos.ch/documentation.html]]
 
-## Hacking Play 2.0
+## 深入研究 Play 2.0
 
-1. [[Building Play 2.0 from source | BuildingFromSource]]
+1. [[从源码构建 Play 2.0 框架 | BuildingFromSource]]
 1. [[CI server at Cloudbees | CIServer]]
-1. [[Repositories | Repositories]]
-1. [[Issue tracker | Issues]]
-1. [[Pull requests | PullRequests]]
-1. [[Contributor guidelines | Guidelines]]
+1. [[资源库 | Repositories]]
+1. [[问题追踪 | Issues]]
+1. [[代码合并请求 | PullRequests]]
+1. [[贡献代码注意事项 | Guidelines]]
 
-## Contributing to this documentation
+## 贡献官方文档
 
-> The documentation is freely editable on [[https://github.com/playframework/Play20/wiki]]. Feel free to fix mistakes directly in the pages. 
+> 官方文档在 [[https://github.com/playframework/Play20/wiki]]. 你可以直接进行编辑. 
 >
-> However if you want to provide additional documentation, please create new pages and reference them from here. A member of the core team will take care of integrating it in the most appropriate section.
+> 当然，如果你想添加额外的内容，请创建新的页面. 核心团队的某个成员会从最受欢迎的页面中挑选一些整合到官方文档里.
 
-### To be integrated:
+### 待整合:
 
-1. [[Missing parts | Missing]]
-1. [[Tips and tricks | Tips]]
+1. [[遗漏的部分 | Missing]]
+1. [[提示和技巧 | Tips]]
