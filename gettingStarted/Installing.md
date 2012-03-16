@@ -1,4 +1,4 @@
-# Installing Play 2.0
+# 安装 Play 2.0
 
 ## Prerequisites
 
