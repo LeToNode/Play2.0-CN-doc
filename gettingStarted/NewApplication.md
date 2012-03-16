@@ -1,8 +1,8 @@
-# Creating a new application
+# 创建一个新的应用
 
-## Create a new application with the play command
+## 使用play命令创建新应用
 
-The easiest way to create a new application is to use the `play new` command.
+创建新应用最简单的方法是使用 `play new` 命令.
 
 ```bash
 $ play new myFirstApp
