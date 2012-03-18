@@ -1,23 +1,23 @@
-# HTTP routing
+# HTTP 路由 (Routing)
 
-## The built-in HTTP router
+## 内置的 HTTP 路由(HTTP Router)
 
-The router is the component that translates each incoming HTTP request to an action call (a static, public method in a controller class).
+路由是一种把每一个HTTP请求转换成一个Action(控制器Controller里的一个静态函数)的组件.
 
-An HTTP request is seen as an event by the MVC framework. This event contains two major pieces of information:
+HTTP请求可以认为是MVC框架中的一个事件(Event). 这个事件主要包含两方面的内容:
 
-- the request path (such as `/clients/1542`, `/photos/list`), including the query string.
-- the HTTP method (GET, POST, ...).
+- 请求路径 (如 `/clients/1542`, `/photos/list`), 包括查询请求串.
+- HTTP请求类型 (GET, POST, ...).
 
-Routes are defined in the `conf/routes` file, which is compiled. This means that you’ll see route errors directly in your browser:
+路由配置在 `conf/routes` 文件内. 你可以再浏览器中直接看到这样的路由错误:
 
 [[images/routesError.png]]
 
-## The routes file syntax
+## 路由文件语法
 
-`conf/routes` is the configuration file used by the router. This file lists all of the routes needed by the application. Each route consists of an HTTP method and URI pattern associated with a call to an action method.
+`conf/routes` 文件是路由使用的配置文件.它列出了所以当前应用用到的路径. 每一个路由条目包含一个请求类型、请求路径和处理请求的Action.
 
-Let’s see what a route definition looks like:
+路由可以这样设置:
 
 ```
 GET   /clients/:id          controllers.Clients.show(id: Long)  

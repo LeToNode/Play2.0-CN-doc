@@ -3,7 +3,7 @@
 - [[Action, Controller 和 Result | JavaActions]]
 - [[HTTP 路由 | JavaRouting]]
 - [[操作 HTTP 返回值 | JavaResponse]]
-- [[Session and Flash scopes | JavaSessionFlash]]
+- [[Session 和 Flash 作用域 | JavaSessionFlash]]
 - [[Body parsers | JavaBodyParsers]]
 - [[Actions composition | JavaActionsComposition]]
 
