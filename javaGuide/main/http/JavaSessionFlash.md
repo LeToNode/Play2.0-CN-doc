@@ -1,8 +1,8 @@
-# Session and Flash scopes
+# Session 和 Flash 作用域
 
-## How it is different in Play
+## Play中有什么不同
 
-If you have to keep data across multiple HTTP requests, you can save them in the Session or the Flash scope. Data stored in the Session are available during the whole user session, and data stored in the flash scope are only available to the next request.
+如果你需要在多个HTTP请求的时候公用一些数据, 你就可以把数据存放在Session或Flash中. 存储在Session中的数据在整个用户Session周期内都有效, Flash中存储的数据仅仅在当前用户下次请求的时候有效.
 
 It’s important to understand that Session and Flash data are not stored in the server but are added to each subsequent HTTP Request, using Cookies. This means that the data size is very limited (up to 4 KB) and that you can only store string values.
 
