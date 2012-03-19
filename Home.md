@@ -20,7 +20,7 @@
 ## 使用 Play 2.0 进行开发
 
 1. [[使用Scala开发 Play 2.0 应用| ScalaHome]]
-1. [[使用Java开发 Play 2.0 引用 | JavaHome]]
+1. [[使用Java开发 Play 2.0 应用 | JavaHome]]
 
 ## 主题
 
