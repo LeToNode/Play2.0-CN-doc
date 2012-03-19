@@ -95,7 +95,7 @@ GET   /clients/$id<[0-9]+>  controllers.Clients.show(id: Long)
 ```
 
 ## Call to action generator method
-调用action的方法
+## 调用action的方法
 
 
 The last part of a route definition is the call. This part must define a valid call to an action method.
