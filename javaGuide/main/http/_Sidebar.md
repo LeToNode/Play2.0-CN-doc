@@ -7,23 +7,23 @@
 - [[Body parsers | JavaBodyParsers]]
 - [[Actions composition | JavaActionsComposition]]
 
-### Main concepts
+### 目录
 
-- [[HTTP programming | JavaActions]]
-- [[Asynchronous HTTP programming | JavaAsync]]
-- [[The template engine | JavaTemplates]]
-- [[HTTP form submission and validation | JavaForms]]
-- [[Working with JSON | JavaJson]]
-- [[Working with XML | JavaXmlRequests]]
-- [[Handling file upload | JavaFileUpload]]
-- [[Accessing an SQL database | JavaDatabase]]
-- [[Using the Cache | JavaCache]]
-- [[Calling WebServices | JavaWS]]
-- [[Integrating with Akka | JavaAkka]]
-- [[Internationalization | JavaI18N]]
-- [[The application Global object | JavaGlobal]]
-- [[Testing your application | JavaTest]]
+- [[HTTP 开发 | JavaActions]]
+- [[异步 HTTP 开发 | JavaAsync]]
+- [[模版引擎 | JavaTemplates]]
+- [[HTTP 表单提交和验证 | JavaForms]]
+- [[使用 JSON | JavaJson]]
+- [[使用 XML | JavaXmlRequests]]
+- [[处理文件上传 | JavaFileUpload]]
+- [[访问SQL数据库 | JavaDatabase]]
+- [[使用 Cache | JavaCache]]
+- [[调用 WebService | JavaWS]]
+- [[I集成 Akka | JavaAkka]]
+- [[国际化 | JavaI18N]]
+- [[application全局变量 | JavaGlobal]]
+- [[测试 | JavaTest]]
 
-### Tutorials
+### 教程
 
-- [[Your first application | JavaTodoList]]
+- [[第一个应用程序 | JavaTodoList]]

@@ -23,42 +23,42 @@ HTTP请求可以认为是MVC框架中的一个事件(Event). 这个事件主要�
 GET   /clients/:id          controllers.Clients.show(id: Long)  
 ```
 
-> Note that in the action call, the parameter type comes after the parameter name, like in Scala.
+> 注意Action里的内容, 参数类型紧跟在参数名称后面, 这点和Scala一样.
 
-Each route starts with the HTTP method, followed by the URI pattern. The last element of a route is the call definition.
+每一个路由由一个HTTP类型开头，紧跟请求路径的模式. 最后一部分是具体哪个Action去处理请求.
 
-You can also add comments to the route file, with the `#` character:
+同样，你可以使用 `#` 符号在路由里写注释:
 
 ```
 # Display a client.
 GET   /clients/:id          controllers.Clients.show(id: Long)  
 ```
 
-## The HTTP method
+## HTTP请求类型
 
-The HTTP method can be any of the valid methods supported by HTTP (`GET`, `POST`, `PUT`, `DELETE`, `HEAD`).
+这里的HTTP请求类型可以是任何HTTP标准请求类型 (`GET`, `POST`, `PUT`, `DELETE`, `HEAD`).
 
-## The URI pattern
+## URI模式(请求路径)
 
-The URI pattern defines the route’s request path. Some parts of the request path can be dynamic.
+URI模式定义了请求的路径模式. 这其中的的某一部分可以使动态的.
 
-### Static path
+### 静态路径
 
-For example, to exactly match `GET /clients/all` incoming requests, you can define this route:
+比如, 完全匹配 `GET /clients/all` 请求, 你可以这么定义路由:
 
 ```
 GET   /clients              controllers.Clients.list()
 ```
 
-### Dynamic parts 
+### 动态路径 
 
-If you want to define a route that, say, retrieves a client by id, you need to add a dynamic part:
+如果你想要处理请求的时候接受一部分动态内容，比如id，你需要定义一个动态路由:
 
 ```
 GET   /clients/:id          controllers.Clients.show(id: Long)  
 ```
 
-> Note that a URI pattern may have more than one dynamic part.
+> 注意，一个路由可能含有多个动态部分.
 
 The default matching strategy for a dynamic part is defined by the regular expression `[^/]+`, meaning that any dynamic part defined as `:id` will match exactly one URI path segment.
 
