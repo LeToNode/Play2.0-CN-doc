@@ -68,26 +68,37 @@ GET   /clients/:id          controllers.Clients.show(id: Long)
 
 
 If you want a dynamic part to capture more than one URI path segment, separated by forward slashes, you can define a dynamic part using the `*id` syntax, which uses the `.*` regular expression:
+如果你想一个动态部分捕获多个URI路径片段，在前面加一个斜扛分割，你可以使用`*id`语法来定义一个动态部分，这种语法是使用了正则表达式中的：`.*`
+
 
 ```
 GET   /files/*name          controllers.Application.download(name)  
 ```
 
 Here, for a request like `GET /files/images/logo.png`, the `name` dynamic part will capture the `images/logo.png` value.
+现在，对于像`GET /files/images/logo.png`这样的请求，动态部分的`name`将会捕获`images/logo.png`的值
+
 
 ### Dynamic parts with custom regular expressions
+使用用户自定义的正则表达式来定义动态部分
+
 
 You can also define your own regular expression for a dynamic part, using the `$id<regex>` syntax:
-    
+你也可以定义你自己的正则表达式来定义动态部分，使用`$id<regex>`语法
+
 ```
 GET   /clients/$id<[0-9]+>  controllers.Clients.show(id: Long)  
 ```
 
 ## Call to action generator method
+调用action的方法
+
 
 The last part of a route definition is the call. This part must define a valid call to an action method.
-
 If the method does not define any parameters, just give the fully-qualified method name:
+
+路由定义的最后一部分就是调用。这部分必须给一个action的方法定义一个有效的调用
+如果方法没有定义任何参数，只需要给出完整的方法名：
 
 ```
 GET   /                     controllers.Application.homePage()
@@ -95,22 +106,24 @@ GET   /                     controllers.Application.homePage()
 
 If the action method defines parameters, the corresponding parameter values will be searched for in the request URI, either extracted from the URI path itself, or from the query string.
 
+如果action方法定义了参数，相应的参数值将会在请求的URI，或者从URI路径本身和查询字符串中获取
+
 ```
 # Extract the page parameter from the path.
+# 从路径中获取页面参数
 # i.e. http://myserver.com/index
 GET   /:page                controllers.Application.show(page)
 ```
 
-Or:
+或者:
 
 ```
-# Extract the page parameter from the query string.
+# 从查询字符串中获取页面参数.
 # i.e. http://myserver.com/?page=index
 GET   /                     controllers.Application.show(page)
 ```
 
-Here is the corresponding `show` method definition in the `controllers.Application` controller:
-
+这是在 `controllers.Application` controller中定义的`show`方法：
 ```java
 public static Result show(String page) {
   String content = Page.getContentOf(page);
@@ -119,15 +132,15 @@ public static Result show(String page) {
 }
 ```
 
-### Parameter types
+### 参数类型
 
-For parameters of type `String`, the parameter type is optional. If you want Play to transform the incoming parameter into a specific Scala type, you can add an explicit type:
+对于`String`类型的参数，参数的类型是可选的。如果你像play正确的转换成对应的Scala类型，你可以添加一个明确的类型：
 
 ```
 GET   /client/:id           controllers.Clients.show(id: Long)
 ```
 
-Then use the same type for the corresponding action method parameter in the controller:
+然后在controller里相应的action方法中用相同类型的参数：
 
 ```java
 public static Result show(Long id) {
