@@ -60,7 +60,8 @@ GET   /clients/:id          controllers.Clients.show(id: Long)
 
 > 注意，一个路由可能含有多个动态部分.
 
-The default matching strategy for a dynamic part is defined by the regular expression `[^/]+`, meaning that any dynamic part defined as `:id` will match exactly one URI path segment.
+对于动态部分的默认匹配表达式规则为：`[^/]+`，这意味着像`:id`这样的动态部分定义将会精确的匹配一个URI路径片段
+
 
 ### Dynamic parts spanning several /
 
