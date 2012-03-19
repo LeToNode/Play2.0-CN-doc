@@ -64,6 +64,8 @@ GET   /clients/:id          controllers.Clients.show(id: Long)
 
 
 ### Dynamic parts spanning several /
+### 动态匹配多个路径 /
+
 
 If you want a dynamic part to capture more than one URI path segment, separated by forward slashes, you can define a dynamic part using the `*id` syntax, which uses the `.*` regular expression:
 
