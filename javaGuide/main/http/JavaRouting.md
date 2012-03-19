@@ -68,6 +68,7 @@ GET   /clients/:id          controllers.Clients.show(id: Long)
 
 
 If you want a dynamic part to capture more than one URI path segment, separated by forward slashes, you can define a dynamic part using the `*id` syntax, which uses the `.*` regular expression:
+
 如果你想一个动态部分捕获多个URI路径片段，在前面加一个斜扛分割，你可以使用`*id`语法来定义一个动态部分，这种语法是使用了正则表达式中的：`.*`
 
 
@@ -76,14 +77,17 @@ GET   /files/*name          controllers.Application.download(name)
 ```
 
 Here, for a request like `GET /files/images/logo.png`, the `name` dynamic part will capture the `images/logo.png` value.
+
 现在，对于像`GET /files/images/logo.png`这样的请求，动态部分的`name`将会捕获`images/logo.png`的值
 
 
 ### Dynamic parts with custom regular expressions
+
 使用用户自定义的正则表达式来定义动态部分
 
 
 You can also define your own regular expression for a dynamic part, using the `$id<regex>` syntax:
+
 你也可以定义你自己的正则表达式来定义动态部分，使用`$id<regex>`语法
 
 ```
