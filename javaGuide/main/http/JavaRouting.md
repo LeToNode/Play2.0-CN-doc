@@ -180,7 +180,7 @@ GET   /clients              controllers.Clients.list(page: Integer ?= 1)
 
 ## 反转路由
 
-路由器将被用来生成一个对java进行调用的URL。这就为集中你的URI模式到一个人文件中成为可能，因此当你重构你的应用时将更有信心
+路由器将被用来生成一个对java进行调用的URL。这就为集中你的URI模式到一个文件中成为可能，因此当你重构你的应用时将更有信心
 
 For each controller used in the routes file, the router will generate a ‘reverse controller’ in the `routes` package, having the same action methods, with the same signature, but returning a `play.mvc.Call` instead of a `play.mvc.Result`. 
 
