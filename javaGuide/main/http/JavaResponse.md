@@ -1,6 +1,6 @@
-# 操作 HTTP 响应 
+# 操作 HTTP 返回值 
 
-## Changing the default Content-Type
+## 改变默认的 Content-Type
 
 The result content type is automatically inferred from the Java value you specify as body.
 
@@ -33,7 +33,7 @@ public static Result index() {
 }
 ```
 
-## Setting HTTP response headers
+## 设置 HTTP 响应头
 
 You can add (or update) any HTTP response header:
 
@@ -48,7 +48,7 @@ public static Result index() {
 
 Note that setting an HTTP header will automatically discard any previous value.
 
-## Setting and discarding cookies
+## 设置和丢弃 cookies
 
 Cookies are just a special form of HTTP headers, but Play provides a set of helpers to make it easier.
 
@@ -64,7 +64,7 @@ Also, to discard a Cookie previously stored on the Web browser:
 response().discardCookies("theme");
 ```
 
-## Specifying the character encoding for text results
+##  指定返回文本的字符编码
 
 For a text-based HTTP response it is very important to handle the character encoding correctly. Play handles that for you and uses `utf-8` by default.
 
