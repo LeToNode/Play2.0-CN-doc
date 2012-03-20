@@ -153,32 +153,33 @@ public static Result show(Long id) {
 }
 ```
 
-> **Note:** The parameter types are specified using a suffix syntax. Also The generic types are specified using the `[]` symbols instead of `<>`, as in Java. For example, `List[String]` is the same type as the Java `List<String>`.
+> **备注:** 参数类型被指定使用后缀语法. 同样的，java中的泛型指定使用`[]`来替换 `<>` 比如，`List[String]`和`List<String>`在java中的类型是一样的
 
-### Parameters with fixed values
+### 绑定值的参数
 
-Sometimes you’ll want to use a fixed value for a parameter:
+有些时候你需要为一个参数绑定值：
 
 ```
-# Extract the page parameter from the path, or fix the value for /
+# 从路径中提取页面参数, 或者像下面这样绑定参数 /
 GET   /                     controllers.Application.show(page = "home")
 GET   /:page                controllers.Application.show(page)
 ```
 
-### Parameters with default values
+### 带默认值的参数
 
-You can also provide a default value that will be used if no value is found in the incoming request:
+在一个请求当中，如果一个参数没有值，你可以提供一个默认值给这个参数:
 
 ```
-# Pagination links, like /clients?page=3
+# 分页链接, 比如 /clients?page=3
 GET   /clients              controllers.Clients.list(page: Integer ?= 1)
 ```
 
-## Routing priority
+## 路由时候的优先级
 
 Many routes can match the same request. If there is a conflict, the first route (in declaration order) is used.
+许多路由可以匹配相同的请求。如果产生冲突，将使用定义的第一个路由
 
-## Reverse routing
+## 反转路由
 
 The router can be used to generate a URL from within a Java call. This makes it possible to centralize all your URI patterns in a single configuration file, so you can be more confident when refactoring your application.
 
