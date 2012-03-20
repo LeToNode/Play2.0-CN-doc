@@ -184,9 +184,15 @@ GET   /clients              controllers.Clients.list(page: Integer ?= 1)
 
 For each controller used in the routes file, the router will generate a ‘reverse controller’ in the `routes` package, having the same action methods, with the same signature, but returning a `play.mvc.Call` instead of a `play.mvc.Result`. 
 
+对于每个在路由文件中使用的controller来说，路由器会生成一个‘reverse controller’，这些反转控制器有相同的action方法，相同的签名，但是返回的是一个`play.mvc.Call`，而不是`play.mvc.Result`. 
+
 The `play.mvc.Call` defines an HTTP call, and provides both the HTTP method and the URI.
 
+`play.mvc.Call` 定义了一个HTTP调用，并且提供HTTP方法和URI。
+
 For example, if you create a controller like:
+
+比如，如果你创建一个这样的controller：
 
 ```java
 package controllers;
@@ -205,12 +211,17 @@ public class Application extends Controller {
 
 And if you map it in the `conf/routes` file:
 
+你可以在 `conf/routes`文件中这样映射它：
+
+
 ```
 # Hello action
 GET   /hello/:name          controllers.Application.hello(name)
 ```
 
 You can then reverse the URL to the `hello` action method, by using the `controllers.routes.Application` reverse controller:
+
+然后你可以使用`controllers.routes.Application`反向控制器，通过反向URL来调用`hello`的action方法
 
 ```java
 // Redirect to /hello/Bob
@@ -219,4 +230,4 @@ public static Result index() {
 }
 ```
 
-> **Next:** [[Manipulating the response | JavaResponse]]
+> **下一章:** [[处理响应 | java响应]]
