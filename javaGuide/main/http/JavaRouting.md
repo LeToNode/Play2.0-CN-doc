@@ -176,12 +176,11 @@ GET   /clients              controllers.Clients.list(page: Integer ?= 1)
 
 ## 路由时候的优先级
 
-Many routes can match the same request. If there is a conflict, the first route (in declaration order) is used.
-许多路由可以匹配相同的请求。如果产生冲突，将使用定义的第一个路由
+许多路由可以匹配相同的请求。如果产生冲突，将使用定义的第一个路由。
 
 ## 反转路由
 
-The router can be used to generate a URL from within a Java call. This makes it possible to centralize all your URI patterns in a single configuration file, so you can be more confident when refactoring your application.
+路由器将被用来生成一个对java进行调用的URL。这就为集中你的URI模式到一个人文件中成为可能，因此当你重构你的应用时将更有信心
 
 For each controller used in the routes file, the router will generate a ‘reverse controller’ in the `routes` package, having the same action methods, with the same signature, but returning a `play.mvc.Call` instead of a `play.mvc.Result`. 
 
