@@ -1,4 +1,4 @@
-# Manipulating the response
+# 操作 HTTP 响应 
 
 ## Changing the default Content-Type
 
