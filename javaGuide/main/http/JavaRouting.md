@@ -230,4 +230,4 @@ public static Result index() {
 }
 ```
 
-> **下一章:** [操作 HTTP 响应 | java响应]]
+> **下一章:** [[操作 HTTP 响应 | JavaResponse]]
