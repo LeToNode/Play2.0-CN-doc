@@ -12,7 +12,7 @@
 
 ## 为异步编程而生
 
-现在的Web应用集成了大量需要并发的数据, 因此Web框架需要对异步的HTTP开发提供完整支持. Play最初的设计是，用很多短连接(short-lived)处理用户请求. 但是现在, the event model is the way to go for persistent connections - though Comet, long-polling and WebSockets.
+当今的Web应用需要越来越大的并发能力, 因此就需要Web框架对异步HTTP开发提供完整的支持. Play最初的设计是，用很多短连接(short-lived)处理用户请求. 但是现在, the event model is the way to go for persistent connections - though Comet, long-polling and WebSockets.
 
 Play 2.0 is architected from the start under the assumption that every request is potentially long-lived. But that’s not all: we also need a powerful way to schedule and run long-running tasks. The Actor-based model is unquestionably the best model today to handle highly concurrent systems, and the best implementation of that model available for both Java and Scala is Akka - so it’s going in. Play 2.0 provides native Akka support for Play applications, making it possible to write highly-distributed systems.
 
