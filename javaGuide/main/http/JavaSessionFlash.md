@@ -4,9 +4,10 @@
 
 如果你需要在多个HTTP请求的时候公用一些数据, 你就可以把数据存放在Session或Flash中. 存储在Session中的数据在整个用户Session周期内都有效, Flash中存储的数据仅仅在当前用户下次请求的时候有效.
 
-It’s important to understand that Session and Flash data are not stored in the server but are added to each subsequent HTTP Request, using Cookies. This means that the data size is very limited (up to 4 KB) and that you can only store string values.
+session和flash的数据不是存储在服务器上，而是存储在Cookie中，这就意味着数据的大小将受到极大的限制(最大4K)并且只能存储string类型。
 
 Cookies are signed with a secret key so the client can’t modify the cookie data (or it will be invalidated). The Play session is not intended to be used as a cache. If you need to cache some data related to a specific session, you can use the Play built-in cache mechanism and use store a unique ID in the user session to associate the cached data with a specific user.
+
 
 > There is no technical timeout for the session, which expires when the user closes the web browser. If you need a functional timeout for a specific application, just store a timestamp into the user Session and use it however your application needs (e.g. for a maximum session duration, maxmimum inactivity duration, etc.).
 
