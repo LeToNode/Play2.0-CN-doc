@@ -10,7 +10,7 @@ Cookies are signed with a secret key so the client can’t modify the cookie dat
 
 > There is no technical timeout for the session, which expires when the user closes the web browser. If you need a functional timeout for a specific application, just store a timestamp into the user Session and use it however your application needs (e.g. for a maximum session duration, maxmimum inactivity duration, etc.).
 
-## 读取session的值
+## 读取session中的数据
 
 You can retrieve the incoming Session from the HTTP request:
 
@@ -25,7 +25,7 @@ public static Result index() {
 }
 ```
 
-## 向session中存储值
+## 向session中存储数据
 
 As the Session is just a Cookie, it is also just an HTTP header, but Play provides a helper method to store a session value:
 
@@ -45,7 +45,7 @@ public static Result index() {
 }
 ```
 
-## 丢弃一个全局session
+## 清除全局session
 
 If you want to discard the whole session, there is special operation:
 
