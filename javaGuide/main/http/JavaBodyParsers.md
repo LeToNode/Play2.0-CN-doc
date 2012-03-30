@@ -8,7 +8,7 @@ An HTTP request (at least for those using the POST and PUT operations) contains 
 >
 > However Play provides default `BodyParser`s that should fit most use cases (parsing Json, Xml, Text, uploading files). And you can reuse these default parsers to create your own directly in Java; for example you can provide an RDF parsers based on the Text one.
 
-## The `BodyParser` Java API
+## 内容处理的 Java API
 
 In the Java API, all body parsers must generate a `play.mvc.Http.RequestBody` value. This value computed by the body parser can then be retrieved via `request().body()`:
 
@@ -45,7 +45,7 @@ pulic static Result index() {
 }
 ```
 
-## Default body parser: AnyContent
+## 默认内容处理: 异步内容
 
 If you don't specify your own body parser, Play will use the default one guessing the most appropriate content type from the `Content-Type` header:
 
@@ -71,7 +71,7 @@ pulic static Result save() {
 }
 ```
 
-## Max content length
+## 内容最大长度
 
 Text based body parsers (such as **text**, **json**, **xml** or **formUrlEncoded**) use a max content length because they have to load all the content into memory. 
 
