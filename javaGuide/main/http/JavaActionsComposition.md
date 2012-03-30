@@ -1,8 +1,8 @@
-# Action composition
+# Action 构成
 
 This chapter introduces several ways to define generic action functionality.
 
-## Reminder about actions
+## action提醒
 
 Previously, we said that an action is a Java method that returns a `play.mvc.Result` value. Actually, Play manages internally actions as functions. Because Java doesn't support first class functions, an action provided by the Java API is an instance of `play.mvc.Action`:
 
@@ -16,7 +16,7 @@ public abstract class Action {
 
 Play builds a root action for you that just calls the proper action method. This allows for more complicated action composition.
 
-## Composing actions
+## 构成action
 
 You can compose the code provided by the action method with another `play.mvc.Action`, using the `@With` annotation:
 
@@ -53,7 +53,7 @@ public static Result index() {
 > **Note:**  ```play.mvc.Security.Authenticated``` and ```play.cache.Cached``` annotations and the corresponding predefined Actions are shipped with Play. See the relevant API documentation for more information.
 
 
-## Defining custom action annotations
+## 自定义action注解
 
 You can also mark action composition with your own annotation, which must itself be annotated using `@With`:
 
@@ -89,7 +89,7 @@ public class VerboseAction extends Action<Verbose> {
 }
 ```
 
-## Annotating controllers
+## 注解声明controller
 
 You can also put any action composition annotation directly on the `Controller` class. In this case it will be applied to all action methods defined by this controller.
 
