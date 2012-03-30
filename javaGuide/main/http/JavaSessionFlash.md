@@ -9,11 +9,13 @@ session和flash的数据不是存储在服务器上，而是存储在Cookie中�
 Cookies 有一个加密的签名，所以，客户端不能修改cookie 数据(或者使它失效)。play中的session不能作为缓存使用，如果你需要缓存关联数据到指定的session，你可以使用play内置的缓存机制，通过在用户的session中存储一个唯一ID来关联指定用户的缓存数据。
 
 
-> There is no technical timeout for the session, which expires when the user closes the web browser. If you need a functional timeout for a specific application, just store a timestamp into the user Session and use it however your application needs (e.g. for a maximum session duration, maxmimum inactivity duration, etc.).
+> session没有超时技术，当用户关闭浏览器的时候session失效。如果你的应用需要超时功能，只需要在用户session中存储一个时间戳无论你的应用是否需要(比如session持续的最长时间，最大的失效时间，等等).
+
+
 
 ## 读取session中的数据
 
-You can retrieve the incoming Session from the HTTP request:
+你可以从HTTP 请求中来获得session：
 
 ```
 public static Result index() {
@@ -30,6 +32,7 @@ public static Result index() {
 
 As the Session is just a Cookie, it is also just an HTTP header, but Play provides a helper method to store a session value:
 
+
 ```
 public static Result index() {
   session("connected", "user@gmail.com");
@@ -37,7 +40,7 @@ public static Result index() {
 }
 ```
 
-The same way, you can remove any value from the incoming session:
+同样的，你可以从session中移除数据：
 
 ```
 public static Result index() {
@@ -48,7 +51,7 @@ public static Result index() {
 
 ## 清除全局session
 
-If you want to discard the whole session, there is special operation:
+如果你想清除整个session，可以这样操作：
 
 ```
 public static Result index() {
@@ -59,10 +62,11 @@ public static Result index() {
 
 ## Flash 作用域
 
-The Flash scope works exactly like the Session, but with two differences:
+Flash的范围正像session一样，但是有两点不同：
 
-- data are kept for only one request
-- the Flash cookie is not signed, making it possible for the user to modify it.
+
+- 数据只存在一次请求中
+- Flash cookie没有签名，用户可以修改它
 
 > **Important:** The flash scope should only be used to transport success/error messages on simple non-Ajax applications. As the data are just kept for the next request and because there are no guarantees to ensure the request order in a complex Web application, the Flash scope is subject to race conditions.
 
