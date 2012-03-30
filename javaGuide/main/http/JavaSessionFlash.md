@@ -68,9 +68,11 @@ Flash的范围正像session一样，但是有两点不同：
 - 数据只存在一次请求中
 - Flash cookie没有签名，用户可以修改它
 
-> **Important:** The flash scope should only be used to transport success/error messages on simple non-Ajax applications. As the data are just kept for the next request and because there are no guarantees to ensure the request order in a complex Web application, the Flash scope is subject to race conditions.
+> **重要:** The flash scope should only be used to transport success/error messages on simple non-Ajax applications. As the data are just kept for the next request and because there are no guarantees to ensure the request order in a complex Web application, the Flash scope is subject to race conditions.
 
-Here are a few examples using the Flash scope:
+flash应该被用于传递成功/错误消息的不使用ajax的简单应用.数据只是保存在下一次的请求中，并且在一个复杂的web应用中不能很确定的保证请求的顺序，flash范围是竞争条件的主题.
+
+下面是几个使用Flash范围的例子：
 
 ```
 public static Result index() {
