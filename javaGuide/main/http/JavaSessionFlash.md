@@ -6,7 +6,7 @@
 
 session和flash的数据不是存储在服务器上，而是存储在Cookie中，这就意味着数据的大小将受到极大的限制(最大4K)并且只能存储string类型。
 
-Cookies 有一个加密的签名，所以，客户端不能修改cookie 数据(或者是它失效)。play中的session不能作为缓存使用，如果你需要缓存关联数据到指定的session，你可以使用play内置的缓存机制，通过在用户的session中存储一个唯一ID来关联指定用户的缓存数据。
+Cookies 有一个加密的签名，所以，客户端不能修改cookie 数据(或者使它失效)。play中的session不能作为缓存使用，如果你需要缓存关联数据到指定的session，你可以使用play内置的缓存机制，通过在用户的session中存储一个唯一ID来关联指定用户的缓存数据。
 
 
 > There is no technical timeout for the session, which expires when the user closes the web browser. If you need a functional timeout for a specific application, just store a timestamp into the user Session and use it however your application needs (e.g. for a maximum session duration, maxmimum inactivity duration, etc.).
