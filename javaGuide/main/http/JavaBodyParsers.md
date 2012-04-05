@@ -2,13 +2,14 @@
 
 ## 什么是内容处理?
 
-An HTTP request (at least for those using the POST and PUT operations) contains a body. This body can be formatted with any format specified in the Content-Type header. A **body parser** transforms this request body into a Java value. 
+一个HTTP请求(至少是使用了POST和PUT操作的)的内容可以被格式化成任何指定的格式，指定格式在Content-Type header。一个**内容解析器**负责将请求的内容转成对应的java值
 
-> **Note:** You can't write `BodyParser` implementation directly using Java. Because a Play `BodyParser` must handle the body content incrementaly using an `Iteratee[Array[Byte], A]` it must be implemented in Scala.
+> **注意:** 你不能直接用java来重写'内容解析器'的实现，因为一个play'内容解析器'必须使用'Iteratee[Array[Byte], A]'来处理内容，'Iteratee[Array[Byte], A]'必须用scala来实现。
+
 >
-> However Play provides default `BodyParser`s that should fit most use cases (parsing Json, Xml, Text, uploading files). And you can reuse these default parsers to create your own directly in Java; for example you can provide an RDF parsers based on the Text one.
+> 但是play提供绝大多数的默认的'内容解析器'(parsing Json, Xml, Text, uploading files),你可以重用默认的解析器来创建你自己的java实现的解析器；比如你可以在Text解析器的基础上自定义一个PDF解析器
 
-## The `BodyParser` Java API
+## `内容解析器` 的Java API
 
 In the Java API, all body parsers must generate a `play.mvc.Http.RequestBody` value. This value computed by the body parser can then be retrieved via `request().body()`:
 
