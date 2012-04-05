@@ -1,11 +1,11 @@
-# The template engine
+# 模版引擎
 
-## A type safe template engine based on Scala
+## 一种基于Scala的类型安全模版引擎
 
-Play 2.0 comes with a new and really powerful Scala-based template engine, whose design was inspired by ASP.NET Razor. Specifically it is:
+Play 2.0 使用了全新的，基于Scala的模版引擎, 它模版引擎了 ASP.NET 的 Razor 模版引擎. 具体的说就是:
 
-- **compact, expressive, and fluid**: it minimizes the number of characters and keystrokes required in a file, and enables a fast, fluid coding workflow. Unlike most template syntaxes, you do not need to interrupt your coding to explicitly denote server blocks within your HTML. The parser is smart enough to infer this from your code. This enables a really compact and expressive syntax which is clean, fast and fun to type.
-- **easy to learn**: it allows you to quickly become productive, with a minimum of concepts. You use simple Scala constructs and all your existing HTML skills.
+- **结构紧凑、有表现力并且编写流畅**: 它把一个文件中需要的键盘输入字符减少到最少, 并且提供一种快速、流畅的编码流程.不同于其他模版语言，新的Play模版引擎不需要你打乱自己的HTML编码，明确书写一些服务器端代码块。新的解析器足够聪明，可以帮你做这些工作.这就使得这种简单、快速和有趣的模版语言更加紧凑和具有表现力.
+- **易于学习**: it allows you to quickly become productive, with a minimum of concepts. You use simple Scala constructs and all your existing HTML skills.
 - **not a new language**: we consciously chose not to create a new language. Instead we wanted to enable Scala developers to use their existing Scala language skills, and deliver a template markup syntax that enables an awesome HTML construction workflow.
 - **editable in any text editor**: it doesn’t require a specific tool and enables you to be productive in any plain old text editor.
 
