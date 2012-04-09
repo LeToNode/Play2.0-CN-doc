@@ -1,10 +1,10 @@
-# Streaming HTTP responses
+# HTTP 响应数据流
 
-## Standard responses and Content-Length header
+## 标准响应和Content-Length头信息
 
-Since HTTP 1.1, to keep a single connection open to serve several HTTP requests and responses, the server must send the appropriate `Content-Length` HTTP header along with the response. 
+自从HTTP1.1协议开始，为了让一个HTTP连接能够响应多个请求，服务器必须向客户端响应明确的'Content-Length'头信息。
 
-By default, when you send a simple result, such as:
+默认情况下，当你发起一个简单的HTTP请求，如:
 
 ```
 public static Result index() {
@@ -12,17 +12,17 @@ public static Result index() {
 }
 ```
 
-You are not specifying a `Content-Length` header. Of course, because the content you are sending is well known, Play is able to compute the content size for you and to generate the appropriate header.
+你并没有指定一个'Content-Length'头信息.很显然这是因为你要发送的数据很明确，Play可以计算出它的长度帮你生成头信息(Header).
 
-> **Note** that for text-based content this is not as simple as it looks, since the `Content-Length` header must be computed according the encoding used to translate characters to bytes.
+> **注意** 这种文本类型的内容并非看上去那么简单，因为'Content-Length'的头信息必须通过所使用编码的字节符号来计算.
 
-To be able to compute the `Content-Length` header properly, Play must consume the whole response data and load its content into memory. 
+为了计算 `Content-Length` , Play 必须处理整个response数据，并且把这些数据读取到内存中. 
 
-## Serving files
+## 处理文件
 
-If it’s not a problem to load the whole content into memory for simple content what about a large data set? Let’s say we want to send back a large file to the web client.
+如果说把一些简单的内容加载到内存中问题不大，那么加载一个很大的数据集呢？比如我们需要向客户端发送一个很大的文件.
 
-Play provides easy to use helpers to this common task of serving a local file:
+Play 提供了很简单的助手类帮助你做这种事情:
 
 ```
 public static Result index() {
@@ -30,23 +30,23 @@ public static Result index() {
 }
 ```
 
-Additionally this helper will also compute the `Content-Type` header from the file name. And it will also add the `Content-Disposition` header to specify how the web browser should handle this response. The default is to ask the web browser to download this file by using `Content-Disposition: attachment; filename=fileToServe.pdf`.
+并且程序会通过文件来计算 `Content-Type` . 并且额外的加上 `Content-Disposition` 头信息，用来告知客户端如何去处理这个请求响应. 默认情况下浏览器会通过`Content-Disposition: attachment; filename=fileToServe.pdf`来下载文件内容.
 
-## Chunked responses
+## 分块响应(Chunked Response)
 
-For now, this works well with streaming file content, since we are able to compute the content length before streaming it. But what about dynamically-computed content with no content size available?
+由于我们可以计算出文件的流数据大小，所以目前位置处理文件进行的很好. 但是如果我们要处理一些没有文件长度的，动态的数据流呢?
 
-For this kind of response we have to use **Chunked transfer encoding**. 
+为了解决此类问题，我们需要使用 **Chunked transfer encoding(块传输编码)**. 
 
-> **Chunked transfer encoding** is a data transfer mechanism in version HTTP 1.1 in which a web server serves content in a series of chunks. This uses the `Transfer-Encoding` HTTP response header instead of the `Content-Length` header, which the protocol would otherwise require. Because the `Content-Length` header is not used, the server does not need to know the length of the content before it starts transmitting a response to the client (usually a web browser). Web servers can begin transmitting responses with dynamically-generated content before knowing the total size of that content.
+> **Chunked transfer encoding(块传输编码)** 是 HTTP 1.1 协议中的一种让服务器通过块来处理数据的传输机制. 它使用`Transfer-Encoding` HTTP头信息来代替 `Content-Length` 头. 由于 `Content-Length` 不再使用, 服务器就不需要在传输数据之前就获取数据长度了.
 > 
-> The size of each chunk is sent right before the chunk itself so that a client can tell when it has finished receiving data for that chunk. The data transfer is terminated by a final chunk of length zero.
+> 每一个chunk(块)在传输之前都会把自己的长度告诉客户端，这样客户端就可以知道什么时候结束接收数据.数据传输会在最后一个块的长度为0的时候结束.
 >
 > [[http://en.wikipedia.org/wiki/Chunked_transfer_encoding]]
 
-The advantage is that we can serve data **live**, meaning that we send chunks of data as soon as they are available. The drawback is that since the web browser doesn’t know the content size, it is not able to display a proper download progress bar.
+这种特点的优势就是 **实时**, 就是说我们可以在数据可用的时候马上传输数据.而缺点就是，由于客户端不知道总得内容长度，所以无法提供一个下载进度条.
 
-Let’s say that we have a service somewhere that provides a dynamic `InputStream` that computes some data. We can ask Play to stream this content directly using a chunked response:
+我们假设有一个服务提供一个动态的'InputStream'数据流，我们可以直接通过Play使用一下块传输：
 
 ```
 public static Result index() {
@@ -55,7 +55,7 @@ public static Result index() {
 }
 ```
 
-You can also set up your own chunked response builder. The Play Java API supports both text and binary chunked streams (via `String` and `byte[]`):
+你也可以创建自己的块响应器. Play API支持文本和二进制的块传输响应 (via `String` and `byte[]`):
 
 ```
 public static index() {
@@ -73,10 +73,9 @@ public static index() {
   ok(chunks);
 }
 ```
+ `onReady` 函数会在当前输出流安全的情况下开始执行，它给你提供了一个 `Chunks.Out` 通道用来进行数据写入.
 
-The `onReady` method is called when it is safe to write to this stream. It gives you a `Chunks.Out` channel you can write to.
-
-Let’s say we have an asynchronous process (like an `Actor`) somewhere pushing to this stream:
+假设我们有一个异步的进程(asynchronous process (类似于 `Actor`) ) 给这个流推数据:
 
 ```
 public void registerOutChannelSomewhere(Chunks.Out<String> out) {
@@ -87,7 +86,7 @@ public void registerOutChannelSomewhere(Chunks.Out<String> out) {
 }
 ```
 
-We can inspect the HTTP response sent by the server:
+我们可以检测服务器发送给客户端的数据:
 
 ```
 HTTP/1.1 200 OK
@@ -104,6 +103,6 @@ bar
 
 ```
 
-We get three chunks and one final empty chunk that closes the response.
+我们获得了三个有内容的块和一个关闭传输的0数据块.
 
-> **Next:** [[Comet sockets | JavaComet]]
+> **Next:** [[Comet 套接字 | JavaComet]]
