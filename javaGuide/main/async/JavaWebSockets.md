@@ -1,14 +1,14 @@
-# WebSockets
+# Web套接字(WebSockets)
 
-## Using WebSockets instead of Comet sockets
+## 使用Web套接字(WebSocket)代替Comet套接字(Comet Socket)
 
-A Comet socket is a kind of hack for sending live events to the web browser. Also, Comet only supports one-way communication from the server to the client. To push events to the server, the web browser can make Ajax requests.
+用Comet套接字来实现主动、实时的给浏览器发送数据是一种很不优雅的手段. 另外, Coment只支持服务器端到客户端的单路通讯. 如果要从客户端像服务器端推送事件，浏览器可以使用Ajax请求.
 
-Modern web browsers natively support two-way live communication via WebSockets.
+现在，流行的Web浏览器通过WebSocket原生的支持了双向的实时通讯.
 
->WebSocket is a web technology providing for bi-directional, full-duplex communications channels, over a single Transmission Control Protocol (TCP) socket. The WebSocket API is being standardized by the W3C, and the WebSocket protocol has been standardized by the IETF as RFC 6455.
+>WebSocket是一种通过TCP套接字实现双向(bi-directional), 全双工(full-duplex)的通讯信道.WebSocket正在被W3C标准化，并且WebSocket协议已经被IETF作为标准记录进RFC6455.
 >
->WebSocket is designed to be implemented in web browsers and web servers, but it can be used by any client or server application. Because ordinary TCP connections to port numbers other than 80 are frequently blocked by administrators outside of home environments, it can be used as a way to circumvent these restrictions and provide similar functionality with some additional protocol overhead while multiplexing several WebSocket services over a single TCP port. Additionally, it serves a purpose for web applications that require real-time bi-directional communication. Before the implementation of WebSocket, such bi-directional communication was only possible using comet channels; however, a comet is not trivial to implement reliably, and due to the TCP Handshake and HTTP header overhead, it may be inefficient for small messages. The WebSocket protocol aims to solve these problems without compromising security assumptions of the web.
+>WebSocket设计为一个需要服务器端和Web浏览器来实现的协议，并且可以用于任何的客户端和应用. Because ordinary TCP connections to port numbers other than 80 are frequently blocked by administrators outside of home environments, it can be used as a way to circumvent these restrictions and provide similar functionality with some additional protocol overhead while multiplexing several WebSocket services over a single TCP port. Additionally, it serves a purpose for web applications that require real-time bi-directional communication. Before the implementation of WebSocket, such bi-directional communication was only possible using comet channels; however, a comet is not trivial to implement reliably, and due to the TCP Handshake and HTTP header overhead, it may be inefficient for small messages. The WebSocket protocol aims to solve these problems without compromising security assumptions of the web.
 >
 > [[http://en.wikipedia.org/wiki/WebSocket]]
 
