@@ -1,10 +1,10 @@
-# Comet sockets
+# Comet 套接字
 
-## Using chunked responses to create Comet sockets
+## 使用分块数据响应(chunked responses)创建 Comet 套接字
 
-An useful usage of **Chunked responses** is to create Comet sockets. A Comet socket is just a chunked `text/html` response containing only `<script>` elements. For each chunk, we write a `<script>` tag containing JavaScript that is immediately executed by the web browser. This way we can send events live to the web browser from the server: for each message, wrap it into a `<script>` tag that calls a JavaScript callback function, and write it to the chunked response.
+**块响应(Chunked responses)**的一个很有用的特点就是创建Comet套接字. Comet 套接字其实是一种仅仅包含`<script>`标签的数据块形式的`text/html` 响应. 对于每一个数据块，我们都包含一个 `<script>` 标签，让客户端浏览器可以直接执行. 这样我们就可以从服务器端实时的给浏览器传输事件信息: 每一条信息都可以调用一个客户端回调函数，并且包含在 `<script>` 标签内，然后写入响应数据块中.
     
-Let’s write a first proof-of-concept: create an enumerator generating `<script>` tags calling the browser `console.log` function:
+让我们来先写一个实验性质的框架: 创建一个包含 `<script>` 标签的响应块，并且调用浏览器的 `console.log` 函数:
     
 ```
 public static Result index() {
@@ -27,15 +27,15 @@ public static Result index() {
 }
 ```
 
-If you run this action from a web browser, you will see the three events logged in the browser console.
+如果你通过浏览器调用这个函数，你就会从浏览器的console看到三条输出记录.
 
-## Using the `play.libs.Comet` helper
+## 使用 `play.libs.Comet` 助手
 
-We provide a Comet helper to handle these comet chunked streams that does almost the same as what we just wrote.
+我们提供一个 Comet 助手来处理跟上面的实例基本相似的场景，它的实现也基本与上面相同.
 
-> **Note:** Actually it does more, such as pushing an initial blank buffer data for browser compatibility, and supporting both String and JSON messages.
+> **注意:** 实际上这个助手做的工作更多一点, 比如为了保证浏览器兼容性会先推送一个空的数据块过去, 同时支持JSON和XML等.
 
-Let’s just rewrite the previous example to use it:
+现在我们重新来写上面的示例:
 
 ```
 public static Result index() {
@@ -52,9 +52,9 @@ public static Result index() {
 }
 ```
 
-## The forever iframe technique
+## iframe 技术
 
-The standard technique to write a Comet socket is to load an infinite chunked comet response in an iframe and to specify a callback calling the parent frame:
+编写一个Comet套接字的标准方式是，在iframe中读取响应数据块，并且调用一个父框架(parent frame)里的回调函数来:
 
 ```
 public static Result index() {
@@ -71,7 +71,7 @@ public static Result index() {
 }
 ```
 
-With an HTML page like:
+HTML页面是这样:
 
 ```
 <script type="text/javascript">
@@ -83,4 +83,4 @@ With an HTML page like:
 <iframe src="/comet"></iframe>
 ```
 
-> **Next:** [[WebSockets | JavaWebSockets]]
+> **Next:** [[Web套接字WebSockets | JavaWebSockets]]
