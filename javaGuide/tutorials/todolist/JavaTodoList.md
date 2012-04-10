@@ -1,33 +1,33 @@
-# Your first Play application
+# 第一个应用程序
 
-Let’s write a simple task list application with Play 2.0 and deploy it to the cloud.
+现在，让我编写一个Play2.0的程序，并把它部署到云端吧.
 
-## Prerequisites
+## 前提条件
 
-First of all, make sure that you have a [[working Play installation|Installing]]. You only need Java (version 6 minimum), and to unzip the Play binary package to start; everything is included.
+首先，请确保你已经有了一个 [[运行正常的Play|Installing]]. 你仅仅需要安装Java (6.0以上版本), 然后解压缩play的zip文件，一切就已经就绪了.
 
-As we will use the command line a lot, it’s better to use a Unix-like OS. If you run a Windows system, it will also work fine; you’ll just have to type a few commands in the command prompt.
+由于我们会大量的使用命令行，所以在一个Unix类的环境下使用Play会更加方便，如果你用windows，除了需要多输入一些命令以外，忽悠没有什么区别了.
 
-You will of course need a text editor. If you are used-to a fully-featured Java IDE, such as Eclipse or IntelliJ, you can of course use it. However, with Play you can have fun working with a simple text editor like TextMate, Emacs or vi. This is because the framework manages compilation and the deployment process itself.
+当然，你还需要一个文本编辑器. 如果你拥有一个功能丰富的Java IDE, 比如 Eclipse 或 IntelliJ, 你可以直接使用. 值得一提的是, 使用TextMate、Emacs或vi编辑器来开发play应用也是很有趣的，这是因为我们的框架已经帮你解决了编译和部署的问题.
 
-## Project creation
+## 创建项目
 
-Now that Play is correctly installed, it’s time to create the new application. Creating a Play application is pretty easy and fully managed by the Play command line utility. This encourages a standard project layout across all Play applications.
+现在是时候创建一个新的应用了.在Play中创建应用相当的简单，这是因为Play的命令行工具帮你处理了大部分的事情.同时也鼓励大家在所有的应用中使用相同的文件结构.
 
-Open a new command line and enter:
+打开命令行并输入:
 
 ```
 $ play new todolist
 ```
 
-The Play tool will ask you a few questions. Choose to create a **simple Java application** project template.
+下面按照提示选择你需要的功能. 这里选择 **simple Java application** 来创建一个Java项目.
 
 [[images/new.png]]
 
-The `play new` command creates a new directory `todolist/` and populates it with a series of files and directories. The most important are as follows.
+`play new` 命令创建了一个 `todolist/` 文件夹，并且在其目录下创建了一系列文件和目录.最重要的是下面这些:
 
-* `app/` contains the application’s core, split between models, controllers and views directories. This is the directory where .java source files live.
-* `conf/` contains all the application’s configuration files, especially the main `application.conf` file, the `routes` definition files and the `messages` files used for internationalization.
+* `app/` 是应用的核心，按照model、controller和view来区分应用目录.这里是Java源代码文件存储的地方.
+* `conf/` 包含了应用程序所有的配置文件.contains all the application’s configuration files, especially the main `application.conf` file, the `routes` definition files and the `messages` files used for internationalization.
 * `project` contains the build scripts. The build system is based on sbt. But a new play application comes with a default build script that will just works fine for our application.
 * `public/` contains all the publicly available resources, which includes JavaScript, stylesheets and images directories.
 * `test/` contains all the application tests. Tests can be written as JUnit tests.
