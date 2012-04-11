@@ -2,7 +2,7 @@
 
 ## 一种基于Scala的类型安全模版引擎
 
-Play 2.0 使用了全新的，基于Scala的模版引擎, 它模版引擎了 ASP.NET 的 Razor 模版引擎. 具体的说就是:
+Play 2.0  使用了一套全新的且真正强大的基于Scala语言的模版引擎, 该模版引擎的设计灵感来源于 ASP.NET 的 Razor . 具体的说就是:
 
 - **结构紧凑、有表现力并且编写流畅**: 它把一个文件中需要的键盘输入字符减少到最少, 并且提供一种快速、流畅的编码流程.不同于其他模版语言，新的Play模版引擎不需要你打乱自己的HTML编码，明确书写一些服务器端代码块。新的解析器足够聪明，可以帮你做这些工作.这就使得这种简单、快速和有趣的模版语言更加紧凑和具有表现力.
 - **易于学习**: it allows you to quickly become productive, with a minimum of concepts. You use simple Scala constructs and all your existing HTML skills.
