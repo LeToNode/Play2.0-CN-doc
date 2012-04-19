@@ -1,0 +1,1 @@
+Welcome to the Play2.0-CN-doc wiki!
