@@ -20,6 +20,8 @@
 
 ##翻译参与人(排名不分先后)：
 yjydmlh
+
 royguo (QQ:83534146, email:royguo1988@gmail.com)
+
 LeToNode
 
