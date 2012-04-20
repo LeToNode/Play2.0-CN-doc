@@ -1,6 +1,8 @@
 # Play-2.0 的中文翻译文档
+## 本项目的[[wiki|https://github.com/royguo/Play2.0-CN-doc/wiki]]是与翻译是基本同步的
 
 # 如何参与翻译工作
+##方式一，通过Git资源库
 
 > 1、fork本文档.
 
@@ -16,6 +18,9 @@
 
 > 5、翻译完成之后，直接```git push origin master```到你的fork，然后在github页面上点击pull request，我会定期去合并到总的资源库中
 
+##方式二，直接通过wiki
+
+> 直接通过页面上的wiki，找到你要翻译的文章，然后点击edit page即可，注意，千万不要修改页面的索引标题，只去翻译内容即可
 
 
 ##翻译参与人(排名不分先后)：
