@@ -1,5 +1,5 @@
 # Play-2.0 的中文翻译文档
-## 本项目的 [[WIKI|https://github.com/royguo/Play2.0-CN-doc/wiki]] 是与翻译是基本同步的
+## 本项目的 https://github.com/royguo/Play2.0-CN-doc/wiki 是与翻译是基本同步的
 
 # 如何参与翻译工作
 ##方式一，通过Git资源库
