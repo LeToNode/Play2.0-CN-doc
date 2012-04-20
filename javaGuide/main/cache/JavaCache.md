@@ -1,30 +1,30 @@
-# The Play cache API
+# Play Cache
 
-Caching data is a typical optimization in modern applications, and so Play provides a global cache. An important point about the cache is that it behaves just like a cache should: the data you just stored may just go missing.
+使用缓存是现在应用程序的一个典型优化措施，因此Play提供了一个全局cache. 需要注意到的一点是，这里的缓存就像其他任何缓存一样：你刚刚存储的数据也可能会马上丢失.
 
-For any data stored in the cache, a regeneration strategy needs to be put in place in case the data goes missing. This philosophy is one of the fundamentals behind Play, and is different from Java EE, where the session is expected to retain values throughout its lifetime. 
+对于任何存储于cache中的数据来说，都需要一种重建策略以防止数据丢失.这种处事风格也正式Play不同于Java EE的一个方面.JavaEE 会期望session在整个生命周期内都是有效的.
 
-The default implementation of the cache API uses [[EHCache| http://ehcache.org/]]. You can also provide your own implementation via a plugin.
+Play默认的cache实现使用了[[EHCache| http://ehcache.org/]].你也可以通过plugin的方式提供自己的实现.
 
-## Accessing the Cache API
+## 访问 Cache API
 
-The cache API is provided by the `play.cache.Cache` object. This requires a cache plugin to be registered.
+Cache 使用的是 `play.cache.Cache` 对象. 它需要预先注册一个cache plugin.
 
-> **Note:** The API is intentionally minimal to allow various implementations to be plugged in. If you need a more specific API, use the one provided by your Cache plugin.
+> **Note:** 这个API为了最大先读的支持plugin实现，故意减少了功能.如果你需要更多的操作，可以通过提供自己的cache plugin来实现.
 
-Using this simple API you can store data in the cache:
+使用这个简单的API你就可以在cache中存储数据了:
 
 ```
 Cache.set("item.key", frontPageNews);
 ```
 
-You can retrieve the data later:
+然后从cache中提取数据:
 
 ```
 News news = Cache.get("item.key");
 ```
 
-## Caching HTTP responses
+## 缓存 HTTP 响应
 
 You can easily create a smart cached action using standard `Action` composition. 
 
